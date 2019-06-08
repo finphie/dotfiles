@@ -1,19 +1,36 @@
-# 上位ディレクトリから .editorconfig 設定を継承する場合は、以下の行を削除します
 root = true
+
+# 全てのファイル
+[*]
+charset = utf-8
+end_of_line = lf
+indent_style = space
+indent_size = 4
+insert_final_newline = false
+trim_trailing_whitespace = true
+
+# ソリューションファイル
+[*.sln]
+indent_style = tab
+
+# プロジェクトファイル
+[*.csproj]
+indent_size = 2
+
+# XMLファイル
+[*.{props,targets,ruleset}]
+indent_size = 2
+
+# JSONファイル
+[*.json]
+indent_size = 2
+
+# Markdownファイル
+[*.md]
+trim_trailing_whitespace = false
 
 # C# ファイル
 [*.cs]
-
-#### コア EditorConfig オプション ####
-
-# インデントと間隔
-indent_size = 4
-indent_style = space
-tab_width = 4
-
-# 改行設定
-end_of_line = crlf
-insert_final_newline = false
 
 #### .NET コーディング規則 ####
 
@@ -173,24 +190,24 @@ dotnet_naming_rule.フィールド以外のメンバー_should_be_パスカル_�
 
 dotnet_naming_symbols.interface.applicable_kinds = interface
 dotnet_naming_symbols.interface.applicable_accessibilities = public, internal, private, protected, protected_internal
-dotnet_naming_symbols.interface.required_modifiers = 
+dotnet_naming_symbols.interface.required_modifiers =
 
 dotnet_naming_symbols.型.applicable_kinds = class, struct, interface, enum
 dotnet_naming_symbols.型.applicable_accessibilities = public, internal, private, protected, protected_internal
-dotnet_naming_symbols.型.required_modifiers = 
+dotnet_naming_symbols.型.required_modifiers =
 
 dotnet_naming_symbols.フィールド以外のメンバー.applicable_kinds = property, event, method
 dotnet_naming_symbols.フィールド以外のメンバー.applicable_accessibilities = public, internal, private, protected, protected_internal
-dotnet_naming_symbols.フィールド以外のメンバー.required_modifiers = 
+dotnet_naming_symbols.フィールド以外のメンバー.required_modifiers =
 
 # 命名スタイル
 
-dotnet_naming_style.パスカル_ケース.required_prefix = 
-dotnet_naming_style.パスカル_ケース.required_suffix = 
-dotnet_naming_style.パスカル_ケース.word_separator = 
+dotnet_naming_style.パスカル_ケース.required_prefix =
+dotnet_naming_style.パスカル_ケース.required_suffix =
+dotnet_naming_style.パスカル_ケース.word_separator =
 dotnet_naming_style.パスカル_ケース.capitalization = pascal_case
 
 dotnet_naming_style.i_で始まる.required_prefix = I
-dotnet_naming_style.i_で始まる.required_suffix = 
-dotnet_naming_style.i_で始まる.word_separator = 
+dotnet_naming_style.i_で始まる.required_suffix =
+dotnet_naming_style.i_で始まる.word_separator =
 dotnet_naming_style.i_で始まる.capitalization = pascal_case
