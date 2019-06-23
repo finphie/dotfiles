@@ -36,7 +36,7 @@ trim_trailing_whitespace = false
 
 # using の整理
 dotnet_separate_import_directive_groups = false
-dotnet_sort_system_directives_first = false
+dotnet_sort_system_directives_first = true
 
 # this. と Me. の設定
 dotnet_style_qualification_for_event = false:suggestion
@@ -55,7 +55,7 @@ dotnet_style_parentheses_in_other_operators = never_if_unnecessary:suggestion
 dotnet_style_parentheses_in_relational_binary_operators = always_for_clarity:suggestion
 
 # 修飾子設定
-dotnet_style_require_accessibility_modifiers = for_non_interface_members:silent
+dotnet_style_require_accessibility_modifiers = never:suggestion
 
 # 式レベルの設定
 csharp_style_deconstructed_variable_declaration = true:suggestion
@@ -106,7 +106,7 @@ csharp_style_conditional_delegate_call = true:suggestion
 
 # 修飾子設定
 csharp_prefer_static_local_function = true:suggestion
-csharp_preferred_modifier_order = public,private,protected,internal,static,extern,new,virtual,abstract,sealed,override,readonly,unsafe,volatile,async
+csharp_preferred_modifier_order = public,private,protected,internal,static,extern,new,virtual,abstract,sealed,override,readonly,unsafe,volatile,async:suggestion
 
 # コード ブロックの設定
 csharp_prefer_braces = when_multiline:suggestion
