@@ -1,9 +1,10 @@
-# Build results
+# Visual Studio
+.vs/
 bin/
 obj/
-
-# Visual Studio cache/options directory
-.vs/
-
-# T4 Template
 *Template.cs
+
+# Unity
+/Library/
+/Logs/
+/Temp/
