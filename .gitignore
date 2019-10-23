@@ -5,6 +5,9 @@ obj/
 *Template.cs
 
 # Unity
+/Assets/*
 /Library/
 /Logs/
 /Temp/
+!/Assets/Finphie/
+!/Assets/*.meta
