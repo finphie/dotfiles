@@ -11,3 +11,4 @@ obj/
 /Temp/
 !/Assets/Finphie/
 !/Assets/*.meta
+Assembly-CSharp.csproj
