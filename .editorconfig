@@ -33,8 +33,13 @@ indent_size = 2
 [*.md]
 trim_trailing_whitespace = false
 
+# T4 Templateファイル
+[*.tt]
+charset = utf-8-bom
+
 # C# ファイル
 [*.cs]
+charset = utf-8-bom
 
 #### .NET コーディング規則 ####
 
