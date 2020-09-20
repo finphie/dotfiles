@@ -46,6 +46,7 @@ charset = utf-8-bom
 # using の整理
 dotnet_separate_import_directive_groups = false
 dotnet_sort_system_directives_first = true
+file_header_template = unset
 
 # this. と Me. の設定
 dotnet_style_qualification_for_event = false:suggestion
@@ -64,17 +65,16 @@ dotnet_style_parentheses_in_other_operators = never_if_unnecessary:suggestion
 dotnet_style_parentheses_in_relational_binary_operators = always_for_clarity:suggestion
 
 # 修飾子設定
+dotnet_style_readonly_field = true:suggestion
 dotnet_style_require_accessibility_modifiers = never:suggestion
 
 # 式レベルの設定
-csharp_style_deconstructed_variable_declaration = true:suggestion
-csharp_style_inlined_variable_declaration = true:suggestion
-csharp_style_throw_expression = true:suggestion
 dotnet_style_coalesce_expression = true:suggestion
 dotnet_style_collection_initializer = true:suggestion
 dotnet_style_explicit_tuple_names = true:suggestion
 dotnet_style_null_propagation = true:suggestion
 dotnet_style_object_initializer = true:suggestion
+dotnet_style_operator_placement_when_wrapping = beginning_of_line
 dotnet_style_prefer_auto_properties = true:suggestion
 dotnet_style_prefer_compound_assignment = true:suggestion
 dotnet_style_prefer_conditional_expression_over_assignment = true:suggestion
@@ -82,12 +82,14 @@ dotnet_style_prefer_conditional_expression_over_return = true:suggestion
 dotnet_style_prefer_inferred_anonymous_type_member_names = true:suggestion
 dotnet_style_prefer_inferred_tuple_names = true:suggestion
 dotnet_style_prefer_is_null_check_over_reference_equality_method = true:suggestion
-
-# フィールド設定
-dotnet_style_readonly_field = true:suggestion
+dotnet_style_prefer_simplified_boolean_expressions = true:suggestion
+dotnet_style_prefer_simplified_interpolation = true:suggestion
 
 # パラメーターの設定
 dotnet_code_quality_unused_parameters = all:suggestion
+
+# Suppression preferences
+dotnet_remove_unnecessary_suppression_exclusions = none
 
 #### C# コーディング規則 ####
 
@@ -97,18 +99,21 @@ csharp_style_var_for_built_in_types = true:suggestion
 csharp_style_var_when_type_is_apparent = true:suggestion
 
 # 式のようなメンバー
-csharp_style_expression_bodied_accessors = true:suggestion
-csharp_style_expression_bodied_constructors = true:suggestion
-csharp_style_expression_bodied_indexers = true:suggestion
-csharp_style_expression_bodied_lambdas = true:suggestion
-csharp_style_expression_bodied_local_functions = true:suggestion
-csharp_style_expression_bodied_methods = true:suggestion
-csharp_style_expression_bodied_operators = true:suggestion
-csharp_style_expression_bodied_properties = true:suggestion
+csharp_style_expression_bodied_accessors = when_on_single_line:suggestion
+csharp_style_expression_bodied_constructors = when_on_single_line:suggestion
+csharp_style_expression_bodied_indexers = when_on_single_line:suggestion
+csharp_style_expression_bodied_lambdas = when_on_single_line:suggestion
+csharp_style_expression_bodied_local_functions = when_on_single_line:suggestion
+csharp_style_expression_bodied_methods = when_on_single_line:suggestion
+csharp_style_expression_bodied_operators = when_on_single_line:suggestion
+csharp_style_expression_bodied_properties = when_on_single_line:suggestion
 
 # パターン マッチング設定
 csharp_style_pattern_matching_over_as_with_null_check = true:suggestion
 csharp_style_pattern_matching_over_is_with_cast_check = true:suggestion
+csharp_style_prefer_not_pattern = true:suggestion
+csharp_style_prefer_pattern_matching = true:suggestion
+csharp_style_prefer_switch_expression = true:suggestion
 
 # Null チェック設定
 csharp_style_conditional_delegate_call = true:suggestion
@@ -118,16 +123,19 @@ csharp_prefer_static_local_function = true:suggestion
 csharp_preferred_modifier_order = public,private,protected,internal,static,extern,new,virtual,abstract,sealed,override,readonly,unsafe,volatile,async:suggestion
 
 # コード ブロックの設定
-csharp_prefer_braces = when_multiline:suggestion
+csharp_prefer_braces = true:suggestion
 csharp_prefer_simple_using_statement = true:suggestion
 
 # 式レベルの設定
 csharp_prefer_simple_default_expression = true:suggestion
+csharp_style_deconstructed_variable_declaration = true:suggestion
+csharp_style_inlined_variable_declaration = true:suggestion
 csharp_style_pattern_local_over_anonymous_function = true:suggestion
 csharp_style_prefer_index_operator = true:suggestion
 csharp_style_prefer_range_operator = true:suggestion
+csharp_style_throw_expression = true:suggestion
 csharp_style_unused_value_assignment_preference = discard_variable:suggestion
-csharp_style_unused_value_expression_statement_preference = discard_variable:suggestion
+csharp_style_unused_value_expression_statement_preference = discard_variable:none
 
 # 'using' ディレクティブの基本設定
 csharp_using_directive_placement = outside_namespace:suggestion
@@ -148,7 +156,7 @@ csharp_indent_block_contents = true
 csharp_indent_braces = false
 csharp_indent_case_contents = true
 csharp_indent_case_contents_when_block = true
-csharp_indent_labels = no_change
+csharp_indent_labels = one_less_than_current
 csharp_indent_switch_labels = true
 
 # スペース設定
@@ -181,142 +189,132 @@ csharp_preserve_single_line_statements = false
 
 #### 命名スタイル ####
 
-# 命名規則
+## 命名規則 ##
 
-dotnet_naming_rule.名前空間_should_be_パスカルケース.severity = suggestion
-dotnet_naming_rule.名前空間_should_be_パスカルケース.symbols = 名前空間
-dotnet_naming_rule.名前空間_should_be_パスカルケース.style = パスカルケース
+# 名前空間
+dotnet_naming_rule.namespace_should_be_pascal_case.severity = suggestion
+dotnet_naming_rule.namespace_should_be_pascal_case.symbols = namespace
+dotnet_naming_rule.namespace_should_be_pascal_case.style = pascal_case
 
-dotnet_naming_rule.インターフェース_should_be_iで始まる.severity = suggestion
-dotnet_naming_rule.インターフェース_should_be_iで始まる.symbols = インターフェース
-dotnet_naming_rule.インターフェース_should_be_iで始まる.style = iで始まる
+# interface
+dotnet_naming_rule.interface_should_be_begins_with_i.severity = suggestion
+dotnet_naming_rule.interface_should_be_begins_with_i.symbols = interface
+dotnet_naming_rule.interface_should_be_begins_with_i.style = begins_with_i
 
-dotnet_naming_rule.インターフェース以外の型_should_be_パスカルケース.severity = suggestion
-dotnet_naming_rule.インターフェース以外の型_should_be_パスカルケース.symbols = インターフェース以外の型
-dotnet_naming_rule.インターフェース以外の型_should_be_パスカルケース.style = パスカルケース
+# 型
+dotnet_naming_rule.types_should_be_pascal_case.severity = suggestion
+dotnet_naming_rule.types_should_be_pascal_case.symbols = types
+dotnet_naming_rule.types_should_be_pascal_case.style = pascal_case
 
-dotnet_naming_rule.ジェネリックの型引数_should_be_tで始まる.severity = suggestion
-dotnet_naming_rule.ジェネリックの型引数_should_be_tで始まる.symbols = ジェネリックの型引数
-dotnet_naming_rule.ジェネリックの型引数_should_be_tで始まる.style = tで始まる
+# ジェネリックの型引数
+dotnet_naming_rule.type_parameter_should_be_begins_with_t.severity = suggestion
+dotnet_naming_rule.type_parameter_should_be_begins_with_t.symbols = type_parameter
+dotnet_naming_rule.type_parameter_should_be_begins_with_t.style = begins_with_t
 
-dotnet_naming_rule.定数_should_be_パスカルケース.severity = suggestion
-dotnet_naming_rule.定数_should_be_パスカルケース.symbols = 定数
-dotnet_naming_rule.定数_should_be_パスカルケース.style = パスカルケース
+# 定数
+dotnet_naming_rule.constant_should_be_pascal_case.severity = suggestion
+dotnet_naming_rule.constant_should_be_pascal_case.symbols = constant
+dotnet_naming_rule.constant_should_be_pascal_case.style = pascal_case
 
-dotnet_naming_rule.静的読み取り専用フィールド_should_be_パスカルケース.severity = suggestion
-dotnet_naming_rule.静的読み取り専用フィールド_should_be_パスカルケース.symbols = 静的読み取り専用フィールド
-dotnet_naming_rule.静的読み取り専用フィールド_should_be_パスカルケース.style = パスカルケース
+# 静的読み取り専用フィールド
+dotnet_naming_rule.static_readonly_should_be_pascal_case.severity = suggestion
+dotnet_naming_rule.static_readonly_should_be_pascal_case.symbols = static_readonly
+dotnet_naming_rule.static_readonly_should_be_pascal_case.style = pascal_case
 
-dotnet_naming_rule.プライベートフィールド_should_be__で始まる.severity = suggestion
-dotnet_naming_rule.プライベートフィールド_should_be__で始まる.symbols = プライベートフィールド
-dotnet_naming_rule.プライベートフィールド_should_be__で始まる.style = _で始まる
+# privateとinternalフィールド
+dotnet_naming_rule.private_internal_fields_should_be_begins_with_underscore.severity = suggestion
+dotnet_naming_rule.private_internal_fields_should_be_begins_with_underscore.symbols = private_internal_fields
+dotnet_naming_rule.private_internal_fields_should_be_begins_with_underscore.style = begins_with_underscore
 
-dotnet_naming_rule.プライベート以外のフィールド_should_be_パスカルケース.severity = suggestion
-dotnet_naming_rule.プライベート以外のフィールド_should_be_パスカルケース.symbols = プライベート以外のフィールド
-dotnet_naming_rule.プライベート以外のフィールド_should_be_パスカルケース.style = パスカルケース
+# プライベート以外のフィールド
+dotnet_naming_rule.non_private_internal_should_be_pascal_case.severity = suggestion
+dotnet_naming_rule.non_private_internal_should_be_pascal_case.symbols = non_private_internal
+dotnet_naming_rule.non_private_internal_should_be_pascal_case.style = pascal_case
 
-dotnet_naming_rule.非同期メソッド_should_be_asyncで終わる.severity = suggestion
-dotnet_naming_rule.非同期メソッド_should_be_asyncで終わる.symbols = 非同期メソッド
-dotnet_naming_rule.非同期メソッド_should_be_asyncで終わる.style = asyncで終わる
+# 非同期メソッド
+dotnet_naming_rule.async_methods_should_be_ends_with_async.severity = suggestion
+dotnet_naming_rule.async_methods_should_be_ends_with_async.symbols = async_methods
+dotnet_naming_rule.async_methods_should_be_ends_with_async.style = ends_with_async
 
-dotnet_naming_rule.フィールド以外のメンバー_should_be_パスカルケース.severity = suggestion
-dotnet_naming_rule.フィールド以外のメンバー_should_be_パスカルケース.symbols = フィールド以外のメンバー
-dotnet_naming_rule.フィールド以外のメンバー_should_be_パスカルケース.style = パスカルケース
+# フィールド以外のメンバー
+dotnet_naming_rule.non_field_members_should_be_pascal_case.severity = suggestion
+dotnet_naming_rule.non_field_members_should_be_pascal_case.symbols = non_field_members
+dotnet_naming_rule.non_field_members_should_be_pascal_case.style = pascal_case
 
-dotnet_naming_rule.引数_should_be_キャメルケース.severity = suggestion
-dotnet_naming_rule.引数_should_be_キャメルケース.symbols = 引数
-dotnet_naming_rule.引数_should_be_キャメルケース.style = キャメルケース
+# 引数
+dotnet_naming_rule.parameter_should_be_camel_case.severity = suggestion
+dotnet_naming_rule.parameter_should_be_camel_case.symbols = parameter
+dotnet_naming_rule.parameter_should_be_camel_case.style = camel_case
 
-dotnet_naming_rule.ローカル関数_should_be_パスカルケース.severity = suggestion
-dotnet_naming_rule.ローカル関数_should_be_パスカルケース.symbols = ローカル関数
-dotnet_naming_rule.ローカル関数_should_be_パスカルケース.style = パスカルケース
+# ローカル関数
+dotnet_naming_rule.local_functions_should_be_pascal_case.severity = suggestion
+dotnet_naming_rule.local_functions_should_be_pascal_case.symbols = local_functions
+dotnet_naming_rule.local_functions_should_be_pascal_case.style = pascal_case
 
-dotnet_naming_rule.ローカル変数_should_be_キャメルケース.severity = suggestion
-dotnet_naming_rule.ローカル変数_should_be_キャメルケース.symbols = ローカル変数
-dotnet_naming_rule.ローカル変数_should_be_キャメルケース.style = キャメルケース
+# ローカル変数
+dotnet_naming_rule.local_variable_should_be_camel_case.severity = suggestion
+dotnet_naming_rule.local_variable_should_be_camel_case.symbols = local_variable
+dotnet_naming_rule.local_variable_should_be_camel_case.style = camel_case
 
-# 記号の仕様
+## 記号の仕様 ##
 
-dotnet_naming_symbols.インターフェース.applicable_kinds = interface
-dotnet_naming_symbols.インターフェース.applicable_accessibilities = *
-dotnet_naming_symbols.インターフェース.required_modifiers =
+# interface
+dotnet_naming_symbols.interface.applicable_kinds = interface
 
-dotnet_naming_symbols.インターフェース以外の型.applicable_kinds = class, struct, enum
-dotnet_naming_symbols.インターフェース以外の型.applicable_accessibilities = *
-dotnet_naming_symbols.インターフェース以外の型.required_modifiers =
+# 型
+dotnet_naming_symbols.types.applicable_kinds = class, struct, enum
 
-dotnet_naming_symbols.フィールド以外のメンバー.applicable_kinds = property, event, delegate, method
-dotnet_naming_symbols.フィールド以外のメンバー.applicable_accessibilities = *
-dotnet_naming_symbols.フィールド以外のメンバー.required_modifiers =
+# フィールド以外のメンバー
+dotnet_naming_symbols.non_field_members.applicable_kinds = property, event, delegate, method
 
-dotnet_naming_symbols.非同期メソッド.applicable_kinds = method, local_function
-dotnet_naming_symbols.非同期メソッド.applicable_accessibilities = *
-dotnet_naming_symbols.非同期メソッド.required_modifiers = async
+# 非同期メソッド
+dotnet_naming_symbols.async_methods.applicable_kinds = method, local_function
+dotnet_naming_symbols.async_methods.required_modifiers = async
 
-dotnet_naming_symbols.ジェネリックの型引数.applicable_kinds = type_parameter
-dotnet_naming_symbols.ジェネリックの型引数.applicable_accessibilities = *
-dotnet_naming_symbols.ジェネリックの型引数.required_modifiers =
+# ジェネリックの型引数
+dotnet_naming_symbols.type_parameter.applicable_kinds = type_parameter
 
-dotnet_naming_symbols.プライベートフィールド.applicable_kinds = field
-dotnet_naming_symbols.プライベートフィールド.applicable_accessibilities = private
-dotnet_naming_symbols.プライベートフィールド.required_modifiers =
+# privateとinternalフィールド
+dotnet_naming_symbols.private_internal_fields.applicable_kinds = field
+dotnet_naming_symbols.private_internal_fields.applicable_accessibilities = private, internal
 
-dotnet_naming_symbols.静的読み取り専用フィールド.applicable_kinds = field
-dotnet_naming_symbols.静的読み取り専用フィールド.applicable_accessibilities = *
-dotnet_naming_symbols.静的読み取り専用フィールド.required_modifiers = readonly, static
+# 静的読み取り専用フィールド
+dotnet_naming_symbols.static_readonly.applicable_kinds = field
+dotnet_naming_symbols.static_readonly.required_modifiers = readonly, static
 
-dotnet_naming_symbols.定数.applicable_kinds = field, local
-dotnet_naming_symbols.定数.applicable_accessibilities = *
-dotnet_naming_symbols.定数.required_modifiers = const
+# 定数
+dotnet_naming_symbols.constant.applicable_kinds = field, local
+dotnet_naming_symbols.constant.required_modifiers = const
 
-dotnet_naming_symbols.引数.applicable_kinds = parameter
-dotnet_naming_symbols.引数.applicable_accessibilities = *
-dotnet_naming_symbols.引数.required_modifiers =
+# 引数
+dotnet_naming_symbols.parameter.applicable_kinds = parameter
 
-dotnet_naming_symbols.ローカル変数.applicable_kinds = local
-dotnet_naming_symbols.ローカル変数.applicable_accessibilities = *
-dotnet_naming_symbols.ローカル変数.required_modifiers =
+# ローカル変数
+dotnet_naming_symbols.local_variable.applicable_kinds = local
 
-dotnet_naming_symbols.名前空間.applicable_kinds = namespace
-dotnet_naming_symbols.名前空間.applicable_accessibilities = *
-dotnet_naming_symbols.名前空間.required_modifiers =
+# 名前空間
+dotnet_naming_symbols.namespace.applicable_kinds = namespace
 
-dotnet_naming_symbols.ローカル関数.applicable_kinds = local_function
-dotnet_naming_symbols.ローカル関数.applicable_accessibilities = *
-dotnet_naming_symbols.ローカル関数.required_modifiers =
+# ローカル関数
+dotnet_naming_symbols.local_functions.applicable_kinds = local_function
 
-dotnet_naming_symbols.プライベート以外のフィールド.applicable_kinds = field
-dotnet_naming_symbols.プライベート以外のフィールド.applicable_accessibilities = public, internal, protected, protected_internal, private_protected
-dotnet_naming_symbols.プライベート以外のフィールド.required_modifiers =
+dotnet_naming_symbols.non_private_internal.applicable_kinds = field
+dotnet_naming_symbols.non_private_internal.applicable_accessibilities = public, protected, protected_internal, private_protected
 
-# 命名スタイル
+## 命名スタイル ##
 
-dotnet_naming_style.パスカルケース.required_prefix =
-dotnet_naming_style.パスカルケース.required_suffix =
-dotnet_naming_style.パスカルケース.word_separator =
-dotnet_naming_style.パスカルケース.capitalization = pascal_case
+dotnet_naming_style.pascal_case.capitalization = pascal_case
 
-dotnet_naming_style.iで始まる.required_prefix = I
-dotnet_naming_style.iで始まる.required_suffix =
-dotnet_naming_style.iで始まる.word_separator =
-dotnet_naming_style.iで始まる.capitalization = pascal_case
+dotnet_naming_style.begins_with_i.required_prefix = I
+dotnet_naming_style.begins_with_i.capitalization = pascal_case
 
-dotnet_naming_style.asyncで終わる.required_prefix =
-dotnet_naming_style.asyncで終わる.required_suffix = Async
-dotnet_naming_style.asyncで終わる.word_separator =
-dotnet_naming_style.asyncで終わる.capitalization = pascal_case
+dotnet_naming_style.ends_with_async.required_suffix = Async
+dotnet_naming_style.ends_with_async.capitalization = pascal_case
 
-dotnet_naming_style.tで始まる.required_prefix = T
-dotnet_naming_style.tで始まる.required_suffix =
-dotnet_naming_style.tで始まる.word_separator =
-dotnet_naming_style.tで始まる.capitalization = pascal_case
+dotnet_naming_style.begins_with_t.required_prefix = T
+dotnet_naming_style.begins_with_t.capitalization = pascal_case
 
-dotnet_naming_style._で始まる.required_prefix = _
-dotnet_naming_style._で始まる.required_suffix =
-dotnet_naming_style._で始まる.word_separator =
-dotnet_naming_style._で始まる.capitalization = camel_case
+dotnet_naming_style.begins_with_underscore.required_prefix = _
+dotnet_naming_style.begins_with_underscore.capitalization = camel_case
 
-dotnet_naming_style.キャメルケース.required_prefix =
-dotnet_naming_style.キャメルケース.required_suffix =
-dotnet_naming_style.キャメルケース.word_separator =
-dotnet_naming_style.キャメルケース.capitalization = camel_case
+dotnet_naming_style.camel_case.capitalization = camel_case
