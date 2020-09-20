@@ -189,22 +189,22 @@ csharp_preserve_single_line_statements = false
 
 #### 命名スタイル ####
 
-## 命名規則 ##
+## 名前付けルール ##
 
 # 名前空間
 dotnet_naming_rule.namespace_should_be_pascal_case.severity = suggestion
 dotnet_naming_rule.namespace_should_be_pascal_case.symbols = namespace
 dotnet_naming_rule.namespace_should_be_pascal_case.style = pascal_case
 
-# interface
-dotnet_naming_rule.interface_should_be_begins_with_i.severity = suggestion
-dotnet_naming_rule.interface_should_be_begins_with_i.symbols = interface
-dotnet_naming_rule.interface_should_be_begins_with_i.style = begins_with_i
-
 # 型
 dotnet_naming_rule.types_should_be_pascal_case.severity = suggestion
 dotnet_naming_rule.types_should_be_pascal_case.symbols = types
 dotnet_naming_rule.types_should_be_pascal_case.style = pascal_case
+
+# interface
+dotnet_naming_rule.interface_should_be_begins_with_i.severity = suggestion
+dotnet_naming_rule.interface_should_be_begins_with_i.symbols = interface
+dotnet_naming_rule.interface_should_be_begins_with_i.style = begins_with_i
 
 # ジェネリックの型引数
 dotnet_naming_rule.type_parameter_should_be_begins_with_t.severity = suggestion
@@ -226,20 +226,20 @@ dotnet_naming_rule.private_internal_fields_should_be_begins_with_underscore.seve
 dotnet_naming_rule.private_internal_fields_should_be_begins_with_underscore.symbols = private_internal_fields
 dotnet_naming_rule.private_internal_fields_should_be_begins_with_underscore.style = begins_with_underscore
 
-# プライベート以外のフィールド
+# privateとinternal以外のフィールド
 dotnet_naming_rule.non_private_internal_should_be_pascal_case.severity = suggestion
 dotnet_naming_rule.non_private_internal_should_be_pascal_case.symbols = non_private_internal
 dotnet_naming_rule.non_private_internal_should_be_pascal_case.style = pascal_case
-
-# 非同期メソッド
-dotnet_naming_rule.async_methods_should_be_ends_with_async.severity = suggestion
-dotnet_naming_rule.async_methods_should_be_ends_with_async.symbols = async_methods
-dotnet_naming_rule.async_methods_should_be_ends_with_async.style = ends_with_async
 
 # フィールド以外のメンバー
 dotnet_naming_rule.non_field_members_should_be_pascal_case.severity = suggestion
 dotnet_naming_rule.non_field_members_should_be_pascal_case.symbols = non_field_members
 dotnet_naming_rule.non_field_members_should_be_pascal_case.style = pascal_case
+
+# 非同期メソッド
+dotnet_naming_rule.async_methods_should_be_ends_with_async.severity = suggestion
+dotnet_naming_rule.async_methods_should_be_ends_with_async.symbols = async_methods
+dotnet_naming_rule.async_methods_should_be_ends_with_async.style = ends_with_async
 
 # 引数
 dotnet_naming_rule.parameter_should_be_camel_case.severity = suggestion
@@ -258,11 +258,33 @@ dotnet_naming_rule.local_variable_should_be_camel_case.style = camel_case
 
 ## 記号の仕様 ##
 
-# interface
-dotnet_naming_symbols.interface.applicable_kinds = interface
+# 名前空間
+dotnet_naming_symbols.namespace.applicable_kinds = namespace
 
 # 型
 dotnet_naming_symbols.types.applicable_kinds = class, struct, enum
+
+# interface
+dotnet_naming_symbols.interface.applicable_kinds = interface
+
+# ジェネリックの型引数
+dotnet_naming_symbols.type_parameter.applicable_kinds = type_parameter
+
+# 定数
+dotnet_naming_symbols.constant.applicable_kinds = field, local
+dotnet_naming_symbols.constant.required_modifiers = const
+
+# 静的読み取り専用フィールド
+dotnet_naming_symbols.static_readonly.applicable_kinds = field
+dotnet_naming_symbols.static_readonly.required_modifiers = readonly, static
+
+# privateとinternalフィールド
+dotnet_naming_symbols.private_internal_fields.applicable_kinds = field
+dotnet_naming_symbols.private_internal_fields.applicable_accessibilities = private, internal
+
+# privateとinternal以外のフィールド
+dotnet_naming_symbols.non_private_internal.applicable_kinds = field
+dotnet_naming_symbols.non_private_internal.applicable_accessibilities = public, protected, protected_internal, private_protected
 
 # フィールド以外のメンバー
 dotnet_naming_symbols.non_field_members.applicable_kinds = property, event, delegate, method
@@ -271,50 +293,29 @@ dotnet_naming_symbols.non_field_members.applicable_kinds = property, event, dele
 dotnet_naming_symbols.async_methods.applicable_kinds = method, local_function
 dotnet_naming_symbols.async_methods.required_modifiers = async
 
-# ジェネリックの型引数
-dotnet_naming_symbols.type_parameter.applicable_kinds = type_parameter
-
-# privateとinternalフィールド
-dotnet_naming_symbols.private_internal_fields.applicable_kinds = field
-dotnet_naming_symbols.private_internal_fields.applicable_accessibilities = private, internal
-
-# 静的読み取り専用フィールド
-dotnet_naming_symbols.static_readonly.applicable_kinds = field
-dotnet_naming_symbols.static_readonly.required_modifiers = readonly, static
-
-# 定数
-dotnet_naming_symbols.constant.applicable_kinds = field, local
-dotnet_naming_symbols.constant.required_modifiers = const
-
 # 引数
 dotnet_naming_symbols.parameter.applicable_kinds = parameter
 
 # ローカル変数
 dotnet_naming_symbols.local_variable.applicable_kinds = local
 
-# 名前空間
-dotnet_naming_symbols.namespace.applicable_kinds = namespace
-
 # ローカル関数
 dotnet_naming_symbols.local_functions.applicable_kinds = local_function
-
-dotnet_naming_symbols.non_private_internal.applicable_kinds = field
-dotnet_naming_symbols.non_private_internal.applicable_accessibilities = public, protected, protected_internal, private_protected
 
 ## 命名スタイル ##
 
 dotnet_naming_style.pascal_case.capitalization = pascal_case
 
+dotnet_naming_style.camel_case.capitalization = camel_case
+
 dotnet_naming_style.begins_with_i.required_prefix = I
 dotnet_naming_style.begins_with_i.capitalization = pascal_case
-
-dotnet_naming_style.ends_with_async.required_suffix = Async
-dotnet_naming_style.ends_with_async.capitalization = pascal_case
 
 dotnet_naming_style.begins_with_t.required_prefix = T
 dotnet_naming_style.begins_with_t.capitalization = pascal_case
 
+dotnet_naming_style.ends_with_async.required_suffix = Async
+dotnet_naming_style.ends_with_async.capitalization = pascal_case
+
 dotnet_naming_style.begins_with_underscore.required_prefix = _
 dotnet_naming_style.begins_with_underscore.capitalization = camel_case
-
-dotnet_naming_style.camel_case.capitalization = camel_case
