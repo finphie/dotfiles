@@ -3,6 +3,8 @@
   <PropertyGroup>
     <Nullable>enable</Nullable>
     <AnalysisMode>AllEnabledByDefault</AnalysisMode>
+    <Authors>finphie</Authors>
+    <Copyright>© 2020 finphie</Copyright>
   </PropertyGroup>
 
 </Project>
