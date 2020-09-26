@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <IsPackable>false</IsPackable>
-    <NoWarn>CA1014;CA1034;CA1062;CA1707;SA1600</NoWarn>
+    <NoWarn>CA1014;CA1034;CA1062;CA1707;CA1810;SA1600</NoWarn>
   </PropertyGroup>
 
   <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))" />
