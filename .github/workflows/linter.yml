@@ -13,7 +13,7 @@ jobs:
       markdown: ${{ steps.x.outputs.markdown }}
 
     steps:
-      - name: Checkout ${{ github.repository.name }} repository
+      - name: Checkout ${{ github.event.repository.name }} repository
         uses: actions/checkout@v2
 
       - name: Check file type
@@ -54,5 +54,6 @@ jobs:
     steps:
       - name: Install markdownlint-cli
         run: npm install -g markdownlint-cli
+
       - name: Lint markdown
         run: markdownlint '**/*.md'
