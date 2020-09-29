@@ -52,8 +52,20 @@ jobs:
     if: needs.main.outputs.markdown == 'True'
 
     steps:
+      - name: Checkout ${{ github.event.repository.name }} repository
+        uses: actions/checkout@v2
+
+      - name: Cache
+        id: cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-markdown-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: ${{ runner.os }}-markdown-
+
       - name: Install markdownlint-cli
-        run: npm install -g markdownlint-cli
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: sudo npm install -g markdownlint-cli
 
       - name: Lint markdown
         run: markdownlint '**/*.md'
