@@ -6,7 +6,7 @@ on:
     paths:
       - '**/*.md'
       - .markdownlint.yml
-      - .github/workflows/linter/markdown.yml
+      - .github/workflows/markdown.yml
 
 jobs:
   markdown:
