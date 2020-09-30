@@ -9,11 +9,12 @@ on:
       - '**/*.sln'
       - '**/Directory.Build.props'
       - '**/.editorconfig'
-      - .github/workflows/dotnet.yml
+      - .github/workflows/linter-dotnet.yml
 
 jobs:
-  dotnet:
+  main:
     runs-on: ubuntu-latest
+    name: 'Lint: .NET'
 
     steps:
       - name: Checkout ${{ github.repository.name }} repository

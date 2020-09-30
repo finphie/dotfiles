@@ -6,11 +6,12 @@ on:
     paths:
       - '**/*.md'
       - .markdownlint.yml
-      - .github/workflows/markdown.yml
+      - .github/workflows/linter-markdown.yml
 
 jobs:
-  markdown:
+  main:
     runs-on: ubuntu-latest
+    name: 'Lint: Markdown'
 
     steps:
       - name: Checkout ${{ github.event.repository.name }} repository
