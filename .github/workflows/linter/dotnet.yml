@@ -9,6 +9,7 @@ on:
       - '**/*.sln'
       - '**/Directory.Build.props'
       - .editorconfig
+      - .github/workflows/linter/dotnet.yml
 
 jobs:
   dotnet:
