@@ -1,0 +1,34 @@
+name: Lint
+
+on:
+  pull_request:
+    types: [ opened, synchronize ]
+    paths:
+      - '**/*.cs'
+      - '**/*.csproj'
+      - '**/*.sln'
+      - '**/Directory.Build.props'
+      - '**/.editorconfig'
+      - .github/workflows/linter/dotnet.yml
+
+jobs:
+  dotnet:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout ${{ github.repository.name }} repository
+        uses: actions/checkout@v2
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 5.0.100-rc.2.20479.15
+
+      - name: Install dotnet format
+        run: dotnet tool install -g dotnet-format --add-source https://dotnet.myget.org/F/format/api/v3/index.json
+
+      - name: .NET restore
+        run: dotnet restore
+
+      - name: Lint .NET code
+        run: dotnet format --check --fix-style info --fix-analyzers info --verbosity diagnostic
