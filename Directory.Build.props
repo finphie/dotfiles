@@ -5,6 +5,7 @@
     <AnalysisMode>AllEnabledByDefault</AnalysisMode>
     <Authors>finphie</Authors>
     <Copyright>© 2020 finphie</Copyright>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
   </PropertyGroup>
 
   <ItemGroup>

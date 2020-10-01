@@ -37,7 +37,7 @@ jobs:
           restore-keys: nuget-
 
       - name: .NET restore
-        run: dotnet restore
+        run: dotnet restore --locked-mode
 
       - name: Install dotnet format
         run: dotnet tool install -g dotnet-format --add-source https://dotnet.myget.org/F/format/api/v3/index.json

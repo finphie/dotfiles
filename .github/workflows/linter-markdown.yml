@@ -17,13 +17,6 @@ jobs:
       - name: Checkout ${{ github.event.repository.name }} repository
         uses: actions/checkout@v2
 
-      - name: Cache npm packages
-        uses: actions/cache@v2
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-markdown-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: ${{ runner.os }}-markdown-
-
       - name: Install markdownlint-cli
         run: sudo npm install -g markdownlint-cli
 
