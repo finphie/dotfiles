@@ -6,6 +6,7 @@
     <Authors>finphie</Authors>
     <Copyright>© 2020 finphie</Copyright>
     <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+    <DisableImplicitNuGetFallbackFolder>true</DisableImplicitNuGetFallbackFolder>
   </PropertyGroup>
 
   <ItemGroup>
