@@ -25,6 +25,13 @@ jobs:
         with:
           dotnet-version: 5.0.100-rc.2.20479.15
 
+      - name: Cache nuget packages
+        uses: actions/cache@v2
+        with:
+          path: ~/.nuget/packages
+          key: ${{ runner.os }}-dotnet-${{ hashFiles('**/packages.lock.json') }}
+          restore-keys: ${{ runner.os }}-dotnet-
+
       - name: .NET restore
         run: dotnet restore
 
