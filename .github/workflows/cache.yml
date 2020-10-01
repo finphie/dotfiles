@@ -44,7 +44,8 @@ jobs:
         with:
           path: ${{ env.NUGET_PACKAGES }}
           key: nuget-${{ hashFiles('**/packages.lock.json') }}
-          restore-keys: nuget-
+          restore-keys: |
+            nuget-
 
       - name: .NET restore
         run: dotnet restore
@@ -67,7 +68,8 @@ jobs:
         with:
           path: ~/.npm
           key: npm-${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: npm-${{ runner.os }}-
+          restore-keys: |
+            npm-${{ runner.os }}-
 
       - name: Install markdownlint-cli
         run: sudo npm install -g markdownlint-cli
