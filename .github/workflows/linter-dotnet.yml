@@ -15,6 +15,10 @@ jobs:
   main:
     name: 'Lint: .NET'
     runs-on: ubuntu-latest
+    env:
+      DOTNET_NOLOGO: true
+      DOTNET_CLI_TELEMETRY_OPTOUT: true
+      NUGET_PACKAGES: ${{ github.workspace }}/.nuget/packages
 
     steps:
       - name: Checkout ${{ github.event.repository.name }} repository
@@ -28,9 +32,9 @@ jobs:
       - name: Cache nuget packages
         uses: actions/cache@v2
         with:
-          path: ~/.nuget/packages
-          key: ${{ runner.os }}-dotnet-${{ hashFiles('**/packages.lock.json') }}
-          restore-keys: ${{ runner.os }}-dotnet-
+          path: ${{ env.NUGET_PACKAGES }}
+          key: nuget-${{ hashFiles('**/packages.lock.json') }}
+          restore-keys: nuget-
 
       - name: .NET restore
         run: dotnet restore

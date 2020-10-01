@@ -11,8 +11,8 @@ jobs:
     runs-on: ubuntu-latest
 
     outputs:
-      dotnet: ${{ steps.x.outputs.dotnet }}
-      markdown: ${{ steps.x.outputs.markdown }}
+      nuget: ${{ steps.x.outputs.nuget }}
+      npm: ${{ steps.x.outputs.npm }}
 
     steps:
       - name: Checkout ${{ github.event.repository.name }} repository
@@ -22,14 +22,14 @@ jobs:
         id: x
         shell: pwsh
         run: |
-          Write-Output "::set-output name=dotnet::$(Test-Path *.sln)"
-          Write-Output "::set-output name=markdown::$(Test-Path *.md)"
+          Write-Output "::set-output name=nuget::$(Test-Path *.sln)"
+          Write-Output "::set-output name=npm::$(Test-Path *.md)"
 
-  dotnet:
-    name: 'Cache: .NET'
+  nuget:
+    name: 'Cache: NuGet'
     runs-on: ubuntu-latest
     needs: check
-    if: needs.check.outputs.dotnet == 'True'
+    if: needs.check.outputs.nuget == 'True'
     env:
       DOTNET_NOLOGO: true
       DOTNET_CLI_TELEMETRY_OPTOUT: true
@@ -52,11 +52,11 @@ jobs:
       - name: Install dotnet format
         run: dotnet tool install -g dotnet-format --add-source https://dotnet.myget.org/F/format/api/v3/index.json
 
-  markdown:
-    name: 'Cache: Markdown'
+  npm:
+    name: 'Cache: npm'
     runs-on: ubuntu-latest
     needs: check
-    if: needs.check.outputs.markdown == 'True'
+    if: needs.check.outputs.npm == 'True'
 
     steps:
       - name: Checkout ${{ github.event.repository.name }} repository
