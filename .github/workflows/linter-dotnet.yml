@@ -13,8 +13,8 @@ on:
 
 jobs:
   main:
-    runs-on: ubuntu-latest
     name: 'Lint: .NET'
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout ${{ github.event.repository.name }} repository

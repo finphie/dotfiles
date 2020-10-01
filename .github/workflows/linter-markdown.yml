@@ -10,15 +10,14 @@ on:
 
 jobs:
   main:
-    runs-on: ubuntu-latest
     name: 'Lint: Markdown'
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout ${{ github.event.repository.name }} repository
         uses: actions/checkout@v2
 
-      - name: Cache
-        id: cache
+      - name: Cache npm packages
         uses: actions/cache@v2
         with:
           path: ~/.npm

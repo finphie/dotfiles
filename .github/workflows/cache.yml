@@ -7,8 +7,8 @@ on:
 
 jobs:
   check:
-    runs-on: ubuntu-latest
     name: 'Cache: Check file type'
+    runs-on: ubuntu-latest
 
     outputs:
       dotnet: ${{ steps.x.outputs.dotnet }}
@@ -26,8 +26,8 @@ jobs:
           Write-Output "::set-output name=markdown::$(Test-Path *.md)"
 
   dotnet:
-    runs-on: ubuntu-latest
     name: 'Cache: .NET'
+    runs-on: ubuntu-latest
     needs: check
     if: needs.check.outputs.dotnet == 'True'
 
@@ -35,7 +35,7 @@ jobs:
       - name: Checkout ${{ github.event.repository.name }} repository
         uses: actions/checkout@v2
 
-      - name: Cache
+      - name: Cache nuget packages
         uses: actions/cache@v2
         with:
           path: ~/.nuget/packages
@@ -49,8 +49,8 @@ jobs:
         run: dotnet tool install -g dotnet-format --add-source https://dotnet.myget.org/F/format/api/v3/index.json
 
   markdown:
-    runs-on: ubuntu-latest
     name: 'Cache: Markdown'
+    runs-on: ubuntu-latest
     needs: check
     if: needs.check.outputs.markdown == 'True'
 
@@ -58,7 +58,7 @@ jobs:
       - name: Checkout ${{ github.event.repository.name }} repository
         uses: actions/checkout@v2
 
-      - name: Cache
+      - name: Cache npm packages
         uses: actions/cache@v2
         with:
           path: ~/.npm
