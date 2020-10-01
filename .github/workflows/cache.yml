@@ -1,0 +1,69 @@
+name: Cache
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 15 * * *'
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    name: 'Cache: Check file type'
+
+    outputs:
+      dotnet: ${{ steps.x.outputs.dotnet }}
+      markdown: ${{ steps.x.outputs.markdown }}
+
+    steps:
+      - name: Checkout ${{ github.event.repository.name }} repository
+        uses: actions/checkout@v2
+
+      - name: Check file type
+        id: x
+        shell: pwsh
+        run: |
+          Write-Output "::set-output name=dotnet::$(Test-Path *.sln)"
+          Write-Output "::set-output name=markdown::$(Test-Path *.md)"
+
+  dotnet:
+    runs-on: ubuntu-latest
+    name: 'Cache: .NET'
+    needs: check
+    if: needs.check.outputs.dotnet == 'True'
+
+    steps:
+      - name: Checkout ${{ github.event.repository.name }} repository
+        uses: actions/checkout@v2
+
+      - name: Cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.nuget/packages
+          key: ${{ runner.os }}-dotnet-${{ hashFiles('**/packages.lock.json') }}
+          restore-keys: ${{ runner.os }}-dotnet-
+
+      - name: .NET restore
+        run: dotnet restore
+
+      - name: Install dotnet format
+        run: dotnet tool install -g dotnet-format --add-source https://dotnet.myget.org/F/format/api/v3/index.json
+
+  markdown:
+    runs-on: ubuntu-latest
+    name: 'Cache: Markdown'
+    needs: check
+    if: needs.check.outputs.markdown == 'True'
+
+    steps:
+      - name: Checkout ${{ github.event.repository.name }} repository
+        uses: actions/checkout@v2
+
+      - name: Cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-markdown-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: ${{ runner.os }}-markdown-
+
+      - name: Install markdownlint-cli
+        run: sudo npm install -g markdownlint-cli
