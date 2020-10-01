@@ -5,6 +5,8 @@ on:
     types: [ opened, synchronize ]
     paths:
       - '**/*.cs'
+      - '**/*.xaml'
+      - '**/*.cshtml'
       - '**/*.csproj'
       - '**/*.sln'
       - '**/Directory.Build.props'
