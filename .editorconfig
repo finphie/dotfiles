@@ -320,6 +320,12 @@ dotnet_naming_style.ends_with_async.capitalization = pascal_case
 dotnet_naming_style.begins_with_underscore.required_prefix = _
 dotnet_naming_style.begins_with_underscore.capitalization = camel_case
 
+#### Microsoft.VisualStudio.Threading.Analyzers ####
+
+# Use .ConfigureAwait(bool).
+# https://github.com/microsoft/vs-threading/blob/master/doc/analyzers/VSTHRD111.md
+dotnet_diagnostic.VSTHRD111.severity = none
+
 #### StyleCop.Analyzers ####
 
 # The spacing around a C# keyword is incorrect.
