@@ -2,11 +2,12 @@
 
   <PropertyGroup>
     <Nullable>enable</Nullable>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <AnalysisMode>AllEnabledByDefault</AnalysisMode>
-    <Authors>finphie</Authors>
-    <Copyright>© 2020 finphie</Copyright>
     <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
     <DisableImplicitNuGetFallbackFolder>true</DisableImplicitNuGetFallbackFolder>
+    <Authors>finphie</Authors>
+    <Copyright>© 2020 finphie</Copyright>
   </PropertyGroup>
 
   <ItemGroup>
