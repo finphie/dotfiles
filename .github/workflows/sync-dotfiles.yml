@@ -35,6 +35,7 @@ jobs:
         with:
           repository: ${{ github.actor }}/${{ matrix.repositories }}
           path: ${{ matrix.repositories }}
+          token: ${{ secrets.PAT }}
 
       - name: Sync dotfiles
         shell: pwsh
