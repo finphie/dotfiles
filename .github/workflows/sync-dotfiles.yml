@@ -38,7 +38,7 @@ jobs:
 
       - name: Sync dotfiles
         shell: pwsh
-        run: ./${{ github.actor }}/SyncDotFiles.ps1 ${{ matrix.repositories }} ${{ github.event.repository.name }} sync-dotfiles.yml
+        run: ./${{ github.actor }}/SyncDotFiles.ps1 ${{ matrix.repositories }} ${{ github.event.repository.name }} .github/workflows/sync-dotfiles.yml
 
       - name: Create pull request
         env:
