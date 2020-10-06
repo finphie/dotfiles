@@ -14,8 +14,9 @@ jobs:
       fail-fast: false
       matrix:
         repositories:
-          - Benchmarks
-          - Stazor
+          - __test__20201003__
+          #- Benchmarks
+          #- Stazor
 
     steps:
       - name: Checkout ${{ github.event.repository.name }} repository
