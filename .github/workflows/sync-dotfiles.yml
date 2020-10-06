@@ -2,7 +2,8 @@ name: Sync
 
 on:
   workflow_dispatch:
-  branches: [ main ]
+  push:
+    branches: [ main ]
 
 jobs:
   dotfiles:
