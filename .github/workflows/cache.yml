@@ -12,14 +12,14 @@ jobs:
     runs-on: ubuntu-latest
 
     outputs:
-      nuget: ${{ steps.x.outputs.nuget }}
+      nuget: ${{ steps.check.outputs.nuget }}
 
     steps:
       - name: Checkout ${{ github.event.repository.name }} repository
         uses: actions/checkout@v2
 
       - name: Check file type
-        id: x
+        id: check
         shell: pwsh
         run: |
           Write-Output "::set-output name=nuget::$(Test-Path *.sln)"
