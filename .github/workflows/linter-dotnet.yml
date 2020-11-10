@@ -23,14 +23,13 @@ jobs:
       NUGET_PACKAGES: ${{ github.workspace }}/.nuget/packages
 
     steps:
+      - name: Checkout ${{ github.event.repository.name }} repository
+        uses: actions/checkout@v2
+
       - name: Check file
         id: check
         shell: pwsh
         run: Write-Output "::set-output name=run::$(Test-Path *.sln)"
-
-      - name: Checkout ${{ github.event.repository.name }} repository
-        if: steps.check.outputs.run == 'True'
-        uses: actions/checkout@v2
 
       - name: Setup .NET
         if: steps.check.outputs.run == 'True'
