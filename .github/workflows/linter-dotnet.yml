@@ -37,14 +37,6 @@ jobs:
         with:
           dotnet-version: 5.0.100-rtm.20515.8
 
-      - name: Cache nuget packages
-        if: steps.check.outputs.run == 'True'
-        uses: actions/cache@v2
-        with:
-          path: ${{ env.NUGET_PACKAGES }}
-          key: nuget-${{ hashFiles('**/packages.lock.json') }}
-          restore-keys: nuget-
-
       - name: .NET restore
         if: steps.check.outputs.run == 'True'
         run: dotnet restore --locked-mode
