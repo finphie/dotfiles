@@ -39,7 +39,7 @@ jobs:
 
       - name: .NET restore
         if: steps.check.outputs.run == 'True'
-        run: dotnet restore --locked-mode
+        run: dotnet restore
 
       - name: Install dotnet format
         if: steps.check.outputs.run == 'True'
