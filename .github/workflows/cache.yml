@@ -13,7 +13,6 @@ jobs:
 
     outputs:
       nuget: ${{ steps.x.outputs.nuget }}
-      npm: ${{ steps.x.outputs.npm }}
 
     steps:
       - name: Checkout ${{ github.event.repository.name }} repository
