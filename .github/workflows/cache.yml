@@ -8,6 +8,7 @@ on:
 jobs:
   check:
     name: 'Cache: Check file type'
+    if: github.event.repository.name == 'dotfiles'
     runs-on: ubuntu-latest
 
     outputs:
