@@ -4,8 +4,6 @@
     <Nullable>enable</Nullable>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <AnalysisMode>AllEnabledByDefault</AnalysisMode>
-    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
-    <DisableImplicitNuGetFallbackFolder>true</DisableImplicitNuGetFallbackFolder>
     <Authors>finphie</Authors>
     <Copyright>© 2020 finphie</Copyright>
   </PropertyGroup>
