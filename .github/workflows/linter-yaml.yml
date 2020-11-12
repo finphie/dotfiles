@@ -1,0 +1,22 @@
+name: Lint
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+    paths:
+      - '**/*.yml'
+
+jobs:
+  main:
+    name: 'Lint: YAML'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout ${{ github.event.repository.name }} repository
+        uses: actions/checkout@v2
+
+      - name: Install yamllint
+        run: pip install yamllint
+
+      - name: Lint YAML code
+        run: yamllint .
