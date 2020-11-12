@@ -1,0 +1,39 @@
+name: Lint
+
+on:
+  pull_request:
+    types: [ opened, synchronize ]
+    paths:
+      - '**/*.py'
+      - .github/workflows/linter-python.yml
+
+jobs:
+  main:
+    name: 'Lint: Python'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout ${{ github.event.repository.name }} repository
+        uses: actions/checkout@v2
+
+      - name: Check file
+        id: check
+        shell: pwsh
+        run: |
+          $files = Get-ChildItem . -Recurse -Name -Include '*.py'
+          Write-Output $files
+          Write-Output "::set-output name=run::$($files.Length -gt 0)"
+
+      - name: Install flake8
+        if: steps.check.outputs.run == 'True'
+        run: pip install flake8
+
+      - name: Install Pyright
+        if: steps.check.outputs.run == 'True'
+        run: sudo npm install -g pyright
+
+      - name: Lint Python code
+        if: steps.check.outputs.run == 'True'
+        run: |
+          flake8
+          pyright
