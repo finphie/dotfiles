@@ -32,6 +32,6 @@ jobs:
         run: Install-Module -Name PSScriptAnalyzer -Force
 
       - name: Lint PowerShell code
-        if: steps.check.outputs.run == 'True'
+        if: success()
         shell: pwsh
         run: Invoke-ScriptAnalyzer . -EnableExit -Recurse
