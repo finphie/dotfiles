@@ -2,13 +2,13 @@ name: Sync
 
 on:
   workflow_dispatch:
-  # push:
-  #  branches: [ main ]
+  push:
+    branches: [ main ]
 
 jobs:
   dotfiles:
     name: 'Sync: dotfiles'
-    if: github.event.repository.name == 'dotfiles'
+    if: github.event.repository.name == 'dotfiles' && (github.event_name != 'push' || !contains(github.event.head_commit.message, '[skip sync]')
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
