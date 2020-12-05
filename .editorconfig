@@ -41,6 +41,10 @@ charset = utf-8-bom
 [*.cs]
 charset = utf-8-bom
 
+# HTML, CSS, SCSSファイル
+[*.{html, css, scss}]
+indent_size = 2
+
 #### .NET コーディング規則 ####
 
 # using の整理
