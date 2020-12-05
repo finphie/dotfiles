@@ -29,11 +29,11 @@ jobs:
         run: pip install flake8
 
       - name: Install Pyright
-        if: success()
+        if: steps.check.outputs.run == 'True'
         run: sudo npm install -g pyright
 
       - name: Lint Python code
-        if: success()
+        if: steps.check.outputs.run == 'True'
         run: |
           flake8
           pyright
