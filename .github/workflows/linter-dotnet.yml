@@ -42,7 +42,7 @@ jobs:
 
       - name: Install dotnet format
         if: steps.check.outputs.run == 'True'
-        run: dotnet tool install -g dotnet-format --add-source https://dotnet.myget.org/F/format/api/v3/index.json
+        run: dotnet tool install -g dotnet-format --add-source https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet-tools/nuget/v3/index.json
 
       - name: Lint .NET code
         if: steps.check.outputs.run == 'True'
