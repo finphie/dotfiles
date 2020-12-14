@@ -4,6 +4,9 @@ bin/
 obj/
 *Template.cs
 
+# MSBuild log
+*.binlog
+
 # Unity
 /Assets/*
 /Library/
