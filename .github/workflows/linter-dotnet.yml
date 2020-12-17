@@ -30,12 +30,6 @@ jobs:
         shell: pwsh
         run: Write-Output "::set-output name=run::$(Test-Path *.sln)"
 
-      - name: Setup .NET
-        if: steps.check.outputs.run == 'True'
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: 5.0.100
-
       - name: .NET restore
         if: steps.check.outputs.run == 'True'
         run: dotnet restore
