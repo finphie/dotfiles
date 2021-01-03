@@ -18,6 +18,11 @@ dotnet_diagnostic.CA1810.severity = none
 
 #### Microsoft.CodeAnalysis.NetAnalyzers ####
 
+# Nested types should not be visible
+# https://docs.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1034
+# 理由: 入れ子にしたクラスを使いたい。
+dotnet_diagnostic.CA1034.severity = none
+
 # Identifiers should not contain underscores
 # https://docs.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1707
 # 理由: 識別子にアンダースコアを使いたい。
