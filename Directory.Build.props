@@ -5,7 +5,7 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <AnalysisMode>AllEnabledByDefault</AnalysisMode>
     <Authors>finphie</Authors>
-    <Copyright>© 2020 finphie</Copyright>
+    <Copyright>© 2021 finphie</Copyright>
     <NoWarn>CA1014</NoWarn>
   </PropertyGroup>
 
