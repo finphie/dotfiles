@@ -335,9 +335,20 @@ dotnet_naming_style.begins_with_underscore.capitalization = camel_case
 
 ### Roslyn Analyzers ###
 
-## 全体 ##
-
 ## Microsoft.CodeAnalysis.NetAnalyzers ##
+
+# デフォルトのapi_surfaceを変更
+dotnet_code_quality.api_surface = all
+
+# Do not expose generic lists
+# https://docs.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1002
+# 理由: 内部ではListを利用したい場合がある。
+dotnet_code_quality.CA1002.api_surface = public
+
+# Identifiers should not contain type names
+# https://docs.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1720
+# 理由: 内部では識別子に型名を利用したい場合がある。
+dotnet_code_quality.CA1720.api_surface = public
 
 # Mark assemblies with CLSCompliantAttribute
 # https://docs.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1014
