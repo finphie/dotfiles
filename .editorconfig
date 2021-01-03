@@ -430,6 +430,26 @@ dotnet_diagnostic.SA1400.severity = none
 # 理由: 末尾にカンマを付けたくない。
 dotnet_diagnostic.SA1413.severity = none
 
+# The documentation text within a C# property's <summary> tag does not match the accessors within the property.
+# https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1623.md
+# 理由: 日本語でコメントを書きたい。
+dotnet_diagnostic.SA1623.severity = none
+
+# A section of the Xml header documentation for a C# element does not end with a period (also known as a full stop).
+# https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1629.md
+# 理由: 日本語でコメントを書きたい。
+dotnet_diagnostic.SA1629.severity = none
+
+# The XML documentation header for a C# constructor does not contain the appropriate summary text.
+# https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1642.md
+# 理由: 日本語でコメントを書きたい。
+dotnet_diagnostic.SA1642.severity = none
+
+# The Xml documentation header for a C# finalizer does not contain the appropriate summary text.
+# https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1643.md
+# 理由: 日本語でコメントを書きたい。
+dotnet_diagnostic.SA1643.severity = none
+
 # A C# code file is missing a standard file header.
 # https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1633.md
 # 理由: ファイルヘッダーは不要。
