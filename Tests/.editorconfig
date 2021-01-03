@@ -32,5 +32,10 @@ dotnet_diagnostic.CA1707.severity = none
 
 # A C# code element is missing a documentation header.
 # https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1600.md
-# 理由: ドキュメントヘッダーを使用しない。
+# 理由: ドキュメンテーションコメントを使用しない。
 dotnet_diagnostic.SA1600.severity = none
+
+# A C# partial element is missing a documentation header.
+# https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1601.md
+# 理由: ドキュメンテーションコメントを使用しない。
+dotnet_diagnostic.SA1601.severity = none
