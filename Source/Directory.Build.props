@@ -4,6 +4,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)\$(SolutionName).Shared\**\*.cs" />
   </ItemGroup>
 
-  <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))" />
+  <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)..\'))" />
 
 </Project>
