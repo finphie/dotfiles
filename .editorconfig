@@ -41,7 +41,7 @@ trim_trailing_whitespace = false
 [*.tt]
 charset = utf-8-bom
 
-# C# ファイル
+# C#ファイル
 [*.cs]
 charset = utf-8-bom
 
@@ -328,6 +328,13 @@ dotnet_naming_style.begins_with_underscore.required_prefix = _
 dotnet_naming_style.begins_with_underscore.capitalization = camel_case
 
 #### Microsoft.CodeAnalysis.NetAnalyzers ####
+
+# Mark assemblies with CLSCompliantAttribute
+# https://docs.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1014
+# 無効化理由: CLSに準拠する必要性を感じない。
+# 現状、EditorConfig側から無効化できないため、Directory.Build.propsを利用する必要あり。
+# https://github.com/dotnet/roslyn/issues/37876
+# dotnet_diagnostic.CA1014.severity = none
 
 # Identifiers should not match keywords
 # https://docs.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1716
