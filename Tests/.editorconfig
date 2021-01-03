@@ -1,7 +1,7 @@
 # C#ファイル（ユニットテストプロジェクト全体）
 [*.cs]
 
-#### Microsoft.CodeAnalysis.NetAnalyzers ####
+## Microsoft.CodeAnalysis.NetAnalyzers ##
 
 # Validate arguments of public methods
 # https://docs.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1062
@@ -16,7 +16,7 @@ dotnet_diagnostic.CA1810.severity = none
 # C#ユニットテストファイル
 [*Test.cs]
 
-#### Microsoft.CodeAnalysis.NetAnalyzers ####
+## Microsoft.CodeAnalysis.NetAnalyzers ##
 
 # Nested types should not be visible
 # https://docs.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1034
@@ -28,7 +28,7 @@ dotnet_diagnostic.CA1034.severity = none
 # 理由: 識別子にアンダースコアを使いたい。
 dotnet_diagnostic.CA1707.severity = none
 
-#### StyleCop.Analyzers ####
+## StyleCop.Analyzers ##
 
 # A C# code element is missing a documentation header.
 # https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1600.md
