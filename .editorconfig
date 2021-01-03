@@ -357,6 +357,11 @@ dotnet_code_quality.CA1720.api_surface = public
 # https://github.com/dotnet/roslyn/issues/37876
 # dotnet_diagnostic.CA1014.severity = none
 
+# Identifiers should have correct prefix
+# https://docs.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1715
+# 理由: IDE1006（命名スタイル）と重複。
+dotnet_diagnostic.CA1715.severity = none
+
 # Identifiers should not match keywords
 # https://docs.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1716
 # 理由: 言語キーワードと重複してもエスケープすれば回避できる。
