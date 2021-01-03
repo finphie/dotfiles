@@ -380,6 +380,11 @@ dotnet_diagnostic.CA3009.severity = none
 # https://docs.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca2007
 dotnet_diagnostic.VSTHRD111.severity = none
 
+# Use Async suffix for async methods
+# https://github.com/microsoft/vs-threading/blob/master/doc/analyzers/VSTHRD200.md
+# 理由: IDE1006（命名スタイル）と重複。
+dotnet_diagnostic.VSTHRD200.severity = none
+
 ## StyleCop.Analyzers ##
 
 # Naming Rules
