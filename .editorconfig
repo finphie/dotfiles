@@ -311,19 +311,25 @@ dotnet_naming_symbols.local_functions.applicable_kinds = local_function
 
 ## 命名スタイル ##
 
+# PascalCase
 dotnet_naming_style.pascal_case.capitalization = pascal_case
 
+# camelCase
 dotnet_naming_style.camel_case.capitalization = camel_case
 
+# IPascalCase
 dotnet_naming_style.begins_with_i.required_prefix = I
 dotnet_naming_style.begins_with_i.capitalization = pascal_case
 
+# TPascalCase
 dotnet_naming_style.begins_with_t.required_prefix = T
 dotnet_naming_style.begins_with_t.capitalization = pascal_case
 
+# PascalCaseAsync
 dotnet_naming_style.ends_with_async.required_suffix = Async
 dotnet_naming_style.ends_with_async.capitalization = pascal_case
 
+# _camelCase
 dotnet_naming_style.begins_with_underscore.required_prefix = _
 dotnet_naming_style.begins_with_underscore.capitalization = camel_case
 
@@ -331,26 +337,26 @@ dotnet_naming_style.begins_with_underscore.capitalization = camel_case
 
 # Mark assemblies with CLSCompliantAttribute
 # https://docs.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1014
-# 無効化理由: CLSに準拠する必要性を感じない。
+# 理由: CLSに準拠する必要性を感じない。
 # 現状、EditorConfig側から無効化できないため、Directory.Build.propsを利用する必要あり。
 # https://github.com/dotnet/roslyn/issues/37876
 # dotnet_diagnostic.CA1014.severity = none
 
 # Identifiers should not match keywords
 # https://docs.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1716
-# 無効化理由: 言語キーワードと重複してもエスケープすれば回避できる。
+# 理由: 言語キーワードと重複してもエスケープすれば回避できる。
 dotnet_diagnostic.CA1716.severity = none
 
 # 'type': base type 'type' is not CLS-compliant
 # https://docs.microsoft.com/dotnet/csharp/language-reference/compiler-messages/cs3009
-# 無効化理由: CLSに準拠する必要性を感じない。
+# 理由: CLSに準拠する必要性を感じない。
 dotnet_diagnostic.CA3009.severity = none
 
 #### Microsoft.VisualStudio.Threading.Analyzers ####
 
 # Use .ConfigureAwait(bool).
 # https://github.com/microsoft/vs-threading/blob/master/doc/analyzers/VSTHRD111.md
-# 無効化理由: CA2007と同じ。
+# 理由: CA2007と同じ。
 # https://docs.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca2007
 dotnet_diagnostic.VSTHRD111.severity = none
 
@@ -358,31 +364,31 @@ dotnet_diagnostic.VSTHRD111.severity = none
 
 # A call to an instance member of the local class or a base class is not prefixed with 'this.', within a C# code file.
 # https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1101.md
-# 無効化理由: 'this.'は省略したい。
+# 理由: 'this.'は省略したい。
 dotnet_diagnostic.SA1101.severity = none
 
 # A C# using directive is placed outside of a namespace element.
 # https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1200.md
-# 無効化理由: IDE0065と同じ。
+# 理由: IDE0065と同じ。
 # http://docs.microsoft.com/dotnet/fundamentals/code-analysis/style-rules/ide0065
 dotnet_diagnostic.SA1200.severity = none
 
 # A field name in C# begins with an underscore.
 # https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1309.md
-# 無効化理由: フィールド名の先頭文字にアンダースコアを利用したい。
+# 理由: フィールド名の先頭文字にアンダースコアを利用したい。
 dotnet_diagnostic.SA1309.severity = none
 
 # The access modifier for a C# element has not been explicitly defined.
 # https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1400.md
-# 無効化理由: アクセス修飾子を省略できる場所は省略したい。
+# 理由: アクセス修飾子を省略できる場所は省略したい。
 dotnet_diagnostic.SA1400.severity = none
 
 # The last statement in a multi-line C# initializer or list is missing a trailing comma.
 # https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1413.md
-# 無効化理由: 末尾にカンマを付けたくない。
+# 理由: 末尾にカンマを付けたくない。
 dotnet_diagnostic.SA1413.severity = none
 
 # A C# code file is missing a standard file header.
 # https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1633.md
-# 無効化理由: ファイルヘッダーは不要。
+# 理由: ファイルヘッダーは不要。
 dotnet_diagnostic.SA1633.severity = none
