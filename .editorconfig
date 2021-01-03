@@ -362,6 +362,21 @@ dotnet_diagnostic.VSTHRD111.severity = none
 
 #### StyleCop.Analyzers ####
 
+# Naming Rules
+# https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/NamingRules.md
+# 理由: IDE1006（名前付けルール）と重複。
+dotnet_analyzer_diagnostic.category-StyleCop.CSharp.NamingRules.severity = none
+
+# A field name in C# contains an underscore.
+# https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1310.md
+# 理由: IDE1006（名前付けルール）で指定できない規則。
+dotnet_diagnostic.SA1310.severity = suggestion
+
+# Element names within a tuple type should have the correct casing.
+# https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1316.md
+# 理由: IDE1006（名前付けルール）で指定できない規則。
+dotnet_diagnostic.SA1316.severity = suggestion
+
 # A call to an instance member of the local class or a base class is not prefixed with 'this.', within a C# code file.
 # https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1101.md
 # 理由: IDE0009（this and Me preferences）と重複。IDE0003を優先させる。
@@ -373,11 +388,6 @@ dotnet_diagnostic.SA1101.severity = none
 # 理由: IDE0065（'using' directive placement）と重複。
 # http://docs.microsoft.com/dotnet/fundamentals/code-analysis/style-rules/ide0065
 dotnet_diagnostic.SA1200.severity = none
-
-# A field name in C# begins with an underscore.
-# https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1309.md
-# 理由: IDE1006（名前付けルール）と重複。
-dotnet_diagnostic.SA1309.severity = none
 
 # The access modifier for a C# element has not been explicitly defined.
 # https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1400.md
