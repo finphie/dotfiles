@@ -1,21 +1,31 @@
-# C#ユニットテストファイル
-[*Test.cs]
+# C#ファイル（ユニットテストプロジェクト全体）
+[*.cs]
 
 #### Microsoft.CodeAnalysis.NetAnalyzers ####
 
 # Validate arguments of public methods
 # https://docs.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1062
-# 無効化理由: ユニットテストでは引数を検証する必要はない。
+# 無効化理由: 引数を検証する必要はない。
 dotnet_diagnostic.CA1062.severity = none
+
+# Initialize reference type static fields inline
+# https://docs.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1810
+# 無効化理由: 静的コンストラクターを使用しても問題ない。
+dotnet_diagnostic.CA1810.severity = none
+
+# C#ユニットテストファイル
+[*Test.cs]
+
+#### Microsoft.CodeAnalysis.NetAnalyzers ####
 
 # Identifiers should not contain underscores
 # https://docs.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1707
-# 無効化理由: ユニットテストでは識別子にアンダースコアを使いたい。
+# 無効化理由: 識別子にアンダースコアを使いたい。
 dotnet_diagnostic.CA1707.severity = none
 
 #### StyleCop.Analyzers ####
 
 # A C# code element is missing a documentation header.
 # https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1600.md
-# 無効化理由: ユニットテストではドキュメントヘッダーを使用しない。
+# 無効化理由: ドキュメントヘッダーを使用しない。
 dotnet_diagnostic.SA1600.severity = none
