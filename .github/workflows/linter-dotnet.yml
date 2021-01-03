@@ -40,4 +40,4 @@ jobs:
 
       - name: Lint .NET code
         if: steps.check.outputs.run == 'True'
-        run: dotnet format --check --fix-style info --fix-analyzers info --verbosity diagnostic
+        run: dotnet format --check --fix-whitespace --fix-style info --fix-analyzers info --verbosity diagnostic
