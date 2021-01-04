@@ -419,6 +419,12 @@ dotnet_diagnostic.SA1101.severity = none
 # http://docs.microsoft.com/dotnet/fundamentals/code-analysis/style-rules/ide0065
 dotnet_diagnostic.SA1200.severity = none
 
+# The partial element does not have an access modifier defined.
+# https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1205.md
+# 理由: IDE0040（Add accessibility modifiers）とinternal classの場合に競合する。
+# https://docs.microsoft.com/dotnet/fundamentals/code-analysis/style-rules/ide0040
+dotnet_diagnostic.SA1205.severity = none
+
 # The access modifier for a C# element has not been explicitly defined.
 # https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1400.md
 # 理由: IDE0040（Add accessibility modifiers）と重複。
