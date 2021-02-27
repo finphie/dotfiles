@@ -1,6 +1,7 @@
 <Project>
 
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)\Common\**\*.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)\$(SolutionName).Shared\**\*.cs" />
   </ItemGroup>
 
