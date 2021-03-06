@@ -14,8 +14,8 @@ jobs:
       fail-fast: false
       matrix:
         repositories:
-          # - __test__20201003__
           - Benchmarks
+          - SimpleTextTemplate
           - Stazor
 
     steps:
