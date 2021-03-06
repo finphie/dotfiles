@@ -97,6 +97,10 @@ dotnet_code_quality_unused_parameters = all:warning
 # 抑制の設定
 dotnet_remove_unnecessary_suppression_exclusions = none
 
+# New line preferences
+dotnet_style_allow_multiple_blank_lines_experimental = false:warning
+dotnet_style_allow_statement_immediately_after_block_experimental = false:warning
+
 ### C# コーディング規則 ###
 
 # var を優先
@@ -146,6 +150,11 @@ csharp_style_unused_value_expression_statement_preference = discard_variable:non
 
 # 'using' ディレクティブの基本設定
 csharp_using_directive_placement = outside_namespace:warning
+
+# New line preferences
+csharp_style_allow_blank_line_after_colon_in_constructor_initializer_experimental = false:warning
+csharp_style_allow_blank_lines_between_consecutive_braces_experimental = false:warning
+csharp_style_allow_embedded_statements_on_same_line_experimental = false:warning
 
 ### C# 書式ルール ###
 
