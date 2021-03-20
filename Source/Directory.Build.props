@@ -5,7 +5,7 @@
     <IsInternal>$(MSBuildProjectName.Contains('Internal'))</IsInternal>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(IsBenchmark)' == 'false' or '$(IsGenerator)' == 'false' or '$(IsInternal)' == 'false'">
+  <PropertyGroup Condition="'$(IsBenchmark)' == 'false' and '$(IsGenerator)' == 'false' and '$(IsInternal)' == 'false'">
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
