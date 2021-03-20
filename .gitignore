@@ -2,7 +2,6 @@
 .vs/
 bin/
 obj/
-?*Template.cs
 
 # MSBuild log
 *.binlog
