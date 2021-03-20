@@ -1,7 +1,13 @@
 <Project>
 
+  <!-- 内部のみで利用するプロジェクト -->
+  <PropertyGroup Condition="$(ProjectName.Contains('Internal'))">
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <!-- コンパイル対象ファイルを追加 -->
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)\Common\**\*.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)\Common\**\*.cs" Visible="false" />
     <Compile Include="$(MSBuildThisFileDirectory)\$(SolutionName).Shared\**\*.cs" />
   </ItemGroup>
 
