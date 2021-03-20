@@ -4,6 +4,10 @@
     <IsInternal>$(MSBuildProjectName.Contains('Internal'))</IsInternal>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(IsGenerator)' == 'false' or '$(IsInternal)' == 'false'">
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)\Common\**\*.cs" Visible="false" />
     <Compile Include="$(MSBuildThisFileDirectory)\$(SolutionName).Shared\**\*.cs" />
