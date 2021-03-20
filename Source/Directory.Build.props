@@ -1,23 +1,19 @@
 <Project>
-
-  <!-- 内部のみで利用するプロジェクト -->
-  <PropertyGroup Condition="$(ProjectName.Contains('Internal'))">
-    <IsPackable>false</IsPackable>
+  <PropertyGroup>
+    <IsGenerator>$(MSBuildProjectName.EndsWith('Generator'))</IsGenerator>
+    <IsInternal>$(MSBuildProjectName.Contains('Internal'))</IsInternal>
   </PropertyGroup>
 
-  <!-- コンパイル対象ファイルを追加 -->
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)\Common\**\*.cs" Visible="false" />
     <Compile Include="$(MSBuildThisFileDirectory)\$(SolutionName).Shared\**\*.cs" />
   </ItemGroup>
 
-  <!-- ソースジェネレーター -->
-  <ItemGroup Condition="$(ProjectName.EndsWith('Generator'))">
+  <ItemGroup Condition="'$(IsGenerator)' == 'true'">
     <None Include="$(OutputPath)\$(AssemblyName).dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
     <Compile Include="..\$(SolutionName)\**\*.cs" Exclude="**\bin\**;**\obj\**" Visible="false" />
   </ItemGroup>
 
-  <!-- 上の階層のDirectory.Build.propsを読み込む -->
   <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)..\'))" />
 
 </Project>

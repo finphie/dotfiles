@@ -1,13 +1,25 @@
 <Project>
 
-  <PropertyGroup Condition="'$(OutputType)' == 'Library' And !$(ProjectName.Contains('Internal'))">
+  <PropertyGroup>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="('$(OutputType)' == 'Library' or '$(OutputType)' == 'Exe') and '$(IsInternal)' == 'false'">
+    <IsPackable>true</IsPackable>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(IsGenerator)' == 'true'">
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(IsPackable)' == 'true'">
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <NoPackageAnalysis>true</NoPackageAnalysis>
   </PropertyGroup>
 
-  <!-- ソースジェネレーター -->
-  <PropertyGroup Condition="$(ProjectName.EndsWith('Generator'))">
-    <IncludeBuildOutput>false</IncludeBuildOutput>
+  <PropertyGroup Condition="'$(IsPackable)' == 'true' and '$(OutputType)' == 'Library' and '$(IsGenerator)' == 'false'">
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
 
 </Project>
