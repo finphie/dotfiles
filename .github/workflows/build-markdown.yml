@@ -1,4 +1,4 @@
-name: Lint
+name: Build(Markdown)
 
 on:
   pull_request:
@@ -6,15 +6,15 @@ on:
     paths:
       - '**/*.md'
       - .markdownlint.yml
-      - .github/workflows/linter-markdown.yml
+      - .github/workflows/build-markdown.yml
 
 jobs:
-  main:
-    name: 'Lint: Markdown'
+  lint:
+    name: Lint
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout ${{ github.event.repository.name }} repository
+      - name: Checkout repository
         uses: actions/checkout@v2
 
       - name: Install markdownlint-cli

@@ -1,19 +1,23 @@
-name: Lint
+name: Build(Python)
 
 on:
   pull_request:
     types: [opened, synchronize]
     paths:
       - '**/*.py'
-      - .github/workflows/linter-python.yml
+      - .github/workflows/build-python.yml
 
 jobs:
-  main:
-    name: 'Lint: Python'
+  check:
+    name: Check
+    if: github.event.repository.name != 'dotfiles'
     runs-on: ubuntu-latest
 
+    outputs:
+      lint: ${{ steps.check.outputs.lint }}
+
     steps:
-      - name: Checkout ${{ github.event.repository.name }} repository
+      - name: Checkout repository
         uses: actions/checkout@v2
 
       - name: Check file
@@ -22,18 +26,25 @@ jobs:
         run: |
           $files = Get-ChildItem . -Recurse -Name -Include '*.py'
           Write-Output $files
-          Write-Output "::set-output name=run::$($files.Length -gt 0)"
+          Write-Output "::set-output name=lint::$($files.Length -gt 0)"
+
+  lint:
+    name: Lint
+    needs: check
+    if: needs.check.outputs.lint == 'True'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
       - name: Install flake8
-        if: steps.check.outputs.run == 'True'
         run: pip install flake8
 
       - name: Install Pyright
-        if: steps.check.outputs.run == 'True'
         run: sudo npm install -g pyright
 
       - name: Lint Python code
-        if: steps.check.outputs.run == 'True'
         run: |
           flake8
           pyright

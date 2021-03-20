@@ -1,4 +1,4 @@
-name: Lint
+name: Build(YAML)
 
 on:
   pull_request:
@@ -7,12 +7,12 @@ on:
       - '**/*.yml'
 
 jobs:
-  main:
-    name: 'Lint: YAML'
+  lint:
+    name: Lint
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout ${{ github.event.repository.name }} repository
+      - name: Checkout repository
         uses: actions/checkout@v2
 
       - name: Install yamllint
