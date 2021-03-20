@@ -18,8 +18,16 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(IsPackable)' == 'true' and '$(OutputType)' == 'Library' and '$(IsGenerator)' == 'false'">
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
+
+  <ItemGroup Condition="'$(IsPackable)' == 'true' and '$(OutputType)' == 'Library' and '$(IsGenerator)' == 'false'">
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="*-*">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
 
 </Project>

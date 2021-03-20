@@ -6,12 +6,11 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <AnalysisLevel>preview</AnalysisLevel>
     <AnalysisMode>AllEnabledByDefault</AnalysisMode>
-    <Authors>finphie</Authors>
-    <Copyright>© 2021 finphie</Copyright>
     <NoWarn>CA1014</NoWarn>
+    <Authors>finphie</Authors>
+    <Copyright>© 2021 $(Authors)</Copyright>
   </PropertyGroup>
 
-  <!-- Roslynアナライザー -->
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Threading.Analyzers" Version="*">
       <PrivateAssets>all</PrivateAssets>
@@ -22,5 +21,10 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
   </ItemGroup>
+
+  <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
 
 </Project>
