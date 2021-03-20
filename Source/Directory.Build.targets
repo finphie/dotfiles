@@ -1,0 +1,13 @@
+<Project>
+
+  <PropertyGroup Condition="'$(OutputType)' == 'Library' And !$(ProjectName.Contains('Internal'))">
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <NoPackageAnalysis>true</NoPackageAnalysis>
+  </PropertyGroup>
+
+  <!-- ソースジェネレーター -->
+  <PropertyGroup Condition="$(ProjectName.EndsWith('Generator'))">
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+  </PropertyGroup>
+
+</Project>

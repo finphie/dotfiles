@@ -5,6 +5,13 @@
     <Compile Include="$(MSBuildThisFileDirectory)\$(SolutionName).Shared\**\*.cs" />
   </ItemGroup>
 
+  <!-- ソースジェネレーター -->
+  <ItemGroup Condition="$(ProjectName.EndsWith('Generator'))">
+    <None Include="$(OutputPath)\$(AssemblyName).dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
+    <Compile Include="..\$(SolutionName)\**\*.cs" Exclude="**\bin\**;**\obj\**" Visible="false" />
+  </ItemGroup>
+
+  <!-- 上の階層のDirectory.Build.propsを読み込む -->
   <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)..\'))" />
 
 </Project>
