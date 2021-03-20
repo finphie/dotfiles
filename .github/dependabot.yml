@@ -5,6 +5,7 @@ updates:
     schedule:
       interval: daily
     ignore:
+      - dependency-name: Microsoft.SourceLink.GitHub
       - dependency-name: StyleCop.Analyzers
   - package-ecosystem: github-actions
     directory: /
