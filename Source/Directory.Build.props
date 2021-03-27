@@ -11,12 +11,11 @@
 
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)\Common\**\*.cs" Visible="false" />
-    <Compile Include="$(MSBuildThisFileDirectory)\$(SolutionName).Shared\**\*.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)\$(SolutionName).Shared\**\*.cs" LinkBase="Shared" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(IsGenerator)' == 'true'">
     <None Include="$(OutputPath)\$(AssemblyName).dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
-    <Compile Include="..\$(SolutionName)\**\*.cs" Exclude="**\bin\**;**\obj\**" Visible="false" />
   </ItemGroup>
 
   <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)..\'))" />

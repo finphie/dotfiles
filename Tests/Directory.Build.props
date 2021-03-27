@@ -4,7 +4,11 @@
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
-  <ItemGroup Condition="$(ProjectName.EndsWith('Tests'))">
+  <PropertyGroup>
+    <IsTest>$(MSBuildProjectName.EndsWith('Tests'))</IsTest>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(IsTest)' == 'true'">
     <PackageReference Include="AutoFixture.Xunit2" Version="*" />
     <PackageReference Include="FluentAssertions" Version="*" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="*" />
@@ -19,7 +23,7 @@
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup Condition="$(ProjectName.EndsWith('Tests')) and '$(OS)' == 'Unix'">
+  <ItemGroup Condition="'$(IsTest)' == 'true' and '$(OS)' == 'Unix'">
     <PackageReference Include="Microsoft.TestPlatform.ObjectModel" Version="*" />
   </ItemGroup>
 
