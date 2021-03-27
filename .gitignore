@@ -2,6 +2,7 @@
 .vs/
 bin/
 obj/
+*.user
 
 # MSBuild log
 *.binlog
