@@ -6,7 +6,7 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <AnalysisLevel>preview</AnalysisLevel>
     <AnalysisMode>AllEnabledByDefault</AnalysisMode>
-    <NoWarn>CA1014</NoWarn>
+    <NoWarn>$(NoWarn);CA1014</NoWarn>
     <Authors>finphie</Authors>
     <Copyright>© 2021 $(Authors)</Copyright>
   </PropertyGroup>
