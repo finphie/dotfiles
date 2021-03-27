@@ -1,0 +1,61 @@
+# C# ベンチマークファイル
+[{*Benchmark*/**,*Benchmark*}.cs]
+
+## Microsoft.CodeAnalysis.NetAnalyzers ##
+
+# Do not declare static members on generic types
+# https://docs.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1000
+# 理由: ベンチマークを取る場合がある。
+dotnet_diagnostic.CA1000.severity = none
+
+# Validate arguments of public methods
+# https://docs.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1062
+# 理由: 引数を検証する必要はない。
+dotnet_diagnostic.CA1062.severity = none
+
+# Normalize strings to uppercase
+# https://docs.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1308
+# 理由: ベンチマークを取る場合がある。
+dotnet_diagnostic.CA1308.severity = none
+
+# Initialize reference type static fields inline
+# https://docs.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1810
+# 理由: 静的コンストラクターを使用しても問題ない。
+dotnet_diagnostic.CA1810.severity = none
+
+# Mark members as static
+# https://docs.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1822
+# 理由: ベンチマークプロジェクト。
+dotnet_diagnostic.CA1822.severity = none
+
+# Do not use insecure randomness
+# https://docs.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca5394
+# 理由: ベンチマークを取る場合がある。
+dotnet_diagnostic.CA5394.severity = none
+
+## StyleCop.Analyzers ##
+
+# Two or more fields were declared in the same field declaration syntax.
+# https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1132.md
+# 理由: ベンチマークプロジェクト。
+dotnet_diagnostic.SA1132.severity = none
+
+# A Code Analysis SuppressMessage attribute does not include a justification.
+# https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1404.md
+# 理由: ベンチマークプロジェクト。
+dotnet_diagnostic.SA1404.severity = none
+
+# A C# code element is missing a documentation header.
+# https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1600.md
+# 理由: ドキュメントヘッダーを使用しない。
+dotnet_diagnostic.SA1600.severity = none
+
+# A C# partial element is missing a documentation header.
+# https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1601.md
+# 理由: ドキュメンテーションコメントを使用しない。
+dotnet_diagnostic.SA1601.severity = none
+
+# An item within a C# enumeration is missing an Xml documentation header.
+# https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1602.md
+# 理由: ドキュメンテーションコメントを使用しない。
+dotnet_diagnostic.SA1602.severity = none
