@@ -1,33 +1,36 @@
 <Project>
 
-  <PropertyGroup>
-    <IsPackable>false</IsPackable>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="('$(OutputType)' == 'Library' or '$(OutputType)' == 'Exe') and '$(IsInternal)' == 'false'">
-    <IsPackable>true</IsPackable>
-  </PropertyGroup>
-
   <PropertyGroup Condition="'$(IsGenerator)' == 'true'">
     <IncludeBuildOutput>false</IncludeBuildOutput>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(IsPackable)' == 'true'">
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <NoPackageAnalysis>true</NoPackageAnalysis>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(IsPackable)' == 'true' and '$(OutputType)' == 'Library' and '$(IsGenerator)' == 'false'">
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
-    <IncludeSymbols>true</IncludeSymbols>
-    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
 
-  <ItemGroup Condition="'$(IsPackable)' == 'true' and '$(OutputType)' == 'Library' and '$(IsGenerator)' == 'false'">
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="*-*">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-  </ItemGroup>
+  <Choose>
+    <When Condition="'$(IsPackable)' == 'true' and '$(IsGenerator)' == 'false'">
+      <Choose>
+        <When Condition="'$(OutputType)' == 'Library'">
+          <PropertyGroup>
+            <IncludeSymbols>true</IncludeSymbols>
+            <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+          </PropertyGroup>
+          <ItemGroup>
+            <PackageReference Include="Microsoft.SourceLink.GitHub" Version="*-*">
+              <PrivateAssets>all</PrivateAssets>
+              <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+            </PackageReference>
+          </ItemGroup>
+        </When>
+        <When Condition="'$(OutputType)' == 'Exe'">
+          <PropertyGroup Condition="'$(SelfContained)' != 'true'">
+            <PackAsTool>true</PackAsTool>
+          </PropertyGroup>
+        </When>
+      </Choose>
+    </When>
+  </Choose>
 
 </Project>

@@ -18,7 +18,7 @@ indent_style = tab
 indent_size = 2
 
 # XMLファイル
-[*.{props,targets,ruleset,config}]
+[*.{props,targets,ruleset,config,pubxml}]
 indent_size = 2
 
 # JSONファイル
