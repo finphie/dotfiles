@@ -1,16 +1,14 @@
 <Project>
+  <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)..\'))" />
+
   <PropertyGroup>
     <IsBenchmark>$(MSBuildProjectName.Contains('Benchmark'))</IsBenchmark>
     <IsGenerator>$(MSBuildProjectName.EndsWith('Generator'))</IsGenerator>
     <IsInternal>$(MSBuildProjectName.Contains('Internal'))</IsInternal>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(IsBenchmark)' == 'false' and '$(IsGenerator)' == 'false' and '$(IsInternal)' == 'false'">
+  <PropertyGroup Condition="'$(SelfContained)' != 'true' and '$(IsBenchmark)' == 'false' and '$(IsGenerator)' == 'false' and '$(IsInternal)' == 'false'">
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(GenerateDocumentationFile)' != 'true'">
-    <NoWarn>$(NoWarn);SA0001</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
@@ -22,6 +20,12 @@
     <None Include="$(OutputPath)\$(AssemblyName).dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
   </ItemGroup>
 
-  <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)..\'))" />
+  <ItemGroup>
+    <MyPubXmlFiles Include="$(MSBuildThisFileDirectory)\Common\**\*.pubxml" />
+  </ItemGroup>
+
+  <Target Name="CopyFiles" Condition="'$(IsPublishable)' == 'true'" BeforeTargets="BeforeResolveReferences">
+    <Copy SourceFiles="@(MyPubXmlFiles)" DestinationFiles="@(MyPubXmlFiles->'$(MSBuildProjectDirectory)\%(RecursiveDir)%(Filename)%(Extension)')" />
+  </Target>
 
 </Project>
