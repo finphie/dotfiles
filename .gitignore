@@ -7,6 +7,9 @@ obj/
 # MSBuild log
 *.binlog
 
+# .NET
+BenchmarkDotNet.Artifacts/
+
 # Unity
 /Assets/*
 /Library/
