@@ -17,6 +17,7 @@ jobs:
           - Benchmarks
           - SimpleTextTemplate
           - Stazor
+          - Utf8Utility
 
     steps:
       - name: Checkout ${{ github.event.repository.name }} repository
