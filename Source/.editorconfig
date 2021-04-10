@@ -18,6 +18,11 @@ dotnet_diagnostic.CA1062.severity = none
 # 理由: ベンチマークを取る場合がある。
 dotnet_diagnostic.CA1308.severity = none
 
+# Identifiers should not contain underscores
+# https://docs.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1707
+# 理由: 識別子にアンダースコアを使いたい。
+dotnet_diagnostic.CA1707.severity = none
+
 # Initialize reference type static fields inline
 # https://docs.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1810
 # 理由: 静的コンストラクターを使用しても問題ない。
