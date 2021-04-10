@@ -359,6 +359,11 @@ dotnet_code_quality.api_surface = all
 # 理由: 内部ではListを利用したい場合がある。
 dotnet_code_quality.CA1002.api_surface = public
 
+# Do not declare visible instance fields
+# https://docs.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1051
+# 構造体ではプロパティではなくフィールドにしたい場合がある。
+dotnet_code_quality.ca1051.exclude_structs = true
+
 # Identifiers should not contain type names
 # https://docs.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1720
 # 理由: 内部では識別子に型名を利用したい場合がある。
