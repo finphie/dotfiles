@@ -445,6 +445,12 @@ dotnet_diagnostic.SA1205.severity = none
 # https://docs.microsoft.com/dotnet/fundamentals/code-analysis/style-rules/ide0040
 dotnet_diagnostic.SA1400.severity = none
 
+# A field within a C# class has an access modifier other than private.
+# https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1401.md
+# 理由: CA1051（Do not declare visible instance fields）と重複。
+# https://docs.microsoft.com/ja-jp/dotnet/fundamentals/code-analysis/quality-rules/ca1051
+dotnet_diagnostic.SA1401.severity = none
+
 # The last statement in a multi-line C# initializer or list is missing a trailing comma.
 # https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1413.md
 # 理由: 末尾にカンマを付けたくない。
