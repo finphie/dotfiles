@@ -37,7 +37,7 @@
   </Target>
 
   <Target Name="MakeZipPackage" Condition="'$(IsPublishable)' == 'true'" AfterTargets="Publish">
-    <ZipDirectory SourceDirectory="$(PublishDir)" DestinationFile="$(AssemblyName)-v$(Version).zip" Overwrite="true" />
+    <ZipDirectory SourceDirectory="$(PublishDir)" DestinationFile="$(AssemblyName)-v$(Version)-$(RuntimeIdentifier).zip" Overwrite="true" />
   </Target>
 
 </Project>
