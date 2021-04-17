@@ -36,4 +36,8 @@
     <Copy SourceFiles="@(MyPubXmlFiles)" DestinationFiles="@(MyPubXmlFiles->'$(MSBuildProjectDirectory)\%(RecursiveDir)%(Filename)%(Extension)')" />
   </Target>
 
+  <Target Name="MakeZipPackage" Condition="'$(IsPublishable)' == 'true'" AfterTargets="Publish">
+    <ZipDirectory SourceDirectory="$(PublishDir)" DestinationFile="$(AssemblyName)-v$(Version).zip" Overwrite="true" />
+  </Target>
+
 </Project>
