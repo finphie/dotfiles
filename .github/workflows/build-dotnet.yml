@@ -10,6 +10,7 @@ on:
       - '**/*.csproj'
       - '**/*.sln'
       - '**/Directory.Build.props'
+      - '**/Directory.Build.targets'
       - '**/.editorconfig'
       - .github/workflows/build-dotnet.yml
 
