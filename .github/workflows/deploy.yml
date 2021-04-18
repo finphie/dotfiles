@@ -1,0 +1,109 @@
+name: Deploy
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - version.json
+      - '**/*.cs'
+      - '**/*.xaml'
+      - '**/*.cshtml'
+      - '**/*.csproj'
+      - '**/*.sln'
+      - '**/Directory.Build.props'
+      - '**/Directory.Build.targets'
+
+jobs:
+  check:
+    name: Check
+    if: github.event.repository.name != 'dotfiles'
+    runs-on: ubuntu-latest
+
+    outputs:
+      dotnet: ${{ steps.check.outputs.dotnet }}
+      version: ${{ steps.check.outputs.version }}
+      release: ${{ steps.check.outputs.release }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        fetch-depth: 2
+
+      - name: Check
+        id: check
+        shell: pwsh
+        run: |
+          Write-Output "::set-output name=dotnet::$(Test-Path *.sln)"
+
+          $changedFiles = git diff-tree --no-commit-id --name-only -r ${{ github.sha }}
+
+          if ($changedFiles -in 'version.json') {
+            Write-Output "::set-output name=release::$true"
+            ./.github/Version.ps1
+          }
+          else {
+            ./.github/Version.ps1 ${{ github.run_number }}
+          }
+
+  upload-dotnet:
+    name: Upload(.NET)
+    needs: check
+    if: needs.check.outputs.dotnet == 'True' && needs.check.outputs.version != ''
+    runs-on: windows-latest
+    env:
+      DOTNET_NOLOGO: true
+      DOTNET_CLI_TELEMETRY_OPTOUT: true
+      dotnet-version: 6.0.100-preview.3.21202.5
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: ${{ env.dotnet-version }}
+
+      - name: Setup .NET 5
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 5.0.x
+
+      - name: .NET Pack
+        id: pack
+        shell: pwsh
+        run: |
+          dotnet pack --configuration Release -p:Version=${{ needs.check.outputs.version }}
+          $files = Get-ChildItem . -Recurse -Name -Include '*.nupkg'
+          Write-Output "::set-output name=is_packable::$($files.Length -gt 0)"
+
+      - name: Push(Azure Artifacts)
+        if: steps.pack.is_packable == 'True'
+        run: dotnet nuget push **/*.nupkg --source $Env:SOURCE --api-key $Env:TOKEN
+        env:
+          SOURCE: 'https://pkgs.dev.azure.com/finphie/Main/_packaging/DotNet/nuget/v3/index.json'
+          TOKEN: ${{ secrets.AZURE_ARTIFACT_PAT }}
+
+      - name: Push(NuGet)
+        if: steps.pack.is_packable == 'True' && needs.check.outputs.release == 'True'
+        run: dotnet nuget push **/*.nupkg --source $Env:SOURCE --api-key $Env:TOKEN
+        env:
+          SOURCE: 'https://api.nuget.org/v3/index.json'
+          TOKEN: ${{ secrets.NUGET_API_KEY }}
+
+      - name: .NET Publish
+        run: |
+          dotnet publish --runtime win10-x64 $Env:OPTIONS
+          dotnet publish --runtime win10-arm64 $Env:OPTIONS
+          dotnet publish --runtime linux-x64 $Env:OPTIONS
+        env:
+          OPTIONS: '--configuration Release -p:PublishProfile=FolderProfile -p:DebugType=none -p:GenerateDocumentationFile=false -p:Version=${{ needs.check.outputs.version }}'
+
+      - name: Push(GitHub Artifacts)
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ github.event.repository.name }}
+          path: '*.zip'
+        if-no-files-found: ignore
