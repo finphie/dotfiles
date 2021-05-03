@@ -12,21 +12,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-    - name: Check
-      id: check
-      shell: pwsh
-      run: ./.github/Version.ps1
+      - name: Check
+        id: check
+        shell: pwsh
+        run: ./.github/Version.ps1
 
-    - name: Release Drafter
-      uses: toolmantim/release-drafter@v5
-      with:
-        publish: true
-        prerelease: false
-        name: Version${{ steps.check.outputs.version }}
-        tag: v${{ steps.check.outputs.version }}
-        version: ${{ steps.check.outputs.version }}
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Release Drafter
+        uses: toolmantim/release-drafter@v5
+        with:
+          publish: true
+          prerelease: false
+          name: Version${{ steps.check.outputs.version }}
+          tag: v${{ steps.check.outputs.version }}
+          version: ${{ steps.check.outputs.version }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
