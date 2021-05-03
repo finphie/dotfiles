@@ -29,7 +29,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-        fetch-depth: 2
+        with:
+          fetch-depth: 2
 
       - name: Check
         id: check
@@ -106,4 +107,4 @@ jobs:
         with:
           name: ${{ github.event.repository.name }}
           path: '*.zip'
-        if-no-files-found: ignore
+          if-no-files-found: ignore
