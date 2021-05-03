@@ -82,16 +82,19 @@ jobs:
 
       - name: Push(Azure Artifacts)
         if: steps.pack.outputs.is_packable == 'True'
-        run: dotnet nuget push **/*.nupkg --source $Env:SOURCE --api-key $Env:TOKEN
+        run: |
+          dotnet nuget add source $Env:SOURCE_URL -n "$Env:SOURCE" -u $Env:GITHUB_ACTOR -p $Env:TOKEN
+          dotnet nuget push **/*.nupkg --source "$Env:SOURCE" --api-key $Env:TOKEN
         env:
-          SOURCE: 'https://pkgs.dev.azure.com/finphie/Main/_packaging/DotNet/nuget/v3/index.json'
+          SOURCE: Azure Artifacts
+          SOURCE_URL: 'https://pkgs.dev.azure.com/finphie/Main/_packaging/DotNet/nuget/v3/index.json'
           TOKEN: ${{ secrets.AZURE_ARTIFACT_PAT }}
 
       - name: Push(NuGet)
         if: steps.pack.outputs.is_packable == 'True' && needs.check.outputs.release == 'True'
-        run: dotnet nuget push **/*.nupkg --source $Env:SOURCE --api-key $Env:TOKEN
+        run: dotnet nuget push **/*.nupkg --source "$Env:SOURCE" --api-key $Env:TOKEN
         env:
-          SOURCE: 'https://api.nuget.org/v3/index.json'
+          SOURCE: NuGet
           TOKEN: ${{ secrets.NUGET_API_KEY }}
 
       - name: .NET Publish
