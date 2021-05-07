@@ -56,7 +56,7 @@ jobs:
     env:
       DOTNET_NOLOGO: true
       DOTNET_CLI_TELEMETRY_OPTOUT: true
-      dotnet-version: 6.0.100-preview.3.21202.5
+      dotnet-version: 6.0
 
     steps:
       - name: Checkout repository
@@ -66,11 +66,12 @@ jobs:
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: ${{ env.dotnet-version }}
+          include-prerelease: True
 
       - name: Setup .NET 5
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: 5.0.x
+          dotnet-version: 5.x
 
       - name: .NET Pack
         id: pack
