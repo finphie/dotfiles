@@ -17,7 +17,7 @@ on:
 env:
   DOTNET_NOLOGO: true
   DOTNET_CLI_TELEMETRY_OPTOUT: true
-  dotnet-version: 6.0
+  dotnet-version: '6.0'
 
 jobs:
   check:
