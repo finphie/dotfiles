@@ -55,5 +55,5 @@ required-headings: false
 proper-names: true
 no-alt-text: true
 code-block-style:
-  style: indented
+  style: fenced
 single-trailing-newline: false
