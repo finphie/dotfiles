@@ -77,15 +77,14 @@ jobs:
         id: pack
         shell: pwsh
         run: |
-          dotnet pack --configuration Release -p:Version=${{ needs.check.outputs.version }}
-          $files = Get-ChildItem . -Recurse -Name -Include '*.nupkg'
-          Write-Output "::set-output name=is_packable::$($files.Length -gt 0)"
+          dotnet pack --configuration Release --output publish -p:Version=${{ needs.check.outputs.version }}
+          Write-Output "::set-output name=is_packable::$(Test-Path publish/*.nupkg)"
 
       - name: Push(Azure Artifacts)
         if: steps.pack.outputs.is_packable == 'True'
         run: |
           dotnet nuget add source $Env:SOURCE_URL -n "$Env:SOURCE" -u $Env:GITHUB_ACTOR -p $Env:TOKEN
-          dotnet nuget push **/*.nupkg --source "$Env:SOURCE" --api-key $Env:TOKEN
+          dotnet nuget push publish/*.nupkg --source "$Env:SOURCE" --api-key $Env:TOKEN
         env:
           SOURCE: Azure Artifacts
           SOURCE_URL: 'https://pkgs.dev.azure.com/finphie/Main/_packaging/DotNet/nuget/v3/index.json'
@@ -93,7 +92,7 @@ jobs:
 
       - name: Push(NuGet)
         if: steps.pack.outputs.is_packable == 'True' && needs.check.outputs.release == 'True'
-        run: dotnet nuget push **/*.nupkg --source "$Env:SOURCE" --api-key $Env:TOKEN
+        run: dotnet nuget push publish/*.nupkg --source "$Env:SOURCE" --api-key $Env:TOKEN --skip-duplicate
         env:
           SOURCE: NuGet
           TOKEN: ${{ secrets.NUGET_API_KEY }}
