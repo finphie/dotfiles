@@ -21,19 +21,19 @@ jobs:
 
     steps:
       - name: Checkout ${{ github.event.repository.name }} repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v2.3.4
         with:
           path: ${{ github.event.repository.name }}
           fetch-depth: 0
 
       - name: Checkout ${{ github.actor }} repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v2.3.4
         with:
           repository: ${{ github.actor }}/${{ github.actor }}
           path: ${{ github.actor }}
 
       - name: Checkout ${{ matrix.repositories }} repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v2.3.4
         with:
           repository: ${{ github.actor }}/${{ matrix.repositories }}
           path: ${{ matrix.repositories }}
