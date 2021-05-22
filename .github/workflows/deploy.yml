@@ -7,13 +7,14 @@ on:
       - main
     paths:
       - version.json
-      - '**/*.cs'
-      - '**/*.xaml'
-      - '**/*.cshtml'
-      - '**/*.csproj'
+      - 'Source/**/*.cs'
+      - 'Source/**/*.xaml'
+      - 'Source/**/*.cshtml'
+      - 'Source/**/*.csproj'
       - '**/*.sln'
       - '**/Directory.Build.props'
       - '**/Directory.Build.targets'
+      - '!Source/*.Benchmarks/**'
 
 jobs:
   check:
