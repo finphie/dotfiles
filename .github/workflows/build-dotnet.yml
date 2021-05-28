@@ -20,30 +20,9 @@ env:
   dotnet-version: '6.0'
 
 jobs:
-  check:
-    name: Check
-    if: github.event.repository.name != 'dotfiles'
-    runs-on: ubuntu-latest
-
-    outputs:
-      test: ${{ steps.check.outputs.test }}
-      lint: ${{ steps.check.outputs.lint }}
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Check file
-        id: check
-        shell: pwsh
-        run: |
-          Write-Output "::set-output name=test::$(Test-Path Tests/*.Tests)"
-          Write-Output "::set-output name=lint::$(Test-Path *.sln)"
-
   test:
     name: Test
-    needs: check
-    if: needs.check.outputs.test == 'True'
+    if: hashFiles('*.sln') != ''
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
@@ -67,32 +46,7 @@ jobs:
           dotnet-version: 5.x
 
       - name: .NET Build
-        run: dotnet build --configuration Release
+        run: dotnet build --configuration Release -warnAsError
 
       - name: .NET Test
         run: dotnet test --configuration Release --no-build
-
-  lint:
-    name: Lint
-    needs: check
-    if: needs.check.outputs.lint == 'True'
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: ${{ env.dotnet-version }}
-          include-prerelease: true
-
-      - name: .NET restore
-        run: dotnet restore
-
-      - name: Install dotnet format
-        run: dotnet tool install --global dotnet-format --version 5.0.211103
-
-      - name: Lint .NET code
-        run: dotnet format --check --fix-whitespace --fix-style info --fix-analyzers info --verbosity diagnostic
