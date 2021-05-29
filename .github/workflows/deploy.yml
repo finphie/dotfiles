@@ -101,6 +101,7 @@ jobs:
 
       - name: .NET Publish
         run: |
+          dotnet nuget disable source "Azure Artifacts"
           dotnet publish --runtime win10-x64 --configuration Release -p:PublishProfile=FolderProfile -p:DebugType=none -p:GenerateDocumentationFile=false -p:Version=${{ needs.check.outputs.version }}
 
       - name: Push(GitHub Artifacts)
