@@ -108,5 +108,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: ${{ github.event.repository.name }}
-          path: '*.zip'
+          path: |
+            publish
+            *.zip
           if-no-files-found: ignore
