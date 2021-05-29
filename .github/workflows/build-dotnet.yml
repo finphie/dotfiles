@@ -20,9 +20,27 @@ env:
   dotnet-version: '6.0'
 
 jobs:
+  check:
+    name: Check
+    if: github.event.repository.name != 'dotfiles'
+    runs-on: ubuntu-latest
+
+    outputs:
+      test: ${{ steps.check.outputs.test }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Check file
+        id: check
+        shell: pwsh
+        run: Write-Output "::set-output name=test::$(Test-Path *.sln)"
+
   test:
     name: Test
-    if: hashFiles('*.sln') != ''
+    needs: check
+    if: needs.check.outputs.test == 'True'
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
