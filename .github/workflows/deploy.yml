@@ -105,6 +105,7 @@ jobs:
           dotnet publish --runtime win10-x64 --configuration Release -p:PublishProfile=FolderProfile -p:DebugType=none -p:GenerateDocumentationFile=false -p:Version=${{ needs.check.outputs.version }}
 
       - name: Push(GitHub Artifacts)
+        if: always()
         uses: actions/upload-artifact@v2
         with:
           name: ${{ github.event.repository.name }}
