@@ -1,0 +1,443 @@
+is_global = true
+
+### .NET コーディング規則 ###
+
+# 名前空間の設定
+# https://github.com/dotnet/roslyn/issues/55014
+dotnet_diagnostic.IDE0130.severity = none
+
+# using の整理
+dotnet_separate_import_directive_groups = false
+dotnet_sort_system_directives_first = true
+file_header_template = unset
+
+# this. と Me. の設定
+dotnet_style_qualification_for_event = false:warning
+dotnet_style_qualification_for_field = false:warning
+dotnet_style_qualification_for_method = false:warning
+dotnet_style_qualification_for_property = false:warning
+
+# 言語キーワードと BCL の種類の設定
+dotnet_style_predefined_type_for_locals_parameters_members = true:warning
+dotnet_style_predefined_type_for_member_access = true:warning
+
+# かっこの設定
+dotnet_style_parentheses_in_arithmetic_binary_operators = always_for_clarity:warning
+dotnet_style_parentheses_in_other_binary_operators = always_for_clarity:warning
+dotnet_style_parentheses_in_other_operators = never_if_unnecessary:warning
+dotnet_style_parentheses_in_relational_binary_operators = always_for_clarity:warning
+
+# 修飾子設定
+dotnet_style_require_accessibility_modifiers = omit_if_default:warning
+
+# 式レベルの設定
+dotnet_style_coalesce_expression = true:warning
+dotnet_style_collection_initializer = true:warning
+dotnet_style_explicit_tuple_names = true:warning
+dotnet_style_null_propagation = true:warning
+dotnet_style_object_initializer = true:warning
+dotnet_style_operator_placement_when_wrapping = beginning_of_line
+dotnet_style_prefer_auto_properties = true:warning
+dotnet_style_prefer_compound_assignment = true:warning
+dotnet_style_prefer_conditional_expression_over_assignment = true:warning
+dotnet_style_prefer_conditional_expression_over_return = true:warning
+dotnet_style_prefer_inferred_anonymous_type_member_names = true:warning
+dotnet_style_prefer_inferred_tuple_names = true:warning
+dotnet_style_prefer_is_null_check_over_reference_equality_method = true:warning
+dotnet_style_prefer_simplified_boolean_expressions = true:warning
+dotnet_style_prefer_simplified_interpolation = true:warning
+
+# フィールド設定
+dotnet_style_readonly_field = true:warning
+
+# パラメーターの設定
+dotnet_code_quality_unused_parameters = all:warning
+
+# 抑制の設定
+dotnet_remove_unnecessary_suppression_exclusions = none
+
+# 改行設定
+dotnet_style_allow_multiple_blank_lines_experimental = false:warning
+dotnet_style_allow_statement_immediately_after_block_experimental = false:warning
+
+### C# コーディング規則 ###
+
+# var を優先
+csharp_style_var_elsewhere = true:warning
+csharp_style_var_for_built_in_types = true:warning
+csharp_style_var_when_type_is_apparent = true:warning
+
+# 式のようなメンバー
+csharp_style_expression_bodied_accessors = when_on_single_line:warning
+csharp_style_expression_bodied_constructors = when_on_single_line:warning
+csharp_style_expression_bodied_indexers = when_on_single_line:warning
+csharp_style_expression_bodied_lambdas = when_on_single_line:warning
+csharp_style_expression_bodied_local_functions = when_on_single_line:warning
+csharp_style_expression_bodied_methods = when_on_single_line:warning
+csharp_style_expression_bodied_operators = when_on_single_line:warning
+csharp_style_expression_bodied_properties = when_on_single_line:warning
+
+# パターン マッチング設定
+csharp_style_pattern_matching_over_as_with_null_check = true:warning
+csharp_style_pattern_matching_over_is_with_cast_check = true:warning
+csharp_style_prefer_not_pattern = true:warning
+csharp_style_prefer_pattern_matching = true:warning
+csharp_style_prefer_switch_expression = true:warning
+
+# Null チェック設定
+csharp_style_conditional_delegate_call = true:warning
+
+# 修飾子設定
+csharp_prefer_static_local_function = true:warning
+csharp_preferred_modifier_order = public,private,protected,internal,static,extern,new,virtual,abstract,sealed,override,readonly,unsafe,volatile,async:warning
+
+# コード ブロックの設定
+csharp_prefer_braces = true:warning
+csharp_prefer_simple_using_statement = true:warning
+csharp_style_namespace_declarations = file_scoped:warning
+
+# 式レベルの設定
+csharp_prefer_simple_default_expression = true:warning
+csharp_style_deconstructed_variable_declaration = true:warning
+csharp_style_implicit_object_creation_when_type_is_apparent = true:warning
+csharp_style_inlined_variable_declaration = true:warning
+csharp_style_pattern_local_over_anonymous_function = true:warning
+csharp_style_prefer_index_operator = true:warning
+csharp_style_prefer_null_check_over_type_check = true:warning
+csharp_style_prefer_range_operator = true:warning
+csharp_style_throw_expression = true:warning
+csharp_style_unused_value_assignment_preference = discard_variable:warning
+csharp_style_unused_value_expression_statement_preference = discard_variable:none
+
+# 'using' ディレクティブの基本設定
+csharp_using_directive_placement = outside_namespace:warning
+
+# 改行設定
+csharp_style_allow_blank_line_after_colon_in_constructor_initializer_experimental = false:warning
+csharp_style_allow_blank_lines_between_consecutive_braces_experimental = false:warning
+csharp_style_allow_embedded_statements_on_same_line_experimental = false:warning
+
+### C# 書式ルール ###
+
+# 改行設定
+csharp_new_line_before_catch = true
+csharp_new_line_before_else = true
+csharp_new_line_before_finally = true
+csharp_new_line_before_members_in_anonymous_types = true
+csharp_new_line_before_members_in_object_initializers = true
+csharp_new_line_before_open_brace = all
+csharp_new_line_between_query_expression_clauses = true
+
+# インデント設定
+csharp_indent_block_contents = true
+csharp_indent_braces = false
+csharp_indent_case_contents = true
+csharp_indent_case_contents_when_block = true
+csharp_indent_labels = one_less_than_current
+csharp_indent_switch_labels = true
+
+# スペース設定
+csharp_space_after_cast = false
+csharp_space_after_colon_in_inheritance_clause = true
+csharp_space_after_comma = true
+csharp_space_after_dot = false
+csharp_space_after_keywords_in_control_flow_statements = true
+csharp_space_after_semicolon_in_for_statement = true
+csharp_space_around_binary_operators = before_and_after
+csharp_space_around_declaration_statements = false
+csharp_space_before_colon_in_inheritance_clause = true
+csharp_space_before_comma = false
+csharp_space_before_dot = false
+csharp_space_before_open_square_brackets = false
+csharp_space_before_semicolon_in_for_statement = false
+csharp_space_between_empty_square_brackets = false
+csharp_space_between_method_call_empty_parameter_list_parentheses = false
+csharp_space_between_method_call_name_and_opening_parenthesis = false
+csharp_space_between_method_call_parameter_list_parentheses = false
+csharp_space_between_method_declaration_empty_parameter_list_parentheses = false
+csharp_space_between_method_declaration_name_and_open_parenthesis = false
+csharp_space_between_method_declaration_parameter_list_parentheses = false
+csharp_space_between_parentheses = false
+csharp_space_between_square_brackets = false
+
+# 折り返しの設定
+csharp_preserve_single_line_blocks = true
+csharp_preserve_single_line_statements = false
+
+### 命名スタイル ###
+
+## 名前付けルール ##
+
+# 名前空間
+dotnet_naming_rule.namespace_should_be_pascal_case.severity = warning
+dotnet_naming_rule.namespace_should_be_pascal_case.symbols = namespace
+dotnet_naming_rule.namespace_should_be_pascal_case.style = pascal_case
+
+# 型
+dotnet_naming_rule.types_should_be_pascal_case.severity = warning
+dotnet_naming_rule.types_should_be_pascal_case.symbols = types
+dotnet_naming_rule.types_should_be_pascal_case.style = pascal_case
+
+# interface
+dotnet_naming_rule.interface_should_be_begins_with_i.severity = warning
+dotnet_naming_rule.interface_should_be_begins_with_i.symbols = interface
+dotnet_naming_rule.interface_should_be_begins_with_i.style = begins_with_i
+
+# ジェネリックの型引数
+dotnet_naming_rule.type_parameter_should_be_begins_with_t.severity = warning
+dotnet_naming_rule.type_parameter_should_be_begins_with_t.symbols = type_parameter
+dotnet_naming_rule.type_parameter_should_be_begins_with_t.style = begins_with_t
+
+# 定数
+dotnet_naming_rule.constant_should_be_pascal_case.severity = warning
+dotnet_naming_rule.constant_should_be_pascal_case.symbols = constant
+dotnet_naming_rule.constant_should_be_pascal_case.style = pascal_case
+
+# 静的読み取り専用フィールド
+dotnet_naming_rule.static_readonly_should_be_pascal_case.severity = warning
+dotnet_naming_rule.static_readonly_should_be_pascal_case.symbols = static_readonly
+dotnet_naming_rule.static_readonly_should_be_pascal_case.style = pascal_case
+
+# privateとinternalフィールド
+dotnet_naming_rule.private_internal_fields_should_be_begins_with_underscore.severity = warning
+dotnet_naming_rule.private_internal_fields_should_be_begins_with_underscore.symbols = private_internal_fields
+dotnet_naming_rule.private_internal_fields_should_be_begins_with_underscore.style = begins_with_underscore
+
+# privateとinternal以外のフィールド
+dotnet_naming_rule.non_private_internal_should_be_pascal_case.severity = warning
+dotnet_naming_rule.non_private_internal_should_be_pascal_case.symbols = non_private_internal
+dotnet_naming_rule.non_private_internal_should_be_pascal_case.style = pascal_case
+
+# フィールド以外のメンバー
+dotnet_naming_rule.non_field_members_should_be_pascal_case.severity = warning
+dotnet_naming_rule.non_field_members_should_be_pascal_case.symbols = non_field_members
+dotnet_naming_rule.non_field_members_should_be_pascal_case.style = pascal_case
+
+# 非同期メソッド
+dotnet_naming_rule.async_methods_should_be_ends_with_async.severity = warning
+dotnet_naming_rule.async_methods_should_be_ends_with_async.symbols = async_methods
+dotnet_naming_rule.async_methods_should_be_ends_with_async.style = ends_with_async
+
+# 引数
+dotnet_naming_rule.parameter_should_be_camel_case.severity = warning
+dotnet_naming_rule.parameter_should_be_camel_case.symbols = parameter
+dotnet_naming_rule.parameter_should_be_camel_case.style = camel_case
+
+# ローカル関数
+dotnet_naming_rule.local_functions_should_be_pascal_case.severity = warning
+dotnet_naming_rule.local_functions_should_be_pascal_case.symbols = local_functions
+dotnet_naming_rule.local_functions_should_be_pascal_case.style = pascal_case
+
+# ローカル変数
+dotnet_naming_rule.local_variable_should_be_camel_case.severity = warning
+dotnet_naming_rule.local_variable_should_be_camel_case.symbols = local_variable
+dotnet_naming_rule.local_variable_should_be_camel_case.style = camel_case
+
+## 記号の仕様 ##
+
+# 名前空間
+dotnet_naming_symbols.namespace.applicable_kinds = namespace
+
+# 型
+dotnet_naming_symbols.types.applicable_kinds = class, struct, enum
+
+# interface
+dotnet_naming_symbols.interface.applicable_kinds = interface
+
+# ジェネリックの型引数
+dotnet_naming_symbols.type_parameter.applicable_kinds = type_parameter
+
+# 定数
+dotnet_naming_symbols.constant.applicable_kinds = field, local
+dotnet_naming_symbols.constant.required_modifiers = const
+
+# 静的読み取り専用フィールド
+dotnet_naming_symbols.static_readonly.applicable_kinds = field
+dotnet_naming_symbols.static_readonly.required_modifiers = readonly, static
+
+# privateとinternalフィールド
+dotnet_naming_symbols.private_internal_fields.applicable_kinds = field
+dotnet_naming_symbols.private_internal_fields.applicable_accessibilities = private, internal
+
+# privateとinternal以外のフィールド
+dotnet_naming_symbols.non_private_internal.applicable_kinds = field
+dotnet_naming_symbols.non_private_internal.applicable_accessibilities = public, protected, protected_internal, private_protected
+
+# フィールド以外のメンバー
+dotnet_naming_symbols.non_field_members.applicable_kinds = property, event, delegate, method
+
+# 非同期メソッド
+dotnet_naming_symbols.async_methods.applicable_kinds = method, local_function
+dotnet_naming_symbols.async_methods.required_modifiers = async
+
+# 引数
+dotnet_naming_symbols.parameter.applicable_kinds = parameter
+
+# ローカル変数
+dotnet_naming_symbols.local_variable.applicable_kinds = local
+
+# ローカル関数
+dotnet_naming_symbols.local_functions.applicable_kinds = local_function
+
+## 命名スタイル ##
+
+# PascalCase
+dotnet_naming_style.pascal_case.capitalization = pascal_case
+
+# camelCase
+dotnet_naming_style.camel_case.capitalization = camel_case
+
+# IPascalCase
+dotnet_naming_style.begins_with_i.required_prefix = I
+dotnet_naming_style.begins_with_i.capitalization = pascal_case
+
+# TPascalCase
+dotnet_naming_style.begins_with_t.required_prefix = T
+dotnet_naming_style.begins_with_t.capitalization = pascal_case
+
+# PascalCaseAsync
+dotnet_naming_style.ends_with_async.required_suffix = Async
+dotnet_naming_style.ends_with_async.capitalization = pascal_case
+
+# _camelCase
+dotnet_naming_style.begins_with_underscore.required_prefix = _
+dotnet_naming_style.begins_with_underscore.capitalization = camel_case
+
+### Roslyn Analyzers ###
+
+## 全体 ##
+
+# すべてのアナライザーのルール重大度を警告レベルに設定。
+dotnet_analyzer_diagnostic.severity = warning
+
+## Microsoft.CodeAnalysis.NetAnalyzers ##
+
+# デフォルトのapi_surfaceを変更
+dotnet_code_quality.api_surface = all
+
+# Do not expose generic lists
+# https://docs.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1002
+# 理由: 内部ではListを利用したい場合がある。
+dotnet_code_quality.CA1002.api_surface = public
+
+# Do not declare visible instance fields
+# https://docs.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1051
+# 構造体ではプロパティではなくフィールドにしたい場合がある。
+dotnet_code_quality.ca1051.exclude_structs = true
+
+# Identifiers should not contain type names
+# https://docs.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1720
+# 理由: 内部では識別子に型名を利用したい場合がある。
+dotnet_code_quality.CA1720.api_surface = public
+
+# Mark assemblies with CLSCompliantAttribute
+# https://docs.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1014
+# 理由: CLSに準拠する必要性を感じない。
+# 現状、EditorConfig側から無効化できないため、Directory.Build.propsを利用する必要あり。
+# https://github.com/dotnet/roslyn/issues/37876
+# dotnet_diagnostic.CA1014.severity = none
+
+# Identifiers should have correct prefix
+# https://docs.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1715
+# 理由: IDE1006（命名スタイル）と重複。
+dotnet_diagnostic.CA1715.severity = none
+
+# Identifiers should not match keywords
+# https://docs.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1716
+# 理由: 言語キーワードと重複してもエスケープすれば回避できる。
+dotnet_diagnostic.CA1716.severity = none
+
+# 'type': base type 'type' is not CLS-compliant
+# https://docs.microsoft.com/dotnet/csharp/language-reference/compiler-messages/cs3009
+# 理由: CLSに準拠する必要性を感じない。
+dotnet_diagnostic.CA3009.severity = none
+
+## Microsoft.VisualStudio.Threading.Analyzers ##
+
+# Use .ConfigureAwait(bool).
+# https://github.com/microsoft/vs-threading/blob/master/doc/analyzers/VSTHRD111.md
+# 理由: CA2007（Do not directly await a Task）と重複。
+# https://docs.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca2007
+dotnet_diagnostic.VSTHRD111.severity = none
+
+# Use Async suffix for async methods
+# https://github.com/microsoft/vs-threading/blob/master/doc/analyzers/VSTHRD200.md
+# 理由: IDE1006（命名スタイル）と重複。
+dotnet_diagnostic.VSTHRD200.severity = none
+
+## StyleCop.Analyzers ##
+
+# Naming Rules
+# https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/NamingRules.md
+# 理由: IDE1006（命名スタイル）と重複。
+dotnet_analyzer_diagnostic.category-StyleCop.CSharp.NamingRules.severity = none
+
+# A field name in C# contains an underscore.
+# https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1310.md
+# 理由: IDE1006（命名スタイル）で指定できない規則。
+dotnet_diagnostic.SA1310.severity = warning
+
+# Element names within a tuple type should have the correct casing.
+# https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1316.md
+# 理由: IDE1006（命名スタイル）で指定できない規則。
+dotnet_diagnostic.SA1316.severity = warning
+
+# A call to an instance member of the local class or a base class is not prefixed with 'this.', within a C# code file.
+# https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1101.md
+# 理由: IDE0009（this and Me preferences）と重複。IDE0003を優先させる。
+# https://docs.microsoft.com/dotnet/fundamentals/code-analysis/style-rules/ide0003-ide0009
+dotnet_diagnostic.SA1101.severity = none
+
+# A C# using directive is placed outside of a namespace element.
+# https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1200.md
+# 理由: IDE0065（'using' directive placement）と重複。
+# http://docs.microsoft.com/dotnet/fundamentals/code-analysis/style-rules/ide0065
+dotnet_diagnostic.SA1200.severity = none
+
+# The partial element does not have an access modifier defined.
+# https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1205.md
+# 理由: IDE0040（Add accessibility modifiers）とinternal classの場合に競合する。
+# https://docs.microsoft.com/dotnet/fundamentals/code-analysis/style-rules/ide0040
+dotnet_diagnostic.SA1205.severity = none
+
+# The access modifier for a C# element has not been explicitly defined.
+# https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1400.md
+# 理由: IDE0040（Add accessibility modifiers）と重複。
+# https://docs.microsoft.com/dotnet/fundamentals/code-analysis/style-rules/ide0040
+dotnet_diagnostic.SA1400.severity = none
+
+# A field within a C# class has an access modifier other than private.
+# https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1401.md
+# 理由: CA1051（Do not declare visible instance fields）と重複。
+# https://docs.microsoft.com/ja-jp/dotnet/fundamentals/code-analysis/quality-rules/ca1051
+dotnet_diagnostic.SA1401.severity = none
+
+# The last statement in a multi-line C# initializer or list is missing a trailing comma.
+# https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1413.md
+# 理由: 末尾にカンマを付けたくない。
+dotnet_diagnostic.SA1413.severity = none
+
+# The documentation text within a C# property's <summary> tag does not match the accessors within the property.
+# https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1623.md
+# 理由: 日本語でコメントを書きたい。
+dotnet_diagnostic.SA1623.severity = none
+
+# A section of the Xml header documentation for a C# element does not end with a period (also known as a full stop).
+# https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1629.md
+# 理由: 日本語でコメントを書きたい。
+dotnet_diagnostic.SA1629.severity = none
+
+# The XML documentation header for a C# constructor does not contain the appropriate summary text.
+# https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1642.md
+# 理由: 日本語でコメントを書きたい。
+dotnet_diagnostic.SA1642.severity = none
+
+# The Xml documentation header for a C# finalizer does not contain the appropriate summary text.
+# https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1643.md
+# 理由: 日本語でコメントを書きたい。
+dotnet_diagnostic.SA1643.severity = none
+
+# A C# code file is missing a standard file header.
+# https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1633.md
+# 理由: ファイルヘッダーは不要。
+dotnet_diagnostic.SA1633.severity = none
