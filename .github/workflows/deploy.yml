@@ -15,6 +15,7 @@ on:
       - '**/*.sln'
       - '**/Directory.Build.props'
       - '**/Directory.Build.targets'
+      - '!Source/Common/*.cs'
       - '!Source/*.Benchmarks/**'
       - '!Source/*.Samples/**'
 
