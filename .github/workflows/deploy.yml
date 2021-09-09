@@ -9,6 +9,7 @@ on:
       - version.json
       - 'Source/**/*.cs'
       - 'Source/**/*.xaml'
+      - 'Source/**/*.razor'
       - 'Source/**/*.cshtml'
       - 'Source/**/*.csproj'
       - '**/*.sln'
