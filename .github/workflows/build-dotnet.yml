@@ -13,6 +13,7 @@ on:
       - '**/Directory.Build.props'
       - '**/Directory.Build.targets'
       - '**/.editorconfig'
+      - '**/.globalconfig'
       - .github/workflows/build-dotnet.yml
 
 env:
