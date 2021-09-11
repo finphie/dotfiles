@@ -2,7 +2,6 @@ name: Build(PowerShell)
 
 on:
   pull_request:
-    types: [opened, synchronize]
     paths:
       - '**/*.ps1'
       - '**/*.psd1'
@@ -10,13 +9,10 @@ on:
       - .github/workflows/build-powershell.yml
 
 jobs:
-  check:
-    name: Check
+  lint:
+    name: Lint
     if: github.event.repository.name != 'dotfiles'
     runs-on: ubuntu-latest
-
-    outputs:
-      lint: ${{ steps.check.outputs.lint }}
 
     steps:
       - name: Checkout repository
@@ -28,22 +24,14 @@ jobs:
         run: |
           $files = Get-ChildItem . -Recurse -Name -Include '*.ps1', '*.psd1', '*.psm1' -Exclude PSScriptAnalyzerSettings.psd1
           Write-Output $files
-          Write-Output "::set-output name=lint::$($files.Length -gt 0)"
-
-  lint:
-    name: Lint
-    needs: check
-    if: needs.check.outputs.lint == 'True'
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+          Write-Output "::set-output name=powershell::$($files.Length -gt 0)"
 
       - name: Install PSScriptAnalyzer
+        if: steps.check.outputs.powershell == 'True'
         shell: pwsh
         run: Install-Module -Name PSScriptAnalyzer -Force
 
       - name: Lint PowerShell code
+        if: steps.check.outputs.powershell == 'True'
         shell: pwsh
         run: Invoke-ScriptAnalyzer . -EnableExit -Recurse

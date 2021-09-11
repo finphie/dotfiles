@@ -2,7 +2,6 @@ name: Build(.NET)
 
 on:
   pull_request:
-    types: [opened, synchronize]
     paths:
       - '**/*.cs'
       - '**/*.xaml'
@@ -22,27 +21,10 @@ env:
   dotnet-version: '6.0'
 
 jobs:
-  check:
-    name: Check
-    if: github.event.repository.name != 'dotfiles'
-    runs-on: ubuntu-latest
-
-    outputs:
-      test: ${{ steps.check.outputs.test }}
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Check file
-        id: check
-        shell: pwsh
-        run: Write-Output "::set-output name=test::$(Test-Path *.sln)"
-
   test:
     name: Test
     needs: check
-    if: needs.check.outputs.test == 'True'
+    if: github.event.repository.name != 'dotfiles'
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
@@ -53,14 +35,22 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
+      - name: Check file
+        id: check
+        shell: pwsh
+        run: Write-Output "::set-output name=dotnet::$(Test-Path *.sln)"
+
       - name: Setup .NET
+        if: steps.check.outputs.dotnet == 'True'
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: ${{ env.dotnet-version }}
           include-prerelease: true
 
       - name: .NET Build
+        if: steps.check.outputs.dotnet == 'True'
         run: dotnet build --configuration Release -warnAsError
 
       - name: .NET Test
+        if: steps.check.outputs.dotnet == 'True'
         run: dotnet test --configuration Release --no-build
