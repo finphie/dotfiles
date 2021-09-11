@@ -23,7 +23,6 @@ env:
 jobs:
   test:
     name: Test
-    needs: check
     if: github.event.repository.name != 'dotfiles'
     runs-on: ${{ matrix.os }}
     strategy:
