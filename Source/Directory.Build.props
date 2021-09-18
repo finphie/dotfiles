@@ -7,6 +7,10 @@
     <IsInternal>$(MSBuildProjectName.Contains('Internal'))</IsInternal>
   </PropertyGroup>
 
+  <PropertyGroup Condition="$(MSBuildProjectName.EndsWith('Abstractions'))">
+    <RootNamespace>$(MSBuildProjectName.Substring(0, $(MSBuildProjectName.LastIndexOf('.'))))</RootNamespace>
+  </PropertyGroup>
+
   <PropertyGroup Condition="'$(SelfContained)' != 'true' and '$(IsBenchmark)' == 'false' and '$(IsGenerator)' == 'false' and '$(IsInternal)' == 'false'">
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
