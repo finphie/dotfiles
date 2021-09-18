@@ -2,10 +2,6 @@ is_global = true
 
 ### .NET コーディング規則 ###
 
-# 名前空間の設定
-# https://github.com/dotnet/roslyn/issues/55014
-dotnet_diagnostic.IDE0130.severity = none
-
 # using の整理
 dotnet_separate_import_directive_groups = false
 dotnet_sort_system_directives_first = true
