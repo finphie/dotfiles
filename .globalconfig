@@ -329,10 +329,10 @@ dotnet_code_quality.CA1720.api_surface = public
 
 # Mark assemblies with CLSCompliantAttribute
 # https://docs.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1014
+# https://github.com/dotnet/runtime/issues/44194
 # 理由: CLSに準拠する必要性を感じない。
-# 現状、EditorConfig側から無効化できないため、Directory.Build.propsを利用する必要あり。
-# https://github.com/dotnet/roslyn/issues/37876
-# dotnet_diagnostic.CA1014.severity = none
+# AllEnabledByDefaultを設定しただけでは有効にならないので不要かも。
+dotnet_diagnostic.CA1014.severity = none
 
 # Identifiers should have correct prefix
 # https://docs.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1715

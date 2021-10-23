@@ -8,7 +8,7 @@
     <AnalysisMode>AllEnabledByDefault</AnalysisMode>
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
     <GenerateDocumentationFile>false</GenerateDocumentationFile>
-    <NoWarn>$(NoWarn);CA1014;SA0001</NoWarn>
+    <NoWarn>$(NoWarn);SA0001</NoWarn>
     <IsPackable>false</IsPackable>
     <IsPublishable>false</IsPublishable>
     <Authors>finphie</Authors>
