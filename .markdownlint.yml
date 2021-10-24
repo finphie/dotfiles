@@ -56,4 +56,4 @@ proper-names: true
 no-alt-text: true
 code-block-style:
   style: fenced
-single-trailing-newline: false
+single-trailing-newline: true
