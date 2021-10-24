@@ -42,7 +42,7 @@ trim_trailing_whitespace = false
 charset = utf-8-bom
 
 # C#ファイル
-[*.cs]
+[*.{cs,razor,cshtml}]
 charset = utf-8-bom
 
 # C# 生成コード
