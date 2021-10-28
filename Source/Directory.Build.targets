@@ -16,6 +16,7 @@
           <PropertyGroup>
             <IncludeSymbols>true</IncludeSymbols>
             <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+            <EmbedUntrackedSources>true</EmbedUntrackedSources>
           </PropertyGroup>
           <ItemGroup>
             <PackageReference Include="Microsoft.SourceLink.GitHub" Version="*-*">
