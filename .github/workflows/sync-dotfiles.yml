@@ -15,6 +15,7 @@ jobs:
       matrix:
         repositories:
           - Benchmarks
+          - FToolkit
           - SimpleTextTemplate
           - Stazor
           - Utf8Utility
