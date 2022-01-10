@@ -9,15 +9,10 @@
   </PropertyGroup>
 
   <ItemGroup Condition="'$(IsTest)' == 'true'">
-    <PackageReference Include="AutoFixture.Xunit2" Version="*" />
     <PackageReference Include="FluentAssertions" Version="*" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="*" />
     <PackageReference Include="xunit" Version="*" />
     <PackageReference Include="xunit.runner.visualstudio" Version="*">
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
-    <PackageReference Include="coverlet.collector" Version="*">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
