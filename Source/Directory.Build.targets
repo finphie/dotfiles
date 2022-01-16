@@ -9,6 +9,11 @@
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net6.0' and '$(OutputType)' == 'Library'">
+    <EnableTrimAnalyzer>true</EnableTrimAnalyzer>
+    <IsTrimmable>true</IsTrimmable>
+  </PropertyGroup>
+
   <Choose>
     <When Condition="'$(IsPackable)' == 'true' and '$(IsGenerator)' == 'false'">
       <Choose>
