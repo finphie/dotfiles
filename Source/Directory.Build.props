@@ -7,7 +7,7 @@
     <IsInternal>$(MSBuildProjectName.Contains('Internal'))</IsInternal>
   </PropertyGroup>
 
-  <PropertyGroup Condition="$(MSBuildProjectName.EndsWith('Abstractions'))">
+  <PropertyGroup Condition="$(MSBuildProjectName.EndsWith('Abstractions')) or $(MSBuildProjectName.EndsWith('Internal'))">
     <RootNamespace>$(MSBuildProjectName.Substring(0, $(MSBuildProjectName.LastIndexOf('.'))))</RootNamespace>
   </PropertyGroup>
 
