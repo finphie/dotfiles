@@ -37,13 +37,16 @@ indent_size = 2
 [*.md]
 trim_trailing_whitespace = false
 
-# T4 Templateファイル
-[*.tt]
-charset = utf-8-bom
-
-# C# ファイル
+# C#ファイル
 [*.{cs,razor,cshtml}]
 charset = utf-8-bom
+[*.cs]
+end_of_line = crlf
+
+# T4テンプレートファイル
+[*.tt]
+charset = utf-8-bom
+end_of_line = crlf
 
 # C# 生成コード
 # https://github.com/dotnet/roslyn/issues/54119
