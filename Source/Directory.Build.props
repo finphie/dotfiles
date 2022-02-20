@@ -4,14 +4,14 @@
   <PropertyGroup>
     <IsBenchmark>$(MSBuildProjectName.Contains('Benchmark'))</IsBenchmark>
     <IsGenerator>$(MSBuildProjectName.EndsWith('Generator'))</IsGenerator>
-    <IsInternal>$(MSBuildProjectName.Contains('Internal'))</IsInternal>
+    <IsInternal>$(MSBuildProjectName.EndsWith('Internal'))</IsInternal>
   </PropertyGroup>
 
-  <PropertyGroup Condition="$(MSBuildProjectName.EndsWith('Abstractions')) or $(MSBuildProjectName.EndsWith('Internal'))">
+  <PropertyGroup Condition="$(MSBuildProjectName.EndsWith('Abstractions')) or $(IsGenerator) or $(IsInternal)">
     <RootNamespace>$(MSBuildProjectName.Substring(0, $(MSBuildProjectName.LastIndexOf('.'))))</RootNamespace>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(SelfContained)' != 'true' and '$(IsBenchmark)' == 'false' and '$(IsGenerator)' == 'false' and '$(IsInternal)' == 'false'">
+  <PropertyGroup Condition="'$(SelfContained)' != 'true' and '$(IsBenchmark)' == 'false' and '$(IsInternal)' == 'false'">
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
@@ -27,8 +27,8 @@
     <PackageReference Include="BenchmarkDotNet" Version="*" />
   </ItemGroup>
 
-  <ItemGroup Condition="'$(IsGenerator)' == 'true'">
-    <None Include="$(OutputPath)\$(AssemblyName).dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
+  <ItemGroup Condition="$(IsGenerator)">
+    <None Include="..\$(MSBuildProjectName).Internal\bin\$(Configuration)\netstandard2.0\$(MSBuildProjectName).Internal.dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
   </ItemGroup>
 
   <ItemGroup>
