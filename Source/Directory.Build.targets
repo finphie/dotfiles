@@ -12,6 +12,14 @@
 
   <Choose>
     <When Condition="'$(IsPackable)' == 'true'">
+      <PropertyGroup>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+      </PropertyGroup>
+
+      <ItemGroup>
+        <None Include="$([MSBuild]::GetPathOfFileAbove('README.md', '$(MSBuildThisFileDirectory)..\'))" Pack="true" PackagePath="\" />
+      </ItemGroup>
+
       <Choose>
         <When Condition="'$(OutputType)' == 'Library'">
           <PropertyGroup>
