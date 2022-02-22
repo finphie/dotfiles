@@ -5,6 +5,9 @@
     <IsBenchmark>$(MSBuildProjectName.Contains('Benchmark'))</IsBenchmark>
     <IsGenerator>$(MSBuildProjectName.EndsWith('Generator'))</IsGenerator>
     <IsInternal>$(MSBuildProjectName.EndsWith('Internal'))</IsInternal>
+    <BuildFilePathWithoutExtension>$(BuildFileDirectory)\$(MSBuildProjectName)</BuildFilePathWithoutExtension>
+    <BuildPropsFilePath>$(BuildFilePathWithoutExtension).props</BuildPropsFilePath>
+    <BuildTargetsFilePath>$(BuildFilePathWithoutExtension).targets</BuildTargetsFilePath>
   </PropertyGroup>
 
   <PropertyGroup Condition="$(MSBuildProjectName.EndsWith('Abstractions')) or $(IsGenerator) or $(IsInternal)">
@@ -21,6 +24,8 @@
 
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)\$(SolutionName).Shared\**\*.cs" LinkBase="Shared" />
+    <None Condition="Exists('$(BuildPropsFilePath)')" Include="$(BuildPropsFilePath)" Pack="true" PackagePath="build" Visible="false" />
+    <None Condition="Exists('$(BuildTargetsFilePath)')" Include="$(BuildTargetsFilePath)" Pack="true" PackagePath="build" Visible="false" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(IsBenchmark)' == 'true'">

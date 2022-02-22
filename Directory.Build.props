@@ -19,6 +19,10 @@
     <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <BuildFileDirectory>$(MSBuildThisFileDirectory)\Build</BuildFileDirectory>
+  </PropertyGroup>
+
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)\Source\Common\**\*.cs" Visible="false" />
   </ItemGroup>
