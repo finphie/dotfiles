@@ -12,7 +12,7 @@
     <IsPackable>false</IsPackable>
     <IsPublishable>false</IsPublishable>
     <Authors>finphie</Authors>
-    <Copyright>© 2021 $(Authors)</Copyright>
+    <Copyright>© 2022 $(Authors)</Copyright>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
