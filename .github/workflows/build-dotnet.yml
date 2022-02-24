@@ -18,7 +18,7 @@ on:
 env:
   DOTNET_NOLOGO: true
   DOTNET_CLI_TELEMETRY_OPTOUT: true
-  dotnet-version: '6.0'
+  dotnet-version: '7.0'
 
 jobs:
   test:
@@ -47,11 +47,18 @@ jobs:
           $installDir = $os.StartsWith('windows') ? 'C:/Program Files/dotnet' : '/usr/share/dotnet';
           Write-Output "DOTNET_INSTALL_DIR=$installDir" | Out-File $Env:GITHUB_ENV -Encoding utf8 -Append
 
-      - name: Setup .NET
+      - name: Setup .NET 7
         if: steps.check.outputs.dotnet == 'True'
-        uses: actions/setup-dotnet@v1
+        uses: actions/setup-dotnet@main
         with:
           dotnet-version: ${{ env.dotnet-version }}
+          include-prerelease: true
+
+      - name: Setup .NET 6
+        if: steps.check.outputs.dotnet == 'True' && startswith(matrix.os, 'mac')
+        uses: actions/setup-dotnet@main
+        with:
+          dotnet-version: 6.0.x
 
       - name: .NET Build
         if: steps.check.outputs.dotnet == 'True'
