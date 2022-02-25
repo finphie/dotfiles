@@ -49,14 +49,14 @@ jobs:
 
       - name: Setup .NET 7
         if: steps.check.outputs.dotnet == 'True'
-        uses: actions/setup-dotnet@main
+        uses: actions/setup-dotnet@v2
         with:
           dotnet-version: ${{ env.dotnet-version }}
           include-prerelease: true
 
       - name: Setup .NET 6
         if: steps.check.outputs.dotnet == 'True' && startswith(matrix.os, 'mac')
-        uses: actions/setup-dotnet@main
+        uses: actions/setup-dotnet@v2
         with:
           dotnet-version: 6.0.x
 
