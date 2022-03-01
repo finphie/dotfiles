@@ -8,6 +8,6 @@ updates:
       - dependency-name: Microsoft.SourceLink.GitHub
       - dependency-name: StyleCop.Analyzers
   - package-ecosystem: github-actions
-      directory: /
-      schedule:
-        interval: daily
+    directory: /
+    schedule:
+      interval: daily
