@@ -348,11 +348,6 @@ dotnet_diagnostic.CA1715.severity = none
 # 理由: 言語キーワードと重複してもエスケープすれば回避できる。
 dotnet_diagnostic.CA1716.severity = none
 
-# AD0001が発生するため、CA2252を無効化
-# https://github.com/dotnet/roslyn-analyzers/issues/5450
-# https://github.com/dotnet/roslyn-analyzers/issues/5482
-dotnet_diagnostic.CA2252.severity = none
-
 # 'type': base type 'type' is not CLS-compliant
 # https://docs.microsoft.com/dotnet/csharp/language-reference/compiler-messages/cs3009
 # 理由: CLSに準拠する必要性を感じない。
