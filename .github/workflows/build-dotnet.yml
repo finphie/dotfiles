@@ -44,7 +44,7 @@ jobs:
         shell: pwsh
         run: |
           $os = '${{ matrix.os }}'
-          $installDir = $os.StartsWith('windows') ? 'C:/Program Files/dotnet' : '/usr/share/dotnet';
+          $installDir = $os.StartsWith('windows') ? 'C:/Program Files/dotnet' : '/usr/share/dotnet'
           Write-Output "DOTNET_INSTALL_DIR=$installDir" | Out-File $Env:GITHUB_ENV -Encoding utf8 -Append
 
       - name: Setup .NET 7
