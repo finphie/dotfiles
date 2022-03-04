@@ -16,6 +16,7 @@ jobs:
         repositories:
           - Benchmarks
           - FToolkit
+          - PathUtility
           - SimpleTextTemplate
           - Stazor
           - Utf8Utility
