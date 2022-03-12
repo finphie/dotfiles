@@ -348,6 +348,11 @@ dotnet_diagnostic.CA1715.severity = none
 # 理由: 言語キーワードと重複してもエスケープすれば回避できる。
 dotnet_diagnostic.CA1716.severity = none
 
+# Do not directly await a Task
+# https://docs.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca2007
+# 理由: デフォルトで有効にならない規則。
+dotnet_diagnostic.CA2007.severity = warning
+
 # 'type': base type 'type' is not CLS-compliant
 # https://docs.microsoft.com/dotnet/csharp/language-reference/compiler-messages/cs3009
 # 理由: CLSに準拠する必要性を感じない。
