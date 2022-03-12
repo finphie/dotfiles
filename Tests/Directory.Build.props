@@ -1,4 +1,5 @@
 <Project>
+  <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)..\'))" />
 
   <PropertyGroup>
     <NoWarn>$(NoWarn);SA0001</NoWarn>
@@ -21,7 +22,5 @@
   <ItemGroup Condition="'$(IsTest)' == 'true' and '$(OS)' == 'Unix'">
     <PackageReference Include="Microsoft.TestPlatform.ObjectModel" Version="*" />
   </ItemGroup>
-
-  <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)..\'))" />
 
 </Project>
