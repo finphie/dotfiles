@@ -17,9 +17,11 @@ jobs:
           - Benchmarks
           - FToolkit
           - PathUtility
+          - SharpNote
           - SimpleTextTemplate
           - Stazor
           - Utf8Utility
+          - WpfHosting
 
     steps:
       - name: Checkout ${{ github.event.repository.name }} repository
