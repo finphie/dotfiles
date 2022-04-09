@@ -1,4 +1,4 @@
-# C#ファイル（ユニットテストプロジェクト全体）
+# C#ファイル（テストプロジェクト全体）
 [*.cs]
 
 ## Microsoft.CodeAnalysis.NetAnalyzers ##
@@ -13,8 +13,8 @@ dotnet_diagnostic.CA1062.severity = none
 # 理由: 静的コンストラクターを使用しても問題ない。
 dotnet_diagnostic.CA1810.severity = none
 
-# C#ユニットテストファイル
-[*Test.cs]
+# C#テスト関連ファイル
+[{*Test,*TestData}.cs]
 
 ## Microsoft.CodeAnalysis.NetAnalyzers ##
 
