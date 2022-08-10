@@ -27,7 +27,7 @@ foreach ($file in $files) {
             continue;
         }
 
-        Set-Output('gui')
+        Set-Output 'gui'
 
         if ($os.StartsWith('windows')) {
             Set-Output 'windows'
