@@ -5,11 +5,7 @@
     <NoWarn>$(NoWarn);SA0001</NoWarn>
   </PropertyGroup>
 
-  <PropertyGroup>
-    <IsTest>$(MSBuildProjectName.EndsWith('Tests'))</IsTest>
-  </PropertyGroup>
-
-  <ItemGroup Condition="'$(IsTest)' == 'true'">
+  <ItemGroup>
     <PackageReference Include="FluentAssertions" Version="*" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="*" />
     <PackageReference Include="xunit" Version="*" />
@@ -19,7 +15,7 @@
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup Condition="'$(IsTest)' == 'true' and '$(OS)' == 'Unix'">
+  <ItemGroup Condition="'$(OS)' == 'Unix'">
     <PackageReference Include="Microsoft.TestPlatform.ObjectModel" Version="*" />
   </ItemGroup>
 
