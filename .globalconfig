@@ -85,7 +85,6 @@ csharp_style_prefer_switch_expression = true
 
 # Null チェック設定
 csharp_style_conditional_delegate_call = true
-csharp_style_prefer_parameter_null_checking = true
 
 # 修飾子設定
 csharp_prefer_static_local_function = true
