@@ -3,3 +3,4 @@
 *.tt text eol=crlf
 PSScriptAnalyzerSettings.psd1 linguist-vendored
 Source/Common/* linguist-vendored
+*/wwwroot/* linguist-vendored
