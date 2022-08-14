@@ -5,17 +5,24 @@
     <NoWarn>$(NoWarn);SA0001</NoWarn>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <IsTest>$(MSBuildProjectName.EndsWith('Tests'))</IsTest>
+  </PropertyGroup>
+
   <ItemGroup>
+    <PackageReference Include="xunit" Version="*" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(IsTest)' == 'true'">
     <PackageReference Include="FluentAssertions" Version="*" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="*" />
-    <PackageReference Include="xunit" Version="*" />
     <PackageReference Include="xunit.runner.visualstudio" Version="*">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup Condition="'$(OS)' == 'Unix'">
+  <ItemGroup Condition="'$(IsTest)' == 'true' and '$(OS)' == 'Unix'">
     <PackageReference Include="Microsoft.TestPlatform.ObjectModel" Version="*" />
   </ItemGroup>
 
