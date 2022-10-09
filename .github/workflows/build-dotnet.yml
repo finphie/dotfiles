@@ -4,6 +4,7 @@ on:
   pull_request:
     paths:
       - '**/*.cs'
+      - '**/*.tt'
       - '**/*.xaml'
       - '**/*.razor'
       - '**/*.cshtml'

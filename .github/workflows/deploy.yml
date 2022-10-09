@@ -8,6 +8,7 @@ on:
     paths:
       - version.json
       - 'Source/**/*.cs'
+      - 'Source/**/*.tt'
       - 'Source/**/*.xaml'
       - 'Source/**/*.razor'
       - 'Source/**/*.cshtml'
