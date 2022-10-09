@@ -1,6 +1,11 @@
 * text=auto eol=lf
 *.cs text eol=crlf
 *.tt text eol=crlf
+*.xaml text eol=crlf
+*.razor text eol=crlf
+*.cshtml text eol=crlf
+*.csproj text eol=crlf
+*.sln text eol=crlf
 PSScriptAnalyzerSettings.psd1 linguist-vendored
 Source/Common/* linguist-vendored
 */wwwroot/* linguist-vendored
