@@ -45,7 +45,7 @@ jobs:
 
           $changedFiles = git diff-tree --no-commit-id --name-only -r ${{ github.sha }}
 
-          if ($changedFiles -in 'version.json') {
+          if ($changedFiles -contains 'version.json') {
             Write-Output "::set-output name=release::$true"
             ./.github/Version.ps1
           }
