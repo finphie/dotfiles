@@ -3,30 +3,42 @@
   <PropertyGroup>
     <LangVersion>preview</LangVersion>
     <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <AnalysisLevel>preview</AnalysisLevel>
-    <AnalysisMode>All</AnalysisMode>
-    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
     <GenerateDocumentationFile>false</GenerateDocumentationFile>
     <NoWarn>$(NoWarn);SA0001</NoWarn>
     <IsPackable>false</IsPackable>
     <IsPublishable>false</IsPublishable>
-    <Authors>finphie</Authors>
-    <Copyright>© 2022 $(Authors)</Copyright>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
-    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+  <!-- アナライザーの設定 -->
+  <PropertyGroup>
+    <AnalysisLevel>preview</AnalysisLevel>
+    <AnalysisMode>All</AnalysisMode>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+  </PropertyGroup>
+
+  <!-- アセンブリ情報 -->
+  <PropertyGroup>
+    <Authors>finphie</Authors>
+    <Copyright>© 2022 $(Authors)</Copyright>
   </PropertyGroup>
 
   <PropertyGroup>
     <BuildFileDirectory>$(MSBuildThisFileDirectory)\Build</BuildFileDirectory>
   </PropertyGroup>
 
+  <!-- CI関連 -->
+  <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+  </PropertyGroup>
+
+  <!-- プロジェクト共通のファイルを読み込む -->
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)\Source\Common\**\*.cs" Visible="false" />
   </ItemGroup>
 
+  <!-- アナライザーの参照を追加 -->
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Threading.Analyzers" Version="*">
       <PrivateAssets>all</PrivateAssets>
