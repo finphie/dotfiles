@@ -1,7 +1,3 @@
 <Project>
 
-  <PropertyGroup Condition="'$(UseWPF)' == 'true' or '$(UseWinUI)' == 'true' or '$(UseMaui)' == 'true' or '$(UsingMicrosoftNETSdkWeb)' == 'true' or '$(UsingMicrosoftNETSdkRazor)' == 'true'">
-    <NoWarn>$(NoWarn);CA2007</NoWarn>
-  </PropertyGroup>
-
 </Project>
