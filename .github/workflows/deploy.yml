@@ -111,3 +111,31 @@ jobs:
             publish
             *.zip
           if-no-files-found: ignore
+
+  docker-dotnet:
+    name: Docker(.NET)
+    needs: check
+    if: needs.check.outputs.dotnet == 'True' && needs.check.outputs.version != '' && needs.check.outputs.release == 'True'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Get repository name
+        id: get
+        shell: pwsh
+        run: |
+          $repositoryName = [regex]::replace('${{ github.event.repository.name }}', '(?<=.)(?=[A-Z])', '-').ToLower()
+          Write-Output "::set-output name=repository_name::$repositoryName"
+
+      - name: Build and push
+        uses: docker/build-push-action@v3
+        with:
+          push: true
+          build-args: VERSION=${{ needs.check.outputs.version }}
+          tags: ghcr.io/${{ github.actor }}/${{ steps.get.outputs.repository_name }}:v${{ needs.check.outputs.version }}
