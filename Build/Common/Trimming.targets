@@ -1,0 +1,7 @@
+<Project>
+  <!-- トリミング関連の設定 -->
+
+  <Import Project="$(BuildCommonDirectory)/Trimming.Analyzer.targets" />
+  <Import Project="$(BuildCommonDirectory)/Trimming.Framework.targets" />
+
+</Project>
