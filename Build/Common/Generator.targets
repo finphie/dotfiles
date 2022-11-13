@@ -1,0 +1,19 @@
+<Project>
+  <!-- ソースジェネレーターを埋め込みNuGetに公開するライブラリ関連の設定 -->
+
+  <PropertyGroup>
+    <!-- パッケージ分析を無効にする。 -->
+    <NoPackageAnalysis>true</NoPackageAnalysis>
+
+    <!-- ルート名前空間から「Generator」を取り除く。 -->
+    <RootNamespace>$(MSBuildProjectName.Substring(0, $(MSBuildProjectName.LastIndexOf('.'))))</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- 直接NuGetには公開せず、公開する別プロジェクトに出力されるdllを含める。 -->
+    <None Include="../$(MSBuildProjectName).Internal/bin/$(Configuration)/netstandard2.0/$(MSBuildProjectName).Internal.dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
+  </ItemGroup>
+
+  <Import Project="$(BuildCommonDirectory)/NuGet.targets" />
+
+</Project>
