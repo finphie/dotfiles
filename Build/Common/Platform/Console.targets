@@ -28,7 +28,7 @@
       -->
       <Import Condition="'$(Pgo)' == ''" Project="$(BuildCommonDirectory)/NativeAot.targets" />
     </Otherwise>
-    
+
   </Choose>
 
 </Project>

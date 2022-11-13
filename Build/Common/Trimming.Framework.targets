@@ -22,7 +22,7 @@
 
     <!-- ホットリロードに関連するメタデータの更新固有のロジックを削除する。 -->
     <MetadataUpdaterSupport>false</MetadataUpdaterSupport>
-  
+
     <!-- 「System.*」アセンブリの例外メッセージを削除する。 -->
     <UseSystemResourceKeys>true</UseSystemResourceKeys>
   </PropertyGroup>

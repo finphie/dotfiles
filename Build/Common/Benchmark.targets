@@ -4,5 +4,5 @@
   <ItemGroup>
     <PackageReference Include="BenchmarkDotNet" Version="*" />
   </ItemGroup>
-  
+
 </Project>

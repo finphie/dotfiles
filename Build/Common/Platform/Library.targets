@@ -21,11 +21,11 @@
       <Import Project="$(BuildCommonDirectory)/Generator.Internal.targets" />
     </When>
 
-    <Otherwise>     
+    <Otherwise>
       <Import Project="$(BuildCommonDirectory)/NuGet.targets" />
       <Import Project="$(BuildCommonDirectory)/Trimming.Analyzer.targets" />
     </Otherwise>
-    
+
   </Choose>
-  
+
 </Project>

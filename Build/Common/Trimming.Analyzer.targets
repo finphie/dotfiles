@@ -11,7 +11,7 @@
     <!-- トリミング分析の警告を有効にする。 -->
     <EnableTrimAnalyzer>true</EnableTrimAnalyzer>
     <SuppressTrimAnalysisWarnings>false</SuppressTrimAnalysisWarnings>
-    
+
     <!-- ILLinkの警告をエラーとして扱わない。 -->
     <ILLinkTreatWarningsAsErrors>false</ILLinkTreatWarningsAsErrors>
   </PropertyGroup>
