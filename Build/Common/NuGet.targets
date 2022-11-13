@@ -1,0 +1,22 @@
+<Project>
+
+  <PropertyGroup>
+    <_BuildFilePathWithoutExtension>$(BuildDirectory)/$(MSBuildProjectName)</_BuildFilePathWithoutExtension>
+    <_BuildPropsFilePath>$(BuildFilePathWithoutExtension).props</_BuildPropsFilePath>
+    <_BuildTargetsFilePath>$(BuildFilePathWithoutExtension).targets</_BuildTargetsFilePath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <!-- パッケージ検証を有効にする。 -->
+    <EnablePackageValidation>true</EnablePackageValidation>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- プロジェクト名.propsとプロジェクト名.targetsをNuGetパッケージに含める。 -->
+    <None Condition="Exists('$(_BuildPropsFilePath)')" Include="$(_BuildPropsFilePath)" Pack="true" PackagePath="build" Visible="false" />
+    <None Condition="Exists('$(_BuildTargetsFilePath)')" Include="$(_BuildTargetsFilePath)" Pack="true" PackagePath="build" Visible="false" />
+  </ItemGroup>
+
+  <Import Project="$(BuildCommonDirectory)/NuGet.*.targets" />
+
+</Project>
