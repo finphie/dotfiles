@@ -1,0 +1,24 @@
+<Project>
+  <!-- WPF関連の設定 -->
+
+  <PropertyGroup>
+    <IsPublishable>true</IsPublishable>
+  </PropertyGroup>
+
+  <Import Project="$(BuildCommonDirectory)/Trimming.Framework.targets" />
+  <Import Project="$(BuildCommonDirectory)/ReadyToRun.targets" />
+  <Import Project="$(BuildCommonDirectory)/Runtime.targets" />
+
+  <PropertyGroup>
+    <InvariantGlobalization>false</InvariantGlobalization>
+
+    <!-- WPFはトリミング非対応。 -->
+    <PublishTrimmed>false</PublishTrimmed>
+  </PropertyGroup>
+
+  <!-- 自動生成されるプロジェクトに関する設定 -->
+  <PropertyGroup Condition="$(MSBuildProjectName.EndsWith('_wpftmp'))">
+    <Nowarn>$(NoWarn);IDE0130</Nowarn>
+  </PropertyGroup>
+
+</Project>
