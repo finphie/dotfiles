@@ -1,0 +1,27 @@
+<Project>
+  <!--
+    ReadyToRun関連の設定
+    https://learn.microsoft.com/dotnet/core/deploying/ready-to-run
+    https://learn.microsoft.com/dotnet/core/deploying/single-file/overview
+  -->
+
+  <PropertyGroup>
+    <!-- 単一ファイルでの発行を有効にする。 -->
+    <PublishSingleFile>true</PublishSingleFile>
+
+    <!-- アプリを自己完結型とする。 -->
+    <SelfContained>true</SelfContained>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)' != 'Debug'">
+    <!-- ReadyToRunを有効にする。 -->
+    <PublishReadyToRun>true</PublishReadyToRun>
+
+    <!-- トリミングを有効にする。 -->
+    <PublishTrimmed>true</PublishTrimmed>
+
+    <!-- 実行時エラーの原因になる可能性のある足りない依存関係に関する警告を表示する。 -->
+    <PublishReadyToRunShowWarnings>true</PublishReadyToRunShowWarnings>
+  </PropertyGroup>
+
+</Project>
