@@ -1,0 +1,18 @@
+<Project>
+  <!--
+    ASP.NET関連の設定
+    Dynamic PGOを有効にしたい場合があるので、ReadyToRunは無効にする。
+  -->
+
+  <PropertyGroup>
+    <IsPublishable>true</IsPublishable>
+  </PropertyGroup>
+
+  <Import Project="$(BuildCommonDirectory)/Runtime.targets" />
+
+  <!--
+    TODO: [.NET 8]ReadyToRunを有効にする。
+    https://github.com/dotnet/runtime/pull/70941
+  -->
+
+</Project>
