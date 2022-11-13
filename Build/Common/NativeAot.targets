@@ -2,7 +2,7 @@
   <!--
     Native AOT関連の設定
     https://learn.microsoft.com/dotnet/core/deploying/native-aot/
-    https://github.com/dotnet/runtime/blob/v7.0.0-rc.2.22472.3/src/coreclr/nativeaot/docs/optimizing.md
+    https://github.com/dotnet/runtime/blob/v7.0.0/src/coreclr/nativeaot/docs/optimizing.md
     https://github.com/dotnet/corert/blob/master/Documentation/using-corert/optimizing-corert.md
   -->
 
@@ -32,7 +32,7 @@
 
     <!-- コンパイラが未使用のコードを削除できるようにする。 -->
     <RootAllApplicationAssemblies>false</RootAllApplicationAssemblies>
-    
+
     <!-- 完全な型メタデータの生成を無効にする。 -->
     <IlcGenerateCompleteTypeMetadata>false</IlcGenerateCompleteTypeMetadata>
   </PropertyGroup>
