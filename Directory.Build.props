@@ -6,13 +6,13 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <GenerateDocumentationFile>false</GenerateDocumentationFile>
-    <NoWarn>$(NoWarn);SA0001</NoWarn>
     <IsPackable>false</IsPackable>
     <IsPublishable>false</IsPublishable>
   </PropertyGroup>
 
   <!-- アナライザーの設定 -->
   <PropertyGroup>
+    <NoWarn>$(NoWarn);SA0001</NoWarn>
     <AnalysisLevel>preview</AnalysisLevel>
     <AnalysisMode>All</AnalysisMode>
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
@@ -24,30 +24,22 @@
     <Copyright>© 2022 $(Authors)</Copyright>
   </PropertyGroup>
 
+  <!-- 変数の定義 -->
   <PropertyGroup>
-    <BuildFileDirectory>$(MSBuildThisFileDirectory)\Build</BuildFileDirectory>
-  </PropertyGroup>
-
-  <!-- CI関連 -->
-  <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
-    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+    <BuildDirectory>$(MSBuildThisFileDirectory)/Build</BuildDirectory>
+    <BuildCommonDirectory>$(BuildDirectory)/Common</BuildCommonDirectory>
+    <BuildCommonPlatformDirectory>$(BuildCommonDirectory)/Platform</BuildCommonPlatformDirectory>
   </PropertyGroup>
 
   <!-- プロジェクト共通のファイルを読み込む -->
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)\Source\Common\**\*.cs" Visible="false" />
+    <Compile Include="$(MSBuildThisFileDirectory)/Source/Common/**/*.cs" Visible="false" />
   </ItemGroup>
 
   <!-- アナライザーの参照を追加 -->
   <ItemGroup>
-    <PackageReference Include="Microsoft.VisualStudio.Threading.Analyzers" Version="*">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="StyleCop.Analyzers" Version="*-*">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Threading.Analyzers" Version="*" PrivateAssets="All" />
+    <PackageReference Include="StyleCop.Analyzers" Version="*-*" PrivateAssets="All" />
   </ItemGroup>
 
 </Project>
