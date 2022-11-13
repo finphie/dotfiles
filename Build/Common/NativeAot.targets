@@ -1,0 +1,40 @@
+<Project>
+  <!--
+    Native AOT関連の設定
+    https://learn.microsoft.com/dotnet/core/deploying/native-aot/
+    https://github.com/dotnet/runtime/blob/v7.0.0-rc.2.22472.3/src/coreclr/nativeaot/docs/optimizing.md
+    https://github.com/dotnet/corert/blob/master/Documentation/using-corert/optimizing-corert.md
+  -->
+
+  <PropertyGroup>
+    <PublishAot>true</PublishAot>
+
+    <!-- デバッグシンボルをバイナリから削除する。 -->
+    <StripSymbols>true</StripSymbols>
+
+    <!-- より小さいコードサイズを優先する。 -->
+    <IlcOptimizationPreference>Size</IlcOptimizationPreference>
+
+    <!-- スタックトレースにテキスト名を提供するメタデータの生成を無効にする。 -->
+    <IlcGenerateStackTraceData>false</IlcGenerateStackTraceData>
+
+    <!-- メソッド本体の重複を排除する。 -->
+    <IlcFoldIdenticalMethodBodies>true</IlcFoldIdenticalMethodBodies>
+
+    <!-- 未処理例外のスタックトレースをコンソールに出力するコードを無効にする。 -->
+    <IlcDisableUnhandledExceptionExperience>false</IlcDisableUnhandledExceptionExperience>
+  </PropertyGroup>
+
+  <!-- リフレクションなし -->
+  <PropertyGroup Condition="'$(EnableReflection)' != 'true'">
+    <!-- リフレクションを無効にする。 -->
+    <IlcDisableReflection>true</IlcDisableReflection>
+
+    <!-- コンパイラが未使用のコードを削除できるようにする。 -->
+    <RootAllApplicationAssemblies>false</RootAllApplicationAssemblies>
+    
+    <!-- 完全な型メタデータの生成を無効にする。 -->
+    <IlcGenerateCompleteTypeMetadata>false</IlcGenerateCompleteTypeMetadata>
+  </PropertyGroup>
+
+</Project>
