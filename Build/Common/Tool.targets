@@ -1,0 +1,19 @@
+<Project>
+  <!-- .NET Tool関連の設定 -->
+
+  <PropertyGroup>
+    <IsPackable>true</IsPackable>
+    <PackAsTool>true</PackAsTool>
+
+    <!-- ルート名前空間から「Tool」を取り除く。 -->
+    <RootNamespace>$(MSBuildProjectName.Substring(0, $(MSBuildProjectName.LastIndexOf('.'))))</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- 親プロジェクトのProgram.csを参照する。 -->
+    <Compile Include="../$(RootNamespace)/Program.cs" />
+  </ItemGroup>
+
+  <Import Project="$(BuildCommonDirectory)/NuGet.targets" />
+
+</Project>
