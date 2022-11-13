@@ -1,0 +1,33 @@
+<Project>
+  <!-- Blazor WebAssembly関連の設定 -->
+
+  <PropertyGroup>
+    <!-- タイムゾーンサポートを無効にする。 -->
+    <BlazorEnableTimeZoneSupport>false</BlazorEnableTimeZoneSupport>
+
+    <!-- 照合順序情報を無効にする。 -->
+    <BlazorWebAssemblyPreserveCollationData>false</BlazorWebAssemblyPreserveCollationData>
+
+    <!-- スレッドサポートを有効にする。 -->
+    <WasmEnableThreads>true</WasmEnableThreads>
+
+    <!-- SIMDサポートを有効にする。 -->
+    <WasmEnableSIMD>true</WasmEnableSIMD>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)' != 'Debug'">
+    <!-- AOTコンパイルを有効にする。 -->
+    <RunAOTCompilation>true</RunAOTCompilation>
+
+    <!-- Emscriptenコンパイラーの設定 -->
+    <EmccCompileOptimizationFlag>-O3</EmccCompileOptimizationFlag>
+    <EmccLinkOptimizationFlag>-O3</EmccLinkOptimizationFlag>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.WebAssembly.Threading" Version="7.0.0-rc.2.*" />
+  </ItemGroup>
+
+  <Import Project="$(BuildCommonDirectory)/Trimming.targets" />
+  
+</Project>
