@@ -1,0 +1,28 @@
+<Project>
+  <!-- WinUI関連の設定 -->
+
+  <PropertyGroup>
+    <IsPublishable>true</IsPublishable>
+    <TargetPlatformMinVersion>10.0.19041.0</TargetPlatformMinVersion>
+
+    <!-- アプリを自己完結型とする。 -->
+    <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
+
+    <!-- パッケージ化しないアプリとする。 -->
+    <WindowsPackageType>None</WindowsPackageType>
+  </PropertyGroup>
+
+  <Import Project="$(BuildCommonDirectory)/Trimming.targets" />
+  <Import Project="$(BuildCommonDirectory)/ReadyToRun.targets" />
+  <Import Project="$(BuildCommonDirectory)/Runtime.targets" />
+
+  <PropertyGroup>
+    <InvariantGlobalization>false</InvariantGlobalization>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(UseWinUI)' == 'true'">
+    <PackageReference Include="Microsoft.WindowsAppSDK" Version="*-*" />
+    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="*" />
+  </ItemGroup>
+
+</Project>
