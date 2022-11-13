@@ -1,0 +1,11 @@
+<Project>
+  <!-- ソースジェネレーター関連の設定 -->
+
+  <PropertyGroup>
+    <!-- Roslynコンポーネントとして扱う。 -->
+    <IsRoslynComponent>true</IsRoslynComponent>
+  </PropertyGroup>
+
+  <Import Project="$(BuildCommonDirectory)/Internal.targets" />
+
+</Project>
