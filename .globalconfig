@@ -359,6 +359,7 @@ dotnet_diagnostic.CA1716.severity = none
 # https://docs.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca2007
 # 理由: デフォルトで有効にならない規則。
 dotnet_diagnostic.CA2007.severity = warning
+dotnet_code_quality.CA2007.output_kind = ConsoleApplication, DynamicallyLinkedLibrary
 
 # 'type': base type 'type' is not CLS-compliant
 # https://docs.microsoft.com/dotnet/csharp/language-reference/compiler-messages/cs3009
