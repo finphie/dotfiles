@@ -1,0 +1,24 @@
+<Project>
+  <!--
+    MAUI関連の設定
+    対応プラットフォームは、Windows/Androidのみ。
+  -->
+
+  <PropertyGroup>
+    <IsPublishable>true</IsPublishable>
+    <SingleProject>true</SingleProject>
+  </PropertyGroup>
+
+  <Choose>
+    <When Condition="'$(TargetPlatformIdentifier)' == 'windows'">
+      <Import Project="$(BuildCommonPlatformDirectory)/WinUI.targets" />
+
+      <PropertyGroup>
+        <SupportedOSPlatformVersion>$(TargetPlatformMinVersion)</SupportedOSPlatformVersion>
+      </PropertyGroup>
+    </When>
+  </Choose>
+
+  <Import Condition="'$(TargetPlatformIdentifier)' == 'android'" Project="$(BuildCommonPlatformDirectory)/Android.targets" />
+
+</Project>
