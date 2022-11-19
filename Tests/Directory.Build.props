@@ -1,5 +1,5 @@
 <Project>
-  <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)..\'))" />
+  <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))" />
 
   <PropertyGroup>
     <NoWarn>$(NoWarn);SA0001</NoWarn>
@@ -16,10 +16,7 @@
   <ItemGroup Condition="'$(IsTest)' == 'true'">
     <PackageReference Include="FluentAssertions" Version="*" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="*" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="*">
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
+    <PackageReference Include="xunit.runner.visualstudio" Version="*" PrivateAssets="All" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(IsTest)' == 'true' and '$(OS)' == 'Unix'">
