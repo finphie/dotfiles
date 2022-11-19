@@ -2,10 +2,6 @@
   <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))" />
 
   <PropertyGroup>
-    <NoWarn>$(NoWarn);SA0001</NoWarn>
-  </PropertyGroup>
-
-  <PropertyGroup>
     <_IsTest>$(MSBuildProjectName.EndsWith('Tests'))</_IsTest>
   </PropertyGroup>
 
@@ -13,14 +9,30 @@
     <PackageReference Include="xunit" Version="*" />
   </ItemGroup>
 
-  <ItemGroup Condition="'$(_IsTest)' == 'true'">
-    <PackageReference Include="FluentAssertions" Version="*" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="*" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="*" PrivateAssets="All" />
-  </ItemGroup>
+  <Choose>
+    <When Condition="'$(_IsTest)' == 'true'">
 
-  <ItemGroup Condition="'$(_IsTest)' == 'true' and '$(TargetFrameworkIdentifier)' == '.NETFramework' and '$(OS)' == 'Unix'">
-    <PackageReference Include="Microsoft.TestPlatform.ObjectModel" Version="*" />
-  </ItemGroup>
+      <PropertyGroup>
+        <!--
+          [SA0001]
+          All diagnostics of XML documentation comments has been disabled due to the current project configuration.
+          https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA0001.md
+          理由: テストプロジェクトではドキュメンテーションコメントは必要ない。
+        -->
+        <NoWarn>$(NoWarn);SA0001</NoWarn>
+      </PropertyGroup>
+
+      <ItemGroup>
+        <PackageReference Include="FluentAssertions" Version="*" />
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="*" />
+        <PackageReference Include="xunit.runner.visualstudio" Version="*" PrivateAssets="All" />
+      </ItemGroup>
+
+      <ItemGroup Condition="'$(TargetFrameworkIdentifier)' == '.NETFramework' and '$(OS)' == 'Unix'">
+        <PackageReference Include="Microsoft.TestPlatform.ObjectModel" Version="*" />
+      </ItemGroup>
+
+    </When>
+  </Choose>
 
 </Project>
