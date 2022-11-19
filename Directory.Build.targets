@@ -1,3 +1,5 @@
 <Project>
 
+  <Import Project="$(BuildCommonPlatformDirectory)/Shared.targets" />
+
 </Project>
