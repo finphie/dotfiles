@@ -6,20 +6,20 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <IsTest>$(MSBuildProjectName.EndsWith('Tests'))</IsTest>
+    <_IsTest>$(MSBuildProjectName.EndsWith('Tests'))</_IsTest>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="xunit" Version="*" />
   </ItemGroup>
 
-  <ItemGroup Condition="'$(IsTest)' == 'true'">
+  <ItemGroup Condition="'$(_IsTest)' == 'true'">
     <PackageReference Include="FluentAssertions" Version="*" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="*" />
     <PackageReference Include="xunit.runner.visualstudio" Version="*" PrivateAssets="All" />
   </ItemGroup>
 
-  <ItemGroup Condition="'$(IsTest)' == 'true' and '$(OS)' == 'Unix'">
+  <ItemGroup Condition="'$(_IsTest)' == 'true' and '$(TargetFrameworkIdentifier)' == '.NETFramework' and '$(OS)' == 'Unix'">
     <PackageReference Include="Microsoft.TestPlatform.ObjectModel" Version="*" />
   </ItemGroup>
 
