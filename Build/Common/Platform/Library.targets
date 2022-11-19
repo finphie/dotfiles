@@ -11,6 +11,8 @@
     <RootNamespace>$(MSBuildProjectName.Substring(0, $(MSBuildProjectName.LastIndexOf('.'))))</RootNamespace>
   </PropertyGroup>
 
+  <Import Project="$(BuildCommonDirectory)/PolySharp.targets" />
+
   <Choose>
 
     <When Condition="$(MSBuildProjectName.EndsWith('Generator'))">

@@ -9,6 +9,8 @@
     <PackageReference Include="xunit" Version="*" />
   </ItemGroup>
 
+  <Import Project="$(BuildCommonDirectory)/PolySharp.targets" />
+
   <Choose>
     <When Condition="'$(_IsTest)' == 'true'">
 

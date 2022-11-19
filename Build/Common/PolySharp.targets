@@ -1,0 +1,15 @@
+<Project>
+  <!--
+    PolySharp関連の設定
+    https://github.com/Sergio0694/PolySharp
+  -->
+
+  <PropertyGroup>
+    <PolySharpIncludeRuntimeSupportedAttributes>true</PolySharpIncludeRuntimeSupportedAttributes>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="PolySharp" Version="*" PrivateAssets="All" />
+  </ItemGroup>
+
+</Project>
