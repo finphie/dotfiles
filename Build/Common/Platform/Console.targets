@@ -1,34 +1,14 @@
 <Project>
   <!-- コンソールアプリケーション関連の設定 -->
 
-  <Choose>
+  <PropertyGroup>
+    <_IsTool>$(MSBuildProjectName.EndsWith('Tool'))</_IsTool>
+    <_IsBenchmark>$(MSBuildProjectName.EndsWith('Benchmarks'))</_IsBenchmark>
+    <_IsDefaultConsole Condition="'$(_IsTool)' != 'true' and '$(_IsBenchmark)' != 'true'">true</_IsDefaultConsole>
+  </PropertyGroup>
 
-    <When Condition="$(MSBuildProjectName.EndsWith('Tool'))">
-      <Import Project="$(BuildCommonDirectory)/Tool.targets" />
-    </When>
-
-    <When Condition="$(MSBuildProjectName.EndsWith('Benchmarks'))">
-      <Import Project="$(BuildCommonDirectory)/Benchmark.targets" />
-    </When>
-
-    <Otherwise>
-      <PropertyGroup>
-        <IsPublishable>true</IsPublishable>
-      </PropertyGroup>
-
-      <Import Project="$(BuildCommonDirectory)/Trimming.targets" />
-      <Import Project="$(BuildCommonDirectory)/Runtime.targets" />
-
-      <!--
-        NativeAOT: 起動速度を優先する場合
-        Dynamic PGO: 実行速度を優先する場合
-
-        TODO: [.NET 8]非NativeAOTでは、ReadyToRunを有効にする。
-        https://github.com/dotnet/runtime/pull/70941
-      -->
-      <Import Condition="'$(Pgo)' == ''" Project="$(BuildCommonDirectory)/NativeAot.targets" />
-    </Otherwise>
-
-  </Choose>
+  <Import Condition="'$(_IsTool)' == 'true'" Project="$(BuildCommonDirectory)/Tool.targets" />
+  <Import Condition="'$(_IsBenchmark)' == 'true'" Project="$(BuildCommonDirectory)/Benchmark.targets" />
+  <Import Condition="'$(_IsDefaultConsole)' == 'true'" Project="$(BuildCommonDirectory)/Console.Default.targets" />
 
 </Project>

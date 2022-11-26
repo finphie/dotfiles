@@ -1,0 +1,21 @@
+<Project>
+  <!-- ライブラリ関連のデフォルト設定 -->
+
+  <PropertyGroup>
+    <_IsAbstractions>$(MSBuildProjectName.EndsWith('Abstractions'))</_IsAbstractions>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <IsPackable>true</IsPackable>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(_IsAbstractions)' == 'true'">
+    <!-- ルート名前空間から「Abstractions」を取り除く。 -->
+    <RootNamespace>$(MSBuildProjectName.Substring(0, $(MSBuildProjectName.LastIndexOf('.'))))</RootNamespace>
+  </PropertyGroup>
+
+  <Import Project="$(BuildCommonDirectory)/NuGet.targets" />
+  <Import Project="$(BuildCommonDirectory)/Trimming.Analyzer.targets" />
+
+</Project>

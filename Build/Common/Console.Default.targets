@@ -1,0 +1,20 @@
+<Project>
+  <!-- 実行ファイルを出力するコンソールアプリケーション関連の設定 -->
+
+  <PropertyGroup>
+    <IsPublishable>true</IsPublishable>
+  </PropertyGroup>
+
+  <Import Project="$(BuildCommonDirectory)/Trimming.targets" />
+  <Import Project="$(BuildCommonDirectory)/Runtime.targets" />
+
+  <!--
+    Native AOT: 起動速度を優先する場合
+    Dynamic PGO: 実行速度を優先する場合
+
+    TODO: [.NET 8]非NativeAOTでは、ReadyToRunを有効にする。
+    https://github.com/dotnet/runtime/pull/70941
+  -->
+  <Import Condition="'$(Pgo)' == ''" Project="$(BuildCommonDirectory)/NativeAot.targets" />
+
+</Project>

@@ -9,15 +9,11 @@
     <SingleProject>true</SingleProject>
   </PropertyGroup>
 
-  <Choose>
-    <When Condition="'$(TargetPlatformIdentifier)' == 'windows'">
-      <Import Project="$(BuildCommonPlatformDirectory)/WinUI.targets" />
+  <Import Condition="'$(TargetPlatformIdentifier)' == 'windows'" Project="$(BuildCommonPlatformDirectory)/WinUI.targets" />
 
-      <PropertyGroup>
-        <SupportedOSPlatformVersion>$(TargetPlatformMinVersion)</SupportedOSPlatformVersion>
-      </PropertyGroup>
-    </When>
-  </Choose>
+  <PropertyGroup Condition="'$(TargetPlatformIdentifier)' == 'windows'">
+    <SupportedOSPlatformVersion>$(TargetPlatformMinVersion)</SupportedOSPlatformVersion>
+  </PropertyGroup>
 
   <Import Condition="'$(TargetPlatformIdentifier)' == 'android'" Project="$(BuildCommonPlatformDirectory)/Android.targets" />
 

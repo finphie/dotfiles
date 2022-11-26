@@ -2,32 +2,15 @@
   <!--ライブラリ関連の設定 -->
 
   <PropertyGroup>
-    <IsPackable>true</IsPackable>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="$(MSBuildProjectName.EndsWith('Abstractions'))">
-    <!-- ルート名前空間から「Abstractions」を取り除く。 -->
-    <RootNamespace>$(MSBuildProjectName.Substring(0, $(MSBuildProjectName.LastIndexOf('.'))))</RootNamespace>
+    <_IsGenerator>$(MSBuildProjectName.EndsWith('Generator'))</_IsGenerator>
+    <_IsGeneratorInternal>$(MSBuildProjectName.EndsWith('Generator.Internal'))</_IsGeneratorInternal>
+    <_IsDefaultLibrary Condition="'$(_IsGenerator)' != 'true' and '$(_IsGeneratorInternal)' != 'true'">true</_IsDefaultLibrary>
   </PropertyGroup>
 
   <Import Project="$(BuildCommonDirectory)/PolySharp.targets" />
 
-  <Choose>
-
-    <When Condition="$(MSBuildProjectName.EndsWith('Generator'))">
-      <Import Project="$(BuildCommonDirectory)/Generator.targets" />
-    </When>
-
-    <When Condition="$(MSBuildProjectName.EndsWith('Generator.Internal'))">
-      <Import Project="$(BuildCommonDirectory)/Generator.Internal.targets" />
-    </When>
-
-    <Otherwise>
-      <Import Project="$(BuildCommonDirectory)/NuGet.targets" />
-      <Import Project="$(BuildCommonDirectory)/Trimming.Analyzer.targets" />
-    </Otherwise>
-
-  </Choose>
+  <Import Condition="'$(_IsGenerator)' == 'true'" Project="$(BuildCommonDirectory)/Generator.targets" />
+  <Import Condition="'$(_IsGeneratorInternal)' == 'true'" Project="$(BuildCommonDirectory)/Generator.Internal.targets" />
+  <Import Condition="'$(_IsDefaultLibrary)' == 'true'" Project="$(BuildCommonDirectory)/Library.Default.targets" />
 
 </Project>

@@ -4,33 +4,55 @@
   <Choose>
 
     <When Condition="'$(UseWinUI)' == 'true'">
-      <Import Project="$(BuildCommonPlatformDirectory)/WinUI.targets" />
+      <PropertyGroup>
+        <_IsWinUI>true</_IsWinUI>
+      </PropertyGroup>
     </When>
 
     <When Condition="'$(UseWPF)' == 'true'">
-      <Import Project="$(BuildCommonPlatformDirectory)/Wpf.targets" />
+      <PropertyGroup>
+        <_IsWpf>true</_IsWpf>
+      </PropertyGroup>
     </When>
 
     <When Condition="'$(UsingMicrosoftMauiSdk)' == 'true'">
-      <Import Project="$(BuildCommonPlatformDirectory)/Maui.targets" />
+      <PropertyGroup>
+        <_IsMaui>true</_IsMaui>
+      </PropertyGroup>
     </When>
 
     <When Condition="'$(UseAvalonia)' == 'true'">
-      <Import Project="$(BuildCommonPlatformDirectory)/Avalonia.targets" />
+      <PropertyGroup>
+        <_IsAvalonia>true</_IsAvalonia>
+      </PropertyGroup>
     </When>
 
     <When Condition="'$(UsingMicrosoftNETSdkWeb)' == 'true'">
-      <Import Project="$(BuildCommonPlatformDirectory)/AspNet.targets" />
+      <PropertyGroup>
+        <_IsAspNet>true</_IsAspNet>
+      </PropertyGroup>
     </When>
 
     <When Condition="'$(UsingMicrosoftNETSdkBlazorWebAssembly)' == 'true'">
-      <Import Project="$(BuildCommonPlatformDirectory)/BlazorWebAssembly.targets" />
+      <PropertyGroup>
+        <_IsBlazorWebAssembly>true</_IsBlazorWebAssembly>
+      </PropertyGroup>
     </When>
 
     <Otherwise>
-      <Import Project="$(BuildCommonPlatformDirectory)/Console.targets" />
+      <PropertyGroup>
+        <_IsConsole>true</_IsConsole>
+      </PropertyGroup>
     </Otherwise>
 
   </Choose>
+
+  <Import Condition="'$(_IsWinUI)' == 'true'" Project="$(BuildCommonPlatformDirectory)/WinUI.targets" />
+  <Import Condition="'$(_IsWpf)' == 'true'" Project="$(BuildCommonPlatformDirectory)/Wpf.targets" />
+  <Import Condition="'$(_IsMaui)' == 'true'" Project="$(BuildCommonPlatformDirectory)/Maui.targets" />
+  <Import Condition="'$(_IsAvalonia)' == 'true'" Project="$(BuildCommonPlatformDirectory)/Avalonia.targets" />
+  <Import Condition="'$(_IsAspNet)' == 'true'" Project="$(BuildCommonPlatformDirectory)/AspNet.targets" />
+  <Import Condition="'$(_IsBlazorWebAssembly)' == 'true'" Project="$(BuildCommonPlatformDirectory)/BlazorWebAssembly.targets" />
+  <Import Condition="'$(_IsConsole)' == 'true'" Project="$(BuildCommonPlatformDirectory)/Console.targets" />
 
 </Project>
