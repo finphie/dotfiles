@@ -21,7 +21,7 @@
   </PropertyGroup>
 
   <ItemGroup Condition="'$(UseWinUI)' == 'true'">
-    <PackageReference Include="Microsoft.WindowsAppSDK" Version="*-*" />
+    <PackageReference Include="Microsoft.WindowsAppSDK" Version="*" />
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="*" />
   </ItemGroup>
 
