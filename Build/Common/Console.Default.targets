@@ -15,6 +15,7 @@
     TODO: [.NET 8]非NativeAOTでは、ReadyToRunを有効にする。
     https://github.com/dotnet/runtime/pull/70941
   -->
-  <Import Condition="'$(Pgo)' == ''" Project="$(BuildCommonDirectory)/NativeAot.targets" />
+  <Import Condition="'$(Pgo)' != 'true'" Project="$(BuildCommonDirectory)/NativeAot.targets" />
+  <Import Condition="'$(Pgo)' == 'true'" Project="$(BuildCommonDirectory)/SingleFile.targets" />
 
 </Project>
