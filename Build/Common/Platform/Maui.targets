@@ -9,12 +9,13 @@
     <SingleProject>true</SingleProject>
   </PropertyGroup>
 
+  <Import Project="$(BuildCommonDirectory)/Xamarin.targets" />
   <Import Condition="'$(TargetPlatformIdentifier)' == 'windows'" Project="$(BuildCommonPlatformDirectory)/WinUI.targets" />
 
   <PropertyGroup Condition="'$(TargetPlatformIdentifier)' == 'windows'">
     <SupportedOSPlatformVersion>$(TargetPlatformMinVersion)</SupportedOSPlatformVersion>
   </PropertyGroup>
 
-  <Import Condition="'$(TargetPlatformIdentifier)' == 'android'" Project="$(BuildCommonPlatformDirectory)/Android.targets" />
+  <Import Condition="'$(TargetPlatformIdentifier)' == 'android'" Project="$(BuildCommonDirectory)/Android.targets" />
 
 </Project>
