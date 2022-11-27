@@ -1,0 +1,20 @@
+<Project>
+  <!--
+    単一ファイル関連の設定
+    https://learn.microsoft.com/dotnet/core/deploying/single-file/overview
+  -->
+
+  <PropertyGroup>
+    <!-- 単一ファイルでの発行を有効にする。 -->
+    <PublishSingleFile>true</PublishSingleFile>
+
+    <!-- アプリを自己完結型とする。 -->
+    <SelfContained>true</SelfContained>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)' != 'Debug'">
+    <!-- トリミングを有効にする。 -->
+    <PublishTrimmed>true</PublishTrimmed>
+  </PropertyGroup>
+
+</Project>
