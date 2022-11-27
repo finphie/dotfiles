@@ -8,7 +8,7 @@
 
   <PropertyGroup>
     <IsPublishable>true</IsPublishable>
-    <SupportedOSPlatformVersion >28</SupportedOSPlatformVersion>
+    <SupportedOSPlatformVersion>28</SupportedOSPlatformVersion>
 
     <!--  HttpMessageHandlerの既定のプラットフォーム実装を使用し、マネージド実装を削除する。 -->
     <!-- <UseNativeHttpHandler>true</UseNativeHttpHandler> -->
