@@ -21,7 +21,7 @@
   <!-- アセンブリ情報 -->
   <PropertyGroup>
     <Authors>finphie</Authors>
-    <Copyright>© 2022 $(Authors)</Copyright>
+    <Copyright>© $([System.DateTime]::UtcNow.ToString(yyyy)) $(Authors)</Copyright>
   </PropertyGroup>
 
   <!-- 変数の定義 -->
