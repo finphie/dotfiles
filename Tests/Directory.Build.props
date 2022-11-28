@@ -11,30 +11,24 @@
 
   <Import Project="$(BuildCommonDirectory)/PolySharp.targets" />
 
-  <Choose>
-    <When Condition="'$(_IsTest)' == 'true'">
+  <PropertyGroup Condition="'$(_IsTest)' == 'true'">
+    <!--
+      [SA0001]
+      All diagnostics of XML documentation comments has been disabled due to the current project configuration.
+      https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA0001.md
+      理由: テストプロジェクトではドキュメンテーションコメントは必要ない。
+    -->
+    <NoWarn>$(NoWarn);SA0001</NoWarn>
+  </PropertyGroup>
 
-      <PropertyGroup>
-        <!--
-          [SA0001]
-          All diagnostics of XML documentation comments has been disabled due to the current project configuration.
-          https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA0001.md
-          理由: テストプロジェクトではドキュメンテーションコメントは必要ない。
-        -->
-        <NoWarn>$(NoWarn);SA0001</NoWarn>
-      </PropertyGroup>
+  <ItemGroup Condition="'$(_IsTest)' == 'true'">
+    <PackageReference Include="FluentAssertions" Version="*" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="*" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="*" PrivateAssets="All" />
+  </ItemGroup>
 
-      <ItemGroup>
-        <PackageReference Include="FluentAssertions" Version="*" />
-        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="*" />
-        <PackageReference Include="xunit.runner.visualstudio" Version="*" PrivateAssets="All" />
-      </ItemGroup>
-
-      <ItemGroup Condition="'$(TargetFrameworkIdentifier)' == '.NETFramework' and '$(OS)' == 'Unix'">
-        <PackageReference Include="Microsoft.TestPlatform.ObjectModel" Version="*" />
-      </ItemGroup>
-
-    </When>
-  </Choose>
+  <ItemGroup Condition="'$(_IsTest)' == 'true' and '$(TargetFrameworkIdentifier)' == '.NETFramework' and '$(OS)' == 'Unix'">
+    <PackageReference Include="Microsoft.TestPlatform.ObjectModel" Version="*" />
+  </ItemGroup>
 
 </Project>
