@@ -9,7 +9,7 @@
     <PublishSingleFile>true</PublishSingleFile>
 
     <!-- アプリを自己完結型とする。 -->
-    <SelfContained>true</SelfContained>
+    <PublishSelfContained>true</PublishSelfContained>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)' != 'Debug'">
