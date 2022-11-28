@@ -7,8 +7,6 @@
   -->
 
   <PropertyGroup>
-    <PublishAot>true</PublishAot>
-
     <!-- デバッグシンボルをバイナリから削除する。 -->
     <StripSymbols>true</StripSymbols>
 
