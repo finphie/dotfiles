@@ -6,7 +6,6 @@
 
   <PropertyGroup>
     <IsPublishable>true</IsPublishable>
-    <SingleProject>true</SingleProject>
   </PropertyGroup>
 
   <Import Project="$(BuildCommonDirectory)/Xamarin.targets" />
