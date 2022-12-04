@@ -3,6 +3,7 @@
 
   <PropertyGroup>
     <IsPackable>true</IsPackable>
+    <IsPublishable>true</IsPublishable>
     <PackAsTool>true</PackAsTool>
 
     <!-- ルート名前空間を、プロジェクト名末尾から「Tool」を取り除いたものにする。 -->
