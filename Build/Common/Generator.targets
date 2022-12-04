@@ -8,7 +8,7 @@
     <!-- パッケージ分析を無効にする。 -->
     <NoPackageAnalysis>true</NoPackageAnalysis>
 
-    <!-- ルート名前空間から「Generator」を取り除く。 -->
+    <!-- ルート名前空間を、プロジェクト名末尾から「Generator」を取り除いたものにする。 -->
     <RootNamespace>$(MSBuildProjectName.Substring(0, $(MSBuildProjectName.LastIndexOf('.'))))</RootNamespace>
   </PropertyGroup>
 

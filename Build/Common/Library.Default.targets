@@ -11,7 +11,7 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(_IsAbstractions)' == 'true'">
-    <!-- ルート名前空間から「Abstractions」を取り除く。 -->
+    <!-- ルート名前空間を、プロジェクト名末尾から「Abstractions」を取り除いたものにする。 -->
     <RootNamespace>$(MSBuildProjectName.Substring(0, $(MSBuildProjectName.LastIndexOf('.'))))</RootNamespace>
   </PropertyGroup>
 

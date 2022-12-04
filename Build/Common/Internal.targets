@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <!-- ルート名前空間から「Internal」を取り除く。 -->
+    <!-- ルート名前空間を、プロジェクト名末尾から「Internal」を取り除いたものにする。 -->
     <RootNamespace>$(MSBuildProjectName.Substring(0, $(MSBuildProjectName.LastIndexOf('.'))))</RootNamespace>
   </PropertyGroup>
 
