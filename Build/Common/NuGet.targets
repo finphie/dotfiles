@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <_BuildFilePathWithoutExtension>$(BuildDirectory)/$(MSBuildProjectName)</_BuildFilePathWithoutExtension>
-    <_BuildPropsFilePath>$(BuildFilePathWithoutExtension).props</_BuildPropsFilePath>
-    <_BuildTargetsFilePath>$(BuildFilePathWithoutExtension).targets</_BuildTargetsFilePath>
+    <_BuildPropsFilePath>$(_BuildFilePathWithoutExtension).props</_BuildPropsFilePath>
+    <_BuildTargetsFilePath>$(_BuildFilePathWithoutExtension).targets</_BuildTargetsFilePath>
   </PropertyGroup>
 
   <PropertyGroup>
