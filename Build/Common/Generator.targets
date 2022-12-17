@@ -5,6 +5,10 @@
   -->
 
   <PropertyGroup>
+    <_GeneratorInternalProjectName>$(MSBuildProjectName).Internal</_GeneratorInternalProjectName>
+  </PropertyGroup>
+
+  <PropertyGroup>
     <IsPackable>true</IsPackable>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
 
@@ -16,8 +20,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <!--
+      Internalプロジェクトより後にビルドさせるため、プロジェクト参照を設定する。
+      ReferenceOutputAssemblyをfalseにすると、パッケージの依存関係には含まれない。
+    -->
+    <ProjectReference Include="../$(_GeneratorInternalProjectName)/$(_GeneratorInternalProjectName).csproj" ReferenceOutputAssembly="false" />
+
     <!-- パッケージ内部にソースジェネレーターのdllを埋め込む。 -->
-    <None Include="../$(MSBuildProjectName).Internal/bin/$(Configuration)/netstandard2.0/$(MSBuildProjectName).Internal.dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
+    <None Include="../$(_GeneratorInternalProjectName)/bin/$(Configuration)/netstandard2.0/$(_GeneratorInternalProjectName).dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
   </ItemGroup>
 
   <Import Project="$(BuildCommonDirectory)/NuGet.targets" />
