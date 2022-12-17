@@ -1,5 +1,8 @@
 <Project>
-  <!-- ソースジェネレーターを埋め込みNuGetに公開するライブラリ関連の設定 -->
+  <!--
+    ソースジェネレーター関連の設定（NuGet公開）
+    ソースジェネレーターを内部に埋め込む。
+  -->
 
   <PropertyGroup>
     <IsPackable>true</IsPackable>
@@ -13,7 +16,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <!-- 直接NuGetには公開せず、公開する別プロジェクトに出力されるdllを含める。 -->
+    <!-- パッケージ内部にソースジェネレーターのdllを埋め込む。 -->
     <None Include="../$(MSBuildProjectName).Internal/bin/$(Configuration)/netstandard2.0/$(MSBuildProjectName).Internal.dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
   </ItemGroup>
 
