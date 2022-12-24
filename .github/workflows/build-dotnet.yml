@@ -27,6 +27,7 @@ env:
 jobs:
   test:
     name: Test
+    if: github.event.repository.name != 'dotfiles'
     runs-on: windows-latest
 
     steps:
