@@ -6,69 +6,28 @@ on:
       - '**/*.cs'
       - '**/*.tt'
       - '**/*.xaml'
-      - '**/*.axaml'
       - '**/*.razor'
       - '**/*.cshtml'
       - '**/*.csproj'
       - '**/*.sln'
-      - '**/Directory.Build.props'
-      - '**/Directory.Build.targets'
+      - '**/*.props'
+      - '**/*.targets'
       - '**/.editorconfig'
       - '**/.globalconfig'
       - .github/workflows/build-dotnet.yml
 
+permissions:
+  contents: read
+
 env:
   DOTNET_NOLOGO: true
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
   DOTNET_CLI_TELEMETRY_OPTOUT: true
 
 jobs:
-  check:
-    name: Check
-    if: github.event.repository.name != 'dotfiles'
-    runs-on: ubuntu-latest
-    outputs:
-      dotnet: ${{ steps.check-file.outputs.dotnet }}
-      os: ${{ steps.settings.outputs.os }}
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Check file
-        id: check-file
-        shell: pwsh
-        run: Write-Output "::set-output name=dotnet::$(Test-Path *.sln)"
-
-      - name: Check platform
-        id: check-platform
-        if: steps.check-file.outputs.dotnet == 'True'
-        shell: pwsh
-        run: ./.github/CheckPlatform.ps1
-
-      - name: Settings
-        id: settings
-        if: steps.check-file.outputs.dotnet == 'True'
-        shell: pwsh
-        run: |
-          $os = '["windows-latest", "ubuntu-latest", "macOS-latest"]'
-          $gui = '${{ steps.check-platform.outputs.gui }}'
-          $windows = '${{ steps.check-platform.outputs.windows }}'
-
-          if ($gui -eq 'True' -and $windows -eq 'True') {
-            $os = '["windows-latest"]'
-          }
-
-          Write-Output "::set-output name=os::$os"
-
   test:
     name: Test
-    needs: check
-    if: needs.check.outputs.dotnet == 'True'
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        os: ${{ fromJson(needs.check.outputs.os) }}
+    runs-on: windows-latest
 
     steps:
       - name: Checkout repository
