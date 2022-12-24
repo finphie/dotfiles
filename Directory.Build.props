@@ -22,7 +22,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)/Source/Common/**/*.cs" Visible="false" />
   </ItemGroup>
 
-  <Import Project="$(BuildCommonPlatformDirectory)/Analyzers.props" />
-  <Import Project="$(BuildCommonPlatformDirectory)/Metadata.props" />
+  <Import Project="$(BuildCommonDirectory)/Analyzers.props" />
+  <Import Project="$(BuildCommonDirectory)/Metadata.props" />
 
 </Project>
