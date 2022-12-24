@@ -10,14 +10,6 @@
     <IsPublishable>false</IsPublishable>
   </PropertyGroup>
 
-  <!-- アナライザーの設定 -->
-  <PropertyGroup>
-    <NoWarn>$(NoWarn);SA0001</NoWarn>
-    <AnalysisLevel>preview</AnalysisLevel>
-    <AnalysisMode>All</AnalysisMode>
-    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
-  </PropertyGroup>
-
   <!-- アセンブリ情報 -->
   <PropertyGroup>
     <Authors>finphie</Authors>
@@ -36,10 +28,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)/Source/Common/**/*.cs" Visible="false" />
   </ItemGroup>
 
-  <!-- アナライザーの参照を追加 -->
-  <ItemGroup>
-    <PackageReference Include="Microsoft.VisualStudio.Threading.Analyzers" Version="*" PrivateAssets="All" />
-    <PackageReference Include="StyleCop.Analyzers" Version="*-*" PrivateAssets="All" />
-  </ItemGroup>
+  <Import Project="$(BuildCommonPlatformDirectory)/Analyzers.props" />
 
 </Project>
