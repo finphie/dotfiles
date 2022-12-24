@@ -8,21 +8,26 @@
 
   <PropertyGroup>
     <IsPublishable>true</IsPublishable>
+
+    <!-- versionCodeを指定する。 -->
+    <ApplicationVersion>$(MajorVersion)$(MinorVersion)$(BuildVersion)</ApplicationVersion>
+
+    <!-- minSdkVersionを指定する。 -->
     <SupportedOSPlatformVersion>28</SupportedOSPlatformVersion>
 
     <!--  HttpMessageHandlerの既定のプラットフォーム実装を使用し、マネージド実装を削除する。 -->
-    <!-- <UseNativeHttpHandler>true</UseNativeHttpHandler> -->
+    <UseNativeHttpHandler>true</UseNativeHttpHandler>
 
     <!-- コンカレントGCを有効にする。 -->
-    <!-- <AndroidEnableSGenConcurrent>true</AndroidEnableSGenConcurrent> -->
+    <AndroidEnableSGenConcurrent>true</AndroidEnableSGenConcurrent>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)' != 'Debug'">
     <!-- AOTコンパイルを有効にする。 -->
-    <!-- <RunAOTCompilation>true</RunAOTCompilation> -->
+    <RunAOTCompilation>true</RunAOTCompilation>
 
     <!--  AOTプロファイルを使用する。 -->
-    <!-- <AndroidEnableProfiledAot>false</AndroidEnableProfiledAot> -->
+    <AndroidEnableProfiledAot>true</AndroidEnableProfiledAot>
 
     <!-- リンクを基本クラスライブラリとユーザーのアセンブリで実行する。 -->
     <AndroidLinkMode>Full</AndroidLinkMode>
