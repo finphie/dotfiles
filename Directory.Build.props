@@ -10,12 +10,6 @@
     <IsPublishable>false</IsPublishable>
   </PropertyGroup>
 
-  <!-- アセンブリ情報 -->
-  <PropertyGroup>
-    <Authors>finphie</Authors>
-    <Copyright>© $([System.DateTime]::UtcNow.ToString(yyyy)) $(Authors)</Copyright>
-  </PropertyGroup>
-
   <!-- 変数の定義 -->
   <PropertyGroup>
     <BuildDirectory>$(MSBuildThisFileDirectory)/Build</BuildDirectory>
@@ -29,5 +23,6 @@
   </ItemGroup>
 
   <Import Project="$(BuildCommonPlatformDirectory)/Analyzers.props" />
+  <Import Project="$(BuildCommonPlatformDirectory)/Metadata.props" />
 
 </Project>
