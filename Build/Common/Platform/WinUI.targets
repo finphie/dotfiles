@@ -4,12 +4,14 @@
   <PropertyGroup>
     <IsPublishable>true</IsPublishable>
     <TargetPlatformMinVersion>10.0.19041.0</TargetPlatformMinVersion>
+    <EnableMsixTooling>true</EnableMsixTooling>
 
     <!-- アプリを自己完結型とする。 -->
     <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
 
     <!-- パッケージ化しないアプリとする。 -->
     <WindowsPackageType>None</WindowsPackageType>
+    <AppxPackage>false</AppxPackage>
   </PropertyGroup>
 
   <Import Project="$(BuildCommonDirectory)/Trimming.targets" />
