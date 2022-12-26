@@ -25,9 +25,9 @@
 
   <!--
     WinUIに必要なパッケージを参照する。
-    MAUIではSDKで自動的に参照されるため注意する。
+    MAUIではSDKで自動的に参照されるため、重複して参照しないように注意する。
   -->
-  <ItemGroup Condition="'$(UseWinUI)' == 'true'">
+  <ItemGroup Condition="'$(UsingMicrosoftMauiSdk)' != 'true'">
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="*" />
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="*" />
   </ItemGroup>
@@ -41,7 +41,7 @@
     <Error Condition="!$(TargetFramework.StartsWith('net6.0'))" Text="TargetFramework must be .NET 6." />
 
     <!--
-      WindowsAppSDKSelfContained（WinUIアプリを自己完結型とする）はDirectory.Build.targetsだけでtrueに設定した場合、実行時エラーとなる。
+      WindowsAppSDKSelfContained（自己完結型WinUIアプリを出力する）はDirectory.Build.targetsだけでtrueに設定した場合、実行時エラーとなる。
       そのため、csprojまたはDirectory.Build.propsでtrueに設定する必要がある。
       Directory.Build.propsでは出力ファイルの種類やフレームワークでの分岐はできないため、WindowsAppSDKSelfContainedの設定を共通化できない。
       csprojでの設定を強制する必要があるため、true以外の場合はコンパイルエラーとする。
