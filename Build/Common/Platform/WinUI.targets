@@ -21,6 +21,9 @@
 
   <PropertyGroup>
     <InvariantGlobalization>false</InvariantGlobalization>
+
+    <!-- trueだと実行時エラーが発生する。 -->
+    <IsTrimmable>false</IsTrimmable>
   </PropertyGroup>
 
   <ItemGroup Condition="'$(UseWinUI)' == 'true'">
