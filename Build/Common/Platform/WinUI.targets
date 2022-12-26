@@ -4,7 +4,6 @@
   <PropertyGroup>
     <IsPublishable>true</IsPublishable>
     <TargetPlatformMinVersion>10.0.19041.0</TargetPlatformMinVersion>
-    <EnableMsixTooling>true</EnableMsixTooling>
   </PropertyGroup>
 
   <Import Project="$(BuildCommonDirectory)/Trimming.targets" />
@@ -35,6 +34,14 @@
       そのため、.NET 6を強制する。
     -->
     <Error Condition="!$(TargetFramework.StartsWith('net6.0'))" Text="TargetFramework must be .NET 6." />
+
+    <!--
+      EnableMsixToolingは、Directory.Build.targetsだけでtrueに設定した場合、Microsoft.Build.Packaging.Pri.Tasks.ExpandPriContentタスクを読み込めずコンパイルエラーとなる。
+      そのため、csprojまたはDirectory.Build.propsでtrueに設定する必要がある。
+      Directory.Build.propsでは出力ファイルの種類やフレームワークでの分岐はできないため、EnableMsixToolingの設定を共通化できない。
+      csprojでの設定を強制する必要があるため、true以外の場合はコンパイルエラーとする。
+    -->
+    <Error Condition="'$(EnableMsixTooling)' != 'true'" Text="EnableMsixTooling must be true." />
 
     <!--
       WindowsPackageType（非パッケージアプリを出力する）は、Directory.Build.targetsだけでNoneに設定した場合、コンパイルエラーとなる。
