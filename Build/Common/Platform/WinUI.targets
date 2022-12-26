@@ -6,9 +6,6 @@
     <TargetPlatformMinVersion>10.0.19041.0</TargetPlatformMinVersion>
     <EnableMsixTooling>true</EnableMsixTooling>
 
-    <!-- アプリを自己完結型とする。 -->
-    <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
-
     <!-- パッケージ化しないアプリとする。 -->
     <WindowsPackageType>None</WindowsPackageType>
     <AppxPackage>false</AppxPackage>
@@ -22,7 +19,7 @@
   <PropertyGroup>
     <InvariantGlobalization>false</InvariantGlobalization>
 
-    <!-- trueだと実行時エラーが発生する。 -->
+    <!-- trueだと実行時エラーとなる。 -->
     <IsTrimmable>false</IsTrimmable>
   </PropertyGroup>
 
@@ -30,5 +27,16 @@
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="*" />
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="*" />
   </ItemGroup>
+
+  <!-- WinUI関連のプロパティ検証を行うターゲット。 -->
+  <Target Name="ValidateWinUIProperty" BeforeTargets="BeforeBuild">
+    <!--
+      WindowsAppSDKSelfContained（WinUIアプリを自己完結型とする）はDirectory.Build.targetsだけでtrueに設定した場合、実行時エラーとなる。
+      そのため、csprojまたはDirectory.Build.propsでtrueに設定する必要がある。
+      Directory.Build.propsでは出力ファイルの種類やフレームワークでの分岐はできないため、WindowsAppSDKSelfContainedの設定を共通化できない。
+      csprojでの設定を強制する必要があるため、true以外の場合はコンパイルエラーとする。
+    -->
+    <Error Condition="'$(WindowsAppSDKSelfContained)' != 'true'" Text="WindowsAppSDKSelfContained must be true." />
+  </Target>
 
 </Project>
