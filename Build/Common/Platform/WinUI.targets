@@ -32,8 +32,14 @@
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="*" />
   </ItemGroup>
 
-  <!-- WinUI関連のプロパティ検証を行うターゲット。 -->
-  <Target Name="ValidateWinUIProperty" BeforeTargets="BeforeBuild">
+  <!-- WinUI関連の検証を行うターゲット。 -->
+  <Target Name="CheckWinUI" BeforeTargets="BeforeBuild">
+    <!--
+      .NET 7ではPublishTrimmedをtrueにすると、実行時エラーとなる。
+      そのため、.NET 6を強制する。
+    -->
+    <Error Condition="!$(TargetFramework.StartsWith('net6.0'))" Text="TargetFramework must be .NET 6." />
+
     <!--
       WindowsAppSDKSelfContained（WinUIアプリを自己完結型とする）はDirectory.Build.targetsだけでtrueに設定した場合、実行時エラーとなる。
       そのため、csprojまたはDirectory.Build.propsでtrueに設定する必要がある。
