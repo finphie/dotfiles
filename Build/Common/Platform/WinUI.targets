@@ -29,7 +29,7 @@
     <!-- trueだと実行時エラーとなる。 -->
     <IsTrimmable>false</IsTrimmable>
 
-    <!-- MAUI上でのWinUIアプリでは、trueだとコンパイルエラーとなる。 -->
+    <!-- MAUIアプリでは、trueだとコンパイルエラーとなる。 -->
     <PublishSingleFile Condition="'$(UsingMicrosoftMauiSdk)' == 'true'">false</PublishSingleFile>
 
     <!--
