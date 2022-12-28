@@ -28,6 +28,13 @@
 
     <!-- trueだと実行時エラーとなる。 -->
     <IsTrimmable>false</IsTrimmable>
+
+    <!--
+      TrimModeが.NET 7以降のデフォルトであるfullの場合、実行時エラーとなる。
+      <TrimmerRootAssembly Include="Microsoft.WinUI" />で実行時エラーを回避できるが、ファイルサイズが肥大化する。
+      そのため、.NET 6のデフォルトであるpartialにする。
+    -->
+    <TrimMode>partial</TrimMode>
   </PropertyGroup>
 
   <!--
@@ -41,12 +48,6 @@
 
   <!-- WinUI関連の検証を行うターゲット。 -->
   <Target Name="CheckWinUI" BeforeTargets="BeforeBuild">
-    <!--
-      .NET 7ではPublishTrimmedをtrueにすると、実行時エラーとなる。
-      そのため、.NET 6を強制する。
-    -->
-    <Error Condition="!$(TargetFramework.StartsWith('net6.0'))" Text="TargetFramework must be .NET 6." />
-
     <!--
       EnableMsixToolingは、Directory.Build.targetsだけでtrueに設定した場合、Microsoft.Build.Packaging.Pri.Tasks.ExpandPriContentタスクを読み込めずコンパイルエラーとなる。
       そのため、csprojまたはDirectory.Build.propsでtrueに設定する必要がある。
@@ -71,5 +72,19 @@
     -->
     <Error Condition="'$(WindowsAppSDKSelfContained)' != 'true'" Text="WindowsAppSDKSelfContained must be true." />
   </Target>
+
+<Target Name="AssemblyTrimming" BeforeTargets="PrepareForILLink">
+  <ItemGroup>
+
+    <!--
+      ファイルサイズを小さくするために、各アセンブリでIsTrimmableをtrueに設定する。
+      WinUIプロジェクトでtrueにすると、実行時エラーとなるので注意する。
+    -->
+    <ManagedAssemblyToLink Condition="'%(Filename)' != '$(MSBuildProjectName)'">
+      <IsTrimmable>true</IsTrimmable>
+    </ManagedAssemblyToLink>
+
+  </ItemGroup>
+</Target>
 
 </Project>
