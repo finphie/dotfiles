@@ -73,18 +73,18 @@
     <Error Condition="'$(WindowsAppSDKSelfContained)' != 'true'" Text="WindowsAppSDKSelfContained must be true." />
   </Target>
 
-<Target Name="AssemblyTrimming" BeforeTargets="PrepareForILLink">
-  <ItemGroup>
+  <Target Name="AssemblyTrimming" BeforeTargets="PrepareForILLink">
+    <ItemGroup>
 
-    <!--
-      ファイルサイズを小さくするために、各アセンブリでIsTrimmableをtrueに設定する。
-      WinUIプロジェクトでtrueにすると、実行時エラーとなるので注意する。
-    -->
-    <ManagedAssemblyToLink Condition="'%(Filename)' != '$(MSBuildProjectName)'">
-      <IsTrimmable>true</IsTrimmable>
-    </ManagedAssemblyToLink>
+      <!--
+        ファイルサイズを小さくするために、各アセンブリでIsTrimmableをtrueに設定する。
+        WinUIプロジェクトでtrueにすると、実行時エラーとなるので注意する。
+      -->
+      <ManagedAssemblyToLink Condition="'%(Filename)' != '$(MSBuildProjectName)'">
+        <IsTrimmable>true</IsTrimmable>
+      </ManagedAssemblyToLink>
 
-  </ItemGroup>
-</Target>
+    </ItemGroup>
+  </Target>
 
 </Project>
