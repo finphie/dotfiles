@@ -29,6 +29,9 @@
     <!-- trueだと実行時エラーとなる。 -->
     <IsTrimmable>false</IsTrimmable>
 
+    <!-- MAUI上でのWinUIアプリでは、trueだとコンパイルエラーとなる。 -->
+    <PublishSingleFile Condition="'$(UsingMicrosoftMauiSdk)' == 'true'">false</PublishSingleFile>
+
     <!--
       TrimModeが.NET 7以降のデフォルトであるfullの場合、実行時エラーとなる。
       <TrimmerRootAssembly Include="Microsoft.WinUI" />で実行時エラーを回避できるが、ファイルサイズが肥大化する。
@@ -71,20 +74,6 @@
       csprojでの設定を強制する必要があるため、true以外の場合はコンパイルエラーとする。
     -->
     <Error Condition="'$(WindowsAppSDKSelfContained)' != 'true'" Text="WindowsAppSDKSelfContained must be true." />
-  </Target>
-
-  <Target Name="AssemblyTrimming" BeforeTargets="PrepareForILLink">
-    <ItemGroup>
-
-      <!--
-        ファイルサイズを小さくするために、各アセンブリでIsTrimmableをtrueに設定する。
-        WinUIプロジェクトでtrueにすると、実行時エラーとなるので注意する。
-      -->
-      <ManagedAssemblyToLink Condition="'%(Filename)' != '$(MSBuildProjectName)'">
-        <IsTrimmable>true</IsTrimmable>
-      </ManagedAssemblyToLink>
-
-    </ItemGroup>
   </Target>
 
 </Project>
