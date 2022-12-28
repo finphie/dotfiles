@@ -13,6 +13,9 @@
 
   <PropertyGroup Condition="'$(TargetPlatformIdentifier)' == 'windows'">
     <SupportedOSPlatformVersion>$(TargetPlatformMinVersion)</SupportedOSPlatformVersion>
+
+    <!-- trueだとコンパイルエラーとなる。 -->
+    <PublishSingleFile>false</PublishSingleFile>
   </PropertyGroup>
 
   <Import Condition="'$(TargetPlatformIdentifier)' == 'android'" Project="$(BuildCommonDirectory)/Android.targets" />

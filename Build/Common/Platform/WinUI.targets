@@ -29,9 +29,6 @@
     <!-- trueだと実行時エラーとなる。 -->
     <IsTrimmable>false</IsTrimmable>
 
-    <!-- MAUIアプリでは、trueだとコンパイルエラーとなる。 -->
-    <PublishSingleFile Condition="'$(UsingMicrosoftMauiSdk)' == 'true'">false</PublishSingleFile>
-
     <!--
       TrimModeが.NET 7以降のデフォルトであるfullの場合、実行時エラーとなる。
       <TrimmerRootAssembly Include="Microsoft.WinUI" />で実行時エラーを回避できるが、ファイルサイズが肥大化する。
