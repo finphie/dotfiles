@@ -20,4 +20,15 @@
 
   <Import Condition="'$(TargetPlatformIdentifier)' == 'android'" Project="$(BuildCommonDirectory)/Android.targets" />
 
+  <!-- MAUI関連の検証を行うターゲット。 -->
+  <Target Name="CheckMAUI" BeforeTargets="BeforeBuild">
+    <!--
+      SingleProjectは、Directory.Build.targetsだけでtrueに設定した場合、コンパイルエラーとなる。
+      そのため、csprojまたはDirectory.Build.propsでtrueに設定する必要がある。
+      Directory.Build.propsでは出力ファイルの種類やフレームワークでの分岐はできないため、SingleProjectの設定を共通化できない。
+      csprojでの設定を強制する必要があるため、true以外の場合はコンパイルエラーとする。
+    -->
+    <Error Condition="'$(SingleProject)' != 'true'" Text="SingleProject must be true." />
+  </Target>
+
 </Project>
