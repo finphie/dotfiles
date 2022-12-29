@@ -12,7 +12,7 @@
 
   <!-- ディレクトリ関連変数の定義 -->
   <PropertyGroup>
-    <BuildDirectory>$(MSBuildThisFileDirectory)/Build</BuildDirectory>
+    <BuildDirectory>$(MSBuildThisFileDirectory)Build</BuildDirectory>
     <BuildCommonDirectory>$(BuildDirectory)/Common</BuildCommonDirectory>
     <BuildCommonPlatformDirectory>$(BuildCommonDirectory)/Platform</BuildCommonPlatformDirectory>
   </PropertyGroup>
