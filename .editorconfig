@@ -18,11 +18,15 @@ end_of_line = crlf
 [*.sln]
 indent_style = tab
 
-# C# プロジェクトファイル
+# C#プロジェクトファイル
 # EditorConfigなしだとUTF-8（WPFプロジェクトはBOM付き）のCRLFになる。
 [*.csproj]
 end_of_line = crlf
 indent_size = 2
+
+# PowerShellファイル
+[*.{ps1,psd1,psm1}]
+charset = utf-8-bom
 
 # XMLファイル
 [*.{props,targets,ruleset,config,pubxml}]
