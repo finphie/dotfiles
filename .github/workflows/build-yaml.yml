@@ -10,4 +10,4 @@ permissions:
 
 jobs:
   main:
-    uses: finphie/Actions/workflows/build-yaml.yml@main
+    uses: finphie/Actions/.github/workflows/build-yaml.yml@main

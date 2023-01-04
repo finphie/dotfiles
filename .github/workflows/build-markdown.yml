@@ -12,4 +12,4 @@ permissions:
 
 jobs:
   main:
-    uses: finphie/Actions/workflows/build-markdown.yml@main
+    uses: finphie/Actions/.github/workflows/build-markdown.yml@main

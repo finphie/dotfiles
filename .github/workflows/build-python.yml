@@ -11,4 +11,4 @@ permissions:
 
 jobs:
   main:
-    uses: finphie/Actions/workflows/build-python.yml@main
+    uses: finphie/Actions/.github/workflows/build-python.yml@main
