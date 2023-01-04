@@ -7,17 +7,9 @@ on:
       - .markdownlint.yml
       - .github/workflows/build-markdown.yml
 
+permissions:
+  contents: read
+
 jobs:
-  lint:
-    name: Lint
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Install markdownlint-cli
-        run: sudo npm install -g markdownlint-cli
-
-      - name: Lint markdown
-        run: markdownlint '**/*.md'
+  main:
+    uses: finphie/Actions/workflows/build-markdown.yml@main
