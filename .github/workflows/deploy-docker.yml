@@ -13,7 +13,7 @@ permissions: {}
 jobs:
   check:
     name: Check
-    uses: finphie/Actions/.github/actions/git-versioning@main
+    uses: finphie/Actions/.github/workflows/get-version.yml@main
 
   main:
     name: Deploy(Docker)
