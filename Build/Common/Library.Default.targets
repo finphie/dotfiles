@@ -6,7 +6,6 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <IsPackable>true</IsPackable>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
@@ -15,7 +14,7 @@
     <RootNamespace>$(MSBuildProjectName.Substring(0, $(MSBuildProjectName.LastIndexOf('.'))))</RootNamespace>
   </PropertyGroup>
 
-  <Import Project="$(BuildCommonDirectory)/NuGet.targets" />
+  <Import Condition="'$(IsPackable)' == 'true'" Project="$(BuildCommonDirectory)/NuGet.targets" />
   <Import Project="$(BuildCommonDirectory)/Trimming.Analyzer.targets" />
 
 </Project>
