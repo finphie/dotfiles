@@ -1,0 +1,29 @@
+name: Deploy(Docker)
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - version.json
+
+permissions: {}
+
+jobs:
+  check:
+    name: Check
+    uses: finphie/Actions/.github/actions/git-versioning@main
+
+  main:
+    name: Deploy(Docker)
+    needs: check
+    if: needs.check.outputs.release == 'true'
+    uses: finphie/Actions/.github/workflows/deploy-docker.yml@main
+    permissions:
+      packages: write
+    with:
+      version: ${{ needs.check.outputs.version }}
+      version-major: ${{ needs.check.outputs.version-major }}
+    secrets:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
