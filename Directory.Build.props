@@ -18,7 +18,7 @@
   </PropertyGroup>
 
   <!-- バージョン関連変数の定義 -->
-  <PropertyGroup>
+  <PropertyGroup Condition="'$(Version)' != ''">
     <MajorVersion>$([System.String]::Format("{0}", $([System.Version]::Parse("$(Version)").Major)))</MajorVersion>
     <MinorVersion>$([System.String]::Format("{0:D2}", $([System.Version]::Parse("$(Version)").Minor)))</MinorVersion>
     <BuildVersion>$([System.String]::Format("{0:D3}", $([System.Version]::Parse("$(Version)").Build)))</BuildVersion>
