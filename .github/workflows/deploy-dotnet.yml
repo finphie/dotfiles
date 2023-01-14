@@ -1,0 +1,26 @@
+name: Deploy(.NET)
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+permissions: {}
+
+jobs:
+  check:
+    name: Check
+    uses: finphie/Actions/.github/workflows/get-version.yml@main
+
+  main:
+    name: Deploy(.NET)
+    needs: check
+    uses: finphie/Actions/.github/workflows/deploy-dotnet.yml@main
+    with:
+      version: ${{ needs.check.outputs.version }}
+      release: ${{ needs.check.outputs.release }}
+    secrets:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      AZURE_ARTIFACT_PAT: ${{ secrets.AZURE_ARTIFACT_PAT }}
+      NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
