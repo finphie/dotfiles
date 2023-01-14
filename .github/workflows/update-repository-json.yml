@@ -1,0 +1,13 @@
+on:
+  pull_request:
+    paths:
+      - '**/*.csproj'
+
+permissions:
+  contents: write
+
+jobs:
+  main:
+    uses: finphie/Actions/.github/workflows/update-repository-json.yml@main
+    secrets:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
