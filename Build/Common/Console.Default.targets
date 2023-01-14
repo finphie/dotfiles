@@ -5,6 +5,11 @@
     <IsPublishable>true</IsPublishable>
   </PropertyGroup>
 
+  <!-- repository.json出力の際に使用する。 -->
+  <ItemGroup>
+    <ProjectIdentifier Include="Console" />
+  </ItemGroup>
+
   <Import Project="$(BuildCommonDirectory)/Trimming.targets" />
   <Import Project="$(BuildCommonDirectory)/Runtime.targets" />
 

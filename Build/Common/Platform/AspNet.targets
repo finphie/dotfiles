@@ -8,6 +8,11 @@
     <IsPublishable>true</IsPublishable>
   </PropertyGroup>
 
+  <!-- repository.json出力の際に使用する。 -->
+  <ItemGroup>
+    <ProjectIdentifier Include="AspNet" />
+  </ItemGroup>
+
   <Import Project="$(BuildCommonDirectory)/Runtime.targets" />
 
   <!--

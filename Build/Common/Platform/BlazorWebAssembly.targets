@@ -28,6 +28,11 @@
     <PackageReference Include="Microsoft.NET.WebAssembly.Threading" Version="*" />
   </ItemGroup>
 
+  <!-- repository.json出力の際に使用する。 -->
+  <ItemGroup>
+    <ProjectIdentifier Include="BlazorWebAssembly" />
+  </ItemGroup>
+
   <Import Project="$(BuildCommonDirectory)/Trimming.targets" />
 
 </Project>

@@ -18,6 +18,12 @@
     <PublishSingleFile>false</PublishSingleFile>
   </PropertyGroup>
 
+  <!-- repository.json出力の際に使用する。 -->
+  <ItemGroup>
+    <ProjectIdentifier Include="Windows" />
+    <ProjectIdentifier Include="Android" />
+  </ItemGroup>
+
   <Import Condition="'$(TargetPlatformIdentifier)' == 'android'" Project="$(BuildCommonDirectory)/Android.targets" />
 
   <!-- MAUI関連の検証を行うターゲット。 -->

@@ -22,4 +22,9 @@
     <Nowarn>$(NoWarn);IDE0130</Nowarn>
   </PropertyGroup>
 
+  <!-- repository.json出力の際に使用する。 -->
+  <ItemGroup>
+    <ProjectIdentifier Include="Windows" />
+  </ItemGroup>
+
 </Project>

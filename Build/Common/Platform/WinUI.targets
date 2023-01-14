@@ -18,6 +18,11 @@
     <Platform Condition="$(RuntimeIdentifier.EndsWith('arm64'))">arm64</Platform>
   </PropertyGroup>
 
+  <!-- repository.json出力の際に使用する。 -->
+  <ItemGroup>
+    <ProjectIdentifier Include="Windows" />
+  </ItemGroup>
+
   <Import Project="$(BuildCommonDirectory)/Trimming.targets" />
   <Import Project="$(BuildCommonDirectory)/ReadyToRun.targets" />
   <Import Project="$(BuildCommonDirectory)/SingleFile.targets" />
