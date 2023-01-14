@@ -13,7 +13,13 @@
     <ProjectIdentifier Include="AspNet" />
   </ItemGroup>
 
+  <Import Project="$(BuildCommonDirectory)/SingleFile.targets" />
   <Import Project="$(BuildCommonDirectory)/Runtime.targets" />
+
+  <PropertyGroup>
+    <!-- ASP.NETはトリミング非対応。 -->
+    <PublishTrimmed>false</PublishTrimmed>
+  </PropertyGroup>
 
   <!--
     TODO: [.NET 8]ReadyToRunを有効にする。
