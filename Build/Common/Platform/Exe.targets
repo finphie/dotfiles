@@ -15,15 +15,10 @@
       </PropertyGroup>
     </When>
 
-    <When Condition="'$(UsingMicrosoftMauiSdk)' == 'true'">
+    <!-- UsingMicrosoftMauiSdkは、ビルドを伴わないmsbuildタスク実行時などでは使用できない。 -->
+    <When Condition="'$(UseMaui)' == 'true'">
       <PropertyGroup>
         <_IsMaui>true</_IsMaui>
-      </PropertyGroup>
-    </When>
-
-    <When Condition="'$(UseAvalonia)' == 'true'">
-      <PropertyGroup>
-        <_IsAvalonia>true</_IsAvalonia>
       </PropertyGroup>
     </When>
 
@@ -54,5 +49,16 @@
   <Import Condition="'$(_IsAspNet)' == 'true'" Project="$(BuildCommonPlatformDirectory)/AspNet.targets" />
   <Import Condition="'$(_IsBlazorWebAssembly)' == 'true'" Project="$(BuildCommonPlatformDirectory)/BlazorWebAssembly.targets" />
   <Import Condition="'$(_IsConsole)' == 'true'" Project="$(BuildCommonPlatformDirectory)/Console.targets" />
+
+  <!-- repository.json出力の際に使用する。 -->
+  <ItemGroup>
+    <ProjectIdentifier Condition="'$(_IsWinUI)' == 'true'" Include="Windows" />
+    <ProjectIdentifier Condition="'$(_IsWpf)' == 'true'" Include="Windows" />
+    <ProjectIdentifier Condition="'$(_IsMaui)' == 'true'" Include="Windows" />
+    <ProjectIdentifier Condition="'$(_IsMaui)' == 'true'" Include="Android" />
+    <ProjectIdentifier Condition="'$(_IsAspNet)' == 'true'" Include="AspNet" />
+    <ProjectIdentifier Condition="'$(_IsBlazorWebAssembly)' == 'true'" Include="BlazorWebAssembly" />
+    <ProjectIdentifier Condition="'$(_IsConsole)' == 'true'" Include="Console" />
+  </ItemGroup>
 
 </Project>
