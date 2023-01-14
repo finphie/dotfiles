@@ -16,8 +16,7 @@ on:
       - '**/.globalconfig'
       - .github/workflows/build-dotnet.yml
 
-permissions:
-  contents: read
+permissions: {}
 
 jobs:
   main:

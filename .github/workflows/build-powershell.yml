@@ -8,8 +8,7 @@ on:
       - '**/*.psm1'
       - .github/workflows/build-powershell.yml
 
-permissions:
-  contents: read
+permissions: {}
 
 jobs:
   main:

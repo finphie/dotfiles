@@ -6,8 +6,7 @@ on:
       - '**/*.py'
       - .github/workflows/build-python.yml
 
-permissions:
-  contents: read
+permissions: {}
 
 jobs:
   main:
