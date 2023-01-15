@@ -2,6 +2,8 @@
   <!-- Blazor WebAssembly関連の設定 -->
 
   <PropertyGroup>
+    <IsPublishable>true</IsPublishable>
+
     <!-- タイムゾーンサポートを無効にする。 -->
     <BlazorEnableTimeZoneSupport>false</BlazorEnableTimeZoneSupport>
 
