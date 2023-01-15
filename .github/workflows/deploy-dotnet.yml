@@ -16,6 +16,7 @@ jobs:
   main:
     name: Deploy(.NET)
     needs: check
+    if: needs.check.outputs.dotnet == 'true'
     uses: finphie/Actions/.github/workflows/deploy-dotnet.yml@main
     with:
       version: ${{ needs.check.outputs.version }}
