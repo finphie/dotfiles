@@ -18,9 +18,6 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)' != 'Debug'">
-    <!-- AOTコンパイルを有効にする。 -->
-    <RunAOTCompilation>true</RunAOTCompilation>
-
     <!-- Emscriptenコンパイラーの設定 -->
     <EmccCompileOptimizationFlag>-O3</EmccCompileOptimizationFlag>
     <EmccLinkOptimizationFlag>-O3</EmccLinkOptimizationFlag>
@@ -36,5 +33,16 @@
   </ItemGroup>
 
   <Import Project="$(BuildCommonDirectory)/Trimming.targets" />
+
+  <!-- Blazor WebAssembly関連の検証を行うターゲット。 -->
+  <Target Name="CheckBlazorWebAssembly" BeforeTargets="BeforeBuild">
+    <!--
+      RunAOTCompilationは、Directory.Build.targetsだけでtrueに設定した場合、dotnet publish実行時にエラーとなる。
+      そのため、csprojまたはDirectory.Build.propsでtrueに設定する必要がある。
+      Directory.Build.propsでは出力ファイルの種類やフレームワークでの分岐はできないため、RunAOTCompilationの設定を共通化できない。
+      csprojでの設定を強制する必要があるため、true/falseの指定がない場合はコンパイルエラーとする。
+    -->
+    <Error Condition="'$(RunAOTCompilation)' == ''" Text="RunAOTCompilation is required." />
+  </Target>
 
 </Project>
