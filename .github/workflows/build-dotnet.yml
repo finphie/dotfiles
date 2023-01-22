@@ -20,4 +20,4 @@ permissions: {}
 
 jobs:
   main:
-    uses: finphie/Actions/workflows/build-dotnet.yml@main
+    uses: finphie/Actions/.github/workflows/build-dotnet.yml@main
