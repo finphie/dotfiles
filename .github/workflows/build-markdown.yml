@@ -5,7 +5,6 @@ on:
     paths:
       - '**/*.md'
       - .markdownlint.yml
-      - .github/workflows/build-markdown.yml
 
 permissions: {}
 

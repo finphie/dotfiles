@@ -6,7 +6,6 @@ on:
       - '**/*.ps1'
       - '**/*.psd1'
       - '**/*.psm1'
-      - .github/workflows/build-powershell.yml
 
 permissions: {}
 
