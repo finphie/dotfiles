@@ -22,6 +22,5 @@ jobs:
       version: ${{ needs.check.outputs.version }}
       release: ${{ needs.check.outputs.release }}
     secrets:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       AZURE_ARTIFACT_PAT: ${{ secrets.AZURE_ARTIFACT_PAT }}
       NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}

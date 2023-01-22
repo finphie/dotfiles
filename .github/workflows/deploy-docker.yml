@@ -25,5 +25,3 @@ jobs:
     with:
       version: ${{ needs.check.outputs.version }}
       version-major: ${{ needs.check.outputs.version-major }}
-    secrets:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
