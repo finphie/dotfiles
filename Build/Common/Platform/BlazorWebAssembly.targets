@@ -9,12 +9,6 @@
 
     <!-- 照合順序情報を無効にする。 -->
     <BlazorWebAssemblyPreserveCollationData>false</BlazorWebAssemblyPreserveCollationData>
-
-    <!-- スレッドサポートを有効にする。 -->
-    <WasmEnableThreads>true</WasmEnableThreads>
-
-    <!-- SIMDサポートを有効にする。 -->
-    <WasmEnableSIMD>true</WasmEnableSIMD>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)' != 'Debug'">
@@ -23,7 +17,15 @@
     <EmccLinkOptimizationFlag>-O3</EmccLinkOptimizationFlag>
   </PropertyGroup>
 
-  <ItemGroup>
+  <PropertyGroup Condition="'$(RunAOTCompilation)' == 'true'">
+    <!-- スレッドサポートを有効にする。 -->
+    <WasmEnableThreads>true</WasmEnableThreads>
+
+    <!-- SIMDサポートを有効にする。 -->
+    <WasmEnableSIMD>true</WasmEnableSIMD>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(RunAOTCompilation)' == 'true'">
     <PackageReference Include="Microsoft.NET.WebAssembly.Threading" Version="*" />
   </ItemGroup>
 
