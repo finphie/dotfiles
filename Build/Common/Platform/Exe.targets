@@ -1,11 +1,6 @@
 <Project>
   <!-- 実行ファイル関連の設定 -->
 
-  <PropertyGroup Condition="'$(Configuration)' != 'Debug'">
-    <!-- デバッグ情報出力を無効にする。 -->
-    <DebugType>none</DebugType>
-  </PropertyGroup>
-
   <Choose>
 
     <When Condition="'$(UseWinUI)' == 'true'">
