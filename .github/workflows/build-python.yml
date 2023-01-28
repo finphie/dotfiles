@@ -9,4 +9,5 @@ permissions: {}
 
 jobs:
   main:
+    name: Main
     uses: finphie/Actions/.github/workflows/build-python.yml@main
