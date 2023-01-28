@@ -8,6 +8,7 @@
     <GenerateDocumentationFile>false</GenerateDocumentationFile>
     <IsPackable>false</IsPackable>
     <IsPublishable>false</IsPublishable>
+    <AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>
   </PropertyGroup>
 
   <!-- ディレクトリ関連変数の定義 -->
