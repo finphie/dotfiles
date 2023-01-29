@@ -1,4 +1,4 @@
-name: Deploy(.NET)
+name: Deploy
 
 on:
   workflow_dispatch:
@@ -13,7 +13,7 @@ jobs:
     name: Check
     uses: finphie/Actions/.github/workflows/get-version.yml@main
 
-  main:
+  dotnet:
     name: Deploy(.NET)
     needs: check
     if: needs.check.outputs.dotnet == 'true'
@@ -24,3 +24,14 @@ jobs:
     secrets:
       AZURE_ARTIFACT_PAT: ${{ secrets.AZURE_ARTIFACT_PAT }}
       NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+
+  docker:
+    name: Deploy(Docker)
+    needs: check
+    if: needs.check.outputs.docker == 'true' && needs.check.outputs.release == 'true'
+    uses: finphie/Actions/.github/workflows/deploy-docker.yml@main
+    permissions:
+      packages: write
+    with:
+      version: ${{ needs.check.outputs.version }}
+      version-major: ${{ needs.check.outputs.version-major }}
