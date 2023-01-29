@@ -8,6 +8,8 @@ on:
     paths:
       - version.json
 
+permissions: {}
+
 jobs:
   check:
     name: Check
@@ -24,6 +26,8 @@ jobs:
 
       - name: Release Drafter
         uses: toolmantim/release-drafter@v5
+        permissions:
+          contents: write
         with:
           publish: true
           prerelease: false
