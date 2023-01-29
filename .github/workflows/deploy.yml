@@ -30,7 +30,7 @@ jobs:
     uses: finphie/Actions/.github/workflows/deploy-dotnet.yml@main
     with:
       version: ${{ needs.check.outputs.version }}
-      release: ${{ needs.check.outputs.release }}
+      release: ${{ needs.check.outputs.release == 'true' }}
     secrets:
       AZURE_ARTIFACT_PAT: ${{ secrets.AZURE_ARTIFACT_PAT }}
       NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
