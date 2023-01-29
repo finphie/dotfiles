@@ -13,6 +13,16 @@ jobs:
     name: Check
     uses: finphie/Actions/.github/workflows/get-version.yml@main
 
+  release:
+    name: Release
+    needs: check
+    if: needs.check.outputs.release == 'true'
+    uses: finphie/Actions/.github/workflows/release.yml@main
+    permissions:
+      contents: write
+    with:
+      version: ${{ needs.check.outputs.version }}
+
   dotnet:
     name: Deploy(.NET)
     needs: check
