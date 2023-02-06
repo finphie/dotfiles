@@ -31,7 +31,7 @@
 
   <!-- repository.json出力の際に使用する。 -->
   <ItemGroup>
-    <ProjectIdentifier Include="BlazorWebAssembly" />
+    <ProjectIdentifier Include="Browser" />
   </ItemGroup>
 
   <Import Project="$(BuildCommonDirectory)/Trimming.targets" />
