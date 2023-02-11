@@ -48,8 +48,8 @@
       <_PublishFilePath>$(PublishDir)/$(MSBuildProjectName)</_PublishFilePath>
     </PropertyGroup>
 
-    <Delete Condition="$(_TargetOS) == 'osx'" Files="$(_PublishFilePath).dwarf" />
-    <Delete Condition="$(_TargetOS) == 'linux'" Files="$(_PublishFilePath).dbg" />
+    <Delete Condition="'$(Configuration)' != 'Debug' and $(_TargetOS) == 'osx'" Files="$(_PublishFilePath).dwarf" />
+    <Delete Condition="'$(Configuration)' != 'Debug' and $(_TargetOS) == 'linux'" Files="$(_PublishFilePath).dbg" />
   </Target>
 
 </Project>
