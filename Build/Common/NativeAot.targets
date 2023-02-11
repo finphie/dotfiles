@@ -1,10 +1,17 @@
 <Project>
   <!--
     Native AOT関連の設定
+    実行ファイル作成のみに対応。（ネイティブライブラリ作成には未対応。）
     https://learn.microsoft.com/dotnet/core/deploying/native-aot/
     https://github.com/dotnet/runtime/blob/v7.0.0/src/coreclr/nativeaot/docs/optimizing.md
     https://github.com/dotnet/corert/blob/master/Documentation/using-corert/optimizing-corert.md
   -->
+
+  <PropertyGroup>
+    <_TargetOS Condition="$(RuntimeIdentifier.StartsWith('win'))">windows</_TargetOS>
+    <_TargetOS Condition="$(RuntimeIdentifier.StartsWith('osx'))">osx</_TargetOS>
+    <_TargetOS Condition="'$(_TargetOS)' == ''">linux</_TargetOS>
+  </PropertyGroup>
 
   <PropertyGroup>
     <!-- デバッグシンボルをバイナリから削除する。 -->
@@ -34,5 +41,15 @@
     <!-- 完全な型メタデータの生成を無効にする。 -->
     <IlcGenerateCompleteTypeMetadata>false</IlcGenerateCompleteTypeMetadata>
   </PropertyGroup>
+
+  <!-- シンボルを削除する。 -->
+  <Target Name="_DeleteDebugSymbolFile" AfterTargets="CopyNativeBinary">
+    <PropertyGroup>
+      <_PublishFilePath>$(PublishDir)/$(MSBuildProjectName)</_PublishFilePath>
+    </PropertyGroup>
+
+    <Delete Condition="$(_TargetOS) == 'linux'" Files="$(_PublishFilePath).dbg" />
+    <Delete Condition="$(_TargetOS) == 'osx'" Files="$(_PublishFilePath).dwarf" />
+  </Target>
 
 </Project>
