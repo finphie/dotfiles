@@ -52,7 +52,7 @@
   </ItemGroup>
 
   <!-- WinUI関連の検証を行うターゲット。 -->
-  <Target Name="CheckWinUI" BeforeTargets="BeforeBuild">
+  <Target Name="_CheckWinUI" BeforeTargets="BeforeBuild">
     <!--
       EnableMsixToolingは、Directory.Build.targetsだけでtrueに設定した場合、Microsoft.Build.Packaging.Pri.Tasks.ExpandPriContentタスクを読み込めずコンパイルエラーとなる。
       そのため、csprojまたはDirectory.Build.propsでtrueに設定する必要がある。
