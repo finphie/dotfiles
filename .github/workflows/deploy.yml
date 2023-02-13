@@ -16,7 +16,11 @@ jobs:
   release:
     name: Release
     needs: [check, dotnet]
-    if: needs.check.outputs.release == 'true'
+    if: |
+      always() &&
+      !cancelled() &&
+      (needs.dotnet.result == 'success' || needs.dotnet.result == 'skipped') &&
+      needs.check.outputs.release == 'true'
     uses: finphie/Actions/.github/workflows/release.yml@main
     permissions:
       contents: write
