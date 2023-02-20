@@ -5,10 +5,6 @@
     <_IsAbstractions>$(MSBuildProjectName.EndsWith('Abstractions'))</_IsAbstractions>
   </PropertyGroup>
 
-  <PropertyGroup>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
-  </PropertyGroup>
-
   <PropertyGroup Condition="'$(_IsAbstractions)' == 'true'">
     <!-- ルート名前空間を、プロジェクト名末尾から「Abstractions」を取り除いたものにする。 -->
     <RootNamespace>$(MSBuildProjectName.Substring(0, $(MSBuildProjectName.LastIndexOf('.'))))</RootNamespace>

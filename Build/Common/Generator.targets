@@ -10,7 +10,6 @@
 
   <PropertyGroup>
     <IsPackable>true</IsPackable>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
 
     <!-- パッケージ分析を無効にする。 -->
     <NoPackageAnalysis>true</NoPackageAnalysis>
