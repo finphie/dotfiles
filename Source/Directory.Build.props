@@ -15,9 +15,9 @@
   </ItemGroup>
 
   <!--
-    dotnet publish実行時にのみ条件をtrueにしたいが、
+    発行時にのみ条件をtrueにしたいが、
     BeforePublishターゲットでは、無視されるプロパティが存在する。
-    そのため、Versionが空以外であればdotnet publish実行と判断する。
+    そのため、Versionが空以外であれば発行時と判断する。
   -->
   <PropertyGroup Condition="'$(Version)' != ''">
     <!-- デバッグ情報出力を無効にする。 -->
