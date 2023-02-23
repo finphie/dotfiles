@@ -15,14 +15,16 @@
   </ItemGroup>
 
   <!--
-    発行時にのみ条件をtrueにしたいが、
-    BeforePublishターゲットでは、無視されるプロパティが存在する。
-    そのため、Versionが空以外であれば発行時と判断する。
+    発行時、発行先ディレクトリへのコピー対象ファイルリストからシンボルファイルを削除する。
+    PrepareForPublishターゲットでは、DebugTypeをnoneに指定してもシンボルファイルがコピーされる。
+    そのため、直接コピー対象のファイル一覧から削除する。
+    これにより、リリース先ディレクトリ内にはシンボルファイルが生成されるが、発行先ディレクトリにはコピーされなくなる。
   -->
-  <PropertyGroup Condition="'$(Version)' != ''">
-    <!-- デバッグ情報出力を無効にする。 -->
-    <DebugSymbols>false</DebugSymbols>
-    <DebugType>none</DebugType>
-  </PropertyGroup>
+  <Target Name="_DeleteSymbolFiles" BeforeTargets="PrepareForPublish">
+    <ItemGroup>
+      <FilesToExclude Condition="'%(ReferenceCopyLocalPaths.Extension)' == '.pdb'" Include="@(ReferenceCopyLocalPaths)" />
+      <ReferenceCopyLocalPaths Remove="@(FilesToExclude)" />
+    </ItemGroup>
+  </Target>
 
 </Project>
