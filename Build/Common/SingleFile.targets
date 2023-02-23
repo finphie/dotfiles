@@ -14,9 +14,7 @@
       <PublishSelfContained>true</PublishSelfContained>
     -->
     <SelfContained>true</SelfContained>
-  </PropertyGroup>
 
-  <PropertyGroup Condition="'$(RuntimeIdentifier)' != '' and '$(Configuration)' != 'Debug'">
     <!-- トリミングを有効にする。 -->
     <PublishTrimmed>true</PublishTrimmed>
   </PropertyGroup>
