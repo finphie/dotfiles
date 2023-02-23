@@ -5,17 +5,7 @@
     <IsPackable>true</IsPackable>
     <IsPublishable>true</IsPublishable>
     <PackAsTool>true</PackAsTool>
-
-    <!-- パッケージIDとルート名前空間、コマンド名を、プロジェクト名末尾から「Tool」を取り除いたものにする。 -->
-    <PackageId>$(MSBuildProjectName.Substring(0, $(MSBuildProjectName.LastIndexOf('.'))))</PackageId>
-    <RootNamespace>$(PackageId)</RootNamespace>
-    <ToolCommandName>$(PackageId)</ToolCommandName>
   </PropertyGroup>
-
-  <ItemGroup>
-    <!-- 親プロジェクトのProgram.csを参照する。 -->
-    <Compile Include="../$(PackageId)/Program.cs" />
-  </ItemGroup>
 
   <Import Project="$(BuildCommonDirectory)/NuGet.targets" />
 
