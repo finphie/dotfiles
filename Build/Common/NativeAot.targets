@@ -42,12 +42,13 @@
     <IlcGenerateCompleteTypeMetadata>false</IlcGenerateCompleteTypeMetadata>
   </PropertyGroup>
 
-  <!-- シンボルを削除する。 -->
-  <Target Name="_DeleteDebugSymbolFile" AfterTargets="CopyNativeBinary">
+  <!-- シンボルファイルを削除する。 -->
+  <Target Name="_DeleteNativeSymbolFile" AfterTargets="CopyNativeBinary">
     <PropertyGroup>
       <_PublishFilePath>$(PublishDir)/$(MSBuildProjectName)</_PublishFilePath>
     </PropertyGroup>
 
+    <Delete Condition="'$(Configuration)' != 'Debug' and $(_TargetOS) == 'windows'" Files="$(_PublishFilePath).pdb" />
     <Delete Condition="'$(Configuration)' != 'Debug' and $(_TargetOS) == 'osx'" Files="$(_PublishFilePath).dwarf" />
     <Delete Condition="'$(Configuration)' != 'Debug' and $(_TargetOS) == 'linux'" Files="$(_PublishFilePath).dbg" />
   </Target>
