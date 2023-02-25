@@ -37,7 +37,7 @@
 
   <!-- プロジェクト共通のファイルを読み込む -->
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)/Source/Common/**/*.cs" Visible="false" />
+    <Compile Include="$(MSBuildThisFileDirectory)Source/Common/**/*.cs" Visible="false" />
   </ItemGroup>
 
   <Import Project="$(BuildCommonAnalyzersDirectory)Analyzers.props" />
