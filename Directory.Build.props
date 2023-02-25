@@ -20,9 +20,12 @@
 
   <!-- ディレクトリ関連変数の定義 -->
   <PropertyGroup>
-    <BuildDirectory>$(MSBuildThisFileDirectory)Build</BuildDirectory>
-    <BuildCommonDirectory>$(BuildDirectory)/Common</BuildCommonDirectory>
-    <BuildCommonPlatformDirectory>$(BuildCommonDirectory)/Platform</BuildCommonPlatformDirectory>
+    <BuildDirectory>$(MSBuildThisFileDirectory)Build/</BuildDirectory>
+    <BuildCommonDirectory>$(BuildDirectory)Common/</BuildCommonDirectory>
+    <BuildCommonAnalyzersDirectory>$(BuildCommonDirectory)Analyzers/</BuildCommonAnalyzersDirectory>
+    <BuildCommonPackDirectory>$(BuildCommonDirectory)Pack/</BuildCommonPackDirectory>
+    <BuildCommonPublishDirectory>$(BuildCommonDirectory)Publish/</BuildCommonPublishDirectory>
+    <BuildCommonPlatformDirectory>$(BuildCommonDirectory)Platform/</BuildCommonPlatformDirectory>
   </PropertyGroup>
 
   <!-- バージョン関連変数の定義 -->
@@ -37,7 +40,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)/Source/Common/**/*.cs" Visible="false" />
   </ItemGroup>
 
-  <Import Project="$(BuildCommonDirectory)/Analyzers.props" />
+  <Import Project="$(BuildCommonAnalyzersDirectory)/Analyzers.props" />
   <Import Project="$(BuildCommonDirectory)/Metadata.props" />
 
 </Project>
