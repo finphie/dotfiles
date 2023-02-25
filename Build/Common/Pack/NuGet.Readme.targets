@@ -10,7 +10,7 @@
 
   <ItemGroup>
     <!-- NuGetパッケージに、README.mdファイルを同梱する。 -->
-    <None Include="$([MSBuild]::GetPathOfFileAbove('$(PackageReadmeFile)', '$(MSBuildThisFileDirectory)../'))" Pack="true" PackagePath="/" />
+    <None Include="$(SolutionDir)$(PackageReadmeFile)" Pack="true" PackagePath="/" />
   </ItemGroup>
 
 </Project>

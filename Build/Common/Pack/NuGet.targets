@@ -1,7 +1,7 @@
 <Project>
 
   <PropertyGroup>
-    <_BuildFilePathWithoutExtension>$(BuildDirectory)/$(MSBuildProjectName)</_BuildFilePathWithoutExtension>
+    <_BuildFilePathWithoutExtension>$(BuildDirectory)$(MSBuildProjectName)</_BuildFilePathWithoutExtension>
     <_BuildPropsFilePath>$(_BuildFilePathWithoutExtension).props</_BuildPropsFilePath>
     <_BuildTargetsFilePath>$(_BuildFilePathWithoutExtension).targets</_BuildTargetsFilePath>
   </PropertyGroup>
@@ -17,6 +17,6 @@
     <None Condition="Exists('$(_BuildTargetsFilePath)')" Include="$(_BuildTargetsFilePath)" Pack="true" PackagePath="build" Visible="false" />
   </ItemGroup>
 
-  <Import Project="$(BuildCommonDirectory)/NuGet.*.targets" />
+  <Import Project="$(MSBuildThisFileDirectory)NuGet.*.props" />
 
 </Project>
