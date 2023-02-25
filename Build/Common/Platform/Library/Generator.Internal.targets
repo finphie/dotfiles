@@ -15,6 +15,6 @@
     <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.3.1" />
   </ItemGroup>
 
-  <Import Project="$(BuildCommonDirectory)/Internal.targets" />
+  <Import Project="$(MSBuildThisFileDirectory)Internal.targets" />
 
 </Project>

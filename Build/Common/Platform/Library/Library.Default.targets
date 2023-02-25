@@ -10,7 +10,7 @@
     <RootNamespace>$(MSBuildProjectName.Substring(0, $(MSBuildProjectName.LastIndexOf('.'))))</RootNamespace>
   </PropertyGroup>
 
-  <Import Condition="'$(IsPackable)' == 'true'" Project="$(BuildCommonDirectory)/NuGet.targets" />
-  <Import Project="$(BuildCommonDirectory)/Trimming.Analyzer.targets" />
+  <Import Condition="'$(IsPackable)' == 'true'" Project="$(BuildCommonPackDirectory)NuGet.targets" />
+  <Import Project="$(BuildCommonAnalyzersDirectory)Trimming.Analyzer.targets" />
 
 </Project>
