@@ -40,7 +40,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)/Source/Common/**/*.cs" Visible="false" />
   </ItemGroup>
 
-  <Import Project="$(BuildCommonAnalyzersDirectory)/Analyzers.props" />
-  <Import Project="$(BuildCommonDirectory)/Metadata.props" />
+  <Import Project="$(BuildCommonAnalyzersDirectory)Analyzers.props" />
+  <Import Project="$(BuildCommonPlatformDirectory)Metadata.props" />
 
 </Project>
