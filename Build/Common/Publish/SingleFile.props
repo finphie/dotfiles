@@ -9,14 +9,7 @@
     <PublishSingleFile>true</PublishSingleFile>
 
     <!-- アプリを自己完結型とする。 -->
-    <!--
-      TODO: [.NET 7.0.2xx]PublishSelfContainedに対応する。
-      <PublishSelfContained>true</PublishSelfContained>
-    -->
-    <SelfContained>true</SelfContained>
-
-    <!-- トリミングを有効にする。 -->
-    <PublishTrimmed>true</PublishTrimmed>
+    <PublishSelfContained>true</PublishSelfContained>
   </PropertyGroup>
 
 </Project>

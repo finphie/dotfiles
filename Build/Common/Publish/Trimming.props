@@ -27,4 +27,9 @@
     <UseSystemResourceKeys>true</UseSystemResourceKeys>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(RuntimeIdentifier)' != ''">
+    <!-- 発行時でのトリミングを有効にする。 -->
+    <PublishTrimmed>true</PublishTrimmed>
+  </PropertyGroup>
+
 </Project>

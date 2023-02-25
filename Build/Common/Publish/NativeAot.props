@@ -14,7 +14,7 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <!-- デバッグシンボルをバイナリから削除する。 -->
+    <!-- シンボルをバイナリから削除する。 -->
     <StripSymbols>true</StripSymbols>
 
     <!-- より小さいコードサイズを優先する。 -->
