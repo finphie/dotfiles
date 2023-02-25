@@ -1,0 +1,9 @@
+<Project>
+  <!-- ガイド付き最適化のプロファイル関連の設定 -->
+
+  <PropertyGroup>
+    <!-- ガイド付き最適化のプロファイルを有効化する。 -->
+    <TieredPGO>true</TieredPGO>
+  </PropertyGroup>
+
+</Project>
