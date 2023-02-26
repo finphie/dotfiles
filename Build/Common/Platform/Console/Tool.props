@@ -7,6 +7,6 @@
     <PackAsTool>true</PackAsTool>
   </PropertyGroup>
 
-  <Import Project="$(BuildCommonDirectory)/NuGet.targets" />
+  <Import Project="$(BuildCommonPackDirectory)NuGet.targets" />
 
 </Project>

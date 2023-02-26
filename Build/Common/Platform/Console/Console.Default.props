@@ -1,0 +1,21 @@
+<Project>
+  <!-- 実行ファイルを出力するコンソールアプリケーション関連の設定 -->
+
+  <PropertyGroup>
+    <IsPublishable>true</IsPublishable>
+
+    <!--
+      Native AOT: 起動速度を優先する場合
+      Dynamic PGO: 実行速度を優先する場合
+    -->
+    <PublishMode>NativeAot</PublishMode>
+    <PublishMode Condition="'$(PublishAot)' != 'true'">DynamicPgo</PublishMode>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectIdentifier Include="Console" />
+  </ItemGroup>
+
+  <Import Project="$(BuildCommonPublishDirectory)Publish.props" />
+
+</Project>
