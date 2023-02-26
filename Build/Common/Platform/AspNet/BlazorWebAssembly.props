@@ -3,6 +3,7 @@
 
   <PropertyGroup>
     <IsPublishable>true</IsPublishable>
+    <PublishMode>Trimming</PublishMode>
 
     <!-- タイムゾーンサポートを無効にする。 -->
     <BlazorEnableTimeZoneSupport>false</BlazorEnableTimeZoneSupport>
@@ -29,22 +30,10 @@
     <PackageReference Include="Microsoft.NET.WebAssembly.Threading" Version="*" />
   </ItemGroup>
 
-  <!-- repository.json出力の際に使用する。 -->
   <ItemGroup>
     <ProjectIdentifier Include="Browser" />
   </ItemGroup>
 
-  <Import Project="$(BuildCommonDirectory)/Trimming.targets" />
-
-  <!-- Blazor WebAssembly関連の検証を行うターゲット。 -->
-  <Target Name="_CheckBlazorWebAssembly" BeforeTargets="BeforeBuild">
-    <!--
-      RunAOTCompilationは、Directory.Build.targetsだけでtrueに設定した場合、発行時にエラーとなる。
-      そのため、csprojまたはDirectory.Build.propsでtrueに設定する必要がある。
-      Directory.Build.propsでは出力ファイルの種類やフレームワークでの分岐はできないため、RunAOTCompilationの設定を共通化できない。
-      csprojでの設定を強制する必要があるため、true/falseの指定がない場合はコンパイルエラーとする。
-    -->
-    <Error Condition="'$(RunAOTCompilation)' == ''" Text="RunAOTCompilation is required." />
-  </Target>
+  <Import Project="$(BuildCommonPublishDirectory)Publish.props" />
 
 </Project>
