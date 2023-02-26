@@ -1,6 +1,6 @@
 <Project>
 
-  <Import Project="$(BuildCommonPlatformDirectory)/Shared.targets" />
+  <Import Project="$(BuildCommonDirectory)Shared.targets" />
 
   <Target Name="GetProjectIdentifier" >
     <Message Importance="High" Text="$(MSBuildProjectName),%(ProjectIdentifier.Identity)" />
