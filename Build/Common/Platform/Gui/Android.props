@@ -8,6 +8,7 @@
 
   <PropertyGroup>
     <IsPublishable>true</IsPublishable>
+    <PublishMode>Trimming</PublishMode>
 
     <!-- versionCodeを指定する。 -->
     <ApplicationVersion>$(MajorVersion)$(MinorVersion)$(BuildVersion)</ApplicationVersion>
@@ -41,7 +42,7 @@
     <EnableLLVM>true</EnableLLVM>
   </PropertyGroup>
 
-  <Import Project="$(BuildCommonDirectory)/Trimming.targets" />
+  <Import Project="$(BuildCommonPublishDirectory)Publish.props" />
 
   <PropertyGroup>
     <InvariantGlobalization>false</InvariantGlobalization>
