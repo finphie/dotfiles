@@ -1,0 +1,15 @@
+<Project>
+  <!-- ASP.NET関連の設定 -->
+
+  <PropertyGroup>
+    <IsPublishable>true</IsPublishable>
+    <PublishMode>DynamicPgoNoTrimming</PublishMode>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectIdentifier Include="Server" />
+  </ItemGroup>
+
+  <Import Project="$(BuildCommonPublishDirectory)Publish.props" />
+
+</Project>
