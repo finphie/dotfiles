@@ -9,7 +9,7 @@
     <PackageReference Include="xunit" Version="*" />
   </ItemGroup>
 
-  <Import Project="$(BuildCommonDirectory)/PolySharp.targets" />
+  <Import Project="$(BuildCommonDirectory)PolySharp.targets" />
 
   <PropertyGroup Condition="'$(_IsTest)' == 'true'">
     <!--
