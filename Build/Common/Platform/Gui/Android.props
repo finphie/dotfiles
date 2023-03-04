@@ -16,7 +16,7 @@
     <!-- minSdkVersionを指定する。 -->
     <SupportedOSPlatformVersion>28</SupportedOSPlatformVersion>
 
-    <!--  HttpMessageHandlerの既定のプラットフォーム実装を使用し、マネージド実装を削除する。 -->
+    <!-- HttpMessageHandlerの既定のプラットフォーム実装を使用し、マネージド実装を削除する。 -->
     <UseNativeHttpHandler>true</UseNativeHttpHandler>
 
     <!-- コンカレントGCを有効にする。 -->
