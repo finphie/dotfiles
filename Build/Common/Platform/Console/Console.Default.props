@@ -8,8 +8,8 @@
       Native AOT: 起動速度を優先する場合
       Dynamic PGO: 実行速度を優先する場合
     -->
-    <PublishMode>NativeAot</PublishMode>
-    <PublishMode Condition="'$(PublishAot)' != 'true'">DynamicPgo</PublishMode>
+    <PublishMode>DynamicPgo</PublishMode>
+    <PublishMode Condition="'$(PublishAot)' == 'true'">NativeAot</PublishMode>
   </PropertyGroup>
 
   <ItemGroup>
