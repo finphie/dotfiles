@@ -1,5 +1,8 @@
 <Project>
-  <!-- 実行ファイル関連の設定 -->
+  <!--
+    実行ファイル関連の設定
+    このファイルは、Directory.Build.targetsでインポートする。
+  -->
 
   <Import Condition="'$(_IsBlazorWebAssembly)' == 'true'" Project="$(BuildCommonPlatformDirectory)AspNet/BlazorWebAssembly.targets" />
 

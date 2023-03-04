@@ -1,5 +1,8 @@
 <Project>
-  <!--ライブラリ関連の設定 -->
+  <!--
+    ライブラリ関連の設定
+    このファイルは、Directory.Build.targetsでインポートする。
+  -->
 
   <PropertyGroup>
     <_BuildCommonPlatformLibraryDirectory>$(BuildCommonPlatformDirectory)Library/</_BuildCommonPlatformLibraryDirectory>
