@@ -18,8 +18,22 @@
     <Platform Condition="$(RuntimeIdentifier.EndsWith('x64'))">x64</Platform>
     <Platform Condition="$(RuntimeIdentifier.EndsWith('arm64'))">arm64</Platform>
 
+    <!--
+      MSIX関連の設定。
+      csprojまたはDirectory.Build.propsでの設定必須。
+    -->
     <EnableMsixTooling>true</EnableMsixTooling>
+
+    <!--
+      パッケージタイプの設定。
+      csprojまたはDirectory.Build.propsでの設定必須。
+    -->
     <WindowsPackageType>None</WindowsPackageType>
+
+    <!--
+      アプリを自己完結型とする。
+      csprojまたはDirectory.Build.propsでの設定必須。
+    -->
     <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
   </PropertyGroup>
 
