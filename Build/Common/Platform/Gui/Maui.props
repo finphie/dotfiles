@@ -7,18 +7,11 @@
   <PropertyGroup>
     <IsPublishable>true</IsPublishable>
 
-    <!-- 単一プロジェクトにする。 -->
+    <!--
+      単一プロジェクトにする。
+      csprojまたはDirectory.Build.propsでの設定必須。
+    -->
     <SingleProject>true</SingleProject>
-  </PropertyGroup>
-
-  <Import Project="$(MSBuildThisFileDirectory)Xamarin.props" />
-  <Import Condition="'$(TargetPlatformIdentifier)' == 'windows'" Project="$(MSBuildThisFileDirectory)WinUI.props" />
-
-  <PropertyGroup Condition="'$(TargetPlatformIdentifier)' == 'windows'">
-    <SupportedOSPlatformVersion>$(TargetPlatformMinVersion)</SupportedOSPlatformVersion>
-
-    <!-- trueだとコンパイルエラーとなる。 -->
-    <PublishSingleFile>false</PublishSingleFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -26,6 +19,15 @@
     <ProjectIdentifier Include="Android" />
   </ItemGroup>
 
+  <Import Project="$(MSBuildThisFileDirectory)Xamarin.props" />
+  <Import Condition="'$(TargetPlatformIdentifier)' == 'windows'" Project="$(MSBuildThisFileDirectory)WinUI.props" />
   <Import Condition="'$(TargetPlatformIdentifier)' == 'android'" Project="$(MSBuildThisFileDirectory)Android.props" />
+
+  <PropertyGroup Condition="'$(TargetPlatformIdentifier)' == 'windows'">
+    <SupportedOSPlatformVersion>$(TargetPlatformMinVersion)</SupportedOSPlatformVersion>
+
+    <!-- trueだとコンパイルエラーとなる。 -->
+    <PublishSingleFile>false</PublishSingleFile>
+  </PropertyGroup>
 
 </Project>
