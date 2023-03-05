@@ -4,6 +4,4 @@
     このファイルは、Directory.Build.targetsでインポートする。
   -->
 
-  <Import Condition="'$(_IsBlazorWebAssembly)' == 'true'" Project="$(BuildCommonPlatformDirectory)AspNet/BlazorWebAssembly.targets" />
-
 </Project>
