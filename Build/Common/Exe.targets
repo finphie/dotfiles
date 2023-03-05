@@ -4,4 +4,8 @@
     このファイルは、Directory.Build.targetsでインポートする。
   -->
 
+  <Target Name="_CheckExeSettings" BeforeTargets="Publish">
+    <Error Condition="'$(PublishMode)' == ''" Text="PublishMode is required." />
+  </Target>
+
 </Project>
