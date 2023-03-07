@@ -17,6 +17,6 @@
     <None Condition="Exists('$(_BuildTargetsFilePath)')" Include="$(_BuildTargetsFilePath)" Pack="true" PackagePath="build" Visible="false" />
   </ItemGroup>
 
-  <Import Project="$(MSBuildThisFileDirectory)NuGet.*.props" />
+  <Import Project="$(MSBuildThisFileDirectory)NuGet.*.targets" />
 
 </Project>
