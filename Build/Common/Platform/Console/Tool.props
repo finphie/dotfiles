@@ -1,5 +1,5 @@
 <Project>
-  <!-- .NET Tool関連の設定 -->
+  <!-- .NETツール関連の設定 -->
 
   <PropertyGroup>
     <IsPackable>true</IsPackable>
