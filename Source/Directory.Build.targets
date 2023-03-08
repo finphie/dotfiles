@@ -4,17 +4,4 @@
   <Import Condition="'$(OutputType)' == 'Library'" Project="$(BuildCommonDirectory)Library.targets" />
   <Import Condition="'$(OutputType)' == 'Exe' or '$(OutputType)' == 'WinExe'" Project="$(BuildCommonDirectory)Exe.targets" />
 
-  <!--
-    発行時、発行先ディレクトリへのコピー対象ファイルリストからシンボルファイルを削除する。
-    PrepareForPublishターゲットでは、DebugTypeをnoneに指定してもシンボルファイルがコピーされる。
-    そのため、直接コピー対象のファイル一覧から削除する。
-    これにより、リリース先ディレクトリ内にはシンボルファイルが生成されるが、発行先ディレクトリにはコピーされなくなる。
-  -->
-  <Target Name="_DeleteSymbolFiles" BeforeTargets="PrepareForPublish">
-    <ItemGroup>
-      <FilesToExclude Condition="'%(ReferenceCopyLocalPaths.Extension)' == '.pdb'" Include="@(ReferenceCopyLocalPaths)" />
-      <ReferenceCopyLocalPaths Remove="@(FilesToExclude)" />
-    </ItemGroup>
-  </Target>
-
 </Project>

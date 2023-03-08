@@ -8,4 +8,25 @@
     <Error Condition="'$(PublishMode)' == ''" Text="PublishMode is required." />
   </Target>
 
+  <!--
+    発行時、発行先ディレクトリへのコピー対象ファイルリストからシンボルファイルを削除する。
+
+    DebugTypeをnoneに指定しても、プロジェクト参照で指定されたライブラリのシンボルファイルがコピーされる。
+    これを回避するには、全参照プロジェクトのDebugTypeをnoneに指定する必要がある。
+    この場合、発行時以外でもシンボルファイルの生成を無効にしてしまう。
+    そこで、DebugTypeを使用せずにコピー対象のファイル一覧から削除する。
+    これにより、リリース先ディレクトリ内にはシンボルファイルが生成されるが、発行先ディレクトリにはコピーされなくなる。
+
+    PrepareForPublishターゲットは、パッケージ作成と発行時に実行されるため、発行時のみに限定する必要がある。
+    _IsPublishingは、発行時に発行対象プロジェクトでのみtrueとなるプロパティ。（参照されているプロジェクトでは、発行時でもtrueにならない。）
+    本来は、参照するべきではないプロパティだが、他に良い方法がないため妥協している。
+    https://github.com/dotnet/sdk/issues/26324
+  -->
+  <Target Name="_DeleteSymbolFiles" BeforeTargets="PrepareForPublish" Condition="'$(_IsPublishing)' == 'true'">
+    <ItemGroup>
+      <FilesToExclude Condition="'%(ReferenceCopyLocalPaths.Extension)' == '.pdb'" Include="@(ReferenceCopyLocalPaths)" />
+      <ReferenceCopyLocalPaths Remove="@(FilesToExclude)" />
+    </ItemGroup>
+  </Target>
+
 </Project>
