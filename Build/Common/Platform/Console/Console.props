@@ -3,14 +3,10 @@
 
   <PropertyGroup>
     <_IsBenchmark>$(MSBuildProjectName.EndsWith('Benchmarks'))</_IsBenchmark>
-    <_IsDefaultConsole Condition="'$(_IsBenchmark)' != 'true'">true</_IsDefaultConsole>
+    <IsDefaultConsole Condition="'$(_IsBenchmark)' != 'true'">true</IsDefaultConsole>
   </PropertyGroup>
 
   <Import Condition="'$(_IsBenchmark)' == 'true'" Project="$(MSBuildThisFileDirectory)Benchmark.props" />
-
-  <ImportGroup Condition="'$(_IsDefaultConsole)' == 'true'">
-    <Import Project="$(MSBuildThisFileDirectory)Tool.props" />
-    <Import Project="$(MSBuildThisFileDirectory)Console.Default.props" />
-  </ImportGroup>
+  <Import Condition="'$(IsDefaultConsole)' == 'true'" Project="$(MSBuildThisFileDirectory)Console.Default.props" />
 
 </Project>
