@@ -4,20 +4,28 @@
     https://github.com/dotnet/sourcelink
   -->
 
-  <!-- NuGet関連 -->
   <PropertyGroup>
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <TargetFrameworkMonikerAssemblyAttributesPath>$([System.IO.Path]::Combine('$(IntermediateOutputPath)','$(TargetFrameworkMoniker).AssemblyAttributes$(DefaultLanguageSourceExtension)'))</TargetFrameworkMonikerAssemblyAttributesPath>
   </PropertyGroup>
 
-  <!-- CI関連 -->
   <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
     <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
   </PropertyGroup>
 
-  <!-- パッケージ参照 -->
+  <!--
+    自動生成ファイルをSource Linkに含める。
+    https://github.com/dotnet/sourcelink/issues/572
+  -->
+  <ItemGroup>
+    <EmbeddedFiles Include="$(GeneratedAssemblyInfoFile)"/>
+    <EmbeddedFiles Include="$(GeneratedGlobalUsingsFile)"/>
+    <EmbeddedFiles Include="$(TargetFrameworkMonikerAssemblyAttributesPath)"/>
+  </ItemGroup>
+
   <ItemGroup>
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="*" PrivateAssets="All" />
   </ItemGroup>
