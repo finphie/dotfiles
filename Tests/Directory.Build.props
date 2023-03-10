@@ -9,8 +9,6 @@
     <PackageReference Include="xunit" Version="*" />
   </ItemGroup>
 
-  <Import Project="$(BuildCommonDirectory)PolySharp.targets" />
-
   <PropertyGroup Condition="'$(_IsTest)' == 'true'">
     <!--
       [SA0001]
