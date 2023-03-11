@@ -19,4 +19,10 @@
 
   <Import Project="$(MSBuildThisFileDirectory)NuGet.*.targets" />
 
+  <Target Name="_CheckNuGet" BeforeTargets="PrepareForBuild">
+    <Error Condition="'$(Description)' == ''" Text="Description is required." />
+    <Error Condition="'$(PackageLicenseExpression)' == ''" Text="PackageLicenseExpression is required." />
+    <Error Condition="'$(PackageTags)' == ''" Text="PackageTags is required." />
+  </Target>
+
 </Project>
