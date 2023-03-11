@@ -10,11 +10,13 @@
     <TargetPlatformMinVersion>10.0.19041.0</TargetPlatformMinVersion>
 
     <!--
-      AnyCPUだとコンパイルエラーになる。
-      そのため、RuntimeIdentifierによってPatformを設定する。
+      AnyCPUだとエラーになる。
       x64とarm64のみ対応する。
       https://github.com/microsoft/WindowsAppSDK/issues/2684
     -->
+    <Platforms>x64;arm64</Platforms>
+
+    <!-- RuntimeIdentifierによってPatformを設定する。 -->
     <Platform Condition="$(RuntimeIdentifier.EndsWith('x64'))">x64</Platform>
     <Platform Condition="$(RuntimeIdentifier.EndsWith('arm64'))">arm64</Platform>
 
