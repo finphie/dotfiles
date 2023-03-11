@@ -7,6 +7,9 @@
   </PropertyGroup>
 
   <PropertyGroup>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+
     <!-- パッケージ検証を有効にする。 -->
     <EnablePackageValidation>true</EnablePackageValidation>
   </PropertyGroup>

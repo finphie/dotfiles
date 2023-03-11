@@ -8,5 +8,6 @@
   </PropertyGroup>
 
   <Import Project="$(BuildCommonPackDirectory)NuGet.targets" />
+  <Import Project="$(BuildCommonPackDirectory)SourceLink.targets" />
 
 </Project>

@@ -5,8 +5,6 @@
   -->
 
   <PropertyGroup>
-    <IncludeSymbols>true</IncludeSymbols>
-    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <TargetFrameworkMonikerAssemblyAttributesPath>$([System.IO.Path]::Combine('$(IntermediateOutputPath)','$(TargetFrameworkMoniker).AssemblyAttributes$(DefaultLanguageSourceExtension)'))</TargetFrameworkMonikerAssemblyAttributesPath>
@@ -17,7 +15,7 @@
   </PropertyGroup>
 
   <!--
-    自動生成ファイルをSource Linkに含める。
+    自動生成ファイルをソースリンクに含める。
     https://github.com/dotnet/sourcelink/issues/572
   -->
   <ItemGroup>
