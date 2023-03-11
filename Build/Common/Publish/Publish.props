@@ -35,6 +35,12 @@
     <Import Project="$(BuildCommonPublishDirectory)Trimming.props" />
   </ImportGroup>
 
+  <ImportGroup Condition="'$(PublishMode)' == 'ReadyToRunNoTrimming'">
+    <Import Project="$(BuildCommonPublishDirectory)ReadyToRun.props" />
+    <Import Project="$(BuildCommonPublishDirectory)SingleFile.props" />
+    <Import Project="$(BuildCommonPublishDirectory)Runtime.props" />
+  </ImportGroup>
+
   <ImportGroup Condition="'$(PublishMode)' == 'Trimming'">
     <Import Project="$(BuildCommonAnalyzersDirectory)Analyzers.Trimming.props" />
     <Import Project="$(BuildCommonPublishDirectory)Trimming.props" />
