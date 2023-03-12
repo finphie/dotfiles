@@ -1,0 +1,9 @@
+<Project>
+  <!-- メタデータ関連の設定 -->
+
+  <PropertyGroup>
+    <Authors>finphie</Authors>
+    <Copyright>© $([System.DateTime]::UtcNow.ToString(yyyy)) $(Authors)</Copyright>
+  </PropertyGroup>
+
+</Project>

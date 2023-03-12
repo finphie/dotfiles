@@ -1,0 +1,20 @@
+<Project>
+  <!-- ソースジェネレーター関連の設定（NuGet非公開） -->
+
+  <PropertyGroup>
+    <!-- Roslynコンポーネントとして扱う。 -->
+    <IsRoslynComponent>true</IsRoslynComponent>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!--
+      Roslynパッケージを参照する。
+      バージョン4.3.1は、Visual Studio 2022 バージョン 17.3以降で動作する。
+      https://learn.microsoft.com/visualstudio/extensibility/roslyn-version-support
+    -->
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.3.1" />
+  </ItemGroup>
+
+  <Import Project="$(MSBuildThisFileDirectory)Internal.targets" />
+
+</Project>

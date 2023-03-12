@@ -6,32 +6,10 @@ on:
       - '**/*.ps1'
       - '**/*.psd1'
       - '**/*.psm1'
-      - .github/workflows/build-powershell.yml
+
+permissions: {}
 
 jobs:
-  lint:
-    name: Lint
-    if: github.event.repository.name != 'dotfiles'
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Check file
-        id: check
-        shell: pwsh
-        run: |
-          $files = Get-ChildItem . -Recurse -Name -Include '*.ps1', '*.psd1', '*.psm1' -Exclude PSScriptAnalyzerSettings.psd1
-          Write-Output $files
-          Write-Output "::set-output name=powershell::$($files.Length -gt 0)"
-
-      - name: Install PSScriptAnalyzer
-        if: steps.check.outputs.powershell == 'True'
-        shell: pwsh
-        run: Install-Module -Name PSScriptAnalyzer -Force
-
-      - name: Lint PowerShell code
-        if: steps.check.outputs.powershell == 'True'
-        shell: pwsh
-        run: Invoke-ScriptAnalyzer . -EnableExit -Recurse
+  main:
+    name: Main
+    uses: finphie/Actions/.github/workflows/build-powershell.yml@main

@@ -1,0 +1,15 @@
+<Project>
+  <!-- WPF関連の設定 -->
+
+  <PropertyGroup>
+    <IsPublishable>true</IsPublishable>
+    <PublishMode>ReadyToRunNoTrimming</PublishMode>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectIdentifier Include="Windows" />
+  </ItemGroup>
+
+  <Import Project="$(BuildCommonPublishDirectory)Publish.props" />
+
+</Project>

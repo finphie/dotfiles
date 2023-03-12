@@ -5,19 +5,10 @@ on:
     paths:
       - '**/*.md'
       - .markdownlint.yml
-      - .github/workflows/build-markdown.yml
+
+permissions: {}
 
 jobs:
-  lint:
-    name: Lint
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Install markdownlint-cli
-        run: sudo npm install -g markdownlint-cli
-
-      - name: Lint markdown
-        run: markdownlint '**/*.md'
+  main:
+    name: Main
+    uses: finphie/Actions/.github/workflows/build-markdown.yml@main

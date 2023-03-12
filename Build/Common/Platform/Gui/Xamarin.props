@@ -1,0 +1,9 @@
+<Project>
+  <!-- Xamarin関連の設定 -->
+
+  <PropertyGroup>
+    <ApplicationTitle>$(AssemblyTitle)</ApplicationTitle>
+    <ApplicationId>net.finphie.$(AssemblyTitle.ToLower())</ApplicationId>
+  </PropertyGroup>
+
+</Project>

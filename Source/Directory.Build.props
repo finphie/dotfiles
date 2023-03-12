@@ -1,55 +1,9 @@
 <Project>
-  <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)..\'))" />
-
-  <PropertyGroup>
-    <IsBenchmark>$(MSBuildProjectName.Contains('Benchmark'))</IsBenchmark>
-    <IsGenerator>$(MSBuildProjectName.EndsWith('Generator'))</IsGenerator>
-    <IsInternal>$(MSBuildProjectName.EndsWith('Internal'))</IsInternal>
-    <BuildFilePathWithoutExtension>$(BuildFileDirectory)\$(MSBuildProjectName)</BuildFilePathWithoutExtension>
-    <BuildPropsFilePath>$(BuildFilePathWithoutExtension).props</BuildPropsFilePath>
-    <BuildTargetsFilePath>$(BuildFilePathWithoutExtension).targets</BuildTargetsFilePath>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="$(MSBuildProjectName.EndsWith('Abstractions')) or $(IsGenerator) or $(IsInternal)">
-    <RootNamespace>$(MSBuildProjectName.Substring(0, $(MSBuildProjectName.LastIndexOf('.'))))</RootNamespace>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(SelfContained)' != 'true' and '$(IsBenchmark)' == 'false' and '$(IsInternal)' == 'false'">
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(UsingMicrosoftNETSdkBlazorWebAssembly)' == 'true'">
-    <RunAOTCompilation>true</RunAOTCompilation>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="$(MSBuildProjectName.EndsWith('_wpftmp'))">
-    <Nowarn>$(NoWarn);IDE0130</Nowarn>
-  </PropertyGroup>
+  <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))" />
 
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)\$(SolutionName).Shared\**\*.cs" LinkBase="Shared" />
-    <None Condition="Exists('$(BuildPropsFilePath)')" Include="$(BuildPropsFilePath)" Pack="true" PackagePath="build" Visible="false" />
-    <None Condition="Exists('$(BuildTargetsFilePath)')" Include="$(BuildTargetsFilePath)" Pack="true" PackagePath="build" Visible="false" />
+    <!-- 「ソリューション名.Shared」ディレクトリに存在するC#ファイルを、全プロジェクトで共有する。 -->
+    <Compile Include="$(MSBuildThisFileDirectory)/$(SolutionName).Shared/**/*.cs" LinkBase="Shared" />
   </ItemGroup>
-
-  <ItemGroup Condition="'$(IsBenchmark)' == 'true'">
-    <PackageReference Include="BenchmarkDotNet" Version="*" />
-  </ItemGroup>
-
-  <ItemGroup Condition="$(IsGenerator)">
-    <None Include="..\$(MSBuildProjectName).Internal\bin\$(Configuration)\netstandard2.0\$(MSBuildProjectName).Internal.dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <MyPubXmlFiles Include="$(MSBuildThisFileDirectory)\Common\**\*.pubxml" />
-  </ItemGroup>
-
-  <Target Name="CopyFiles" Condition="'$(IsPublishable)' == 'true'" BeforeTargets="BeforeResolveReferences">
-    <Copy SourceFiles="@(MyPubXmlFiles)" DestinationFiles="@(MyPubXmlFiles->'$(MSBuildProjectDirectory)\%(RecursiveDir)%(Filename)%(Extension)')" />
-  </Target>
-
-  <Target Name="MakeZipPackage" Condition="'$(IsPublishable)' == 'true'" AfterTargets="Publish">
-    <ZipDirectory SourceDirectory="$(PublishDir)" DestinationFile="$(AssemblyName)-v$(Version)-$(RuntimeIdentifier).zip" Overwrite="true" />
-  </Target>
 
 </Project>

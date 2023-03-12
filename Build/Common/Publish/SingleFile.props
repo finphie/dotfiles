@@ -1,0 +1,15 @@
+<Project>
+  <!--
+    単一ファイル関連の設定
+    https://learn.microsoft.com/dotnet/core/deploying/single-file/overview
+  -->
+
+  <PropertyGroup Condition="'$(RuntimeIdentifier)' != ''">
+    <!-- 単一ファイルでの発行を有効にする。 -->
+    <PublishSingleFile>true</PublishSingleFile>
+
+    <!-- アプリを自己完結型とする。 -->
+    <PublishSelfContained>true</PublishSelfContained>
+  </PropertyGroup>
+
+</Project>

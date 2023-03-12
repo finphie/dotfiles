@@ -10,92 +10,14 @@ on:
       - '**/*.cshtml'
       - '**/*.csproj'
       - '**/*.sln'
-      - '**/Directory.Build.props'
-      - '**/Directory.Build.targets'
+      - '**/*.props'
+      - '**/*.targets'
       - '**/.editorconfig'
       - '**/.globalconfig'
-      - .github/workflows/build-dotnet.yml
 
-env:
-  DOTNET_NOLOGO: true
-  DOTNET_CLI_TELEMETRY_OPTOUT: true
-  dotnet-version: '7.0'
+permissions: {}
 
 jobs:
-  check:
-    name: Check
-    if: github.event.repository.name != 'dotfiles'
-    runs-on: ubuntu-latest
-    outputs:
-      dotnet: ${{ steps.check-file.outputs.dotnet }}
-      os: ${{ steps.settings.outputs.os }}
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Check file
-        id: check-file
-        shell: pwsh
-        run: Write-Output "::set-output name=dotnet::$(Test-Path *.sln)"
-
-      - name: Check platform
-        id: check-platform
-        if: steps.check-file.outputs.dotnet == 'True'
-        shell: pwsh
-        run: ./.github/CheckPlatform.ps1
-
-      - name: Settings
-        id: settings
-        if: steps.check-file.outputs.dotnet == 'True'
-        shell: pwsh
-        run: |
-          $os = '["windows-latest", "ubuntu-latest", "macOS-latest"]'
-          $gui = '${{ steps.check-platform.outputs.gui }}'
-          $windows = '${{ steps.check-platform.outputs.windows }}'
-
-          if ($gui -eq 'True' -and $windows -eq 'True') {
-            $os = '["windows-latest"]'
-          }
-
-          Write-Output "::set-output name=os::$os"
-
-  test:
-    name: Test
-    needs: check
-    if: needs.check.outputs.dotnet == 'True'
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        os: ${{ fromJson(needs.check.outputs.os) }}
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Set DOTNET_INSTALL_DIR
-        if: ${{ !startswith(matrix.os, 'mac') }}
-        shell: pwsh
-        run: |
-          $os = '${{ matrix.os }}'
-          $installDir = $os.StartsWith('windows') ? 'C:/Program Files/dotnet' : '/usr/share/dotnet'
-          Write-Output "DOTNET_INSTALL_DIR=$installDir" | Out-File $Env:GITHUB_ENV -Encoding utf8 -Append
-
-      - name: Setup .NET 7
-        uses: actions/setup-dotnet@v3
-        with:
-          dotnet-version: ${{ env.dotnet-version }}
-          include-prerelease: true
-
-      - name: Setup .NET 6
-        if: startswith(matrix.os, 'mac')
-        uses: actions/setup-dotnet@v3
-        with:
-          dotnet-version: 6.0.x
-
-      - name: .NET Build
-        run: dotnet build --configuration Release -warnAsError
-
-      - name: .NET Test
-        run: dotnet test --configuration Release --no-build
+  main:
+    name: Main
+    uses: finphie/Actions/.github/workflows/build-dotnet.yml@main

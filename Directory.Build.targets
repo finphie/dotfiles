@@ -1,7 +1,9 @@
 <Project>
 
-  <PropertyGroup Condition="'$(UseWPF)' == 'true' or '$(UseWinUI)' == 'true' or '$(UseMaui)' == 'true' or '$(UsingMicrosoftNETSdkWeb)' == 'true' or '$(UsingMicrosoftNETSdkRazor)' == 'true'">
-    <NoWarn>$(NoWarn);CA2007</NoWarn>
-  </PropertyGroup>
+  <Import Project="$(BuildCommonDirectory)Shared.targets" />
+
+  <Target Name="GetProjectIdentifier" >
+    <Message Importance="High" Text="$(MSBuildProjectName),%(ProjectIdentifier.Identity)" />
+  </Target>
 
 </Project>

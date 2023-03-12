@@ -1,0 +1,31 @@
+<Project>
+
+  <PropertyGroup>
+    <_BuildFilePathWithoutExtension>$(BuildDirectory)$(MSBuildProjectName)</_BuildFilePathWithoutExtension>
+    <_BuildPropsFilePath>$(_BuildFilePathWithoutExtension).props</_BuildPropsFilePath>
+    <_BuildTargetsFilePath>$(_BuildFilePathWithoutExtension).targets</_BuildTargetsFilePath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+
+    <!-- パッケージ検証を有効にする。 -->
+    <EnablePackageValidation>true</EnablePackageValidation>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- プロジェクト名.propsとプロジェクト名.targetsをNuGetパッケージに含める。 -->
+    <None Condition="Exists('$(_BuildPropsFilePath)')" Include="$(_BuildPropsFilePath)" Pack="true" PackagePath="build" Visible="false" />
+    <None Condition="Exists('$(_BuildTargetsFilePath)')" Include="$(_BuildTargetsFilePath)" Pack="true" PackagePath="build" Visible="false" />
+  </ItemGroup>
+
+  <Import Project="$(MSBuildThisFileDirectory)NuGet.*.targets" />
+
+  <Target Name="_CheckNuGet" BeforeTargets="PrepareForBuild">
+    <Error Condition="'$(Description)' == ''" Text="Description is required." />
+    <Error Condition="'$(PackageLicenseExpression)' == ''" Text="PackageLicenseExpression is required." />
+    <Error Condition="'$(PackageTags)' == ''" Text="PackageTags is required." />
+  </Target>
+
+</Project>

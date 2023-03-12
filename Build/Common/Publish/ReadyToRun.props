@@ -1,0 +1,15 @@
+<Project>
+  <!--
+    ReadyToRun関連の設定
+    https://learn.microsoft.com/dotnet/core/deploying/ready-to-run
+  -->
+
+  <PropertyGroup Condition="'$(Configuration)' != 'Debug'">
+    <!-- ReadyToRunを有効にする。 -->
+    <PublishReadyToRun>true</PublishReadyToRun>
+
+    <!-- 実行時エラーの原因になる可能性のある足りない依存関係に関する警告を表示する。 -->
+    <PublishReadyToRunShowWarnings>true</PublishReadyToRunShowWarnings>
+  </PropertyGroup>
+
+</Project>

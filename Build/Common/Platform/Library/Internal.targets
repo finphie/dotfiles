@@ -1,0 +1,14 @@
+<Project>
+  <!-- 非公開プロジェクト関連の設定 -->
+
+  <PropertyGroup>
+    <IsPackable>false</IsPackable>
+    <IsPublishable>false</IsPublishable>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <!-- ルート名前空間を、プロジェクト名末尾から「Internal」を取り除いたものにする。 -->
+    <RootNamespace>$(MSBuildProjectName.Substring(0, $(MSBuildProjectName.LastIndexOf('.'))))</RootNamespace>
+  </PropertyGroup>
+
+</Project>

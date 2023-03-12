@@ -1,0 +1,33 @@
+<Project>
+  <!--
+    MAUI関連の設定
+    対応プラットフォームは、Windows/Androidのみ。
+  -->
+
+  <PropertyGroup>
+    <IsPublishable>true</IsPublishable>
+
+    <!--
+      単一プロジェクトにする。
+      csprojまたはDirectory.Build.propsでの設定必須。
+    -->
+    <SingleProject>true</SingleProject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectIdentifier Include="Windows" />
+    <ProjectIdentifier Include="Android" />
+  </ItemGroup>
+
+  <Import Project="$(MSBuildThisFileDirectory)Xamarin.props" />
+  <Import Condition="'$(TargetPlatformIdentifier)' == 'windows'" Project="$(MSBuildThisFileDirectory)WinUI.props" />
+  <Import Condition="'$(TargetPlatformIdentifier)' == 'android'" Project="$(MSBuildThisFileDirectory)Android.props" />
+
+  <PropertyGroup Condition="'$(TargetPlatformIdentifier)' == 'windows'">
+    <SupportedOSPlatformVersion>$(TargetPlatformMinVersion)</SupportedOSPlatformVersion>
+
+    <!-- trueだとコンパイルエラーとなる。 -->
+    <PublishSingleFile>false</PublishSingleFile>
+  </PropertyGroup>
+
+</Project>

@@ -1,0 +1,25 @@
+<Project>
+  <!-- 実行ファイルを出力するコンソールアプリケーション関連の設定 -->
+
+  <PropertyGroup>
+    <IsPublishable>true</IsPublishable>
+
+    <!--
+      Native AOT: 起動速度を優先する場合
+      Dynamic PGO: 実行速度を優先する場合
+    -->
+    <PublishMode>DynamicPgo</PublishMode>
+    <PublishMode Condition="'$(Aot)' == 'true'">NativeAot</PublishMode>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectIdentifier Include="Console" />
+  </ItemGroup>
+
+  <!--
+    発行時にのみ、発行関連の設定を読み込む。
+    パッケージ作成では、PublishAotなどのプロパティが設定されているとエラーになる。
+  -->
+  <Import Condition="'$(_IsPublishing)' == 'true'" Project="$(BuildCommonPublishDirectory)Publish.props" />
+
+</Project>

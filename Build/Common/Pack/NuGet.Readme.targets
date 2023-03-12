@@ -1,0 +1,16 @@
+<Project>
+  <!--
+    NuGet READMEファイル関連の設定
+    https://learn.microsoft.com/nuget/nuget-org/package-readme-on-nuget-org
+  -->
+
+  <PropertyGroup>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- NuGetパッケージに、README.mdファイルを同梱する。 -->
+    <None Include="$(SolutionDir)$(PackageReadmeFile)" Pack="true" PackagePath="/" />
+  </ItemGroup>
+
+</Project>

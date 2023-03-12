@@ -1,47 +1,7 @@
 <Project>
-  <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.targets', '$(MSBuildThisFileDirectory)..\'))" />
+  <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.targets', '$(MSBuildThisFileDirectory)../'))" />
 
-  <PropertyGroup Condition="'$(IsPackable)' == 'true'">
-    <NoPackageAnalysis>true</NoPackageAnalysis>
-    <PublishRepositoryUrl>true</PublishRepositoryUrl>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(OutputType)' == 'Library'">
-    <EnableTrimAnalyzer>true</EnableTrimAnalyzer>
-    <IsTrimmable>true</IsTrimmable>
-  </PropertyGroup>
-
-  <Choose>
-    <When Condition="'$(IsPackable)' == 'true'">
-      <PropertyGroup>
-        <PackageReadmeFile>README.md</PackageReadmeFile>
-      </PropertyGroup>
-
-      <ItemGroup>
-        <None Include="$([MSBuild]::GetPathOfFileAbove('README.md', '$(MSBuildThisFileDirectory)..\'))" Pack="true" PackagePath="\" />
-      </ItemGroup>
-
-      <Choose>
-        <When Condition="'$(OutputType)' == 'Library'">
-          <PropertyGroup>
-            <IncludeSymbols>true</IncludeSymbols>
-            <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-            <EmbedUntrackedSources>true</EmbedUntrackedSources>
-          </PropertyGroup>
-          <ItemGroup>
-            <PackageReference Include="Microsoft.SourceLink.GitHub" Version="*-*">
-              <PrivateAssets>all</PrivateAssets>
-              <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-            </PackageReference>
-          </ItemGroup>
-        </When>
-        <When Condition="'$(OutputType)' == 'Exe'">
-          <PropertyGroup Condition="'$(SelfContained)' != 'true'">
-            <PackAsTool>true</PackAsTool>
-          </PropertyGroup>
-        </When>
-      </Choose>
-    </When>
-  </Choose>
+  <Import Condition="'$(OutputType)' == 'Library'" Project="$(BuildCommonDirectory)Library.targets" />
+  <Import Condition="'$(OutputType)' == 'Exe' or '$(OutputType)' == 'WinExe'" Project="$(BuildCommonDirectory)Exe.targets" />
 
 </Project>

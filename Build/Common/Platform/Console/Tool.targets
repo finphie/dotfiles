@@ -1,0 +1,13 @@
+<Project>
+  <!-- .NETツール関連の設定 -->
+
+  <PropertyGroup>
+    <IsPackable>true</IsPackable>
+    <IsPublishable>true</IsPublishable>
+    <PackAsTool>true</PackAsTool>
+  </PropertyGroup>
+
+  <Import Project="$(BuildCommonPackDirectory)NuGet.targets" />
+  <Import Project="$(BuildCommonPackDirectory)SourceLink.targets" />
+
+</Project>

@@ -1,0 +1,12 @@
+<Project>
+  <!--
+    ランタイム関連の設定
+    https://learn.microsoft.com/dotnet/core/runtime-config/garbage-collector
+  -->
+
+  <PropertyGroup>
+    <!-- サーバーGCを有効にする。 -->
+    <ServerGarbageCollection>true</ServerGarbageCollection>
+  </PropertyGroup>
+
+</Project>

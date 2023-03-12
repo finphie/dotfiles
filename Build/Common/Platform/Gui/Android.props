@@ -1,0 +1,51 @@
+<Project>
+  <!--
+    Android関連の設定
+    https://learn.microsoft.com/xamarin/android/deploy-test/building-apps/build-properties
+    https://github.com/xamarin/xamarin-android/blob/v13.1.0.1/Documentation/guides/OneDotNet.md
+    https://github.com/xamarin/xamarin-android/blob/v13.1.0.1/src/Xamarin.Android.Build.Tasks/Microsoft.Android.Sdk/targets/Microsoft.Android.Sdk.DefaultProperties.targets
+  -->
+
+  <PropertyGroup>
+    <IsPublishable>true</IsPublishable>
+    <PublishMode>Trimming</PublishMode>
+
+    <!-- versionCodeを指定する。 -->
+    <ApplicationVersion>$(MajorVersion)$(MinorVersion)$(BuildVersion)</ApplicationVersion>
+
+    <!-- minSdkVersionを指定する。 -->
+    <SupportedOSPlatformVersion>28</SupportedOSPlatformVersion>
+
+    <!-- HttpMessageHandlerの既定のプラットフォーム実装を使用し、マネージド実装を削除する。 -->
+    <UseNativeHttpHandler>true</UseNativeHttpHandler>
+
+    <!-- コンカレントGCを有効にする。 -->
+    <AndroidEnableSGenConcurrent>true</AndroidEnableSGenConcurrent>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)' != 'Debug'">
+    <!-- AOTコンパイルを有効にする。 -->
+    <RunAOTCompilation>true</RunAOTCompilation>
+
+    <!--  AOTプロファイルを使用する。 -->
+    <AndroidEnableProfiledAot>true</AndroidEnableProfiledAot>
+
+    <!-- リンクを基本クラスライブラリとユーザーのアセンブリで実行する。 -->
+    <AndroidLinkMode>Full</AndroidLinkMode>
+
+    <!-- Resourceクラスの入れ子になった型をリンクする。 -->
+    <AndroidLinkResources>true</AndroidLinkResources>
+
+    <AndroidLinkTool>r8</AndroidLinkTool>
+
+    <!-- LLVMを使用する。 -->
+    <EnableLLVM>true</EnableLLVM>
+  </PropertyGroup>
+
+  <Import Project="$(BuildCommonPublishDirectory)Publish.props" />
+
+  <PropertyGroup>
+    <InvariantGlobalization>false</InvariantGlobalization>
+  </PropertyGroup>
+
+</Project>

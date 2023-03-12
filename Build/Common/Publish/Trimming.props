@@ -1,0 +1,35 @@
+<Project>
+  <!--
+    フレームワークライブラリ機能に関するトリミングの設定
+    https://learn.microsoft.com/dotnet/core/deploying/trimming/trimming-options
+    https://github.com/dotnet/sdk/blob/v7.0.100-rc.2.22476.15/src/Tasks/Microsoft.NET.Build.Tasks/targets/Microsoft.NET.Sdk.targets
+  -->
+
+  <PropertyGroup>
+    <!-- EventSourceに関連するコードまたはロジックを削除する。 -->
+    <EventSourceSupport>false</EventSourceSupport>
+
+    <!-- System.Net.Httpの診断サポートに関連するコードを削除する。 -->
+    <HttpActivityPropagationSupport>false</HttpActivityPropagationSupport>
+
+    <!-- グローバリゼーション固有のコードとデータを削除する。 -->
+    <InvariantGlobalization>true</InvariantGlobalization>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)' != 'Debug'">
+    <!-- デバッグエクスペリエンスを向上させるコードを削除する。 -->
+    <DebuggerSupport>false</DebuggerSupport>
+
+    <!-- ホットリロードに関連するメタデータの更新固有のロジックを削除する。 -->
+    <MetadataUpdaterSupport>false</MetadataUpdaterSupport>
+
+    <!-- 「System.*」アセンブリの例外メッセージを削除する。 -->
+    <UseSystemResourceKeys>true</UseSystemResourceKeys>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(RuntimeIdentifier)' != ''">
+    <!-- 発行時でのトリミングを有効にする。 -->
+    <PublishTrimmed>true</PublishTrimmed>
+  </PropertyGroup>
+
+</Project>

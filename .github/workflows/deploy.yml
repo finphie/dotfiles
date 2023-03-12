@@ -5,109 +5,49 @@ on:
   push:
     branches:
       - main
-    paths:
-      - version.json
-      - 'Source/**/*.cs'
-      - 'Source/**/*.tt'
-      - 'Source/**/*.xaml'
-      - 'Source/**/*.razor'
-      - 'Source/**/*.cshtml'
-      - 'Source/**/*.csproj'
-      - '**/*.sln'
-      - '**/Directory.Build.props'
-      - '**/Directory.Build.targets'
-      - '!Source/Common/*.cs'
-      - '!Source/*.Benchmarks/**'
-      - '!Source/*.Samples/**'
+
+permissions: {}
 
 jobs:
   check:
     name: Check
-    if: github.event.repository.name != 'dotfiles'
-    runs-on: ubuntu-latest
+    uses: finphie/Actions/.github/workflows/get-version.yml@main
 
-    outputs:
-      dotnet: ${{ steps.check.outputs.dotnet }}
-      version: ${{ steps.check.outputs.version }}
-      release: ${{ steps.check.outputs.release }}
+  release:
+    name: Release
+    needs: [check, dotnet]
+    if: |
+      always() &&
+      !cancelled() &&
+      (needs.dotnet.result == 'success' || needs.dotnet.result == 'skipped') &&
+      needs.check.outputs.release == 'true'
+    uses: finphie/Actions/.github/workflows/release.yml@main
+    permissions:
+      contents: write
+    with:
+      version: ${{ needs.check.outputs.version }}
+      tag: ${{ needs.check.outputs.tag }}
 
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 2
-
-      - name: Check
-        id: check
-        shell: pwsh
-        run: |
-          Write-Output "::set-output name=dotnet::$(Test-Path *.sln)"
-
-          $changedFiles = git diff-tree --no-commit-id --name-only -r ${{ github.sha }}
-
-          if ($changedFiles -contains 'version.json') {
-            Write-Output "::set-output name=release::$true"
-            ./.github/Version.ps1
-          }
-          else {
-            ./.github/Version.ps1 ${{ github.run_number }}
-          }
-
-  upload-dotnet:
-    name: Upload(.NET)
+  dotnet:
+    name: Deploy(.NET)
     needs: check
-    if: needs.check.outputs.dotnet == 'True' && needs.check.outputs.version != ''
-    runs-on: windows-latest
-    env:
-      DOTNET_NOLOGO: true
-      DOTNET_CLI_TELEMETRY_OPTOUT: true
-      dotnet-version: '7.0'
+    if: needs.check.outputs.dotnet == 'true'
+    uses: finphie/Actions/.github/workflows/deploy-dotnet.yml@main
+    with:
+      version: ${{ needs.check.outputs.version }}
+      release: ${{ needs.check.outputs.release == 'true' }}
+      suffix: ${{ needs.check.outputs.tag }}
+    secrets:
+      AZURE_ARTIFACT_PAT: ${{ secrets.AZURE_ARTIFACT_PAT }}
+      NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
 
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v3
-        with:
-          dotnet-version: ${{ env.dotnet-version }}
-          include-prerelease: true
-
-      - name: .NET Pack
-        id: pack
-        shell: pwsh
-        run: |
-          dotnet pack --configuration Release --output publish -p:Version=${{ needs.check.outputs.version }}
-          Write-Output "::set-output name=is_packable::$(Test-Path publish/*.nupkg)"
-
-      - name: Push(Azure Artifacts)
-        if: steps.pack.outputs.is_packable == 'True'
-        run: |
-          dotnet nuget add source $Env:SOURCE_URL -n "$Env:SOURCE" -u $Env:GITHUB_ACTOR -p $Env:TOKEN
-          dotnet nuget push ".\publish\*.nupkg" --source "$Env:SOURCE" --api-key $Env:TOKEN --skip-duplicate
-        env:
-          SOURCE: Azure Artifacts
-          SOURCE_URL: 'https://pkgs.dev.azure.com/finphie/Main/_packaging/DotNet/nuget/v3/index.json'
-          TOKEN: ${{ secrets.AZURE_ARTIFACT_PAT }}
-
-      - name: Push(NuGet)
-        if: steps.pack.outputs.is_packable == 'True' && needs.check.outputs.release == 'True'
-        run: dotnet nuget push ".\publish\*.nupkg" --source "$Env:SOURCE" --api-key $Env:TOKEN --skip-duplicate
-        env:
-          SOURCE: NuGet
-          TOKEN: ${{ secrets.NUGET_API_KEY }}
-
-      - name: .NET Publish
-        run: |
-          dotnet nuget disable source "Azure Artifacts"
-          dotnet publish --runtime win10-x64 --configuration Release -p:PublishProfile=FolderProfile -p:DebugType=none -p:GenerateDocumentationFile=false -p:Version=${{ needs.check.outputs.version }}
-
-      - name: Push(GitHub Artifacts)
-        if: always()
-        uses: actions/upload-artifact@v3
-        with:
-          name: ${{ github.event.repository.name }}
-          path: |
-            publish
-            *.zip
-          if-no-files-found: ignore
+  docker:
+    name: Deploy(Docker)
+    needs: check
+    if: needs.check.outputs.docker == 'true' && needs.check.outputs.release == 'true'
+    uses: finphie/Actions/.github/workflows/deploy-docker.yml@main
+    permissions:
+      packages: write
+    with:
+      version: ${{ needs.check.outputs.version }}
+      version-major: ${{ needs.check.outputs.version-major }}

@@ -5,17 +5,9 @@ on:
     paths:
       - '**/*.yml'
 
+permissions: {}
+
 jobs:
-  lint:
-    name: Lint
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Install yamllint
-        run: pip install yamllint
-
-      - name: Lint YAML code
-        run: yamllint .
+  main:
+    name: Main
+    uses: finphie/Actions/.github/workflows/build-yaml.yml@main

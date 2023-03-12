@@ -4,36 +4,10 @@ on:
   pull_request:
     paths:
       - '**/*.py'
-      - .github/workflows/build-python.yml
+
+permissions: {}
 
 jobs:
-  lint:
-    name: Lint
-    if: github.event.repository.name != 'dotfiles'
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Check file
-        id: check
-        shell: pwsh
-        run: |
-          $files = Get-ChildItem . -Recurse -Name -Include '*.py'
-          Write-Output $files
-          Write-Output "::set-output name=python::$($files.Length -gt 0)"
-
-      - name: Install flake8
-        if: steps.check.outputs.python == 'True'
-        run: pip install flake8
-
-      - name: Install Pyright
-        if: steps.check.outputs.python == 'True'
-        run: sudo npm install -g pyright
-
-      - name: Lint Python code
-        if: steps.check.outputs.python == 'True'
-        run: |
-          flake8
-          pyright
+  main:
+    name: Main
+    uses: finphie/Actions/.github/workflows/build-python.yml@main

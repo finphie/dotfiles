@@ -1,0 +1,22 @@
+<Project>
+  <!-- ライブラリ関連のデフォルト設定 -->
+
+  <PropertyGroup>
+    <_IsAbstractions>$(MSBuildProjectName.EndsWith('Abstractions'))</_IsAbstractions>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(_IsAbstractions)' == 'true'">
+    <!-- ルート名前空間を、プロジェクト名末尾から「Abstractions」を取り除いたものにする。 -->
+    <RootNamespace>$(MSBuildProjectName.Substring(0, $(MSBuildProjectName.LastIndexOf('.'))))</RootNamespace>
+  </PropertyGroup>
+
+  <Import Project="$(BuildCommonAnalyzersDirectory)Analyzers.Trimming.props" />
+  <Import Condition="'$(IsPackable)' == 'true'" Project="$(BuildCommonPackDirectory)NuGet.targets" />
+
+  <!--
+    パッケージ作成時、NuGet関連の設定を読み込む。
+    公開パッケージから参照されているライブラリでも読み込みたいため、_IsPackingによる条件分岐を行う。
+  -->
+  <Import Condition="'$(_IsPacking)' == 'true'" Project="$(BuildCommonPackDirectory)SourceLink.targets" />
+
+</Project>

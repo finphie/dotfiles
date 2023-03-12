@@ -1,7 +1,25 @@
-@{
+﻿@{
     Rules = @{
-        PSUseCompatibleCmdlets = @{
-            Compatibility = @('core-6.1.0-windows', 'core-6.1.0-linux', 'core-6.1.0-macos')
+        PSAvoidSemicolonsAsLineTerminators = @{
+            Enable = $true
+        }
+        AvoidUsingDoubleQuotesForConstantString = @{
+            Enable = $true
+        }
+        PSPlaceCloseBrace = @{
+            Enable = $true
+            NoEmptyLineBefore = $true
+            IgnoreOneLineBlock = $true
+            NewLineAfter = $true
+        }
+        PSPlaceOpenBrace = @{
+            Enable = $true
+            OnSameLine = $false
+            NewLineAfter = $true
+            IgnoreOneLineBlock = $true
+        }
+        UseCorrectCasing = @{
+            Enable = $true
         }
     }
 }

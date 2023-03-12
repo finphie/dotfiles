@@ -1,0 +1,56 @@
+<Project>
+  <!--
+    実行ファイル関連の設定
+    このファイルは、プロジェクトファイルの末尾で直接インポートする必要あり。
+    Directory.Build.propsでインポートした場合、一部のプロパティ設定が機能しない。
+  -->
+
+  <Choose>
+
+    <When Condition="'$(UseWinUI)' == 'true'">
+      <PropertyGroup>
+        <_IsWinUI>true</_IsWinUI>
+      </PropertyGroup>
+    </When>
+
+    <When Condition="'$(UseWPF)' == 'true'">
+      <PropertyGroup>
+        <_IsWpf>true</_IsWpf>
+      </PropertyGroup>
+    </When>
+
+    <!-- UsingMicrosoftMauiSdkは、ビルドを伴わないmsbuildタスク実行時などでは使用できない。 -->
+    <When Condition="'$(UseMaui)' == 'true'">
+      <PropertyGroup>
+        <_IsMaui>true</_IsMaui>
+      </PropertyGroup>
+    </When>
+
+    <When Condition="'$(UsingMicrosoftNETSdkWeb)' == 'true'">
+      <PropertyGroup>
+        <_IsAspNet>true</_IsAspNet>
+      </PropertyGroup>
+    </When>
+
+    <When Condition="'$(UsingMicrosoftNETSdkBlazorWebAssembly)' == 'true'">
+      <PropertyGroup>
+        <_IsBlazorWebAssembly>true</_IsBlazorWebAssembly>
+      </PropertyGroup>
+    </When>
+
+    <Otherwise>
+      <PropertyGroup>
+        <_IsConsole>true</_IsConsole>
+      </PropertyGroup>
+    </Otherwise>
+
+  </Choose>
+
+  <Import Condition="'$(_IsWinUI)' == 'true'" Project="$(BuildCommonPlatformDirectory)Gui/WinUI.props" />
+  <Import Condition="'$(_IsWpf)' == 'true'" Project="$(BuildCommonPlatformDirectory)Gui/Wpf.props" />
+  <Import Condition="'$(_IsMaui)' == 'true'" Project="$(BuildCommonPlatformDirectory)Gui/Maui.props" />
+  <Import Condition="'$(_IsAspNet)' == 'true'" Project="$(BuildCommonPlatformDirectory)AspNet/AspNet.props" />
+  <Import Condition="'$(_IsBlazorWebAssembly)' == 'true'" Project="$(BuildCommonPlatformDirectory)AspNet/BlazorWebAssembly.props" />
+  <Import Condition="'$(_IsConsole)' == 'true'" Project="$(BuildCommonPlatformDirectory)Console/Console.props" />
+
+</Project>

@@ -1,0 +1,9 @@
+<Project>
+  <!--
+    コンソールアプリケーション関連の設定
+    このファイルは、Directory.Build.targetsでインポートする。
+  -->
+
+  <Import Condition="'$(IsDefaultConsole)' == 'true'" Project="$(MSBuildThisFileDirectory)Tool.targets" />
+
+</Project>

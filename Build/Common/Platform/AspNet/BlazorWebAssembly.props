@@ -1,0 +1,42 @@
+<Project>
+  <!-- Blazor WebAssembly関連の設定 -->
+
+  <PropertyGroup>
+    <IsPublishable>true</IsPublishable>
+    <PublishMode>Trimming</PublishMode>
+
+    <!-- タイムゾーンサポートを無効にする。 -->
+    <BlazorEnableTimeZoneSupport>false</BlazorEnableTimeZoneSupport>
+
+    <!-- 照合順序情報を無効にする。 -->
+    <BlazorWebAssemblyPreserveCollationData>false</BlazorWebAssemblyPreserveCollationData>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)' != 'Debug'">
+    <!-- Emscriptenコンパイラーの設定 -->
+    <EmccCompileOptimizationFlag>-O3</EmccCompileOptimizationFlag>
+    <EmccLinkOptimizationFlag>-O3</EmccLinkOptimizationFlag>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Aot)' == 'true'">
+    <!-- AOTコンパイルを有効にする。 -->
+    <RunAOTCompilation>true</RunAOTCompilation>
+
+    <!-- スレッドサポートを有効にする。 -->
+    <WasmEnableThreads>true</WasmEnableThreads>
+
+    <!-- SIMDサポートを有効にする。 -->
+    <WasmEnableSIMD>true</WasmEnableSIMD>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(Aot)' == 'true'">
+    <PackageReference Include="Microsoft.NET.WebAssembly.Threading" Version="*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectIdentifier Include="Browser" />
+  </ItemGroup>
+
+  <Import Project="$(BuildCommonPublishDirectory)Publish.props" />
+
+</Project>

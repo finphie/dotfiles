@@ -1,0 +1,71 @@
+<Project>
+  <!--
+    WinUI関連の設定
+    MAUIからも参照されるので注意する。
+  -->
+
+  <PropertyGroup>
+    <IsPublishable>true</IsPublishable>
+    <PublishMode>ReadyToRun</PublishMode>
+    <TargetPlatformMinVersion>10.0.19041.0</TargetPlatformMinVersion>
+
+    <!--
+      AnyCPUだとエラーになる。
+      x64とarm64のみ対応する。
+      https://github.com/microsoft/WindowsAppSDK/issues/2684
+    -->
+    <Platforms>x64;arm64</Platforms>
+
+    <!-- RuntimeIdentifierによってPatformを設定する。 -->
+    <Platform Condition="$(RuntimeIdentifier.EndsWith('x64'))">x64</Platform>
+    <Platform Condition="$(RuntimeIdentifier.EndsWith('arm64'))">arm64</Platform>
+
+    <!--
+      MSIX関連の設定。
+      csprojまたはDirectory.Build.propsでの設定必須。
+    -->
+    <EnableMsixTooling>true</EnableMsixTooling>
+
+    <!--
+      パッケージタイプの設定。
+      csprojまたはDirectory.Build.propsでの設定必須。
+    -->
+    <WindowsPackageType>None</WindowsPackageType>
+
+    <!--
+      アプリを自己完結型とする。
+      csprojまたはDirectory.Build.propsでの設定必須。
+    -->
+    <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectIdentifier Include="Windows" />
+  </ItemGroup>
+
+  <Import Project="$(BuildCommonPublishDirectory)Publish.props" />
+
+  <PropertyGroup>
+    <InvariantGlobalization>false</InvariantGlobalization>
+
+    <!-- trueだと実行時エラーとなる。 -->
+    <IsTrimmable>false</IsTrimmable>
+
+    <!--
+      TrimModeが.NET 7以降のデフォルトであるfullの場合、実行時エラーとなる。
+      <TrimmerRootAssembly Include="Microsoft.WinUI" />で実行時エラーを回避できるが、ファイルサイズが肥大化する。
+      そのため、.NET 6のデフォルトであるpartialにする。
+    -->
+    <TrimMode>partial</TrimMode>
+  </PropertyGroup>
+
+  <!--
+    WinUIに必要なパッケージを参照する。
+    MAUIではSDKで自動的に参照されるため、重複して参照しないように注意する。
+  -->
+  <ItemGroup Condition="'$(UsingMicrosoftMauiSdk)' != 'true'">
+    <PackageReference Include="Microsoft.WindowsAppSDK" Version="*" />
+    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="*" />
+  </ItemGroup>
+
+</Project>
