@@ -18,7 +18,10 @@
     <EmccLinkOptimizationFlag>-O3</EmccLinkOptimizationFlag>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(RunAOTCompilation)' == 'true'">
+  <PropertyGroup Condition="'$(Aot)' == 'true'">
+    <!-- AOTコンパイルを有効にする。 -->
+    <RunAOTCompilation>true</RunAOTCompilation>
+
     <!-- スレッドサポートを有効にする。 -->
     <WasmEnableThreads>true</WasmEnableThreads>
 
@@ -26,7 +29,7 @@
     <WasmEnableSIMD>true</WasmEnableSIMD>
   </PropertyGroup>
 
-  <ItemGroup Condition="'$(RunAOTCompilation)' == 'true'">
+  <ItemGroup Condition="'$(Aot)' == 'true'">
     <PackageReference Include="Microsoft.NET.WebAssembly.Threading" Version="*" />
   </ItemGroup>
 
