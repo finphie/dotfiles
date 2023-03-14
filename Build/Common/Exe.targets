@@ -6,7 +6,7 @@
 
   <Import Condition="'$(_IsConsole)' == 'true'" Project="$(BuildCommonPlatformDirectory)Console/Console.targets" />
 
-  <Target Name="_CheckExeSettings" BeforeTargets="Publish">
+  <Target Name="_CheckExeSettings" BeforeTargets="PrepareForBuild">
     <Error Condition="'$(PublishMode)' == ''" Text="PublishMode is required." />
   </Target>
 
