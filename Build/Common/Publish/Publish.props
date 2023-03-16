@@ -46,4 +46,8 @@
     <Import Project="$(BuildCommonPublishDirectory)Trimming.props" />
   </ImportGroup>
 
+  <ImportGroup Condition="'$(PublishMode)' == 'Tool'">
+    <Import Project="$(BuildCommonAnalyzersDirectory)Analyzers.Trimming.props" />
+  </ImportGroup>
+
 </Project>
