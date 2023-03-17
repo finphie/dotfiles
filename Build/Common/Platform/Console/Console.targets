@@ -6,7 +6,8 @@
 
   <PropertyGroup>
     <_IsBenchmark>$(MSBuildProjectName.EndsWith('Benchmarks'))</_IsBenchmark>
-    <_IsDefaultConsole Condition="'$(_IsBenchmark)' != 'true'">true</_IsDefaultConsole>
+    <_IsSample>$(MSBuildProjectName.EndsWith('Sample'))</_IsSample>
+    <_IsDefaultConsole Condition="'$(_IsBenchmark)' != 'true' and '$(_IsSample)' != 'true'">true</_IsDefaultConsole>
   </PropertyGroup>
 
   <Import Condition="'$(_IsBenchmark)' == 'true'" Project="$(MSBuildThisFileDirectory)Benchmark.targets" />
