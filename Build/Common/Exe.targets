@@ -5,6 +5,7 @@
   -->
 
   <Import Condition="'$(UsingExePlatformProps)' != 'true'" Project="$(MSBuildThisFileDirectory)Exe.Platform.props" />
+  <Import Condition="'$(IsWpf)' == 'true'" Project="$(BuildCommonPlatformDirectory)Gui/Wpf.targets" />
   <Import Condition="'$(IsConsole)' == 'true'" Project="$(BuildCommonPlatformDirectory)Console/Console.targets" />
 
   <Target Name="_CheckExeSettings" BeforeTargets="PrepareForBuild" Condition="'$(IsPublishable)' == 'true'">

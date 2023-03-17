@@ -1,0 +1,15 @@
+<Project>
+  <!--
+    WPF関連の設定
+    このファイルは、Directory.Build.targetsでインポートする。
+  -->
+
+  <PropertyGroup>
+    <!--
+      ルート名前空間を修正する。
+      https://github.com/dotnet/wpf/issues/5697
+    -->
+    <RootNamespace Condition="$(RootNamespace.EndsWith('_wpftmp'))">$(_TargetAssemblyProjectName)</RootNamespace>
+  </PropertyGroup>
+
+</Project>
