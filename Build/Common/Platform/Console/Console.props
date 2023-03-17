@@ -1,12 +1,6 @@
 <Project>
   <!-- コンソールアプリケーション関連の設定 -->
 
-  <PropertyGroup>
-    <_IsBenchmark>$(MSBuildProjectName.EndsWith('Benchmarks'))</_IsBenchmark>
-    <IsDefaultConsole Condition="'$(_IsBenchmark)' != 'true'">true</IsDefaultConsole>
-  </PropertyGroup>
-
-  <Import Condition="'$(_IsBenchmark)' == 'true'" Project="$(MSBuildThisFileDirectory)Benchmark.props" />
-  <Import Condition="'$(IsDefaultConsole)' == 'true'" Project="$(MSBuildThisFileDirectory)Console.Default.props" />
+  <Import Project="$(MSBuildThisFileDirectory)Console.Default.props" />
 
 </Project>

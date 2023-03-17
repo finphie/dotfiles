@@ -4,9 +4,10 @@
     このファイルは、Directory.Build.targetsでインポートする。
   -->
 
-  <Import Condition="'$(_IsConsole)' == 'true'" Project="$(BuildCommonPlatformDirectory)Console/Console.targets" />
+  <Import Condition="'$(UsingExePlatformProps)' != 'true'" Project="$(MSBuildThisFileDirectory)Exe.Platform.props" />
+  <Import Condition="'$(IsConsole)' == 'true'" Project="$(BuildCommonPlatformDirectory)Console/Console.targets" />
 
-  <Target Name="_CheckExeSettings" BeforeTargets="PrepareForBuild">
+  <Target Name="_CheckExeSettings" BeforeTargets="PrepareForBuild" Condition="'$(IsPublishable)' == 'true'">
     <Error Condition="'$(PublishMode)' == ''" Text="PublishMode is required." />
   </Target>
 

@@ -4,6 +4,12 @@
     このファイルは、Directory.Build.targetsでインポートする。
   -->
 
-  <Import Condition="'$(IsDefaultConsole)' == 'true'" Project="$(MSBuildThisFileDirectory)Tool.targets" />
+  <PropertyGroup>
+    <_IsBenchmark>$(MSBuildProjectName.EndsWith('Benchmarks'))</_IsBenchmark>
+    <_IsDefaultConsole Condition="'$(_IsBenchmark)' != 'true'">true</_IsDefaultConsole>
+  </PropertyGroup>
+
+  <Import Condition="'$(_IsBenchmark)' == 'true'" Project="$(MSBuildThisFileDirectory)Benchmark.targets" />
+  <Import Condition="'$(_IsDefaultConsole)' == 'true'" Project="$(MSBuildThisFileDirectory)Tool.targets" />
 
 </Project>

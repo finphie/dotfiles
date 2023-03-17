@@ -1,0 +1,52 @@
+<Project>
+  <!--
+    実行ファイルの種類を取得
+    このファイルは、Exe.propsまたはExe.targetsでインポートされる。
+  -->
+
+  <PropertyGroup>
+    <UsingExePlatformProps>true</UsingExePlatformProps>
+  </PropertyGroup>
+
+  <Choose>
+
+    <When Condition="'$(UseWinUI)' == 'true'">
+      <PropertyGroup>
+        <IsWinUI>true</IsWinUI>
+      </PropertyGroup>
+    </When>
+
+    <When Condition="'$(UseWPF)' == 'true'">
+      <PropertyGroup>
+        <IsWpf>true</IsWpf>
+      </PropertyGroup>
+    </When>
+
+    <!-- UsingMicrosoftMauiSdkは、ビルドを伴わないmsbuildタスク実行時などでは使用できない。 -->
+    <When Condition="'$(UseMaui)' == 'true'">
+      <PropertyGroup>
+        <IsMaui>true</IsMaui>
+      </PropertyGroup>
+    </When>
+
+    <When Condition="'$(UsingMicrosoftNETSdkWeb)' == 'true'">
+      <PropertyGroup>
+        <IsAspNet>true</IsAspNet>
+      </PropertyGroup>
+    </When>
+
+    <When Condition="'$(UsingMicrosoftNETSdkBlazorWebAssembly)' == 'true'">
+      <PropertyGroup>
+        <IsBlazorWebAssembly>true</IsBlazorWebAssembly>
+      </PropertyGroup>
+    </When>
+
+    <Otherwise>
+      <PropertyGroup>
+        <IsConsole>true</IsConsole>
+      </PropertyGroup>
+    </Otherwise>
+
+  </Choose>
+
+</Project>
