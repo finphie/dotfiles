@@ -1,6 +1,11 @@
 # C# ベンチマークファイル
 [{*Benchmark*/**,*Benchmark*}.cs]
 
+# 公開されている型またはメンバー 'Type_or_Member' の XML コメントがありません
+# https://learn.microsoft.com/dotnet/csharp/language-reference/compiler-messages/cs1591
+# 理由: ドキュメンテーションコメントを使用しない。
+dotnet_diagnostic.CS1591.severity = none
+
 ## Microsoft.CodeAnalysis.NetAnalyzers ##
 
 # Do not declare static members on generic types
