@@ -1,6 +1,10 @@
 <Project>
   <!-- ベンチマークプロジェクト関連の設定 -->
 
+  <PropertyGroup>
+    <DebugType>pdbonly</DebugType>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="BenchmarkDotNet" Version="*" />
   </ItemGroup>
