@@ -31,7 +31,7 @@ jobs:
   dotnet:
     name: Deploy(.NET)
     needs: check
-    if: needs.check.outputs.dotnet == 'true'
+    if: needs.check.outputs.dotnet == 'true' && needs.check.outputs.version != ''
     uses: finphie/Actions/.github/workflows/deploy-dotnet.yml@main
     with:
       version: ${{ needs.check.outputs.version }}
