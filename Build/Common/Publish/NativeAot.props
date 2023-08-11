@@ -21,6 +21,7 @@
     <StripSymbols>true</StripSymbols>
 
     <!-- より小さいコードサイズを優先する。 -->
+    <OptimizationPreference>Size</OptimizationPreference>
     <IlcOptimizationPreference>Size</IlcOptimizationPreference>
 
     <!-- スタックトレースにテキスト名を提供するメタデータの生成を無効にする。 -->
