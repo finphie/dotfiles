@@ -8,12 +8,6 @@
   -->
 
   <PropertyGroup>
-    <_TargetOS Condition="$(RuntimeIdentifier.StartsWith('win'))">windows</_TargetOS>
-    <_TargetOS Condition="$(RuntimeIdentifier.StartsWith('osx'))">osx</_TargetOS>
-    <_TargetOS Condition="'$(_TargetOS)' == ''">linux</_TargetOS>
-  </PropertyGroup>
-
-  <PropertyGroup>
     <!-- Native AOTを有効にする。 -->
     <PublishAot>true</PublishAot>
 
@@ -50,11 +44,16 @@
   <Target Name="_DeleteNativeSymbolFile" AfterTargets="CopyNativeBinary">
     <PropertyGroup>
       <_PublishFilePath>$(PublishDir)/$(MSBuildProjectName)</_PublishFilePath>
+
+      <!-- _TargetOSは発行時に内部で使用されるため注意。 -->
+      <_TargetOSName Condition="$(RuntimeIdentifier.StartsWith('win'))">windows</_TargetOSName>
+      <_TargetOSName Condition="$(RuntimeIdentifier.StartsWith('osx'))">osx</_TargetOSName>
+      <_TargetOSName Condition="'$(_TargetOSName)' == ''">linux</_TargetOSName>
     </PropertyGroup>
 
-    <Delete Condition="'$(Configuration)' != 'Debug' and $(_TargetOS) == 'windows'" Files="$(_PublishFilePath).pdb" />
-    <Delete Condition="'$(Configuration)' != 'Debug' and $(_TargetOS) == 'osx'" Files="$(_PublishFilePath).dwarf" />
-    <Delete Condition="'$(Configuration)' != 'Debug' and $(_TargetOS) == 'linux'" Files="$(_PublishFilePath).dbg" />
+    <Delete Condition="'$(Configuration)' != 'Debug' and $(_TargetOSName) == 'windows'" Files="$(_PublishFilePath).pdb" />
+    <Delete Condition="'$(Configuration)' != 'Debug' and $(_TargetOSName) == 'osx'" Files="$(_PublishFilePath).dwarf" />
+    <Delete Condition="'$(Configuration)' != 'Debug' and $(_TargetOSName) == 'linux'" Files="$(_PublishFilePath).dbg" />
   </Target>
 
 </Project>
