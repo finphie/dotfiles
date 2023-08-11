@@ -1,9 +1,8 @@
 <Project>
   <!--
     発行関連の設定
-
-    TODO: [.NET 8]Dynamic PGOで、ReadyToRunを有効にする。
     https://github.com/dotnet/runtime/pull/70941
+    https://github.com/dotnet/runtime/discussions/74940
   -->
 
   <ImportGroup Condition="'$(PublishMode)' == 'NativeAot'">
@@ -16,6 +15,7 @@
   <ImportGroup Condition="'$(PublishMode)' == 'DynamicPgo'">
     <Import Project="$(BuildCommonAnalyzersDirectory)Analyzers.Trimming.props" />
     <Import Project="$(BuildCommonPublishDirectory)Pgo.props" />
+    <Import Project="$(BuildCommonPublishDirectory)ReadyToRun.props" />
     <Import Project="$(BuildCommonPublishDirectory)SingleFile.props" />
     <Import Project="$(BuildCommonPublishDirectory)Runtime.props" />
     <Import Project="$(BuildCommonPublishDirectory)Trimming.props" />
@@ -23,6 +23,7 @@
 
   <ImportGroup Condition="'$(PublishMode)' == 'DynamicPgoNoTrimming'">
     <Import Project="$(BuildCommonPublishDirectory)Pgo.props" />
+    <Import Project="$(BuildCommonPublishDirectory)ReadyToRun.props" />
     <Import Project="$(BuildCommonPublishDirectory)SingleFile.props" />
     <Import Project="$(BuildCommonPublishDirectory)Runtime.props" />
   </ImportGroup>
