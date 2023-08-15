@@ -1,0 +1,29 @@
+<Project>
+  <!--
+    トリミングに関するアナライザーの設定
+    https://learn.microsoft.com/dotnet/core/deploying/trimming/trimming-options
+    https://learn.microsoft.com/dotnet/core/deploying/native-aot/
+  -->
+
+  <!--
+    .NET Standard 2.1ではトリミング関連のアナライザーを有効にできない。
+    https://github.com/dotnet/sdk/issues/30948
+  -->
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net8.0' or '$(TargetFramework)' == 'net7.0' or '$(TargetFramework)' == 'net6.0'">
+    <!-- Native AOTと互換性があると宣言する。 -->
+    <IsAotCompatible>true</IsAotCompatible>
+
+    <!-- トリミング可能とマークする。 -->
+    <IsTrimmable>true</IsTrimmable>
+
+    <!-- AOT関連のアナライザーを有効にする。 -->
+    <EnableTrimAnalyzer>true</EnableTrimAnalyzer>
+    <EnableSingleFileAnalyzer>true</EnableSingleFileAnalyzer>
+    <EnableAotAnalyzer>true</EnableAotAnalyzer>
+    <SuppressTrimAnalysisWarnings>false</SuppressTrimAnalysisWarnings>
+
+    <!-- ILLinkの警告をエラーとして扱わない。 -->
+    <ILLinkTreatWarningsAsErrors>false</ILLinkTreatWarningsAsErrors>
+  </PropertyGroup>
+
+</Project>

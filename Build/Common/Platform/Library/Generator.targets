@@ -29,7 +29,7 @@
     <None Include="../$(_GeneratorInternalProjectName)/bin/$(Configuration)/netstandard2.0/$(_GeneratorInternalProjectName).dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
   </ItemGroup>
 
-  <Import Project="$(BuildCommonAnalyzersDirectory)Analyzers.Trimming.props" />
+  <Import Project="$(BuildCommonAnalyzersDirectory)Analyzers.Trimming.targets" />
   <Import Project="$(BuildCommonPackDirectory)NuGet.targets" />
   <Import Project="$(BuildCommonPackDirectory)SourceLink.targets" />
 
