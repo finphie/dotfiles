@@ -22,4 +22,4 @@ jobs:
     name: Main
     uses: finphie/Actions/.github/workflows/build-dotnet.yml@main
     with:
-      dotnet-version: 8.0.100-preview.7.23376.3
+      dotnet-version: 8.0.100-rc.1.23455.8

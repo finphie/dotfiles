@@ -34,7 +34,7 @@ jobs:
     if: needs.check.outputs.dotnet == 'true' && needs.check.outputs.version != ''
     uses: finphie/Actions/.github/workflows/deploy-dotnet.yml@main
     with:
-      dotnet-version: 8.0.100-preview.7.23376.3
+      dotnet-version: 8.0.100-rc.1.23455.8
       version: ${{ needs.check.outputs.version }}
       release: ${{ needs.check.outputs.release == 'true' }}
       suffix: ${{ needs.check.outputs.tag }}
