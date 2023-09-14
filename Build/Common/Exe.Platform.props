@@ -29,16 +29,16 @@
       </PropertyGroup>
     </When>
 
+    <When Condition="'$(UsingMicrosoftNETSdkBlazorWebAssembly)' == 'true'">
+      <PropertyGroup>
+        <IsBlazorWebAssembly>true</IsBlazorWebAssembly>
+      </PropertyGroup>
+    </When>
+
     <!-- Blazor Web AppまたはBlazor Server -->
     <When Condition="'$(UsingMicrosoftNETSdkRazor)' == 'true'">
       <PropertyGroup>
         <IsBlazorServer>true</IsBlazorServer>
-      </PropertyGroup>
-    </When>
-
-    <When Condition="'$(UsingMicrosoftNETSdkBlazorWebAssembly)' == 'true'">
-      <PropertyGroup>
-        <IsBlazorWebAssembly>true</IsBlazorWebAssembly>
       </PropertyGroup>
     </When>
 

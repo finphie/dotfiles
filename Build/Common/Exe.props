@@ -11,8 +11,8 @@
   <Import Condition="'$(IsWinUI)' == 'true'" Project="$(BuildCommonPlatformDirectory)Gui/WinUI.props" />
   <Import Condition="'$(IsWpf)' == 'true'" Project="$(BuildCommonPlatformDirectory)Gui/Wpf.props" />
   <Import Condition="'$(IsMaui)' == 'true'" Project="$(BuildCommonPlatformDirectory)Gui/Maui.props" />
-  <Import Condition="'$(IsBlazorServer)' == 'true'" Project="$(BuildCommonPlatformDirectory)AspNet/BlazorServer.props" />
   <Import Condition="'$(IsBlazorWebAssembly)' == 'true'" Project="$(BuildCommonPlatformDirectory)AspNet/BlazorWebAssembly.props" />
+  <Import Condition="'$(IsBlazorServer)' == 'true'" Project="$(BuildCommonPlatformDirectory)AspNet/BlazorServer.props" />
   <Import Condition="'$(IsAspNet)' == 'true'" Project="$(BuildCommonPlatformDirectory)AspNet/AspNet.props" />
   <Import Condition="'$(IsConsole)' == 'true'" Project="$(BuildCommonPlatformDirectory)Console/Console.props" />
 
