@@ -25,6 +25,9 @@
 
     <!-- 「System.*」アセンブリの例外メッセージを削除する。 -->
     <UseSystemResourceKeys>true</UseSystemResourceKeys>
+
+    <!-- ランタイムによるスタックトレースの生成サポートを削除する。 -->
+    <StackTraceSupport>false</StackTraceSupport>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(RuntimeIdentifier)' != ''">
