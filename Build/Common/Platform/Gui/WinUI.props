@@ -48,15 +48,8 @@
   <PropertyGroup>
     <InvariantGlobalization>false</InvariantGlobalization>
 
-    <!-- trueだと実行時エラーとなる。 -->
+    <!-- trueだと余分な警告が出る。 -->
     <IsTrimmable>false</IsTrimmable>
-
-    <!--
-      TrimModeが.NET 7以降のデフォルトであるfullの場合、実行時エラーとなる。
-      <TrimmerRootAssembly Include="Microsoft.WinUI" />で実行時エラーを回避できるが、ファイルサイズが肥大化する。
-      そのため、.NET 6のデフォルトであるpartialにする。
-    -->
-    <TrimMode>partial</TrimMode>
   </PropertyGroup>
 
   <!--
@@ -67,5 +60,19 @@
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="*" />
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="*" />
   </ItemGroup>
+
+  <!--
+    TrimModeが.NET 7以降のデフォルトであるfullの場合、実行時エラーとなる。
+    <TrimmerRootAssembly Include="Microsoft.WinUI" />で実行時エラーを回避できるが、ファイルサイズが肥大化する。
+    partialを指定すれば実行できるが、ファイルサイズが少し大きくなる。
+    従って、プロジェクト名.exeのみをトリミングの対象外とする。
+  -->
+  <Target Name="_ConfigureTrimmingWinUI" BeforeTargets="PrepareForILLink">
+    <ItemGroup>
+      <ManagedAssemblyToLink Condition="'%(Filename)' == '$(MSBuildProjectName)'">
+        <IsTrimmable>false</IsTrimmable>
+      </ManagedAssemblyToLink>
+    </ItemGroup>
+  </Target>
 
 </Project>
