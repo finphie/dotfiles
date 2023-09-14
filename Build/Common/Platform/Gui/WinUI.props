@@ -46,8 +46,6 @@
   <Import Project="$(BuildCommonPublishDirectory)Publish.props" />
 
   <PropertyGroup>
-    <InvariantGlobalization>false</InvariantGlobalization>
-
     <!-- trueだと余分な警告が出る。 -->
     <IsTrimmable>false</IsTrimmable>
   </PropertyGroup>

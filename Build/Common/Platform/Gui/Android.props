@@ -44,8 +44,4 @@
 
   <Import Project="$(BuildCommonPublishDirectory)Publish.props" />
 
-  <PropertyGroup>
-    <InvariantGlobalization>false</InvariantGlobalization>
-  </PropertyGroup>
-
 </Project>
