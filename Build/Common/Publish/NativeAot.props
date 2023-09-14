@@ -56,4 +56,9 @@
     <Delete Condition="'$(Configuration)' != 'Debug' and $(_TargetOSName) == 'linux'" Files="$(_PublishFilePath).dbg" />
   </Target>
 
+  <!-- プロジェクト名.dsymディレクトリを削除する。 -->
+  <Target Name="_RemoveDsymDirectory" AfterTargets="CopyNativeBinary" Condition="$(RuntimeIdentifier.StartsWith('osx')) and '$(Configuration)' != 'Debug'">
+    <RemoveDir Directories="$(PublishDir)/$(MSBuildProjectName).dsym" />
+  </Target>
+
 </Project>
