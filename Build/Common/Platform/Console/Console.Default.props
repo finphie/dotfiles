@@ -8,7 +8,7 @@
       Native AOT: 起動速度を優先する場合
       Dynamic PGO: 実行速度を優先する場合
     -->
-    <PublishMode>DynamicPgo</PublishMode>
+    <PublishMode>ReadyToRun</PublishMode>
     <PublishMode Condition="'$(Aot)' == 'true'">NativeAot</PublishMode>
     <PublishMode Condition="'$(_IsPacking)' == 'true'">Tool</PublishMode>
   </PropertyGroup>

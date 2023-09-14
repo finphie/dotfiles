@@ -12,24 +12,9 @@
     <Import Project="$(BuildCommonPublishDirectory)Trimming.props" />
   </ImportGroup>
 
-  <ImportGroup Condition="'$(PublishMode)' == 'DynamicPgo'">
-    <Import Project="$(BuildCommonAnalyzersDirectory)Analyzers.Trimming.targets" />
-    <Import Project="$(BuildCommonPublishDirectory)Pgo.props" />
-    <Import Project="$(BuildCommonPublishDirectory)ReadyToRun.props" />
-    <Import Project="$(BuildCommonPublishDirectory)SingleFile.props" />
-    <Import Project="$(BuildCommonPublishDirectory)Runtime.props" />
-    <Import Project="$(BuildCommonPublishDirectory)Trimming.props" />
-  </ImportGroup>
-
-  <ImportGroup Condition="'$(PublishMode)' == 'DynamicPgoNoTrimming'">
-    <Import Project="$(BuildCommonPublishDirectory)Pgo.props" />
-    <Import Project="$(BuildCommonPublishDirectory)ReadyToRun.props" />
-    <Import Project="$(BuildCommonPublishDirectory)SingleFile.props" />
-    <Import Project="$(BuildCommonPublishDirectory)Runtime.props" />
-  </ImportGroup>
-
   <ImportGroup Condition="'$(PublishMode)' == 'ReadyToRun'">
     <Import Project="$(BuildCommonAnalyzersDirectory)Analyzers.Trimming.targets" />
+    <Import Project="$(BuildCommonPublishDirectory)Pgo.props" />
     <Import Project="$(BuildCommonPublishDirectory)ReadyToRun.props" />
     <Import Project="$(BuildCommonPublishDirectory)SingleFile.props" />
     <Import Project="$(BuildCommonPublishDirectory)Runtime.props" />
@@ -37,6 +22,7 @@
   </ImportGroup>
 
   <ImportGroup Condition="'$(PublishMode)' == 'ReadyToRunNoTrimming'">
+    <Import Project="$(BuildCommonPublishDirectory)Pgo.props" />
     <Import Project="$(BuildCommonPublishDirectory)ReadyToRun.props" />
     <Import Project="$(BuildCommonPublishDirectory)SingleFile.props" />
     <Import Project="$(BuildCommonPublishDirectory)Runtime.props" />

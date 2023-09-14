@@ -1,9 +1,9 @@
 <Project>
-  <!-- ASP.NET関連の設定 -->
+  <!-- Blazor Server関連の設定 -->
 
   <PropertyGroup>
     <IsPublishable>true</IsPublishable>
-    <PublishMode>ReadyToRun</PublishMode>
+    <PublishMode>ReadyToRunNoTrimming</PublishMode>
   </PropertyGroup>
 
   <ItemGroup>
