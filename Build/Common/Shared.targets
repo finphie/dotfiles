@@ -1,9 +1,4 @@
 <Project>
   <!-- ライブラリや実行ファイル、テストプロジェクト共通の設定 -->
 
-  <PropertyGroup Condition="'$(TargetPlatformIdentifier)' == 'windows' and '$(OS)' == 'Unix'">
-    <!-- Windows以外の環境でWPFなどのビルドを行えるようにする。 -->
-    <EnableWindowsTargeting>true</EnableWindowsTargeting>
-  </PropertyGroup>
-
 </Project>
