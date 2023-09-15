@@ -5,6 +5,10 @@
   -->
 
   <PropertyGroup>
+    <_TargetPlatformIdentifier>$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)'))</_TargetPlatformIdentifier>
+  </PropertyGroup>
+
+  <PropertyGroup>
     <IsPublishable>true</IsPublishable>
 
     <!--
@@ -20,10 +24,10 @@
   </ItemGroup>
 
   <Import Project="$(MSBuildThisFileDirectory)Xamarin.props" />
-  <Import Condition="'$(TargetPlatformIdentifier)' == 'windows'" Project="$(MSBuildThisFileDirectory)WinUI.props" />
-  <Import Condition="'$(TargetPlatformIdentifier)' == 'android'" Project="$(MSBuildThisFileDirectory)Android.props" />
+  <Import Condition="'$(_TargetPlatformIdentifier)' == 'windows'" Project="$(MSBuildThisFileDirectory)WinUI.props" />
+  <Import Condition="'$(_TargetPlatformIdentifier)' == 'android'" Project="$(MSBuildThisFileDirectory)Android.props" />
 
-  <PropertyGroup Condition="'$(TargetPlatformIdentifier)' == 'windows'">
+  <PropertyGroup Condition="'$(_TargetPlatformIdentifier)' == 'windows'">
     <SupportedOSPlatformVersion>$(TargetPlatformMinVersion)</SupportedOSPlatformVersion>
 
     <!-- trueだとコンパイルエラーとなる。 -->
