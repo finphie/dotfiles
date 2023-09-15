@@ -41,8 +41,12 @@
 
     <AndroidLinkTool>r8</AndroidLinkTool>
 
-    <!-- LLVMを使用する。 -->
-    <EnableLLVM>true</EnableLLVM>
+    <!--
+      LLVMを無効にする。
+      有効にするとエラーになる。
+      https://github.com/dotnet/runtime/issues/92031
+    -->
+    <EnableLLVM>false</EnableLLVM>
   </PropertyGroup>
 
   <Import Project="$(BuildCommonPublishDirectory)Publish.props" />
