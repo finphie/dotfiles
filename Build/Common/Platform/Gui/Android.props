@@ -39,6 +39,7 @@
     <!-- Resourceクラスの入れ子になった型をリンクする。 -->
     <AndroidLinkResources>true</AndroidLinkResources>
 
+    <!-- コード圧縮ツールをR8に設定する。　-->
     <AndroidLinkTool>r8</AndroidLinkTool>
 
     <!--
