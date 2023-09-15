@@ -1,7 +1,11 @@
 <Project>
   <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.targets', '$(MSBuildThisFileDirectory)../'))" />
 
-  <Import Condition="'$(OutputType)' == 'Library'" Project="$(BuildCommonDirectory)Library.targets" />
-  <Import Condition="'$(OutputType)' == 'Exe' or '$(OutputType)' == 'WinExe'" Project="$(BuildCommonDirectory)Exe.targets" />
+  <!--
+    Androidアプリケーションプロジェクトでは、OutputTypeにExeを指定してもLibraryに上書きされる。
+    https://github.com/xamarin/xamarin-android/blob/34.0.0-rc.1.432/src/Xamarin.Android.Build.Tasks/Microsoft.Android.Sdk/targets/Microsoft.Android.Sdk.DefaultProperties.targets#L61-L64
+  -->
+  <Import Condition="'$(OutputType)' == 'Library' and '$(AndroidApplication)' != 'true'" Project="$(BuildCommonDirectory)Library.targets" />
+  <Import Condition="'$(OutputType)' == 'Exe' or '$(OutputType)' == 'WinExe' or '$(AndroidApplication)' == 'true'" Project="$(BuildCommonDirectory)Exe.targets" />
 
 </Project>
