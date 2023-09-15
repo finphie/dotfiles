@@ -25,16 +25,9 @@
     <!-- トリミングを有効にする。 -->
     <WasmStripILAfterAOT>true</WasmStripILAfterAOT>
 
-    <!-- スレッドサポートを有効にする。 -->
-    <WasmEnableThreads>true</WasmEnableThreads>
-
     <!-- SIMDサポートを有効にする。 -->
     <WasmEnableSIMD>true</WasmEnableSIMD>
   </PropertyGroup>
-
-  <ItemGroup Condition="'$(Aot)' == 'true'">
-    <PackageReference Include="Microsoft.NET.WebAssembly.Threading" Version="*" />
-  </ItemGroup>
 
   <ItemGroup>
     <ProjectIdentifier Include="Browser" />
