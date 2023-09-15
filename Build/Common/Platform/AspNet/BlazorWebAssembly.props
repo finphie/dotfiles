@@ -22,7 +22,7 @@
     <!-- AOTコンパイルを有効にする。 -->
     <RunAOTCompilation>true</RunAOTCompilation>
 
-    <!-- トリミングを有効にする。 -->
+    <!-- AOTコンパイル後に未使用のILを削除する。 -->
     <WasmStripILAfterAOT>true</WasmStripILAfterAOT>
 
     <!-- SIMDサポートを有効にする。 -->
