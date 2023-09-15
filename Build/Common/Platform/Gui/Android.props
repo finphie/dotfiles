@@ -27,8 +27,11 @@
     <!-- AOTコンパイルを有効にする。 -->
     <RunAOTCompilation>true</RunAOTCompilation>
 
-    <!--  AOTプロファイルを使用する。 -->
+    <!-- AOTプロファイルを使用する。 -->
     <AndroidEnableProfiledAot>true</AndroidEnableProfiledAot>
+
+    <!-- AOTコンパイル後に未使用のILを削除する。 -->
+    <AndroidStripILAfterAOT>true</AndroidStripILAfterAOT>
 
     <!-- リンクを基本クラスライブラリとユーザーのアセンブリで実行する。 -->
     <AndroidLinkMode>Full</AndroidLinkMode>
