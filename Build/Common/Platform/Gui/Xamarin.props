@@ -2,8 +2,11 @@
   <!-- Xamarin関連の設定 -->
 
   <PropertyGroup>
-    <ApplicationTitle>$(AssemblyTitle)</ApplicationTitle>
-    <ApplicationId>net.finphie.$(AssemblyTitle.ToLower())</ApplicationId>
+    <ApplicationId>net.finphie.$(MSBuildProjectName.ToLower())</ApplicationId>
   </PropertyGroup>
+
+  <Target Name="_CheckApplicationTitle" BeforeTargets="PrepareForBuild">
+    <Error Condition="'$(ApplicationTitle)' == ''" Text="ApplicationTitle is required." />
+  </Target>
 
 </Project>
