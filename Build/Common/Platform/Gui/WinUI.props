@@ -6,7 +6,10 @@
 
   <PropertyGroup>
     <IsPublishable>true</IsPublishable>
+
     <PublishMode>ReadyToRun</PublishMode>
+    <PublishMode Condition="'$(IsMaui)' == 'true'">ReadyToRunNoTrimming</PublishMode>
+
     <TargetPlatformMinVersion>10.0.19041.0</TargetPlatformMinVersion>
 
     <!--

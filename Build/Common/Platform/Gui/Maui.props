@@ -30,7 +30,7 @@
   <PropertyGroup Condition="'$(_TargetPlatformIdentifier)' == 'windows'">
     <SupportedOSPlatformVersion>$(TargetPlatformMinVersion)</SupportedOSPlatformVersion>
 
-    <!-- trueだとコンパイルエラーとなる。 -->
+    <!-- trueだとクラッシュする。 -->
     <PublishSingleFile>false</PublishSingleFile>
   </PropertyGroup>
 
