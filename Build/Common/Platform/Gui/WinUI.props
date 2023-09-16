@@ -7,6 +7,7 @@
   <PropertyGroup>
     <IsPublishable>true</IsPublishable>
 
+    <!-- MAUIではトリミングするとクラッシュする。 -->
     <PublishMode>ReadyToRun</PublishMode>
     <PublishMode Condition="'$(IsMaui)' == 'true'">ReadyToRunNoTrimming</PublishMode>
 
@@ -54,7 +55,7 @@
   </PropertyGroup>
 
   <!-- WinUIに必要なパッケージを参照する。 -->
-  <ItemGroup Condition="'$(IsMaui)' != 'true' or ('$(IsMaui)' == 'true' and $([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows')">
+  <ItemGroup>
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="*" />
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="*" />
   </ItemGroup>
