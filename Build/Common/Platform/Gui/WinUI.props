@@ -50,11 +50,8 @@
     <IsTrimmable>false</IsTrimmable>
   </PropertyGroup>
 
-  <!--
-    WinUIに必要なパッケージを参照する。
-    MAUIではSDKで自動的に参照されるため、重複して参照しないように注意する。
-  -->
-  <ItemGroup Condition="'$(UsingMicrosoftMauiSdk)' != 'true'">
+  <!-- WinUIに必要なパッケージを参照する。 -->
+  <ItemGroup Condition="'$(IsMaui)' != 'true' or ('$(IsMaui)' == 'true' and $([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows')">
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="*" />
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="*" />
   </ItemGroup>
