@@ -33,6 +33,11 @@ dotnet_diagnostic.CA1034.severity = none
 # 理由: 識別子にアンダースコアを使いたい。
 dotnet_diagnostic.CA1707.severity = none
 
+# Do not directly await a Task
+# https://docs.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca2007
+# 理由: ConfigureAwait(false)を呼び出すと問題が発生する場合がある。
+dotnet_diagnostic.CA2007.severity = none
+
 ## StyleCop.Analyzers ##
 
 # A C# code element is missing a documentation header.
