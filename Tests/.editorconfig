@@ -21,6 +21,12 @@ dotnet_diagnostic.CA1810.severity = none
 # C#テスト関連ファイル
 [{*Test,*TestData}.cs]
 
+## 名前付けルール ##
+
+# 非同期メソッド名の末尾にAsync付与を強制しない。
+# 理由: Asyncを付ける意味がないため。
+dotnet_naming_rule.async_methods_should_be_ends_with_async.severity = none
+
 ## Microsoft.CodeAnalysis.NetAnalyzers ##
 
 # Nested types should not be visible
