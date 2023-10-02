@@ -51,9 +51,3 @@ trim_trailing_whitespace = false
 # C# 生成コード
 [{*Generated,**/Generated/**}.cs]
 generated_code = true
-
-# Program.cs
-# 理由: トップレベルステートメントで誤検知するため。
-# https://github.com/dotnet/roslyn-analyzers/issues/6141
-[Program.cs]
-dotnet_diagnostic.CA1852.severity = none
