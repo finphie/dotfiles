@@ -9,8 +9,8 @@
     .NET Standard 2.1ではトリミング関連のアナライザーを有効にできない。
     https://github.com/dotnet/sdk/issues/30948
   -->
-  <PropertyGroup Condition="'$(TargetFramework)' == 'net8.0' or '$(TargetFramework)' == 'net7.0' or '$(TargetFramework)' == 'net6.0'">
-    <!-- Native AOTと互換性があると宣言する。 -->
+  <PropertyGroup Condition="$(TargetFramework.StartsWith('net8.0')) or $(TargetFramework.StartsWith('net7.0')) or $(TargetFramework.StartsWith('net6.0'))">
+    <!-- AOTと互換性があると宣言する。 -->
     <IsAotCompatible>true</IsAotCompatible>
 
     <!-- トリミング可能とマークする。 -->
