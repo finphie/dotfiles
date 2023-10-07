@@ -5,6 +5,12 @@
   -->
 
   <PropertyGroup>
+    <!--
+      マルチターゲットプロジェクト（.NET 8と.NET 7など）で、パッケージ検証エラーが出るため抑制する。
+      出力した.NET 8アセンブリに、System.Runtime.CompilerServices.IsExternalInitが存在しないため。
+    -->
+    <NoWarn>$(NoWarn);CP0001</NoWarn>
+
     <PolySharpIncludeRuntimeSupportedAttributes>true</PolySharpIncludeRuntimeSupportedAttributes>
   </PropertyGroup>
 
