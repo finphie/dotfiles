@@ -7,6 +7,9 @@
 
     <!-- Roslynコンポーネントとして扱う。 -->
     <IsRoslynComponent>true</IsRoslynComponent>
+
+    <!-- 一部のAPIを使用禁止にする。 -->
+    <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
   </PropertyGroup>
 
   <ItemGroup>
