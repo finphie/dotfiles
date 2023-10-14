@@ -2,6 +2,9 @@
   <!-- ソースジェネレーター関連の設定（NuGet非公開） -->
 
   <PropertyGroup>
+    <!-- nullチェックは不要。 -->
+    <NoWarn>$(NoWarn);CA1062</NoWarn>
+
     <!-- Roslynコンポーネントとして扱う。 -->
     <IsRoslynComponent>true</IsRoslynComponent>
   </PropertyGroup>
