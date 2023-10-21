@@ -1,36 +1,17 @@
 <Project>
-  <!--
-    ソースジェネレーター関連の設定（NuGet公開）
-    ソースジェネレーターを内部に埋め込む。
-  -->
+  <!-- ソースジェネレーター関連の設定 -->
 
   <PropertyGroup>
-    <_GeneratorInternalProjectName>$(MSBuildProjectName).Internal</_GeneratorInternalProjectName>
+    <_IsGeneratorInternal>$(MSBuildProjectName.EndsWith('.Generator.Internal'))</_IsGeneratorInternal>
+    <_MainLogicProjectName Condition="'$(_IsGeneratorInternal)' != 'true'">$(MSBuildProjectName.Substring(0, $(MSBuildProjectName.LastIndexOf('.Generator'))))</_MainLogicProjectName>
+    <_MainLogicProjectName Condition="'$(_IsGeneratorInternal)' == 'true'">$(MSBuildProjectName.Substring(0, $(MSBuildProjectName.LastIndexOf('.Generator.Internal'))))</_MainLogicProjectName>
+
+    <MainLogicProjectPath>$(SourceDirectory)$(_MainLogicProjectName)/$(_MainLogicProjectName).csproj</MainLogicProjectPath>
+    <MainLogicAssemblyPath>$(SourceDirectory)$(_MainLogicProjectName)/bin/$(Configuration)/netstandard2.0/$(_MainLogicProjectName).dll</MainLogicAssemblyPath>
+    <ExistsSourceGeneratorMainLogic Condition="Exists('$(MainLogicProjectPath)')">true</ExistsSourceGeneratorMainLogic>
   </PropertyGroup>
 
-  <PropertyGroup>
-    <IsPackable>true</IsPackable>
-
-    <!-- パッケージ分析を無効にする。 -->
-    <NoPackageAnalysis>true</NoPackageAnalysis>
-
-    <!-- ルート名前空間を、プロジェクト名末尾から「Generator」を取り除いたものにする。 -->
-    <RootNamespace>$(MSBuildProjectName.Substring(0, $(MSBuildProjectName.LastIndexOf('.'))))</RootNamespace>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <!--
-      Internalプロジェクトより後にビルドさせるため、プロジェクト参照を設定する。
-      ReferenceOutputAssemblyをfalseにすると、パッケージの依存関係には含まれない。
-    -->
-    <ProjectReference Include="../$(_GeneratorInternalProjectName)/$(_GeneratorInternalProjectName).csproj" ReferenceOutputAssembly="false" />
-
-    <!-- パッケージ内部にソースジェネレーターのdllを埋め込む。 -->
-    <None Include="../$(_GeneratorInternalProjectName)/bin/$(Configuration)/netstandard2.0/$(_GeneratorInternalProjectName).dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
-  </ItemGroup>
-
-  <Import Project="$(BuildCommonAnalyzersDirectory)Analyzers.Trimming.targets" />
-  <Import Project="$(BuildCommonPackDirectory)NuGet.targets" />
-  <Import Project="$(BuildCommonPackDirectory)SourceLink.targets" />
+  <Import Condition="'$(_IsGeneratorInternal)' != 'true'" Project="$(_BuildCommonPlatformLibraryDirectory)Generator.Package.targets" />
+  <Import Condition="'$(_IsGeneratorInternal)' == 'true'" Project="$(_BuildCommonPlatformLibraryDirectory)Generator.Internal.targets" />
 
 </Project>

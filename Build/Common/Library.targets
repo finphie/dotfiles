@@ -6,15 +6,13 @@
 
   <PropertyGroup>
     <_BuildCommonPlatformLibraryDirectory>$(BuildCommonPlatformDirectory)Library/</_BuildCommonPlatformLibraryDirectory>
-    <_IsGenerator>$(MSBuildProjectName.EndsWith('Generator'))</_IsGenerator>
-    <_IsGeneratorInternal>$(MSBuildProjectName.EndsWith('Generator.Internal'))</_IsGeneratorInternal>
-    <_IsDefaultLibrary Condition="'$(_IsGenerator)' != 'true' and '$(_IsGeneratorInternal)' != 'true'">true</_IsDefaultLibrary>
+    <_IsGenerator Condition="$(MSBuildProjectName.EndsWith('.Generator')) or $(MSBuildProjectName.EndsWith('.Generator.Internal'))">true</_IsGenerator>
+    <_IsDefaultLibrary Condition="'$(_IsGenerator)' != 'true'">true</_IsDefaultLibrary>
   </PropertyGroup>
 
   <Import Project="$(_BuildCommonPlatformLibraryDirectory)PolySharp.targets" />
 
   <Import Condition="'$(_IsGenerator)' == 'true'" Project="$(_BuildCommonPlatformLibraryDirectory)Generator.targets" />
-  <Import Condition="'$(_IsGeneratorInternal)' == 'true'" Project="$(_BuildCommonPlatformLibraryDirectory)Generator.Internal.targets" />
   <Import Condition="'$(_IsDefaultLibrary)' == 'true'" Project="$(_BuildCommonPlatformLibraryDirectory)Library.Default.targets" />
 
 </Project>

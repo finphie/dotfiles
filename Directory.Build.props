@@ -26,6 +26,7 @@
     <BuildCommonPackDirectory>$(BuildCommonDirectory)Pack/</BuildCommonPackDirectory>
     <BuildCommonPublishDirectory>$(BuildCommonDirectory)Publish/</BuildCommonPublishDirectory>
     <BuildCommonPlatformDirectory>$(BuildCommonDirectory)Platform/</BuildCommonPlatformDirectory>
+    <SourceDirectory>$(MSBuildThisFileDirectory)Source/</SourceDirectory>
   </PropertyGroup>
 
   <!-- バージョン関連変数の定義 -->
@@ -37,7 +38,7 @@
 
   <!-- プロジェクト共通のファイルを読み込む -->
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)Source/Common/**/*.cs" Visible="false" />
+    <Compile Include="$(SourceDirectory)Common/**/*.cs" Visible="false" />
   </ItemGroup>
 
   <Import Project="$(BuildCommonAnalyzersDirectory)Analyzers.props" />

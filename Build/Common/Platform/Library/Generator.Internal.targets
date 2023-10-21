@@ -1,5 +1,5 @@
 <Project>
-  <!-- ソースジェネレーター関連の設定（NuGet非公開） -->
+  <!-- ソースジェネレーター本体の設定（NuGetには直接公開しない） -->
 
   <PropertyGroup>
     <!-- nullチェックは不要。 -->
@@ -10,6 +10,9 @@
 
     <!-- 一部のAPIを使用禁止にする。 -->
     <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
+
+    <!-- _GetDependencyTargetPathsターゲットを読み込む。 -->
+    <GetTargetPathDependsOn>$(GetTargetPathDependsOn);_GetDependencyTargetPaths</GetTargetPathDependsOn>
   </PropertyGroup>
 
   <ItemGroup>
@@ -18,9 +21,25 @@
       バージョン4.7.0は、Visual Studio 2022 バージョン 17.7以降で動作する。
       https://learn.microsoft.com/visualstudio/extensibility/roslyn-version-support
     -->
-    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.7.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.7.0" PrivateAssets="All" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- ロジック本体プロジェクトが存在する場合、プロジェクト参照を設定する。 -->
+    <ProjectReference Condition="'$(ExistsSourceGeneratorMainLogic)' == 'true'" Include="$(MainLogicProjectPath)" />
   </ItemGroup>
 
   <Import Project="$(MSBuildThisFileDirectory)Internal.targets" />
+
+  <Target Name="_GetDependencyTargetPaths">
+    <ItemGroup>
+      <!--
+        ソースジェネレーターをプロジェクト参照するプロジェクトに影響する。
+        ロジック本体プロジェクトへの依存関係を設定する。
+        この設定がない場合、ロジック本体アセンブリを読み込めずにFileNotFoundExceptionが発生する。
+      -->
+      <TargetPathWithTargetPlatformMoniker Condition="'$(ExistsSourceGeneratorMainLogic)' == 'true'" Include="$(MainLogicAssemblyPath)" IncludeRuntimeDependency="false" />
+    </ItemGroup>
+  </Target>
 
 </Project>
