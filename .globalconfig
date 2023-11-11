@@ -348,7 +348,7 @@ dotnet_code_quality.CA1720.api_surface = public
 # Mark assemblies with CLSCompliantAttribute
 # https://docs.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1014
 # https://github.com/dotnet/runtime/issues/44194
-# 理由: CLSに準拠する必要性を感じない。
+# 理由: CLSに準拠する必要性がない。
 # AllEnabledByDefaultを設定しただけでは有効にならないので不要かも。
 dotnet_diagnostic.CA1014.severity = none
 
@@ -370,19 +370,19 @@ dotnet_code_quality.CA2007.output_kind = ConsoleApplication, DynamicallyLinkedLi
 
 # 'type': base type 'type' is not CLS-compliant
 # https://docs.microsoft.com/dotnet/csharp/language-reference/compiler-messages/cs3009
-# 理由: CLSに準拠する必要性を感じない。
+# 理由: CLSに準拠する必要性がない。
 dotnet_diagnostic.CA3009.severity = none
 
 ## Microsoft.VisualStudio.Threading.Analyzers ##
 
 # Use .ConfigureAwait(bool).
-# https://github.com/microsoft/vs-threading/blob/master/doc/analyzers/VSTHRD111.md
+# https://github.com/microsoft/vs-threading/blob/main/doc/analyzers/VSTHRD111.md
 # 理由: CA2007（Do not directly await a Task）と重複。
 # https://docs.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca2007
 dotnet_diagnostic.VSTHRD111.severity = none
 
 # Use Async suffix for async methods
-# https://github.com/microsoft/vs-threading/blob/master/doc/analyzers/VSTHRD200.md
+# https://github.com/microsoft/vs-threading/blob/main/doc/analyzers/VSTHRD200.md
 # 理由: IDE1006（命名スタイル）と重複。
 dotnet_diagnostic.VSTHRD200.severity = none
 
