@@ -476,3 +476,11 @@ dotnet_diagnostic.SA1633.severity = none
 # 理由: CA2000（Dispose objects before losing scope）と重複。
 # https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca2000
 dotnet_diagnostic.IDISP001.severity = none
+
+## DotNetAnalyzers.DocumentationAnalyzers ##
+
+# リファクタリング設定
+# https://github.com/DotNetAnalyzers/DocumentationAnalyzers/blob/master/docs/Refactorings.md
+# 理由: リファクタリング設定なので警告レベルではなく非表示にする。
+dotnet_diagnostic.DOC900.severity = silent
+dotnet_diagnostic.DOC901.severity = silent
