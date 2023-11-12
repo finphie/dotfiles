@@ -462,3 +462,11 @@ dotnet_diagnostic.SA1643.severity = none
 # https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1633.md
 # 理由: ファイルヘッダーは不要。
 dotnet_diagnostic.SA1633.severity = none
+
+## IDisposableAnalyzers ##
+
+# Dispose created
+# https://github.com/DotNetAnalyzers/IDisposableAnalyzers/blob/master/documentation/IDISP001.md
+# 理由: CA2000（Dispose objects before losing scope）と重複。
+# https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca2000
+dotnet_diagnostic.IDISP001.severity = none

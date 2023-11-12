@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="IDisposableAnalyzers" Version="*" PrivateAssets="All" />
     <PackageReference Include="Microsoft.VisualStudio.Threading.Analyzers" Version="*" PrivateAssets="All" />
     <PackageReference Include="StyleCop.Analyzers" Version="*-*" PrivateAssets="All" />
   </ItemGroup>

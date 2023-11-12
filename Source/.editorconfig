@@ -69,3 +69,10 @@ dotnet_diagnostic.SA1601.severity = none
 # https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1602.md
 # 理由: ドキュメンテーションコメントを使用しない。
 dotnet_diagnostic.SA1602.severity = none
+
+## IDisposableAnalyzers ##
+
+# Prefer using
+# https://github.com/DotNetAnalyzers/IDisposableAnalyzers/blob/master/documentation/IDISP017.md
+# 理由: ベンチマークファイル。
+dotnet_diagnostic.IDISP017.severity = none
