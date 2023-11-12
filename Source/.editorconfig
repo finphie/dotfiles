@@ -35,7 +35,7 @@ dotnet_diagnostic.CA1810.severity = none
 
 # Mark members as static
 # https://docs.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1822
-# 理由: ベンチマークプロジェクト。
+# 理由: ベンチマークファイル。
 dotnet_diagnostic.CA1822.severity = none
 
 # Do not use insecure randomness
@@ -47,12 +47,12 @@ dotnet_diagnostic.CA5394.severity = none
 
 # Two or more fields were declared in the same field declaration syntax.
 # https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1132.md
-# 理由: ベンチマークプロジェクト。
+# 理由: ベンチマークファイル。
 dotnet_diagnostic.SA1132.severity = none
 
 # A Code Analysis SuppressMessage attribute does not include a justification.
 # https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1404.md
-# 理由: ベンチマークプロジェクト。
+# 理由: ベンチマークファイル。
 dotnet_diagnostic.SA1404.severity = none
 
 # A C# code element is missing a documentation header.
