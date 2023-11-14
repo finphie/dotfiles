@@ -2,7 +2,7 @@
   <!--
     フレームワークライブラリ機能に関するトリミングの設定
     https://learn.microsoft.com/dotnet/core/deploying/trimming/trimming-options
-    https://github.com/dotnet/sdk/blob/v7.0.100-rc.2.22476.15/src/Tasks/Microsoft.NET.Build.Tasks/targets/Microsoft.NET.Sdk.targets
+    https://github.com/dotnet/sdk/blob/v8.0.100/src/Tasks/Microsoft.NET.Build.Tasks/targets/Microsoft.NET.Sdk.targets
   -->
 
   <PropertyGroup>

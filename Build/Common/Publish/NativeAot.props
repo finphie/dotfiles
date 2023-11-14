@@ -3,7 +3,7 @@
     Native AOT関連の設定
     実行ファイル作成のみに対応。（ネイティブライブラリ作成には未対応。）
     https://learn.microsoft.com/dotnet/core/deploying/native-aot/
-    https://github.com/dotnet/runtime/blob/v7.0.0/src/coreclr/nativeaot/docs/optimizing.md
+    https://github.com/dotnet/runtime/blob/v8.0.0/src/coreclr/nativeaot/docs/optimizing.md
     https://github.com/dotnet/corert/blob/master/Documentation/using-corert/optimizing-corert.md
   -->
 

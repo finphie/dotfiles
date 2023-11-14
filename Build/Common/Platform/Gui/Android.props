@@ -2,8 +2,8 @@
   <!--
     Android関連の設定
     https://learn.microsoft.com/xamarin/android/deploy-test/building-apps/build-properties
-    https://github.com/xamarin/xamarin-android/blob/v13.1.0.1/Documentation/guides/OneDotNet.md
-    https://github.com/xamarin/xamarin-android/blob/v13.1.0.1/src/Xamarin.Android.Build.Tasks/Microsoft.Android.Sdk/targets/Microsoft.Android.Sdk.DefaultProperties.targets
+    https://github.com/xamarin/xamarin-android/blob/34.0.43/Documentation/guides/OneDotNet.md
+    https://github.com/xamarin/xamarin-android/blob/34.0.43/src/Xamarin.Android.Build.Tasks/Microsoft.Android.Sdk/targets/Microsoft.Android.Sdk.DefaultProperties.targets
   -->
 
   <PropertyGroup>

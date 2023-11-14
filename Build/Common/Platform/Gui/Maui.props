@@ -35,7 +35,7 @@
   </PropertyGroup>
 
   <!--
-    .NET 8 RC1では、RuntimeIdentifierに「win10-」ではなく「win-」を指定するとクラッシュする。
+    .NET 8では、RuntimeIdentifierに「win10-」ではなく「win-」を指定するとクラッシュする。
     https://github.com/dotnet/maui/issues/17368
   -->
   <Target Name="_CheckRuntimeIdentifierMaui" BeforeTargets="PrepareForPublish">
