@@ -39,12 +39,8 @@
     <!-- Resourceクラスの入れ子になった型をリンクする。 -->
     <AndroidLinkResources>true</AndroidLinkResources>
 
-    <!--
-      LLVMを無効にする。
-      有効にするとエラーになる。
-      https://github.com/dotnet/runtime/issues/92031
-    -->
-    <EnableLLVM>false</EnableLLVM>
+    <!-- LLVMを有効にする。 -->
+    <EnableLLVM>true</EnableLLVM>
   </PropertyGroup>
 
   <Import Project="$(BuildCommonPublishDirectory)Publish.props" />
