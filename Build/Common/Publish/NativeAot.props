@@ -11,6 +11,9 @@
     <!-- Native AOTを有効にする。 -->
     <PublishAot>true</PublishAot>
 
+    <!-- シンボルファイルをコピーしない。 -->
+    <CopyOutputSymbolsToPublishDirectory>false</CopyOutputSymbolsToPublishDirectory>
+
     <!-- シンボルをバイナリから削除する。 -->
     <StripSymbols>true</StripSymbols>
 
@@ -39,26 +42,5 @@
     <!-- 完全な型メタデータの生成を無効にする。 -->
     <IlcGenerateCompleteTypeMetadata>false</IlcGenerateCompleteTypeMetadata>
   </PropertyGroup>
-
-  <!-- シンボルファイルを削除する。 -->
-  <Target Name="_DeleteNativeSymbolFile" AfterTargets="CopyNativeBinary">
-    <PropertyGroup>
-      <_PublishFilePath>$(PublishDir)/$(MSBuildProjectName)</_PublishFilePath>
-
-      <!-- _TargetOSは発行時に内部で使用されるため注意。 -->
-      <_TargetOSName Condition="$(RuntimeIdentifier.StartsWith('win'))">windows</_TargetOSName>
-      <_TargetOSName Condition="$(RuntimeIdentifier.StartsWith('osx'))">osx</_TargetOSName>
-      <_TargetOSName Condition="'$(_TargetOSName)' == ''">linux</_TargetOSName>
-    </PropertyGroup>
-
-    <Delete Condition="'$(Configuration)' != 'Debug' and $(_TargetOSName) == 'windows'" Files="$(_PublishFilePath).pdb" />
-    <Delete Condition="'$(Configuration)' != 'Debug' and $(_TargetOSName) == 'osx'" Files="$(_PublishFilePath).dwarf" />
-    <Delete Condition="'$(Configuration)' != 'Debug' and $(_TargetOSName) == 'linux'" Files="$(_PublishFilePath).dbg" />
-  </Target>
-
-  <!-- プロジェクト名.dsymディレクトリを削除する。 -->
-  <Target Name="_RemoveDsymDirectory" AfterTargets="CopyNativeBinary" Condition="$(RuntimeIdentifier.StartsWith('osx')) and '$(Configuration)' != 'Debug'">
-    <RemoveDir Directories="$(PublishDir)/$(MSBuildProjectName).dsym" />
-  </Target>
 
 </Project>
