@@ -13,10 +13,6 @@
     <PublishMode Condition="'$(_IsPacking)' == 'true'">Tool</PublishMode>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectIdentifier Include="Console" />
-  </ItemGroup>
-
   <Import Project="$(BuildCommonPublishDirectory)Publish.props" />
 
 </Project>

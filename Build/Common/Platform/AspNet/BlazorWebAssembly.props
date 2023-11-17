@@ -29,10 +29,6 @@
     <WasmEnableSIMD>true</WasmEnableSIMD>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectIdentifier Include="Browser" />
-  </ItemGroup>
-
   <Import Project="$(BuildCommonPublishDirectory)Publish.props" />
 
 </Project>

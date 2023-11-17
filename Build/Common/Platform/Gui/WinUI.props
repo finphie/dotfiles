@@ -13,10 +13,6 @@
     <ProjectCapability Condition="'$(DisableMsixProjectCapabilityAddedByProject)' != 'true' and '$(EnableMsixTooling)' == 'true'" Include="Msix" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectIdentifier Include="Windows" />
-  </ItemGroup>
-
   <Import Project="$(MSBuildThisFileDirectory)WinUI.Shared.props" />
 
 </Project>
