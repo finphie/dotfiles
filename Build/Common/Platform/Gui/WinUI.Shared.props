@@ -1,0 +1,64 @@
+<Project>
+  <!--
+    WinUI関連の設定
+    MAUIからも参照されるので注意する。
+  -->
+
+  <PropertyGroup>
+    <PublishMode>ReadyToRun</PublishMode>
+    <PublishMode Condition="'$(IsMaui)' == 'true'">ReadyToRunNoTrimming</PublishMode>
+
+    <TargetPlatformMinVersion>10.0.19041.0</TargetPlatformMinVersion>
+
+    <!--
+      AnyCPUだとエラーになる。
+      x64とarm64のみ対応する。
+      https://github.com/microsoft/WindowsAppSDK/issues/2684
+    -->
+    <Platforms>x64;arm64</Platforms>
+
+    <!-- RuntimeIdentifierによってPatformを設定する。 -->
+    <Platform Condition="$(RuntimeIdentifier.EndsWith('x64'))">x64</Platform>
+    <Platform Condition="$(RuntimeIdentifier.EndsWith('arm64'))">arm64</Platform>
+
+    <!--
+      MSIX関連の設定。
+      csprojまたはDirectory.Build.propsでの設定必須。
+    -->
+    <EnableMsixTooling>true</EnableMsixTooling>
+
+    <!--
+      パッケージタイプの設定。
+      csprojまたはDirectory.Build.propsでの設定必須。
+    -->
+    <WindowsPackageType>None</WindowsPackageType>
+
+    <!--
+      アプリを自己完結型とする。
+      csprojまたはDirectory.Build.propsでの設定必須。
+    -->
+    <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
+  </PropertyGroup>
+
+  <Import Project="$(BuildCommonPublishDirectory)Publish.props" />
+
+  <PropertyGroup>
+    <!-- trueだと余分な警告が出る。 -->
+    <IsTrimmable>false</IsTrimmable>
+  </PropertyGroup>
+
+  <!--
+    TrimModeが.NET 7以降のデフォルトであるfullの場合、実行時エラーとなる。
+    <TrimmerRootAssembly Include="Microsoft.WinUI" />で実行時エラーを回避できるが、ファイルサイズが肥大化する。
+    partialを指定すれば実行できるが、ファイルサイズが少し大きくなる。
+    従って、アセンブリ名がプロジェクト名となるアセンブリのみをトリミングの対象外とする。
+  -->
+  <Target Name="_ConfigureTrimmingWinUI" BeforeTargets="PrepareForILLink">
+    <ItemGroup>
+      <ManagedAssemblyToLink Condition="'%(Filename)' == '$(MSBuildProjectName)'">
+        <IsTrimmable>false</IsTrimmable>
+      </ManagedAssemblyToLink>
+    </ItemGroup>
+  </Target>
+
+</Project>
