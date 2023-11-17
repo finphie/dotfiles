@@ -43,8 +43,18 @@
     <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(IsMaui)' != 'true'">
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <HasPackageAndPublishMenu Condition="'$(DisableHasPackageAndPublishMenuAddedByProject)' != 'true' and '$(EnableMsixTooling)' == 'true'">true</HasPackageAndPublishMenu>
+  </PropertyGroup>
+
   <ItemGroup>
     <ProjectIdentifier Include="Windows" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(IsMaui)' != 'true'">
+    <Manifest Include="$(ApplicationManifest)" />
+    <ProjectCapability Condition="'$(DisableMsixProjectCapabilityAddedByProject)' != 'true' and '$(EnableMsixTooling)' == 'true'" Include="Msix" />
   </ItemGroup>
 
   <Import Project="$(BuildCommonPublishDirectory)Publish.props" />
@@ -53,12 +63,6 @@
     <!-- trueだと余分な警告が出る。 -->
     <IsTrimmable>false</IsTrimmable>
   </PropertyGroup>
-
-  <!-- WinUIに必要なパッケージを参照する。 -->
-  <ItemGroup>
-    <PackageReference Include="Microsoft.WindowsAppSDK" Version="*" />
-    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="*" />
-  </ItemGroup>
 
   <!--
     TrimModeが.NET 7以降のデフォルトであるfullの場合、実行時エラーとなる。
