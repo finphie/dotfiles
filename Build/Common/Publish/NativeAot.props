@@ -28,7 +28,7 @@
     <IlcFoldIdenticalMethodBodies>true</IlcFoldIdenticalMethodBodies>
 
     <!-- 未処理例外のスタックトレースをコンソールに出力するコードを無効にする。 -->
-    <IlcDisableUnhandledExceptionExperience>false</IlcDisableUnhandledExceptionExperience>
+    <IlcDisableUnhandledExceptionExperience>true</IlcDisableUnhandledExceptionExperience>
   </PropertyGroup>
 
   <!-- リフレクションなし -->
