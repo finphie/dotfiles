@@ -1,0 +1,24 @@
+<Project>
+  <!-- Avalonia（デスクトップ）関連の設定 -->
+
+  <PropertyGroup>
+    <IsPublishable>true</IsPublishable>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+
+    <PublishMode>NativeAot</PublishMode>
+    <EnableReflection>true</EnableReflection>
+    <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
+
+    <!--
+      プロジェクト全体でコンパイルされたバインディングを有効にする。
+      https://docs.avaloniaui.net/docs/data-binding/compiled-bindings
+    -->
+    <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+
+    <!-- x64の場合AVX2対応を必須にする。 -->
+    <IlcInstructionSet Condition="$(RuntimeIdentifier.EndsWith('x64'))">x86-x64-v3</IlcInstructionSet>
+  </PropertyGroup>
+
+  <Import Project="$(BuildCommonPublishDirectory)Publish.props" />
+
+</Project>

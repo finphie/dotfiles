@@ -48,6 +48,12 @@
       </PropertyGroup>
     </When>
 
+    <When Condition="'$(UseAvalonia)' == 'true'">
+      <PropertyGroup>
+        <IsAvalonia>true</IsAvalonia>
+      </PropertyGroup>
+    </When>
+
     <Otherwise>
       <PropertyGroup>
         <IsConsole>true</IsConsole>

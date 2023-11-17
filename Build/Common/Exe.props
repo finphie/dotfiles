@@ -14,6 +14,7 @@
   <Import Condition="'$(IsBlazorWebAssembly)' == 'true'" Project="$(BuildCommonPlatformDirectory)AspNet/BlazorWebAssembly.props" />
   <Import Condition="'$(IsBlazorServer)' == 'true'" Project="$(BuildCommonPlatformDirectory)AspNet/BlazorServer.props" />
   <Import Condition="'$(IsAspNet)' == 'true'" Project="$(BuildCommonPlatformDirectory)AspNet/AspNet.props" />
+  <Import Condition="'$(IsAvalonia)' == 'true'" Project="$(BuildCommonPlatformDirectory)Gui/Avalonia.props" />
   <Import Condition="'$(IsConsole)' == 'true'" Project="$(BuildCommonPlatformDirectory)Console/Console.props" />
 
 </Project>
