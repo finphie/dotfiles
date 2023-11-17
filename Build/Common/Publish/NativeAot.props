@@ -29,6 +29,9 @@
 
     <!-- 未処理例外のスタックトレースをコンソールに出力するコードを無効にする。 -->
     <IlcDisableUnhandledExceptionExperience>true</IlcDisableUnhandledExceptionExperience>
+
+    <!-- 完全な型メタデータの生成を無効にする。 -->
+    <IlcGenerateCompleteTypeMetadata>false</IlcGenerateCompleteTypeMetadata>
   </PropertyGroup>
 
   <!-- リフレクションなし -->
@@ -38,9 +41,6 @@
 
     <!-- コンパイラが未使用のコードを削除できるようにする。 -->
     <RootAllApplicationAssemblies>false</RootAllApplicationAssemblies>
-
-    <!-- 完全な型メタデータの生成を無効にする。 -->
-    <IlcGenerateCompleteTypeMetadata>false</IlcGenerateCompleteTypeMetadata>
   </PropertyGroup>
 
 </Project>
