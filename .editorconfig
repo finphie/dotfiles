@@ -10,7 +10,7 @@ insert_final_newline = true
 trim_trailing_whitespace = true
 
 # C#関連ファイル
-[*.{cs,tt,xaml,razor,cshtml,sln}]
+[*.{cs,tt,xaml,axaml,razor,cshtml,sln}]
 charset = utf-8-bom
 end_of_line = crlf
 

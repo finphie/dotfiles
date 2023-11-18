@@ -2,6 +2,7 @@
 *.cs text eol=crlf
 *.tt text eol=crlf
 *.xaml text eol=crlf
+*.axaml text eol=crlf
 *.razor text eol=crlf
 *.cshtml text eol=crlf
 *.csproj text eol=crlf
