@@ -60,3 +60,13 @@ dotnet_diagnostic.SA1601.severity = none
 # https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1602.md
 # 理由: ドキュメンテーションコメントを使用しない。
 dotnet_diagnostic.SA1602.severity = none
+
+# C#テストファイル
+[*Test.cs]
+
+## Microsoft.CodeAnalysis.NetAnalyzers ##
+
+# Consider making public types internal
+# https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1515
+# 理由: テストクラスはpublicにする必要がある。
+dotnet_diagnostic.CA1515.severity = none
