@@ -9,17 +9,17 @@ dotnet_diagnostic.CS1591.severity = none
 ## Microsoft.CodeAnalysis.NetAnalyzers ##
 
 # Do not declare static members on generic types
-# https://docs.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1000
+# https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1000
 # 理由: ベンチマークを取る場合がある。
 dotnet_diagnostic.CA1000.severity = none
 
 # Validate arguments of public methods
-# https://docs.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1062
+# https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1062
 # 理由: 引数を検証する必要はない。
 dotnet_diagnostic.CA1062.severity = none
 
 # Normalize strings to uppercase
-# https://docs.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1308
+# https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1308
 # 理由: ベンチマークを取る場合がある。
 dotnet_diagnostic.CA1308.severity = none
 
@@ -29,22 +29,22 @@ dotnet_diagnostic.CA1308.severity = none
 dotnet_diagnostic.CA1515.severity = none
 
 # Identifiers should not contain underscores
-# https://docs.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1707
+# https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1707
 # 理由: 識別子にアンダースコアを使いたい。
 dotnet_diagnostic.CA1707.severity = none
 
 # Initialize reference type static fields inline
-# https://docs.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1810
+# https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1810
 # 理由: 静的コンストラクターを使用しても問題ない。
 dotnet_diagnostic.CA1810.severity = none
 
 # Mark members as static
-# https://docs.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1822
+# https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1822
 # 理由: ベンチマークファイル。
 dotnet_diagnostic.CA1822.severity = none
 
 # Do not use insecure randomness
-# https://docs.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca5394
+# https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca5394
 # 理由: ベンチマークを取る場合がある。
 dotnet_diagnostic.CA5394.severity = none
 
