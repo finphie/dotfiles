@@ -81,3 +81,11 @@ dotnet_diagnostic.SA1602.severity = none
 # https://github.com/DotNetAnalyzers/IDisposableAnalyzers/blob/master/documentation/IDISP017.md
 # 理由: ベンチマークファイル。
 dotnet_diagnostic.IDISP017.severity = none
+
+# C# ベンチマークファイル
+[*Benchmark.cs]
+
+# null非許容の変数には、コンストラクターの終了時にnull以外の値が入っていなければなりません
+# https://learn.microsoft.com/dotnet/csharp/language-reference/compiler-messages/nullable-warnings#nonnullable-reference-not-initialized
+# 理由: GlobalSetupなどで別途初期化するため。
+dotnet_diagnostic.CS8618.severity = none
