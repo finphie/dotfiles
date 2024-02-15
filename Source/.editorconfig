@@ -23,25 +23,10 @@ dotnet_diagnostic.CA1062.severity = none
 # 理由: ベンチマークを取る場合がある。
 dotnet_diagnostic.CA1308.severity = none
 
-# Consider making public types internal
-# https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1515
-# 理由: ベンチマーク対象クラスはpublicにする必要がある。
-dotnet_diagnostic.CA1515.severity = none
-
-# Identifiers should not contain underscores
-# https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1707
-# 理由: 識別子にアンダースコアを使いたい。
-dotnet_diagnostic.CA1707.severity = none
-
 # Initialize reference type static fields inline
 # https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1810
 # 理由: 静的コンストラクターを使用しても問題ない。
 dotnet_diagnostic.CA1810.severity = none
-
-# Mark members as static
-# https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1822
-# 理由: ベンチマークファイル。
-dotnet_diagnostic.CA1822.severity = none
 
 # Do not use insecure randomness
 # https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca5394
@@ -49,11 +34,6 @@ dotnet_diagnostic.CA1822.severity = none
 dotnet_diagnostic.CA5394.severity = none
 
 ## StyleCop.Analyzers ##
-
-# Two or more fields were declared in the same field declaration syntax.
-# https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1132.md
-# 理由: ベンチマークファイル。
-dotnet_diagnostic.SA1132.severity = none
 
 # A Code Analysis SuppressMessage attribute does not include a justification.
 # https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1404.md
@@ -89,3 +69,27 @@ dotnet_diagnostic.IDISP017.severity = none
 # https://learn.microsoft.com/dotnet/csharp/language-reference/compiler-messages/nullable-warnings#nonnullable-reference-not-initialized
 # 理由: GlobalSetupなどで別途初期化するため。
 dotnet_diagnostic.CS8618.severity = none
+
+## Microsoft.CodeAnalysis.NetAnalyzers ##
+
+# Consider making public types internal
+# https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1515
+# 理由: ベンチマーク対象クラスはpublicにする必要がある。
+dotnet_diagnostic.CA1515.severity = none
+
+# Identifiers should not contain underscores
+# https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1707
+# 理由: 識別子にアンダースコアを使いたい。
+dotnet_diagnostic.CA1707.severity = none
+
+# Mark members as static
+# https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1822
+# 理由: ベンチマークファイル。
+dotnet_diagnostic.CA1822.severity = none
+
+## StyleCop.Analyzers ##
+
+# Two or more fields were declared in the same field declaration syntax.
+# https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1132.md
+# 理由: ベンチマークファイル。
+dotnet_diagnostic.SA1132.severity = none
