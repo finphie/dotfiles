@@ -1,11 +1,6 @@
 # C#ファイル（テストプロジェクト全体）
 [*.cs]
 
-# 公開されている型またはメンバー 'Type_or_Member' の XML コメントがありません
-# https://learn.microsoft.com/dotnet/csharp/language-reference/compiler-messages/cs1591
-# 理由: ドキュメンテーションコメントを使用しない。
-dotnet_diagnostic.CS1591.severity = none
-
 ## Microsoft.CodeAnalysis.NetAnalyzers ##
 
 # Validate arguments of public methods
@@ -13,19 +8,13 @@ dotnet_diagnostic.CS1591.severity = none
 # 理由: 引数を検証する必要はない。
 dotnet_diagnostic.CA1062.severity = none
 
-# Initialize reference type static fields inline
-# https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1810
-# 理由: 静的コンストラクターを使用しても問題ない。
-dotnet_diagnostic.CA1810.severity = none
-
 # C#テスト関連ファイル
 [{*Test,*TestData}.cs]
 
-## 名前付けルール ##
-
-# 非同期メソッド名の末尾にAsync付与を強制しない。
-# 理由: Asyncを付ける意味がないため。
-dotnet_naming_rule.async_methods_should_be_ends_with_async.severity = none
+# 公開されている型またはメンバー 'Type_or_Member' の XML コメントがありません
+# https://learn.microsoft.com/dotnet/csharp/language-reference/compiler-messages/cs1591
+# 理由: ドキュメンテーションコメントを使用しない。
+dotnet_diagnostic.CS1591.severity = none
 
 ## Microsoft.CodeAnalysis.NetAnalyzers ##
 
@@ -33,16 +22,6 @@ dotnet_naming_rule.async_methods_should_be_ends_with_async.severity = none
 # https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1034
 # 理由: 入れ子にしたクラスを使いたい。
 dotnet_diagnostic.CA1034.severity = none
-
-# Identifiers should not contain underscores
-# https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1707
-# 理由: 識別子にアンダースコアを使いたい。
-dotnet_diagnostic.CA1707.severity = none
-
-# Do not directly await a Task
-# https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca2007
-# 理由: ConfigureAwait(false)を呼び出すと問題が発生する場合がある。
-dotnet_diagnostic.CA2007.severity = none
 
 ## StyleCop.Analyzers ##
 
@@ -64,12 +43,28 @@ dotnet_diagnostic.SA1602.severity = none
 # C#テストファイル
 [*Test.cs]
 
+## 名前付けルール ##
+
+# 非同期メソッド名の末尾にAsync付与を強制しない。
+# 理由: Asyncを付ける意味がないため。
+dotnet_naming_rule.async_methods_should_be_ends_with_async.severity = none
+
 ## Microsoft.CodeAnalysis.NetAnalyzers ##
 
 # Consider making public types internal
 # https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1515
 # 理由: テストクラスはpublicにする必要がある。
 dotnet_diagnostic.CA1515.severity = none
+
+# Identifiers should not contain underscores
+# https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1707
+# 理由: 識別子にアンダースコアを使いたい。
+dotnet_diagnostic.CA1707.severity = none
+
+# Do not directly await a Task
+# https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca2007
+# 理由: ConfigureAwait(false)を呼び出すと問題が発生する場合がある。
+dotnet_diagnostic.CA2007.severity = none
 
 ## StyleCop.Analyzers ##
 
