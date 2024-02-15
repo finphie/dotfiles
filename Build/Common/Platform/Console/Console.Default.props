@@ -3,6 +3,7 @@
 
   <PropertyGroup>
     <IsPublishable>true</IsPublishable>
+    <ProjectIdentifier>Console</ProjectIdentifier>
 
     <!--
       Native AOT: 起動速度を優先する場合

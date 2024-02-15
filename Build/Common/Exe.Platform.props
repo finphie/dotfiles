@@ -64,7 +64,6 @@
     <Otherwise>
       <PropertyGroup>
         <IsConsole>true</IsConsole>
-        <ProjectIdentifier>Console</ProjectIdentifier>
       </PropertyGroup>
     </Otherwise>
 
