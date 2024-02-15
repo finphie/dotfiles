@@ -70,3 +70,10 @@ dotnet_diagnostic.SA1602.severity = none
 # https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1515
 # 理由: テストクラスはpublicにする必要がある。
 dotnet_diagnostic.CA1515.severity = none
+
+## StyleCop.Analyzers ##
+
+# A C# code file contains more than one unique type.
+# https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1402.md
+# 理由: 1ファイルに収めたい場合がある。
+dotnet_diagnostic.SA1402.severity = none

@@ -1,4 +1,4 @@
-# C# ベンチマークファイル
+# C#ベンチマークファイル（プロジェクト全体）
 [{*Benchmark*/**,*Benchmark*}.cs]
 
 # 公開されている型またはメンバー 'Type_or_Member' の XML コメントがありません
@@ -62,7 +62,7 @@ dotnet_diagnostic.SA1602.severity = none
 # 理由: ベンチマークファイル。
 dotnet_diagnostic.IDISP017.severity = none
 
-# C# ベンチマークファイル
+# C#ベンチマークファイル
 [*Benchmark.cs]
 
 # null非許容の変数には、コンストラクターの終了時にnull以外の値が入っていなければなりません
@@ -93,3 +93,8 @@ dotnet_diagnostic.CA1822.severity = none
 # https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1132.md
 # 理由: ベンチマークファイル。
 dotnet_diagnostic.SA1132.severity = none
+
+# A C# code file contains more than one unique type.
+# https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1402.md
+# 理由: 1ファイルに収めたい場合がある。
+dotnet_diagnostic.SA1402.severity = none
