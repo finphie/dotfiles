@@ -28,6 +28,11 @@ dotnet_diagnostic.CA1308.severity = none
 # 理由: 静的コンストラクターを使用しても問題ない。
 dotnet_diagnostic.CA1810.severity = none
 
+# Use 'CompositeFormat'
+# https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1863
+# 理由: ベンチマークを取る場合がある。
+dotnet_diagnostic.CA1863.severity = none
+
 # Do not use insecure randomness
 # https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca5394
 # 理由: ベンチマークを取る場合がある。
