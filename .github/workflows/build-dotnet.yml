@@ -22,3 +22,5 @@ jobs:
   main:
     name: Main
     uses: finphie/Actions/.github/workflows/build-dotnet.yml@main
+    with:
+      dotnet-version: 9.0.100-preview.1.24101.2
