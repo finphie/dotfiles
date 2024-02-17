@@ -108,3 +108,12 @@ dotnet_diagnostic.SA1132.severity = none
 # https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1402.md
 # 理由: 1ファイルに収めたい場合がある。
 dotnet_diagnostic.SA1402.severity = none
+
+[Program.cs]
+
+## StyleCop.Analyzers ##
+
+# The file name of a C# code file does not match the first type declared in the file.
+# https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1649.md
+# 理由: トップレベルステートメントでは、ファイル名と型名が異なる場合がある。
+dotnet_diagnostic.SA1649.severity = none
