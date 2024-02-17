@@ -335,6 +335,11 @@ dotnet_code_quality.enable_platform_analyzer_on_pre_net5_target = true
 # 理由: 内部ではListを利用したい場合がある。
 dotnet_code_quality.CA1002.api_surface = public
 
+# 空のインターフェイスは使用しないでください
+# https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1040
+# 理由: コンパイル時にインターフェイスをマーカーとして、型の識別を行いたい場合があるため。
+dotnet_diagnostic.CA1040.severity = none
+
 # 参照可能なインスタンス フィールドを宣言しません
 # https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1051
 # 構造体ではプロパティではなくフィールドにしたい場合がある。
