@@ -325,50 +325,50 @@ dotnet_analyzer_diagnostic.severity = warning
 # デフォルトのapi_surfaceを変更
 dotnet_code_quality.api_surface = all
 
-# Validate platform compatibility
+# プラットフォームの互換性を検証する
 # https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1416
 # 理由: .NET 5未満でも有効化するため。
 dotnet_code_quality.enable_platform_analyzer_on_pre_net5_target = true
 
-# Do not expose generic lists
+# ジェネリック リストを公開しません
 # https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1002
 # 理由: 内部ではListを利用したい場合がある。
 dotnet_code_quality.CA1002.api_surface = public
 
-# Do not declare visible instance fields
+# 参照可能なインスタンス フィールドを宣言しません
 # https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1051
 # 構造体ではプロパティではなくフィールドにしたい場合がある。
 dotnet_code_quality.CA1051.exclude_structs = true
 
-# Identifiers should not contain type names
+# 識別子には型名を含めないでください
 # https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1720
 # 理由: 内部では識別子に型名を利用したい場合がある。
 dotnet_code_quality.CA1720.api_surface = public
 
-# Mark assemblies with CLSCompliantAttribute
+# アセンブリに CLSCompliantAttribute を設定します
 # https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1014
 # https://github.com/dotnet/runtime/issues/44194
 # 理由: CLSに準拠する必要性がない。
 # AllEnabledByDefaultを設定しただけでは有効にならないので不要かも。
 dotnet_diagnostic.CA1014.severity = none
 
-# Identifiers should have correct prefix
+# 識別子は正しいプレフィックスを含んでいなければなりません
 # https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1715
 # 理由: IDE1006（命名スタイル）と重複。
 dotnet_diagnostic.CA1715.severity = none
 
-# Identifiers should not match keywords
+# 識別子はキーワードと同一にすることはできません
 # https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1716
-# 理由: 言語キーワードと重複してもエスケープすれば回避できる。
+# 理由: キーワードと重複しても逐語的・エスケープ識別子を使用すれば問題ない。
 dotnet_diagnostic.CA1716.severity = none
 
-# Do not directly await a Task
+# タスクを直接待機しないでください
 # https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca2007
 # 理由: デフォルトで有効にならない規則。
 dotnet_diagnostic.CA2007.severity = warning
 dotnet_code_quality.CA2007.output_kind = ConsoleApplication, DynamicallyLinkedLibrary
 
-# 'type': base type 'type' is not CLS-compliant
+# 基本型 'type' は CLS に準拠していません
 # https://learn.microsoft.com/dotnet/csharp/language-reference/compiler-messages/cs3009
 # 理由: CLSに準拠する必要性がない。
 dotnet_diagnostic.CA3009.severity = none

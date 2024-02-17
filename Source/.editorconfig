@@ -8,46 +8,46 @@ dotnet_diagnostic.CS1591.severity = none
 
 ## Microsoft.CodeAnalysis.NetAnalyzers ##
 
-# Do not declare static members on generic types
+# ジェネリック型の静的メンバーを宣言しません
 # https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1000
-# 理由: ベンチマークを取る場合がある。
+# 理由: ベンチマーク対象にする場合がある。
 dotnet_diagnostic.CA1000.severity = none
 
-# Validate arguments of public methods
+# パブリック メソッドの引数の検証
 # https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1062
 # 理由: 引数を検証する必要はない。
 dotnet_diagnostic.CA1062.severity = none
 
-# Normalize strings to uppercase
+# 文字列を大文字に標準化します
 # https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1308
-# 理由: ベンチマークを取る場合がある。
+# 理由: ベンチマーク対象にする場合がある。
 dotnet_diagnostic.CA1308.severity = none
 
-# Initialize reference type static fields inline
+# 参照型の静的フィールドをインラインで初期化します
 # https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1810
 # 理由: 静的コンストラクターを使用しても問題ない。
 dotnet_diagnostic.CA1810.severity = none
 
 # プロパティは、配列を返すことはできません
 # https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1819
-# 理由: ベンチマークを取る場合がある。
+# 理由: ベンチマーク対象にする場合がある。
 dotnet_diagnostic.CA1819.severity = none
 
-# Use 'CompositeFormat'
+# 'CompositeFormat' を使用する
 # https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1863
-# 理由: ベンチマークを取る場合がある。
+# 理由: ベンチマーク対象にする場合がある。
 dotnet_diagnostic.CA1863.severity = none
 
-# Do not use insecure randomness
+# 安全でないランダム度を使用しません
 # https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca5394
-# 理由: ベンチマークを取る場合がある。
+# 理由: 暗号強度の低い擬似乱数ジェネレーターを使用しても問題ない。
 dotnet_diagnostic.CA5394.severity = none
 
 ## StyleCop.Analyzers ##
 
 # A Code Analysis SuppressMessage attribute does not include a justification.
 # https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1404.md
-# 理由: ベンチマークファイル。
+# 理由: 警告抑制理由の表記は必要ない。
 dotnet_diagnostic.SA1404.severity = none
 
 # A C# code element is missing a documentation header.
@@ -82,17 +82,17 @@ dotnet_diagnostic.CS8618.severity = none
 
 ## Microsoft.CodeAnalysis.NetAnalyzers ##
 
-# Consider making public types internal
+# Consider making public types internal (public 型を internal にすることを検討する)
 # https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1515
 # 理由: ベンチマーク対象クラスはpublicにする必要がある。
 dotnet_diagnostic.CA1515.severity = none
 
-# Identifiers should not contain underscores
+# 識別子はアンダースコアを含むことはできません
 # https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1707
 # 理由: 識別子にアンダースコアを使いたい。
 dotnet_diagnostic.CA1707.severity = none
 
-# Mark members as static
+# メンバーを static に設定します
 # https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1822
 # 理由: ベンチマークファイル。
 dotnet_diagnostic.CA1822.severity = none
@@ -101,7 +101,7 @@ dotnet_diagnostic.CA1822.severity = none
 
 # Two or more fields were declared in the same field declaration syntax.
 # https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1132.md
-# 理由: ベンチマークファイル。
+# 理由: 複数のフィールドを同時に宣言したい場合がある。
 dotnet_diagnostic.SA1132.severity = none
 
 # A C# code file contains more than one unique type.

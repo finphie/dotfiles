@@ -3,7 +3,7 @@
 
 ## Microsoft.CodeAnalysis.NetAnalyzers ##
 
-# Validate arguments of public methods
+# パブリック メソッドの引数の検証
 # https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1062
 # 理由: 引数を検証する必要はない。
 dotnet_diagnostic.CA1062.severity = none
@@ -18,7 +18,7 @@ dotnet_diagnostic.CS1591.severity = none
 
 ## Microsoft.CodeAnalysis.NetAnalyzers ##
 
-# Nested types should not be visible
+# 入れ子にされた型を参照可能にすることはできません
 # https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1034
 # 理由: 入れ子にしたクラスを使いたい。
 dotnet_diagnostic.CA1034.severity = none
@@ -51,22 +51,22 @@ dotnet_naming_rule.async_methods_should_be_ends_with_async.severity = none
 
 ## Microsoft.CodeAnalysis.NetAnalyzers ##
 
-# Consider making public types internal
+# Consider making public types internal (public 型を internal にすることを検討する)
 # https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1515
 # 理由: テストクラスはpublicにする必要がある。
 dotnet_diagnostic.CA1515.severity = none
 
-# Identifiers should not contain underscores
+# 識別子はアンダースコアを含むことはできません
 # https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1707
 # 理由: 識別子にアンダースコアを使いたい。
 dotnet_diagnostic.CA1707.severity = none
 
-# Do not directly await a Task
+# タスクを直接待機しないでください
 # https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca2007
 # 理由: ConfigureAwait(false)を呼び出すと問題が発生する場合がある。
 dotnet_diagnostic.CA2007.severity = none
 
-# Do not use insecure randomness
+# 安全でないランダム度を使用しません
 # https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca5394
 # 理由: 暗号強度の低い擬似乱数ジェネレーターを使用しても問題ない。
 dotnet_diagnostic.CA5394.severity = none
