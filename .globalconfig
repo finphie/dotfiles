@@ -345,13 +345,6 @@ dotnet_code_quality.CA1051.exclude_structs = true
 # 理由: 内部では識別子に型名を利用したい場合がある。
 dotnet_code_quality.CA1720.api_surface = public
 
-# アセンブリに CLSCompliantAttribute を設定します
-# https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1014
-# https://github.com/dotnet/runtime/issues/44194
-# 理由: CLSに準拠する必要性がない。
-# AllEnabledByDefaultを設定しただけでは有効にならないので不要かも。
-dotnet_diagnostic.CA1014.severity = none
-
 # 識別子は正しいプレフィックスを含んでいなければなりません
 # https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1715
 # 理由: IDE1006（命名スタイル）と重複。
