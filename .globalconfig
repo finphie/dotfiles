@@ -361,6 +361,11 @@ dotnet_diagnostic.CA1716.severity = none
 dotnet_diagnostic.CA2007.severity = warning
 dotnet_code_quality.CA2007.output_kind = ConsoleApplication, DynamicallyLinkedLibrary
 
+# 演算子オーバーロードには名前付けされた代替が存在します
+# https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca2225
+# 理由: 代替メソッドを定義する必要性がない。
+dotnet_diagnostic.CA2225.severity = none
+
 # 基本型 'type' は CLS に準拠していません
 # https://learn.microsoft.com/dotnet/csharp/language-reference/compiler-messages/cs3009
 # 理由: CLSに準拠する必要性がない。
