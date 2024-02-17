@@ -16,13 +16,6 @@ dotnet_diagnostic.CA1062.severity = none
 # 理由: ドキュメンテーションコメントを使用しない。
 dotnet_diagnostic.CS1591.severity = none
 
-## Microsoft.CodeAnalysis.NetAnalyzers ##
-
-# 入れ子にされた型を参照可能にすることはできません
-# https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1034
-# 理由: 入れ子にしたクラスを使いたい。
-dotnet_diagnostic.CA1034.severity = none
-
 ## StyleCop.Analyzers ##
 
 # A C# code element is missing a documentation header.
