@@ -8,6 +8,11 @@
 # 理由: 引数を検証する必要はない。
 dotnet_diagnostic.CA1062.severity = none
 
+# 安全でないランダム度を使用しません
+# https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca5394
+# 理由: 暗号強度の低い擬似乱数ジェネレーターを使用しても問題ない。
+dotnet_diagnostic.CA5394.severity = none
+
 # C#テスト関連ファイル
 [{*Test,*TestData}.cs]
 
@@ -58,11 +63,6 @@ dotnet_diagnostic.CA1707.severity = none
 # https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca2007
 # 理由: ConfigureAwait(false)を呼び出すと問題が発生する場合がある。
 dotnet_diagnostic.CA2007.severity = none
-
-# 安全でないランダム度を使用しません
-# https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca5394
-# 理由: 暗号強度の低い擬似乱数ジェネレーターを使用しても問題ない。
-dotnet_diagnostic.CA5394.severity = none
 
 ## StyleCop.Analyzers ##
 
