@@ -46,7 +46,7 @@ dotnet_diagnostic.SA1602.severity = none
 ## 名前付けルール ##
 
 # 非同期メソッド名の末尾にAsync付与を強制しない。
-# 理由: Asyncを付ける意味がないため。
+# 理由: Asyncを付ける必要がない。
 dotnet_naming_rule.async_methods_should_be_ends_with_async.severity = none
 
 ## Microsoft.CodeAnalysis.NetAnalyzers ##

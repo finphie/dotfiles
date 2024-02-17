@@ -327,7 +327,7 @@ dotnet_code_quality.api_surface = all
 
 # プラットフォームの互換性を検証する
 # https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1416
-# 理由: .NET 5未満でも有効化するため。
+# 理由: .NET 5未満でも有効化する。
 dotnet_code_quality.enable_platform_analyzer_on_pre_net5_target = true
 
 # ジェネリック リストを公開しません

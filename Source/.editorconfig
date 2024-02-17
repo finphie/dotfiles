@@ -77,7 +77,7 @@ dotnet_diagnostic.IDISP017.severity = none
 
 # null非許容の変数には、コンストラクターの終了時にnull以外の値が入っていなければなりません
 # https://learn.microsoft.com/dotnet/csharp/language-reference/compiler-messages/nullable-warnings#nonnullable-reference-not-initialized
-# 理由: GlobalSetupなどで別途初期化するため。
+# 理由: GlobalSetupなどで別途初期化する。
 dotnet_diagnostic.CS8618.severity = none
 
 ## Microsoft.CodeAnalysis.NetAnalyzers ##
@@ -94,7 +94,7 @@ dotnet_diagnostic.CA1707.severity = none
 
 # メンバーを static に設定します
 # https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1822
-# 理由: ベンチマークファイル。
+# 理由: ベンチマーク対象メソッドはインスタンスメソッドにする必要がある。
 dotnet_diagnostic.CA1822.severity = none
 
 ## StyleCop.Analyzers ##
