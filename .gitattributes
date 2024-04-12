@@ -7,6 +7,7 @@
 *.cshtml text eol=crlf
 *.csproj text eol=crlf
 *.sln text eol=crlf
+*.slnx text eol=crlf
 PSScriptAnalyzerSettings.psd1 linguist-vendored
 Source/Common/* linguist-vendored
 */wwwroot/* linguist-vendored

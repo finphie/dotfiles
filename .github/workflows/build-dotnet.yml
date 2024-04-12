@@ -11,6 +11,7 @@ on:
       - '**/*.cshtml'
       - '**/*.csproj'
       - '**/*.sln'
+      - '**/*.slnx'
       - '**/*.props'
       - '**/*.targets'
       - '**/.editorconfig'
