@@ -10,13 +10,18 @@ insert_final_newline = true
 trim_trailing_whitespace = true
 
 # C#関連ファイル
-[*.{cs,tt,xaml,axaml,razor,cshtml,sln,slnx}]
+[*.{cs,tt,xaml,axaml,razor,cshtml,sln}]
 charset = utf-8-bom
 end_of_line = crlf
 
 # Visual Studio ソリューションファイル
 [*.sln]
 indent_style = tab
+
+# Visual Studio XML ソリューションファイル
+[*.slnx]
+end_of_line = crlf
+indent_size = 2
 
 # C#プロジェクトファイル
 # EditorConfigなしだとUTF-8（WPFプロジェクトはBOM付き）のCRLFになる。
