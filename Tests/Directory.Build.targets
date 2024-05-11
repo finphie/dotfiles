@@ -1,0 +1,8 @@
+<Project>
+  <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.targets', '$(MSBuildThisFileDirectory)../'))" />
+
+  <PropertyGroup>
+    <IsTestProject>$(MSBuildProjectName.EndsWith('Tests'))</IsTestProject>
+  </PropertyGroup>
+
+</Project>
