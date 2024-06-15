@@ -26,6 +26,7 @@ fenced-code-language:
   allowed_languages:
     - text
     - csharp
+    - razor
     - typescript
     - javascript
     - python
@@ -38,6 +39,8 @@ fenced-code-language:
     - powershell
     - batch
     - bash
+    - editorconfig
+    - dockerfile
   language_only: true
 required-headings: false
 code-block-style:
