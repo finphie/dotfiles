@@ -457,6 +457,18 @@ dotnet_diagnostic.SA1400.severity = none
 # https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1051
 dotnet_diagnostic.SA1401.severity = none
 
+# A C# statement contains a complex arithmetic expression which omits parenthesis around operators.
+# https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1407.md
+# 理由: IDE0048と重複。
+# https://learn.microsoft.com/dotnet/fundamentals/code-analysis/style-rules/ide0047-ide0048
+dotnet_diagnostic.SA1407.severity = none
+
+# A C# statement contains a complex conditional expression which omits parenthesis around operators.
+# https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1408.md
+# 理由: IDE0048と重複。
+# https://learn.microsoft.com/dotnet/fundamentals/code-analysis/style-rules/ide0047-ide0048
+dotnet_diagnostic.SA1408.severity = none
+
 # The last statement in a multi-line C# initializer or list is missing a trailing comma.
 # https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1413.md
 # 理由: 末尾にカンマを付けたくない。
