@@ -472,6 +472,471 @@ dotnet_diagnostic.SA1643.severity = none
 # 理由: ファイルヘッダーは不要。
 dotnet_diagnostic.SA1633.severity = none
 
+## Roslynator.Analyzers ##
+
+# Roslynator.AnalyzersやRoslynator.Formatting.Analyzersのデフォルトを分析なしとする。
+# 理由: Microsoft.CodeAnalysis.NetAnalyzersやStyleCop.Analyzersなどとの重複が多いため。
+dotnet_analyzer_diagnostic.category-roslynator.severity = none
+
+# Merge 'else' with nested 'if'
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1006
+dotnet_diagnostic.RCS1006.severity = warning
+
+# Use explicitly/implicitly typed array
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1014
+dotnet_diagnostic.RCS1014.severity = warning
+roslynator_array_creation_type_style = implicit
+roslynator_use_collection_expression = false
+
+# Remove unnecessary braces in switch section
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1031
+dotnet_diagnostic.RCS1031.severity = warning
+
+# Remove redundant parentheses
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1032
+# 理由: IDE0047（Remove unnecessary parentheses）と重複。
+# https://learn.microsoft.com/dotnet/fundamentals/code-analysis/style-rules/ide0047-ide0048
+dotnet_diagnostic.RCS1032.severity = none
+
+# Remove redundant 'sealed' modifier
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1034
+dotnet_diagnostic.RCS1034.severity = warning
+
+# Remove enum default underlying type
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1042
+dotnet_diagnostic.RCS1042.severity = warning
+
+# Remove 'partial' modifier from type with a single part
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1043
+dotnet_diagnostic.RCS1043.severity = warning
+
+# Non-asynchronous method name should not end with 'Async'
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1047
+# 理由: IDE1006（命名スタイル）で指定できない規則。
+dotnet_diagnostic.RCS1047.severity = warning
+
+# Use lambda expression instead of anonymous method
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1048
+dotnet_diagnostic.RCS1048.severity = warning
+
+# Simplify boolean comparison
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1049
+dotnet_diagnostic.RCS1049.severity = warning
+
+# Include/omit parentheses when creating new object
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1050
+dotnet_diagnostic.RCS1050.severity = warning
+roslynator_object_creation_parentheses_style = omit
+
+# Add/remove parentheses from condition in conditional operator
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1051
+#dotnet_diagnostic.RCS1051.severity = warning
+#roslynator_conditional_operator_condition_parentheses_style = omit_when_condition_is_single_token
+
+# Use compound assignment
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1058
+# 理由: IDE0054やIDE0074と重複。
+# https://learn.microsoft.com/dotnet/fundamentals/code-analysis/style-rules/ide0054-ide0074
+dotnet_diagnostic.RCS1058.severity = none
+
+# Merge 'if' with nested 'if'
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1061
+dotnet_diagnostic.RCS1061.severity = warning
+
+# Simplify logical negation
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1068
+dotnet_diagnostic.RCS1068.severity = warning
+
+# Remove redundant base constructor call
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1071
+dotnet_diagnostic.RCS1071.severity = warning
+
+# Remove redundant constructor
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1074
+dotnet_diagnostic.RCS1074.severity = warning
+
+# Optimize LINQ method call
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1077
+dotnet_diagnostic.RCS1077.severity = warning
+
+# Throwing of new NotImplementedException
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1079
+dotnet_diagnostic.RCS1079.severity = warning
+
+# Use --/++ operator instead of assignment
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1089
+# 理由: IDE0054と重複。
+# https://learn.microsoft.com/dotnet/fundamentals/code-analysis/style-rules/ide0054-ide0074
+dotnet_diagnostic.RCS1089.severity = none
+
+# File contains no code
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1093
+dotnet_diagnostic.RCS1093.severity = warning
+
+# Use 'HasFlag' method or bitwise operator
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1096
+dotnet_diagnostic.RCS1096.severity = warning
+roslynator_enum_has_flag_style = method
+
+# Remove redundant 'ToString' call
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1097
+dotnet_diagnostic.RCS1097.severity = warning
+
+# Default label should be the last label in a switch section
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1099
+dotnet_diagnostic.RCS1099.severity = warning
+
+# Unnecessary interpolation
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1105
+dotnet_diagnostic.RCS1105.severity = warning
+
+# Remove redundant 'ToCharArray' call
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1107
+dotnet_diagnostic.RCS1107.severity = warning
+
+# Combine 'Enumerable.Where' method chain
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1112
+dotnet_diagnostic.RCS1112.severity = warning
+
+# Use 'string.IsNullOrEmpty' method
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1113
+dotnet_diagnostic.RCS1113.severity = warning
+
+# Remove redundant delegate creation
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1114
+dotnet_diagnostic.RCS1114.severity = warning
+
+# Mark local variable as const
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1118
+dotnet_diagnostic.RCS1118.severity = warning
+
+# Inline local variable
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1124
+# 理由: 一時変数にしたい場合もある。また、Visual Studioの「インラインの一時変数」と重複。
+# https://learn.microsoft.com/visualstudio/ide/reference/inline-temporary-variable
+dotnet_diagnostic.RCS1124.severity = none
+
+# Bitwise operation on enum without Flags attribute
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1130
+dotnet_diagnostic.RCS1130.severity = warning
+
+# Remove redundant overriding member
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1132
+dotnet_diagnostic.RCS1132.severity = warning
+
+# Remove redundant Dispose/Close call
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1133
+dotnet_diagnostic.RCS1133.severity = warning
+
+# Remove redundant statement
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1134
+dotnet_diagnostic.RCS1134.severity = warning
+
+# Merge switch sections with equivalent content
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1136
+dotnet_diagnostic.RCS1136.severity = warning
+
+# Add exception to documentation comment
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1140
+# 理由: StyleCop.Analyzersでは設定できない。
+dotnet_diagnostic.RCS1140.severity = warning
+
+# Use conditional access
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1146
+dotnet_diagnostic.RCS1146.severity = warning
+
+# Remove redundant cast
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1151
+dotnet_diagnostic.RCS1151.severity = warning
+
+# Sort enum members
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1154
+dotnet_diagnostic.RCS1154.severity = warning
+
+# Avoid chain of assignments
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1162
+dotnet_diagnostic.RCS1162.severity = warning
+
+# Unused type parameter
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1164
+# https://github.com/dotnet/roslyn/issues/44330
+dotnet_diagnostic.RCS1164.severity = warning
+
+# Use read-only auto-implemented property
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1170/
+dotnet_diagnostic.RCS1170.severity = warning
+
+# Use 'is' operator instead of 'as' operator
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1172
+dotnet_diagnostic.RCS1172.severity = warning
+
+# Remove redundant async/await
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1174
+dotnet_diagnostic.RCS1174.severity = warning
+
+# Convert comment to documentation comment
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1181
+dotnet_diagnostic.RCS1181.severity = warning
+
+# Remove redundant base interface
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1182
+dotnet_diagnostic.RCS1182.severity = warning
+
+# Join string expressions
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1190
+dotnet_diagnostic.RCS1190.severity = warning
+
+# Declare enum value as combination of names
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1191
+dotnet_diagnostic.RCS1191.severity = warning
+
+# Unnecessary usage of verbatim string literal
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1192
+# 理由: Visual Studioのリファクタリングと重複。ただし、警告レベルの設定ができないため有効にする。
+# https://learn.microsoft.com/visualstudio/ide/reference/convert-between-regular-string-verbatim-string
+dotnet_diagnostic.RCS1192.severity = warning
+
+# Overriding member should not change 'params' modifier
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1193
+dotnet_diagnostic.RCS1193.severity = warning
+
+# Use ^ operator
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1195
+dotnet_diagnostic.RCS1195.severity = warning
+
+# Call extension method as instance method
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1196
+dotnet_diagnostic.RCS1196.severity = warning
+
+# Unnecessary null check
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1199
+dotnet_diagnostic.RCS1199.severity = warning
+
+# Use EventArgs.Empty
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1204
+dotnet_diagnostic.RCS1204.severity = warning
+
+# Order named arguments according to the order of parameters
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1205
+dotnet_diagnostic.RCS1205.severity = warning
+
+# Use conditional access instead of conditional expression
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1206/
+# 理由: IDE0031ではNull許容型のValueプロパティアクセスの簡略化設定ができない。
+dotnet_diagnostic.RCS1206.severity = warning
+
+# Reduce 'if' nesting
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1208
+dotnet_diagnostic.RCS1208.severity = warning
+
+# Remove redundant assignment
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1212
+dotnet_diagnostic.RCS1212.severity = warning
+
+# Unnecessary interpolated string
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1214
+dotnet_diagnostic.RCS1214.severity = warning
+
+# Expression is always equal to true/false
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1215
+dotnet_diagnostic.RCS1215.severity = warning
+
+# Unnecessary unsafe context
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1216
+dotnet_diagnostic.RCS1216.severity = warning
+
+# Simplify code branching
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1218
+dotnet_diagnostic.RCS1218.severity = warning
+
+# Merge preprocessor directives
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1222
+dotnet_diagnostic.RCS1222.severity = warning
+
+# Validate arguments correctly
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1227
+dotnet_diagnostic.RCS1227.severity = warning
+
+# Unnecessary explicit use of enumerator
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1230
+dotnet_diagnostic.RCS1230.severity = warning
+
+# Use short-circuiting operator
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1233
+dotnet_diagnostic.RCS1233.severity = warning
+
+# Optimize method call
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1235
+dotnet_diagnostic.RCS1235.severity = warning
+
+# Use exception filter
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1236
+dotnet_diagnostic.RCS1236.severity = warning
+
+# Use 'for' statement instead of 'while' statement
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1239/
+dotnet_diagnostic.RCS1239.severity = warning
+
+# Operator is unnecessary
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1240
+dotnet_diagnostic.RCS1240.severity = warning
+
+# Use element access
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1246
+dotnet_diagnostic.RCS1246.severity = warning
+
+# Fix documentation comment tag
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1247
+dotnet_diagnostic.RCS1247.severity = warning
+
+# Normalize null check
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1248
+dotnet_diagnostic.RCS1248.severity = warning
+roslynator_null_check_style = pattern_matching
+
+# Unnecessary null-forgiving operator
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1249
+dotnet_diagnostic.RCS1249.severity = warning
+
+# Remove unnecessary braces from record declaration
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1251
+dotnet_diagnostic.RCS1251.severity = warning
+
+# Normalize usage of infinite loop
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1252
+dotnet_diagnostic.RCS1252.severity = warning
+roslynator_infinite_loop_style = while
+
+# Format documentation comment summary
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1253
+dotnet_diagnostic.RCS1253.severity = warning
+roslynator_doc_comment_summary_style = multi_line
+
+# Normalize format of enum flag value
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1254
+dotnet_diagnostic.RCS1254.severity = warning
+roslynator_enum_flag_value_style = shift_operator
+
+# Invalid argument null check
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1256
+dotnet_diagnostic.RCS1256.severity = warning
+
+# Use enum field explicitly
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1257
+dotnet_diagnostic.RCS1257.severity = warning
+
+# Unnecessary enum flag
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1258
+dotnet_diagnostic.RCS1258.severity = warning
+
+# Add/remove trailing comma
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1260
+dotnet_diagnostic.RCS1260.severity = warning
+roslynator_trailing_comma_style = omit
+
+# Resource can be disposed asynchronously
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1261
+dotnet_diagnostic.RCS1261.severity = warning
+
+# Unnecessary raw string literal
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1262
+dotnet_diagnostic.RCS1262.severity = warning
+
+# Remove redundant catch block
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1265
+dotnet_diagnostic.RCS1265.severity = warning
+
+# Use raw string literal
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1266
+dotnet_diagnostic.RCS1266.severity = warning
+
+# Use string interpolation instead of 'string.Concat'
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1267
+dotnet_diagnostic.RCS1267.severity = warning
+
+# Simplify numeric comparison
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1268
+dotnet_diagnostic.RCS1268.severity = warning
+
+## Roslynator.Formatting.Analyzers ##
+
+# Add blank line before using directive list
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS0006/
+dotnet_diagnostic.RCS0006.severity = warning
+
+# Add blank line between declarations
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS0010
+# 理由: SA1516（Adjacent C# elements are not separated by a blank line.）はフィールド同士やEnumメンバー同士の分析対象外。
+# https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1516.md
+dotnet_diagnostic.RCS0010.severity = warning
+
+# Add/remove blank line between single-line accessors
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS0011
+dotnet_diagnostic.RCS0011.severity = warning
+roslynator_blank_line_between_single_line_accessors = false
+
+# Add/remove blank line between using directives
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS0015
+dotnet_diagnostic.RCS0015.severity = warning
+roslynator_blank_line_between_using_directives = never
+
+# Place new line after/before binary operator
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS0027
+dotnet_diagnostic.RCS0027.severity = warning
+roslynator_binary_operator_new_line = before
+
+# Remove new line before base list
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS0039
+dotnet_diagnostic.RCS0039.severity = warning
+
+# Remove new line between 'if' keyword and 'else' keyword
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS0041
+dotnet_diagnostic.RCS0041.severity = warning
+
+# Put auto-accessors on a single line
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS0042
+# 理由: IDE0055（csharp_preserve_single_line_blocks）は複数行のコードブロックでは発生しない。
+# https://learn.microsoft.com/dotnet/fundamentals/code-analysis/style-rules/csharp-formatting-options#csharp_preserve_single_line_blocks
+# https://github.com/dotnet/roslyn/issues/25957
+dotnet_diagnostic.RCS0042.severity = warning
+
+# Add blank line after top comment
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS0049
+dotnet_diagnostic.RCS0049.severity = warning
+
+# Place new line after/before equals token
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS0052。
+dotnet_diagnostic.RCS0052.severity = warning
+roslynator_equals_token_new_line = after
+
+# Fix formatting of a list
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS0053
+# 理由: SA1116やSA1117は、各引数を改行かつインデントずれ（なし・スペース3つなど）の場合に分析対象外。
+# https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1116.md
+# https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1117.md
+dotnet_diagnostic.RCS0053.severity = warning
+
+# Fix formatting of a call chain
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS0054
+dotnet_diagnostic.RCS0054.severity = warning
+
+# Fix formatting of a binary expression chain
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS0055
+dotnet_diagnostic.RCS0055.severity = warning
+
+# Place new line after/before null-conditional operator
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS0059
+dotnet_diagnostic.RCS0059.severity = warning
+roslynator_null_conditional_operator_new_line = before
+
+# Add/remove blank line between switch sections
+# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS0061/
+# 理由: SA1513と競合するが、case内でブロックを使用することはあまりないため許容。
+# https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1513.md
+# https://github.com/DotNetAnalyzers/StyleCopAnalyzers/issues/3568
+dotnet_diagnostic.RCS0061.severity = warning
+roslynator_blank_line_between_switch_sections = omit
+
 ## IDisposableAnalyzers ##
 
 # Dispose created
@@ -482,8 +947,12 @@ dotnet_diagnostic.IDISP001.severity = none
 
 ## DotNetAnalyzers.DocumentationAnalyzers ##
 
-# リファクタリング設定
-# https://github.com/DotNetAnalyzers/DocumentationAnalyzers/blob/master/docs/Refactorings.md
+# Render documentation as Markdown.
+# https://github.com/DotNetAnalyzers/DocumentationAnalyzers/blob/master/docs/DOC900.md
 # 理由: リファクタリング設定なので警告レベルではなく非表示にする。
 dotnet_diagnostic.DOC900.severity = silent
-dotnet_diagnostic.DOC901.severity = silent
+
+# Convert a line or block comment to a documentation comment.
+# https://github.com/DotNetAnalyzers/DocumentationAnalyzers/blob/master/docs/DOC901.md
+# 理由: RCS1181と一部重複。
+dotnet_diagnostic.DOC901.severity = none
