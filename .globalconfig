@@ -409,6 +409,12 @@ dotnet_diagnostic.VSTHRD200.severity = none
 # https://learn.microsoft.com/dotnet/fundamentals/code-analysis/style-rules/naming-rules
 dotnet_analyzer_diagnostic.category-StyleCop.CSharp.NamingRules.severity = none
 
+# An element of a tuple was referenced by its metadata name when an element name is available.
+# https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1142.md
+# 理由: IDE0033と重複。
+# https://learn.microsoft.com/dotnet/fundamentals/code-analysis/style-rules/ide0033
+dotnet_diagnostic.SA1142.severity = none
+
 # A field name in C# contains an underscore.
 # https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1310.md
 # 理由: IDE1006で指定できない規則。
