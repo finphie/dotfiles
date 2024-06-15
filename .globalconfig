@@ -422,6 +422,12 @@ dotnet_diagnostic.SA1316.severity = warning
 # https://learn.microsoft.com/dotnet/fundamentals/code-analysis/style-rules/ide0003-ide0009
 dotnet_diagnostic.SA1101.severity = none
 
+# A C# statement contains parenthesis which are unnecessary and should be removed.
+# https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1119.md
+# 理由: IDE0047と重複。
+# https://learn.microsoft.com/ja-jp/dotnet/fundamentals/code-analysis/style-rules/ide0047-ide0048
+dotnet_diagnostic.SA1119.severity = none
+
 # A C# using directive is placed outside of a namespace element.
 # https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1200.md
 # 理由: IDE0065（'using' directive placement）と重複。
