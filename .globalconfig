@@ -335,6 +335,10 @@ dotnet_code_quality.enable_platform_analyzer_on_pre_net5_target = true
 # 理由: 内部ではListを利用したい場合がある。
 dotnet_code_quality.CA1002.api_surface = public
 
+# 一般的な例外の種類はキャッチしません
+# https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1031
+dotnet_code_quality.CA1031.disallowed_symbol_names = T:System.NullReferenceException
+
 # 空のインターフェイスは使用しないでください
 # https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1040
 # 理由: コンパイル時にインターフェイスをマーカーとして、型の識別を行いたい場合があるため。
