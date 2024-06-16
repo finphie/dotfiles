@@ -5,23 +5,11 @@
   -->
 
   <PropertyGroup>
-    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <!--
+      .NET SDKではPublishRepositoryUrlは設定されない。
+      https://github.com/dotnet/sourcelink/issues/1203
+    -->
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
-    <TargetFrameworkMonikerAssemblyAttributesPath>$([System.IO.Path]::Combine('$(IntermediateOutputPath)','$(TargetFrameworkMoniker).AssemblyAttributes$(DefaultLanguageSourceExtension)'))</TargetFrameworkMonikerAssemblyAttributesPath>
   </PropertyGroup>
-
-  <!--
-    自動生成ファイルをソースリンクに含める。
-    https://github.com/dotnet/sourcelink/issues/572
-  -->
-  <ItemGroup>
-    <EmbeddedFiles Include="$(GeneratedAssemblyInfoFile)"/>
-    <EmbeddedFiles Include="$(GeneratedGlobalUsingsFile)"/>
-    <EmbeddedFiles Include="$(TargetFrameworkMonikerAssemblyAttributesPath)"/>
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="*" PrivateAssets="All" />
-  </ItemGroup>
 
 </Project>
