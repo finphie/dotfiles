@@ -15,7 +15,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Condition="!$(TargetFramework.StartsWith('net9.0')) and !$(TargetFramework.StartsWith('net8.0'))" Include="PolySharp" Version="*" PrivateAssets="All" />
+    <PackageReference Condition="!$(TargetFramework.StartsWith('net9.0')) and !$(TargetFramework.StartsWith('net8.0'))" Include="PolySharp" Version="1.14.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
 </Project>
