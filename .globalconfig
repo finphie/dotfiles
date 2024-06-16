@@ -665,11 +665,6 @@ dotnet_diagnostic.RCS1134.severity = warning
 # https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1136
 dotnet_diagnostic.RCS1136.severity = warning
 
-# Add exception to documentation comment
-# https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1140
-# 理由: StyleCop.Analyzersでは設定できない。
-dotnet_diagnostic.RCS1140.severity = warning
-
 # Use conditional access
 # https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1146
 dotnet_diagnostic.RCS1146.severity = warning
