@@ -519,7 +519,7 @@ dotnet_diagnostic.RCS1006.severity = warning
 # https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1014
 dotnet_diagnostic.RCS1014.severity = warning
 roslynator_array_creation_type_style = implicit
-roslynator_use_collection_expression = false
+roslynator_use_collection_expression = true
 
 # Remove unnecessary braces in switch section
 # https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1031
