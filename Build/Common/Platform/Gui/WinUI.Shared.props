@@ -34,10 +34,10 @@
     <WindowsPackageType>None</WindowsPackageType>
 
     <!--
-      アプリを自己完結型とする。
+      アプリにWindows App SDKの内容を含めない。
       csprojまたはDirectory.Build.propsでの設定必須。
     -->
-    <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
+    <WindowsAppSDKSelfContained>false</WindowsAppSDKSelfContained>
   </PropertyGroup>
 
   <Import Project="$(BuildCommonPublishDirectory)Publish.props" />
