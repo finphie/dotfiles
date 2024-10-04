@@ -3,8 +3,13 @@
 
   <PropertyGroup>
     <IsPublishable>true</IsPublishable>
-
     <ApplicationManifest>app.manifest</ApplicationManifest>
+
+    <!--
+      Windows SDKのバージョンを上書きする。
+      https://github.com/microsoft/WindowsAppSDK/issues/4734
+    -->
+    <WindowsSdkPackageVersion Condition="$([MSBuild]::GetTargetPlatformVersion('$(TargetFramework)')) == 10.0.26100">10.0.26100.38</WindowsSdkPackageVersion>
   </PropertyGroup>
 
   <ItemGroup>

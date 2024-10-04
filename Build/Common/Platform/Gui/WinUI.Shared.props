@@ -5,7 +5,7 @@
   -->
 
   <PropertyGroup>
-    <PublishMode>ReadyToRun</PublishMode>
+    <PublishMode>NativeAot</PublishMode>
     <PublishMode Condition="'$(IsMaui)' == 'true'">ReadyToRunNoTrimming</PublishMode>
 
     <TargetPlatformMinVersion>10.0.19041.0</TargetPlatformMinVersion>
@@ -41,24 +41,5 @@
   </PropertyGroup>
 
   <Import Project="$(BuildCommonPublishDirectory)Publish.props" />
-
-  <PropertyGroup>
-    <!-- trueだと余分な警告が出る。 -->
-    <IsTrimmable>false</IsTrimmable>
-  </PropertyGroup>
-
-  <!--
-    TrimModeが.NET 7以降のデフォルトであるfullの場合、実行時エラーとなる。
-    <TrimmerRootAssembly Include="Microsoft.WinUI" />で実行時エラーを回避できるが、ファイルサイズが肥大化する。
-    partialを指定すれば実行できるが、ファイルサイズが少し大きくなる。
-    従って、アセンブリ名がプロジェクト名となるアセンブリのみをトリミングの対象外とする。
-  -->
-  <Target Name="_ConfigureTrimmingWinUI" BeforeTargets="PrepareForILLink">
-    <ItemGroup>
-      <ManagedAssemblyToLink Condition="'%(Filename)' == '$(MSBuildProjectName)'">
-        <IsTrimmable>false</IsTrimmable>
-      </ManagedAssemblyToLink>
-    </ItemGroup>
-  </Target>
 
 </Project>
