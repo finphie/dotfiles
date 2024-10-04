@@ -5,12 +5,10 @@
     <IsPublishable>true</IsPublishable>
 
     <ApplicationManifest>app.manifest</ApplicationManifest>
-    <HasPackageAndPublishMenu Condition="'$(DisableHasPackageAndPublishMenuAddedByProject)' != 'true' and '$(EnableMsixTooling)' == 'true'">true</HasPackageAndPublishMenu>
   </PropertyGroup>
 
   <ItemGroup>
     <Manifest Include="$(ApplicationManifest)" />
-    <ProjectCapability Condition="'$(DisableMsixProjectCapabilityAddedByProject)' != 'true' and '$(EnableMsixTooling)' == 'true'" Include="Msix" />
   </ItemGroup>
 
   <Import Project="$(MSBuildThisFileDirectory)WinUI.Shared.props" />
