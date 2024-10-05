@@ -7,6 +7,7 @@
   <PropertyGroup>
     <PublishMode>NativeAot</PublishMode>
     <PublishMode Condition="'$(IsMaui)' == 'true'">ReadyToRunNoTrimming</PublishMode>
+    <EnableReflection>true</EnableReflection>
 
     <TargetPlatformMinVersion>10.0.19041.0</TargetPlatformMinVersion>
 
