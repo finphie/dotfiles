@@ -2,7 +2,7 @@
   <!-- Xamarin関連の設定 -->
 
   <PropertyGroup>
-    <ApplicationId>net.finphie.$(MSBuildProjectName.ToLower())</ApplicationId>
+    <ApplicationId>net.$(Authors).$(MSBuildProjectName.ToLower())</ApplicationId>
   </PropertyGroup>
 
   <Target Name="_CheckApplicationTitle" BeforeTargets="PrepareForBuild">
