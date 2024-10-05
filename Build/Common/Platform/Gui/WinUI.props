@@ -9,7 +9,7 @@
       Windows SDKのバージョンを上書きする。
       https://github.com/microsoft/WindowsAppSDK/issues/4734
     -->
-    <WindowsSdkPackageVersion Condition="$([MSBuild]::GetTargetPlatformVersion('$(TargetFramework)')) == 10.0.26100">10.0.26100.38</WindowsSdkPackageVersion>
+    <WindowsSdkPackageVersion Condition="$([MSBuild]::VersionEquals($([MSBuild]::GetTargetPlatformVersion('$(TargetFramework)')), '10.0.26100.0'))">10.0.26100.38</WindowsSdkPackageVersion>
   </PropertyGroup>
 
   <ItemGroup>
