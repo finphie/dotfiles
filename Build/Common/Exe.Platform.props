@@ -12,7 +12,7 @@
 
     <When Condition="'$(UseWinUI)' == 'true'">
       <PropertyGroup>
-        <IsWinUI>true</IsWinUI>
+        <IsWinUi>true</IsWinUi>
         <ProjectIdentifier>Windows</ProjectIdentifier>
       </PropertyGroup>
     </When>

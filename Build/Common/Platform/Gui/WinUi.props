@@ -16,6 +16,6 @@
     <Manifest Include="$(ApplicationManifest)" />
   </ItemGroup>
 
-  <Import Project="$(MSBuildThisFileDirectory)WinUI.Shared.props" />
+  <Import Project="$(MSBuildThisFileDirectory)WinUi.Shared.props" />
 
 </Project>

@@ -8,7 +8,7 @@
 
   <Import Project="$(MSBuildThisFileDirectory)Exe.Platform.props" />
 
-  <Import Condition="'$(IsWinUI)' == 'true'" Project="$(BuildCommonPlatformDirectory)Gui/WinUI.props" />
+  <Import Condition="'$(IsWinUi)' == 'true'" Project="$(BuildCommonPlatformDirectory)Gui/WinUi.props" />
   <Import Condition="'$(IsWpf)' == 'true'" Project="$(BuildCommonPlatformDirectory)Gui/Wpf.props" />
   <Import Condition="'$(IsMaui)' == 'true'" Project="$(BuildCommonPlatformDirectory)Gui/Maui.props" />
   <Import Condition="'$(IsBlazorWebAssembly)' == 'true'" Project="$(BuildCommonPlatformDirectory)AspNet/BlazorWebAssembly.props" />
