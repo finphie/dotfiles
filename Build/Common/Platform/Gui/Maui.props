@@ -16,6 +16,9 @@
       csprojまたはDirectory.Build.propsでの設定必須。
     -->
     <SingleProject>true</SingleProject>
+
+    <!-- コンパイル済みのバインディングを使用していない場合に警告を表示する。 -->
+    <MauiStrictXamlCompilation>true</MauiStrictXamlCompilation>
   </PropertyGroup>
 
   <Import Project="$(MSBuildThisFileDirectory)Xamarin.props" />
