@@ -36,6 +36,7 @@ fenced-code-language:
     - xml
     - json
     - yaml
+    - shell
     - powershell
     - batch
     - bash
