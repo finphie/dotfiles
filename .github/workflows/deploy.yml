@@ -24,6 +24,8 @@ jobs:
     uses: finphie/Actions/.github/workflows/release.yml@main
     permissions:
       contents: write
+      id-token: write
+      attestations: write
     with:
       version: ${{ needs.check.outputs.version }}
       tag: ${{ needs.check.outputs.tag }}
@@ -48,6 +50,8 @@ jobs:
     uses: finphie/Actions/.github/workflows/deploy-docker.yml@main
     permissions:
       packages: write
+      id-token: write
+      attestations: write
     with:
       version: ${{ needs.check.outputs.version }}
       version-major: ${{ needs.check.outputs.version-major }}
