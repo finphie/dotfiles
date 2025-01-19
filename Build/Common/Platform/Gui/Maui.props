@@ -19,6 +19,9 @@
 
     <!-- コンパイル済みのバインディングを使用していない場合に警告を表示する。 -->
     <MauiStrictXamlCompilation>true</MauiStrictXamlCompilation>
+
+    <!-- コンパイル済みのバインディングを使用する。 -->
+    <MauiEnableXamlCBindingWithSourceCompilation>true</MauiEnableXamlCBindingWithSourceCompilation>
   </PropertyGroup>
 
   <Import Project="$(MSBuildThisFileDirectory)Xamarin.props" />
