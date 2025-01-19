@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="xunit" Version="*" />
+    <PackageReference Include="xunit.v3" Version="1.0.1" />
   </ItemGroup>
 
   <PropertyGroup Condition="'$(_IsTest)' == 'true'">
@@ -17,15 +17,21 @@
       理由: テストプロジェクトではドキュメンテーションコメントは必要ない。
     -->
     <NoWarn>$(NoWarn);SA0001</NoWarn>
+
+    <!--
+      Microsoft Testing Platformを有効化する。
+
+      https://xunit.net/docs/getting-started/v3/microsoft-testing-platform
+      https://learn.microsoft.com/dotnet/core/testing/unit-testing-platform-intro
+      https://learn.microsoft.com/dotnet/core/project-sdk/msbuild-props#testingplatformdotnettestsupport
+      https://learn.microsoft.com/dotnet/core/testing/unit-testing-platform-integration-dotnet-test
+    -->
+    <UseMicrosoftTestingPlatformRunner>true</UseMicrosoftTestingPlatformRunner>
+    <TestingPlatformDotnetTestSupport>true</TestingPlatformDotnetTestSupport>
   </PropertyGroup>
 
   <ItemGroup Condition="'$(_IsTest)' == 'true'">
-    <PackageReference Include="FluentAssertions" Version="6.12.2" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.8.2">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
-    </PackageReference>
+    <PackageReference Include="Shouldly" Version="4.2.1" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(_IsTest)' == 'true' and '$(TargetFrameworkIdentifier)' == '.NETFramework' and '$(OS)' == 'Unix'">
