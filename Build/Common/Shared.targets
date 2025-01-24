@@ -1,16 +1,25 @@
 <Project>
   <!-- ライブラリや実行ファイル、テストプロジェクト共通の設定 -->
 
+  <PropertyGroup>
+    <!--
+      TargetPlatformIdentifierは、.NET Standardなどの古い環境では動作が異なる。
+      TargetFrameworkに特定のプラットフォームが指定されていない場合、デフォルトでWindowsを返す場合がある。
+      https://github.com/dotnet/msbuild/issues/7359
+    -->
+    <_TargetPlatformIdentifier>$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)'))</_TargetPlatformIdentifier>
+  </PropertyGroup>
+
   <!-- 非Windows環境での、Windowsを対象とするプロジェクトの扱いに関する設定。 -->
-  <PropertyGroup Condition="'$(TargetPlatformIdentifier)' == 'windows' and '$(OS)' == 'Unix'">
+  <PropertyGroup Condition="'$(_TargetPlatformIdentifier)' == 'windows' and '$(OS)' == 'Unix'">
     <!-- Windowsを対象とするプロジェクトのビルドを行えるようにする。 -->
     <EnableWindowsTargeting>true</EnableWindowsTargeting>
   </PropertyGroup>
 
   <!-- 非Windows環境での、WPF以外のWindowsを対象とするプロジェクト（WinUI/MAUIなど）のビルドはスキップする。 -->
-  <Target Name="SkipCoreBuild" BeforeTargets="BeforeBuild" Condition="'$(UseWPF)' != 'true' and '$(TargetPlatformIdentifier)' == 'windows' and '$(OS)' == 'Unix'">
+  <Target Name="SkipCoreBuild" BeforeTargets="BeforeBuild" Condition="'$(UseWPF)' != 'true' and '$(_TargetPlatformIdentifier)' == 'windows' and '$(OS)' == 'Unix'">
     <PropertyGroup>
-     <CoreBuildDependsOn />
+      <CoreBuildDependsOn />
     </PropertyGroup>
   </Target>
 
