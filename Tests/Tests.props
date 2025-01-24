@@ -28,6 +28,12 @@
     -->
     <UseMicrosoftTestingPlatformRunner>true</UseMicrosoftTestingPlatformRunner>
     <TestingPlatformDotnetTestSupport>true</TestingPlatformDotnetTestSupport>
+
+    <!--
+      テスト失敗時にテスト結果を表示する。
+      https://learn.microsoft.com/dotnet/core/testing/unit-testing-platform-integration-dotnet-test#additional-msbuild-options
+    -->
+    <TestingPlatformShowTestsFailure>true</TestingPlatformShowTestsFailure>
   </PropertyGroup>
 
   <ItemGroup Condition="'$(_IsTest)' == 'true'">
