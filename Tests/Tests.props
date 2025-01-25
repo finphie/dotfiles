@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="xunit.v3" Version="1.0.1" />
+    <PackageReference Include="xunit.v3" />
   </ItemGroup>
 
   <PropertyGroup Condition="'$(_IsTest)' == 'true'">
@@ -37,7 +37,7 @@
   </PropertyGroup>
 
   <ItemGroup Condition="'$(_IsTest)' == 'true'">
-    <PackageReference Include="Shouldly" Version="4.2.1" />
+    <PackageReference Include="Shouldly" />
   </ItemGroup>
 
 </Project>

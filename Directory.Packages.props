@@ -1,0 +1,40 @@
+<Project>
+
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+    <CentralPackageTransitivePinningEnabled>true</CentralPackageTransitivePinningEnabled>
+    <NoWarn>$(NoWarn);NU1507</NoWarn>
+  </PropertyGroup>
+
+  <!-- アナライザー -->
+  <ItemGroup>
+    <GlobalPackageReference Include="DotNetAnalyzers.DocumentationAnalyzers" Version="1.0.0-beta.59" />
+    <GlobalPackageReference Include="IDisposableAnalyzers" Version="4.0.8" />
+    <GlobalPackageReference Include="Microsoft.VisualStudio.Threading.Analyzers" Version="17.12.19" />
+    <GlobalPackageReference Include="Roslynator.Analyzers" Version="4.12.10" />
+    <GlobalPackageReference Include="Roslynator.Formatting.Analyzers" Version="4.12.10" />
+    <GlobalPackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.556" />
+  </ItemGroup>
+
+  <!-- ポリフィル -->
+  <ItemGroup>
+    <PackageVersion Include="PolySharp" Version="1.15.0" />
+  </ItemGroup>
+
+  <!-- ベンチマーク -->
+  <ItemGroup>
+    <PackageVersion Include="BenchmarkDotNet" Version="0.14.0" />
+  </ItemGroup>
+
+  <!-- ソースジェネレーター -->
+  <ItemGroup>
+    <PackageVersion Include="Microsoft.CodeAnalysis.CSharp" Version="4.12.0" />
+  </ItemGroup>
+
+  <!-- テスト -->
+  <ItemGroup>
+    <PackageVersion Include="Shouldly" Version="4.2.1" />
+    <PackageVersion Include="xunit.v3" Version="1.0.1" />
+  </ItemGroup>
+
+</Project>
