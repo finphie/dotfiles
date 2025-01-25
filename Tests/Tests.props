@@ -40,8 +40,4 @@
     <PackageReference Include="Shouldly" Version="4.2.1" />
   </ItemGroup>
 
-  <ItemGroup Condition="'$(_IsTest)' == 'true' and '$(TargetFrameworkIdentifier)' == '.NETFramework' and '$(OS)' == 'Unix'">
-    <PackageReference Include="Microsoft.TestPlatform.ObjectModel" Version="*" />
-  </ItemGroup>
-
 </Project>
