@@ -33,7 +33,7 @@
 
   <!-- テスト -->
   <ItemGroup>
-    <PackageVersion Include="Shouldly" Version="4.2.1" />
+    <PackageVersion Include="Shouldly" Version="4.3.0" />
     <PackageVersion Include="xunit.v3" Version="1.0.1" />
   </ItemGroup>
 
