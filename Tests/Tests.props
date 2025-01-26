@@ -38,6 +38,7 @@
 
   <ItemGroup Condition="'$(_IsTest)' == 'true'">
     <PackageReference Include="Shouldly" />
+    <PackageReference Include="Microsoft.Testing.Extensions.CodeCoverage" />
   </ItemGroup>
 
 </Project>
