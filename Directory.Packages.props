@@ -10,8 +10,8 @@
     <GlobalPackageReference Include="DotNetAnalyzers.DocumentationAnalyzers" Version="1.0.0-beta.59" />
     <GlobalPackageReference Include="IDisposableAnalyzers" Version="4.0.8" />
     <GlobalPackageReference Include="Microsoft.VisualStudio.Threading.Analyzers" Version="17.12.19" />
-    <GlobalPackageReference Include="Roslynator.Analyzers" Version="4.12.10" />
-    <GlobalPackageReference Include="Roslynator.Formatting.Analyzers" Version="4.12.10" />
+    <GlobalPackageReference Include="Roslynator.Analyzers" Version="4.12.11" />
+    <GlobalPackageReference Include="Roslynator.Formatting.Analyzers" Version="4.12.11" />
     <GlobalPackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.556" />
   </ItemGroup>
 
