@@ -13,8 +13,8 @@ dotnet_diagnostic.CA1062.severity = none
 # 理由: 暗号強度の低い擬似乱数ジェネレーターを使用しても問題ない。
 dotnet_diagnostic.CA5394.severity = none
 
-# C#テスト関連ファイル
-[{*Test,*TestData}.cs]
+# C#テスト関連ファイルなど
+[{*Test,*TestData,*Constants}.cs]
 
 # 公開されている型またはメンバー 'Type_or_Member' の XML コメントがありません
 # https://learn.microsoft.com/dotnet/csharp/language-reference/compiler-messages/cs1591
