@@ -9,7 +9,7 @@
   <ItemGroup>
     <GlobalPackageReference Include="DotNetAnalyzers.DocumentationAnalyzers" Version="1.0.0-beta.59" />
     <GlobalPackageReference Include="IDisposableAnalyzers" Version="4.0.8" />
-    <GlobalPackageReference Include="Microsoft.VisualStudio.Threading.Analyzers" Version="17.13.2" />
+    <GlobalPackageReference Include="Microsoft.VisualStudio.Threading.Analyzers" Version="17.13.61" />
     <GlobalPackageReference Include="Roslynator.Analyzers" Version="4.13.1" />
     <GlobalPackageReference Include="Roslynator.Formatting.Analyzers" Version="4.13.1" />
     <GlobalPackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.556" />
@@ -34,8 +34,8 @@
   <ItemGroup>
     <PackageVersion Include="Microsoft.Testing.Extensions.CodeCoverage" Version="17.14.2" />
     <PackageVersion Include="Shouldly" Version="4.3.0" />
-    <PackageVersion Include="xunit.v3" Version="2.0.0" />
-    <PackageVersion Include="xunit.v3.extensibility.core" Version="2.0.0" />
+    <PackageVersion Include="xunit.v3" Version="2.0.1" />
+    <PackageVersion Include="xunit.v3.extensibility.core" Version="2.0.1" />
   </ItemGroup>
 
 </Project>
