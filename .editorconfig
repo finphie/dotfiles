@@ -56,3 +56,7 @@ trim_trailing_whitespace = false
 # C# 生成コード
 [{*Generated,**/Generated/**}.cs]
 generated_code = true
+
+# XamlStyler
+[Settings.XamlStyler]
+indent_size = 2
