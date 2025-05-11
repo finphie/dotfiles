@@ -14,6 +14,9 @@
 
     <!-- グローバリゼーション固有のコードとデータを削除する。 -->
     <InvariantGlobalization>true</InvariantGlobalization>
+
+    <!-- System.Xmlでのファイル以外のURL解決サポートを削除する。 -->
+    <XmlResolverIsNetworkingEnabledByDefault>false</XmlResolverIsNetworkingEnabledByDefault>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)' != 'Debug'">
