@@ -16,11 +16,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <!--
-      Roslynパッケージを参照する。
-      バージョン4.12.0は、Visual Studio 2022 バージョン 17.12以降で動作する。
-      https://learn.microsoft.com/visualstudio/extensibility/roslyn-version-support
-    -->
+    <!-- Roslynパッケージを参照する。 -->
     <PackageReference Include="Microsoft.CodeAnalysis.CSharp" PrivateAssets="All" />
   </ItemGroup>
 
