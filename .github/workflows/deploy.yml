@@ -37,7 +37,7 @@ jobs:
     uses: finphie/Actions/.github/workflows/deploy-dotnet.yml@main
     with:
       version: ${{ needs.check.outputs.version }}
-      release: ${{ needs.check.outputs.release == 'true' }}
+      release: ${{ needs.check.outputs.release == 'true' && !startsWith(github.repository, 'finphie/FToolkit') }}
       suffix: ${{ needs.check.outputs.tag }}
     secrets:
       AZURE_ARTIFACT_PAT: ${{ secrets.AZURE_ARTIFACT_PAT }}
