@@ -19,11 +19,9 @@
 
       https://xunit.net/docs/getting-started/v3/microsoft-testing-platform
       https://learn.microsoft.com/dotnet/core/testing/unit-testing-platform-intro
-      https://learn.microsoft.com/dotnet/core/project-sdk/msbuild-props#testingplatformdotnettestsupport
-      https://learn.microsoft.com/dotnet/core/testing/unit-testing-platform-integration-dotnet-test
+      https://learn.microsoft.com/dotnet/core/testing/unit-testing-with-dotnet-test
     -->
     <UseMicrosoftTestingPlatformRunner>true</UseMicrosoftTestingPlatformRunner>
-    <TestingPlatformDotnetTestSupport>true</TestingPlatformDotnetTestSupport>
 
     <!--
       テスト失敗時にテスト結果を表示する。
