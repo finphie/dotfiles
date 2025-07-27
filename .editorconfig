@@ -14,6 +14,11 @@ trim_trailing_whitespace = true
 charset = utf-8-bom
 end_of_line = crlf
 
+# リソースファイル
+[*.resx]
+end_of_line = crlf
+indent_size = 2
+
 # Visual Studio ソリューションファイル
 [*.sln]
 indent_style = tab

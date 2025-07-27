@@ -5,6 +5,7 @@
 *.axaml text eol=crlf
 *.razor text eol=crlf
 *.cshtml text eol=crlf
+*.resx text eol=crlf
 *.csproj text eol=crlf
 *.esproj text eol=crlf
 *.sln text eol=crlf
