@@ -43,5 +43,6 @@
 
   <Import Project="$(BuildCommonAnalyzersDirectory)Analyzers.props" />
   <Import Project="$(BuildCommonPlatformDirectory)Metadata.props" />
+  <Import Project="$(BuildCommonPlatformDirectory)Resource.props" />
 
 </Project>

@@ -1,0 +1,14 @@
+<Project>
+  <!-- リソースファイル関連の設定 -->
+
+  <PropertyGroup>
+    <!-- 埋め込みリソースの暗黙的な設定を無効にする。 -->
+    <EnableDefaultEmbeddedResourceItems>false</EnableDefaultEmbeddedResourceItems>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- .Designer.csファイルは出力しない。 -->
+    <EmbeddedResource Include="**\*.resx" />
+  </ItemGroup>
+
+</Project>
