@@ -7,11 +7,19 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <IncludeSymbols>true</IncludeSymbols>
-    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-
     <!-- パッケージ検証を有効にする。 -->
     <EnablePackageValidation>true</EnablePackageValidation>
+  </PropertyGroup>
+
+  <!-- .snupkg有効（デフォルト） -->
+  <PropertyGroup Condition="'$(IsSnupkg)' == 'true' or '$(IsSnupkg)' == ''">
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+  </PropertyGroup>
+
+  <!-- .snupkg無効 -->
+  <PropertyGroup Condition="'$(IsSnupkg)' == 'false'">
+    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
   </PropertyGroup>
 
   <ItemGroup>
