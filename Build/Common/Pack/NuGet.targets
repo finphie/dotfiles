@@ -4,6 +4,7 @@
     <_BuildFilePathWithoutExtension>$(BuildDirectory)$(MSBuildProjectName)</_BuildFilePathWithoutExtension>
     <_BuildPropsFilePath>$(_BuildFilePathWithoutExtension).props</_BuildPropsFilePath>
     <_BuildTargetsFilePath>$(_BuildFilePathWithoutExtension).targets</_BuildTargetsFilePath>
+    <_IsSnupkg Condition="$(MSBuildProjectName.StartsWith('FToolkit'))">false</_IsSnupkg>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -12,13 +13,13 @@
   </PropertyGroup>
 
   <!-- .snupkg有効（デフォルト） -->
-  <PropertyGroup Condition="'$(IsSnupkg)' == 'true' or '$(IsSnupkg)' == ''">
+  <PropertyGroup Condition="'$(_IsSnupkg)' == 'true' or '$(_IsSnupkg)' == ''">
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
 
   <!-- .snupkg無効 -->
-  <PropertyGroup Condition="'$(IsSnupkg)' == 'false'">
+  <PropertyGroup Condition="'$(_IsSnupkg)' == 'false'">
     <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
   </PropertyGroup>
 
