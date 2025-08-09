@@ -6,6 +6,14 @@
     Directory.Build.propsでインポートした場合、一部のプロパティ設定が機能しない。
   -->
 
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <!--
+      パッケージのシンボルファイルをコピーする。
+      https://learn.microsoft.com/dotnet/core/project-sdk/msbuild-props#copydebugsymbolfilesfrompackages
+    -->
+    <CopyDebugSymbolFilesFromPackages>true</CopyDebugSymbolFilesFromPackages>
+  </PropertyGroup>
+
   <Import Project="$(MSBuildThisFileDirectory)Exe.Platform.props" />
 
   <Import Condition="'$(IsWinUi)' == 'true'" Project="$(BuildCommonPlatformDirectory)Gui/WinUi.props" />
