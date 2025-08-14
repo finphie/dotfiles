@@ -13,6 +13,14 @@ dotnet_diagnostic.CA1812.severity = none
 # 理由: 有効化したいクラスのため。
 dotnet_diagnostic.CA1812.severity = warning
 
+[*{ViewModel,ViewModelBase}.cs]
+
+# 識別子は、大文字と小文字の区別以外にも相違していなければなりません
+# https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1708
+# 理由: CommunityToolkit.Mvvmの仕様。
+# https://github.com/CommunityToolkit/dotnet/issues/1045
+dotnet_diagnostic.CA1708.severity = none
+
 # C#ベンチマークファイル（プロジェクト全体）
 [*.Benchmarks/**.cs]
 
