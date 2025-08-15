@@ -367,6 +367,11 @@ dotnet_diagnostic.CA1715.severity = none
 # 理由: キーワードと重複しても逐語的・エスケープ識別子を使用すれば問題ない。
 dotnet_diagnostic.CA1716.severity = none
 
+# スコープを失う前にオブジェクトを破棄
+# https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca2000
+# 理由: 例外パスでもDisposeを呼び出す必要がある。
+dotnet_code_quality.CA2000.dispose_analysis_kind = AllPaths
+
 # タスクを直接待機しないでください
 # https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca2007
 # 理由: デフォルトで有効にならない規則。
@@ -970,6 +975,43 @@ roslynator_blank_line_between_switch_sections = omit
 # 理由: CA2000と重複。
 # https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca2000
 dotnet_diagnostic.IDISP001.severity = none
+
+# Dispose member
+# https://github.com/DotNetAnalyzers/IDisposableAnalyzers/blob/master/documentation/IDISP002.md
+# 理由: CA2213と重複しているが、デフォルトで無効。
+# https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca2213
+# dotnet_diagnostic.IDISP002.severity = none
+
+# Don't ignore created IDisposable
+# https://github.com/DotNetAnalyzers/IDisposableAnalyzers/blob/master/documentation/IDISP004.md
+# 理由: CA2000と重複しているが、Processクラスでは診断が出ない。
+# https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca2000
+# https://github.com/dotnet/roslyn-analyzers/issues/6688
+# dotnet_diagnostic.IDISP004.severity = none
+
+# Call SuppressFinalize
+# https://github.com/DotNetAnalyzers/IDisposableAnalyzers/blob/master/documentation/IDISP018.md
+# 理由: CA1816と重複。
+# https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1816
+dotnet_diagnostic.IDISP018.severity = none
+
+# Call SuppressFinalize
+# https://github.com/DotNetAnalyzers/IDisposableAnalyzers/blob/master/documentation/IDISP019.md
+# 理由: CA1063と重複。
+# https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1063
+dotnet_diagnostic.IDISP019.severity = none
+
+# Call SuppressFinalize(this)
+# https://github.com/DotNetAnalyzers/IDisposableAnalyzers/blob/master/documentation/IDISP020.md
+# 理由: CA1816と重複。
+# https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1816
+dotnet_diagnostic.IDISP020.severity = none
+
+# Class with no virtual dispose method should be sealed
+# https://github.com/DotNetAnalyzers/IDisposableAnalyzers/blob/master/documentation/IDISP025.md
+# 理由: CA1063と重複。
+# https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1063
+dotnet_diagnostic.IDISP025.severity = none
 
 ## DotNetAnalyzers.DocumentationAnalyzers ##
 
