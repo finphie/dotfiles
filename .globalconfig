@@ -395,6 +395,11 @@ dotnet_diagnostic.CA3009.severity = none
 
 ## Microsoft.VisualStudio.Threading.Analyzers ##
 
+# Avoid legacy thread switching methods
+# https://microsoft.github.io/vs-threading/analyzers/VSTHRD001.html
+# 理由: 不要。
+dotnet_diagnostic.VSTHRD001.severity = none
+
 # Call async methods when in an async method
 # https://github.com/Microsoft/vs-threading/blob/main/doc/analyzers/VSTHRD103.md
 # 理由: CA1849と重複。
