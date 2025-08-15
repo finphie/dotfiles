@@ -984,10 +984,10 @@ dotnet_diagnostic.IDISP001.severity = none
 
 # Don't ignore created IDisposable
 # https://github.com/DotNetAnalyzers/IDisposableAnalyzers/blob/master/documentation/IDISP004.md
-# 理由: CA2000と重複しているが、Processクラスでは診断が出ない。
+# 理由: CA2000と重複しておりProcessクラスなどでは診断が出ないが、その他にも誤検知が多い。
 # https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca2000
 # https://github.com/dotnet/roslyn-analyzers/issues/6688
-# dotnet_diagnostic.IDISP004.severity = none
+dotnet_diagnostic.IDISP004.severity = none
 
 # Call SuppressFinalize
 # https://github.com/DotNetAnalyzers/IDisposableAnalyzers/blob/master/documentation/IDISP018.md

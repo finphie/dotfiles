@@ -21,6 +21,13 @@ dotnet_diagnostic.CA1812.severity = warning
 # https://github.com/CommunityToolkit/dotnet/issues/1045
 dotnet_diagnostic.CA1708.severity = none
 
+## IDisposableAnalyzers ##
+
+# Don't ignore created IDisposable
+# https://github.com/DotNetAnalyzers/IDisposableAnalyzers/blob/master/documentation/IDISP003.md
+# 理由: IDisposable.AddTo(ref DisposableBuilder)で誤検知するため。
+dotnet_diagnostic.IDISP003.severity = none
+
 # C#ベンチマークファイル（プロジェクト全体）
 [*.Benchmarks/**.cs]
 
