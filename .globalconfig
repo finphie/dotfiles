@@ -351,6 +351,11 @@ dotnet_diagnostic.CA1040.severity = none
 # 構造体ではプロパティではなくフィールドにしたい場合がある。
 dotnet_code_quality.CA1051.exclude_structs = true
 
+# パブリック メソッドの引数の検証
+# https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1062
+# 理由: 拡張メソッドのthisパラメーターは検証しない。
+dotnet_code_quality.CA1062.exclude_extension_method_this_parameter = true
+
 # 識別子には型名を含めないでください
 # https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1720
 # 理由: 内部では識別子に型名を利用したい場合がある。
