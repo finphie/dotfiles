@@ -1,5 +1,7 @@
 [*.cs]
 
+## Microsoft.CodeAnalysis.NetAnalyzers ##
+
 # インスタンス化されていない内部クラスを使用しません
 # https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1812
 # 理由: Microsoft.Extensions.DependencyInjectionなどで、型をジェネリックとして使用すると誤検知するため。
@@ -8,12 +10,16 @@ dotnet_diagnostic.CA1812.severity = none
 
 [*{Helpers,Extensions,Factory}.cs]
 
+## Microsoft.CodeAnalysis.NetAnalyzers ##
+
 # インスタンス化されていない内部クラスを使用しません
 # https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1812
 # 理由: 有効化したいクラスのため。
 dotnet_diagnostic.CA1812.severity = warning
 
 [*{ViewModel,ViewModelBase}.cs]
+
+## Microsoft.CodeAnalysis.NetAnalyzers ##
 
 # 識別子は、大文字と小文字の区別以外にも相違していなければなりません
 # https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1708
