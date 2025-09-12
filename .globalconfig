@@ -1,5 +1,15 @@
 is_global = true
 
+### .NET コード アクション ###
+
+# 型メンバー
+dotnet_hide_advanced_members = false
+dotnet_member_insertion_location = with_other_members_of_the_same_kind
+dotnet_property_generation_behavior = prefer_throwing_properties
+
+# シンボルの検索
+dotnet_search_reference_assemblies = true
+
 ### .NET コーディング規則 ###
 
 # using の整理
@@ -89,6 +99,7 @@ csharp_style_prefer_switch_expression = true
 csharp_style_conditional_delegate_call = true
 
 # 修飾子設定
+csharp_prefer_static_anonymous_function = true
 csharp_prefer_static_local_function = true
 csharp_preferred_modifier_order = public,private,protected,internal,file,static,extern,new,virtual,abstract,sealed,override,readonly,unsafe,required,volatile,async
 csharp_style_prefer_readonly_struct = true
@@ -97,9 +108,11 @@ csharp_style_prefer_readonly_struct_member = true
 # コード ブロックの設定
 csharp_prefer_braces = true
 csharp_prefer_simple_using_statement = true
+csharp_prefer_system_threading_lock = true
 csharp_style_namespace_declarations = file_scoped
 csharp_style_prefer_method_group_conversion = true
 csharp_style_prefer_primary_constructors = true
+csharp_style_prefer_simple_property_accessors = true
 csharp_style_prefer_top_level_statements = true
 
 # 式レベルの設定
