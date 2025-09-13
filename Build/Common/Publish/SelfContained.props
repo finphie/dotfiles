@@ -1,0 +1,9 @@
+<Project>
+  <!-- 自己完結型関連の設定 -->
+
+  <PropertyGroup>
+    <!-- アプリを自己完結型とする。 -->
+    <PublishSelfContained>true</PublishSelfContained>
+  </PropertyGroup>
+
+</Project>

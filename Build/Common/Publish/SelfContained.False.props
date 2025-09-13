@@ -1,0 +1,9 @@
+<Project>
+  <!-- 自己完結型関連の設定 -->
+
+  <PropertyGroup>
+    <!-- アプリをフレームワーク依存型とする。 -->
+    <PublishSelfContained>false</PublishSelfContained>
+  </PropertyGroup>
+
+</Project>
