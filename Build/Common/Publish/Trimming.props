@@ -9,14 +9,14 @@
     <!-- EventSourceに関連するコードまたはロジックを削除する。 -->
     <EventSourceSupport>false</EventSourceSupport>
 
-    <!-- System.Net.Httpの診断サポートに関連するコードを削除する。 -->
-    <HttpActivityPropagationSupport>false</HttpActivityPropagationSupport>
-
-    <!-- グローバリゼーション固有のコードとデータを削除する。 -->
-    <InvariantGlobalization>true</InvariantGlobalization>
-
     <!-- System.Xmlでのファイル以外のURL解決サポートを削除する。 -->
     <XmlResolverIsNetworkingEnabledByDefault>false</XmlResolverIsNetworkingEnabledByDefault>
+
+    <!--
+      アプリケーションのサイズに悪影響を与える、LINQのスループット最適化の一部を削除する。
+      これにより、LINQのパフォーマンスが低下する。
+    -->
+    <UseSizeOptimizedLinq>true</UseSizeOptimizedLinq>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)' != 'Debug'">
@@ -26,11 +26,22 @@
     <!-- ホットリロードに関連するメタデータの更新固有のロジックを削除する。 -->
     <MetadataUpdaterSupport>false</MetadataUpdaterSupport>
 
+    <!-- ランタイムによるスタックトレースの生成サポートを削除する。 -->
+    <StackTraceSupport>false</StackTraceSupport>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(IsConsole)' == 'true'">
+    <!-- グローバリゼーション固有のコードとデータを削除する。 -->
+    <InvariantGlobalization>true</InvariantGlobalization>
+
     <!-- 「System.*」アセンブリの例外メッセージを削除する。 -->
     <UseSystemResourceKeys>true</UseSystemResourceKeys>
 
-    <!-- ランタイムによるスタックトレースの生成サポートを削除する。 -->
-    <StackTraceSupport>false</StackTraceSupport>
+    <!-- System.Net.Httpの診断サポートに関連するコードを削除する。 -->
+    <HttpActivityPropagationSupport>false</HttpActivityPropagationSupport>
+
+    <!-- System.Diagnostics.Metricsサポートに関連するコードを削除する。 -->
+    <MetricsSupport>false</MetricsSupport>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(RuntimeIdentifier)' != ''">
