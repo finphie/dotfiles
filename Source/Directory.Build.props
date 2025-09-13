@@ -1,3 +1,12 @@
 <Project>
   <Import Condition="'$(MSBuildProjectExtension)' == '.csproj'" Project="Source.props" />
+
+  <!-- .esproj設定 -->
+  <PropertyGroup Condition="'$(MSBuildProjectExtension)' == '.esproj'">
+    <!--
+      依存関係の復元時にエラーが発生するので、その回避策。
+      https://github.com/NuGet/Home/issues/12817
+    -->
+    <RestoreEnableGlobalPackageReference>false</RestoreEnableGlobalPackageReference>
+  </PropertyGroup>
 </Project>
