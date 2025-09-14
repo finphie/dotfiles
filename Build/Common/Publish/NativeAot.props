@@ -11,9 +11,6 @@
     <!-- Native AOTを有効にする。 -->
     <PublishAot>true</PublishAot>
 
-    <!-- シンボルファイルをコピーしない。 -->
-    <CopyOutputSymbolsToPublishDirectory>false</CopyOutputSymbolsToPublishDirectory>
-
     <!-- シンボルをバイナリから削除する。 -->
     <StripSymbols>true</StripSymbols>
 

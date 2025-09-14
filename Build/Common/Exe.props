@@ -6,6 +6,11 @@
     Directory.Build.propsでインポートした場合、一部のプロパティ設定が機能しない。
   -->
 
+  <PropertyGroup>
+    <!-- 発行先ディレクトリにシンボルファイルをコピーしない。 -->
+    <CopyOutputSymbolsToPublishDirectory>false</CopyOutputSymbolsToPublishDirectory>
+  </PropertyGroup>
+
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
     <!--
       パッケージのシンボルファイルをコピーする。
