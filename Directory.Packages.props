@@ -22,7 +22,7 @@
 
   <!-- ベンチマーク -->
   <ItemGroup>
-    <PackageVersion Include="BenchmarkDotNet" Version="0.15.2" />
+    <PackageVersion Include="BenchmarkDotNet" Version="0.15.3" />
   </ItemGroup>
 
   <!-- ソースジェネレーター -->
