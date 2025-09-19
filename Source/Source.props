@@ -7,6 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <!-- プロジェクト共通のファイルを読み込む。 -->
+    <Compile Include="$(MSBuildThisFileDirectory)/Common/**/*.cs" LinkBase="Common" />
+
     <!-- 「ソリューション名.Shared」ディレクトリに存在するC#ファイルを、全プロジェクトで共有する。 -->
     <Compile Include="$(MSBuildThisFileDirectory)/$(SolutionName).Shared/**/*.cs" LinkBase="Shared" />
   </ItemGroup>
