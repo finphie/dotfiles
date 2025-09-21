@@ -389,6 +389,7 @@ dotnet_diagnostic.CA1716.severity = none
 # https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca2000
 # 理由: 例外パスでもDisposeを呼び出す必要がある。
 dotnet_code_quality.CA2000.dispose_analysis_kind = AllPaths
+dotnet_code_quality.CA2000.excluded_type_names_with_derived_types = T:System.Net.Http.HttpClient|T:System.Net.Http.HttpRequestMessage
 
 # タスクを直接待機しないでください
 # https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca2007
