@@ -11,3 +11,5 @@ jobs:
   main:
     name: Main
     uses: finphie/Actions/.github/workflows/build-yaml.yml@main
+
+    permissions: {}

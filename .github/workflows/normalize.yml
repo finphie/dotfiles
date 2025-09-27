@@ -3,11 +3,13 @@ name: Normalize line endings
 on:
   pull_request:
 
-permissions:
-  contents: write
+permissions: {}
 
 jobs:
   main:
     name: Main
     if: github.event.pull_request.user.login == 'dependabot[bot]'
     uses: finphie/Actions/.github/workflows/normalize.yml@main
+
+    permissions:
+      contents: write
