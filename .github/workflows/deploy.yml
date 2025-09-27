@@ -41,7 +41,6 @@ jobs:
       suffix: ${{ needs.check.outputs.tag }}
     secrets:
       AZURE_ARTIFACT_PAT: ${{ secrets.AZURE_ARTIFACT_PAT }}
-      NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
 
   docker:
     name: Deploy(Docker)
