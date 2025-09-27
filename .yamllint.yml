@@ -8,5 +8,8 @@ rules:
   empty-lines:
     max: 1
   line-length: false
+  quoted-strings:
+    quote-type: single
+    required: only-when-needed
   truthy:
     check-keys: false
