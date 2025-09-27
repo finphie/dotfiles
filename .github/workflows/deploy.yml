@@ -35,6 +35,8 @@ jobs:
     needs: check
     if: needs.check.outputs.dotnet == 'true' && needs.check.outputs.version != ''
     uses: finphie/Actions/.github/workflows/deploy-dotnet.yml@main
+    permissions:
+      id-token: write
     with:
       version: ${{ needs.check.outputs.version }}
       release: ${{ needs.check.outputs.release == 'true' && !startsWith(github.repository, 'finphie/FToolkit') }}
