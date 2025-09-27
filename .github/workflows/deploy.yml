@@ -42,6 +42,7 @@ jobs:
       release: ${{ needs.check.outputs.release == 'true' && !startsWith(github.repository, 'finphie/FToolkit') }}
       suffix: ${{ needs.check.outputs.tag }}
     secrets:
+      NUGET_USER: ${{ secrets.NUGET_USER }}
       AZURE_ARTIFACT_PAT: ${{ secrets.AZURE_ARTIFACT_PAT }}
 
   docker:
