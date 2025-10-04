@@ -13,5 +13,4 @@ jobs:
   main:
     name: Main
     uses: finphie/Actions/.github/workflows/build-powershell.yml@main
-
     permissions: {}
