@@ -12,7 +12,6 @@ jobs:
   check:
     name: Check
     uses: finphie/Actions/.github/workflows/get-version.yml@main
-
     permissions: {}
 
   release:
@@ -24,51 +23,26 @@ jobs:
       (needs.dotnet.result == 'success' || needs.dotnet.result == 'skipped') &&
       needs.check.outputs.release == 'true'
     uses: finphie/Actions/.github/workflows/release.yml@main
-
     permissions:
       contents: write
       id-token: write
       attestations: write
-
     with:
       version: ${{ needs.check.outputs.version }}
       tag: ${{ needs.check.outputs.tag }}
 
-  dotnet-nuget:
-    name: NuGet
-    needs: check
-    runs-on: ubuntu-latest
-
-    permissions:
-      id-token: write
-
-    outputs:
-      NUGET_API_KEY: ${{ steps.login.outputs.NUGET_API_KEY }}
-
-    steps:
-      - name: NuGet Login
-        id: login
-        if: needs.check.outputs.dotnet == 'true' && needs.check.outputs.version != '' && needs.check.outputs.release == 'true'
-        uses: NuGet/login@d22cc5f58ff5b88bf9bd452535b4335137e24544 # v1
-
-        with:
-          user: ${{ secrets.NUGET_USER }}
-
   dotnet:
     name: Deploy(.NET)
-    needs: [check, dotnet-nuget]
+    needs: check
     if: needs.check.outputs.dotnet == 'true' && needs.check.outputs.version != ''
     uses: finphie/Actions/.github/workflows/deploy-dotnet.yml@main
-
     permissions: {}
-
     with:
       version: ${{ needs.check.outputs.version }}
       release: ${{ needs.check.outputs.release == 'true' && !startsWith(github.repository, 'finphie/FToolkit') }}
       suffix: ${{ needs.check.outputs.tag }}
-
     secrets:
-      NUGET_API_KEY: ${{ needs.dotnet-nuget.outputs.NUGET_API_KEY }}
+      NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
       AZURE_ARTIFACT_PAT: ${{ secrets.AZURE_ARTIFACT_PAT }}
 
   docker:
@@ -76,12 +50,10 @@ jobs:
     needs: check
     if: needs.check.outputs.docker == 'true' && needs.check.outputs.release == 'true'
     uses: finphie/Actions/.github/workflows/deploy-docker.yml@main
-
     permissions:
       packages: write
       id-token: write
       attestations: write
-
     with:
       version: ${{ needs.check.outputs.version }}
       version-major: ${{ needs.check.outputs.version-major }}
