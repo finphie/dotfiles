@@ -4,7 +4,7 @@
 
 # URI パラメーターを文字列にすることはできません
 # https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1054
-# Uri関連の拡張メソッドでは、文字列を使用する場合があるため。
+# 理由: Uri関連の拡張メソッドでは、文字列を使用する場合があるため。
 dotnet_code_quality.CA1054.excluded_type_names_with_derived_types = UriExtensions
 
 # インスタンス化されていない内部クラスを使用しません
@@ -21,6 +21,17 @@ dotnet_diagnostic.CA1812.severity = none
 # https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1812
 # 理由: 有効化したいクラスのため。
 dotnet_diagnostic.CA1812.severity = warning
+
+[*Extensions.cs]
+
+## Microsoft.CodeAnalysis.NetAnalyzers ##
+
+# 入れ子にされた型を参照可能にすることはできません
+# https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1034
+# 理由: 拡張メンバーで誤検知するため。
+# https://github.com/dotnet/roslyn/issues/78858
+# https://github.com/dotnet/roslyn-analyzers/issues/7734
+dotnet_diagnostic.CA1034.severity = none
 
 [*{ViewModel,ViewModelBase}.cs]
 
