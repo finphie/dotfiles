@@ -2,6 +2,11 @@
 
 ## Microsoft.CodeAnalysis.NetAnalyzers ##
 
+# URI パラメーターを文字列にすることはできません
+# https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1054
+# Uri関連の拡張メソッドでは、文字列を使用する場合があるため。
+dotnet_code_quality.CA1054.excluded_type_names_with_derived_types = UriExtensions
+
 # インスタンス化されていない内部クラスを使用しません
 # https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1812
 # 理由: Microsoft.Extensions.DependencyInjectionなどで、型をジェネリックとして使用すると誤検知するため。
