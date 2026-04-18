@@ -13,27 +13,12 @@
       理由: テストプロジェクトではドキュメンテーションコメントは必要ない。
     -->
     <NoWarn>$(NoWarn);SA0001</NoWarn>
-
-    <!--
-      Microsoft Testing Platformを有効化する。
-
-      https://xunit.net/docs/getting-started/v3/microsoft-testing-platform
-      https://learn.microsoft.com/dotnet/core/testing/unit-testing-platform-intro
-      https://learn.microsoft.com/dotnet/core/testing/unit-testing-with-dotnet-test
-    -->
-    <UseMicrosoftTestingPlatformRunner>true</UseMicrosoftTestingPlatformRunner>
-
-    <!--
-      テスト失敗時にテスト結果を表示する。
-      https://learn.microsoft.com/dotnet/core/testing/unit-testing-platform-integration-dotnet-test#additional-msbuild-options
-    -->
-    <TestingPlatformShowTestsFailure>true</TestingPlatformShowTestsFailure>
   </PropertyGroup>
 
   <ItemGroup Condition="'$(_IsTest)' == 'true'">
     <PackageReference Include="Shouldly" />
     <PackageReference Include="Microsoft.Testing.Extensions.CodeCoverage" />
-    <PackageReference Include="xunit.v3" />
+    <PackageReference Include="xunit.v3.mtp-v2" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(_IsTest)' != 'true'">
