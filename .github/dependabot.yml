@@ -5,6 +5,8 @@ updates:
     open-pull-requests-limit: 99
     schedule:
       interval: daily
+    cooldown:
+      default-days: 5
     labels:
       - dependencies
 
