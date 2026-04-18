@@ -25,9 +25,6 @@
 
     <!-- ホットリロードに関連するメタデータの更新固有のロジックを削除する。 -->
     <MetadataUpdaterSupport>false</MetadataUpdaterSupport>
-
-    <!-- ランタイムによるスタックトレースの生成サポートを削除する。 -->
-    <StackTraceSupport>false</StackTraceSupport>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(IsConsole)' == 'true'">
@@ -42,6 +39,9 @@
 
     <!-- System.Diagnostics.Metricsサポートに関連するコードを削除する。 -->
     <MetricsSupport>false</MetricsSupport>
+
+    <!-- ランタイムによるスタックトレースの生成サポートを削除する。 -->
+    <StackTraceSupport>false</StackTraceSupport>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(RuntimeIdentifier)' != ''">
