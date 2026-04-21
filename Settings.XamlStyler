@@ -21,7 +21,9 @@
     "*:*, *",
     "PageSource, PageIndex, Offset, Color, TargetName, Property, Value, StartPoint, EndPoint",
     "mc:Ignorable, d:DataContext, d:IsDataSource, d:LayoutOverrides, d:IsStaticText, d:DesignWidth, d:DesignHeight",
-    "Storyboard.*, From, To, Duration"
+    "Storyboard.*, From, To, Duration",
+    "Start, End",
+    "*Command, CommandParameter"
   ],
   "FirstLineAttributes": "",
   "OrderAttributesByName": true,
