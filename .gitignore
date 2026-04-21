@@ -3,6 +3,7 @@
 bin/
 obj/
 *.user
+artifacts/
 
 # MSBuild log
 *.binlog

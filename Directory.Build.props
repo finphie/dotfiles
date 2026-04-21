@@ -10,6 +10,12 @@
     <AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>
   </PropertyGroup>
 
+  <!-- 成果物の出力レイアウト -->
+  <PropertyGroup>
+    <UseArtifactsOutput>true</UseArtifactsOutput>
+    <ArtifactsPath>$(MSBuildThisFileDirectory)artifacts</ArtifactsPath>
+  </PropertyGroup>
+
   <!-- XMLドキュメントファイル関連 -->
   <PropertyGroup>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
