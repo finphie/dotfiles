@@ -35,4 +35,13 @@
     <SupportedOSPlatformVersion>$(TargetPlatformMinVersion)</SupportedOSPlatformVersion>
   </PropertyGroup>
 
+  <ItemGroup>
+    <!--
+      EnableDefaultEmbeddedResourceItemsがtrueだと、XAMLファイルにビルドアクションが設定されない。
+      そのため、明示的にビルドアクションを指定する。
+      https://github.com/dotnet/maui/blob/bd3a0e532841cb461b62c0dc46c16573b843dc94/src/Controls/src/Build.Tasks/nuget/buildTransitive/netstandard2.0/Microsoft.Maui.Controls.Globs.props#L33
+    -->
+    <MauiXaml Include="**\*.xaml" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder);$(DefaultWebContentItemExcludes)" />
+  </ItemGroup>
+
 </Project>
