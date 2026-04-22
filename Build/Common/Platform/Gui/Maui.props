@@ -11,12 +11,6 @@
   <PropertyGroup>
     <IsPublishable>true</IsPublishable>
 
-    <!--
-      単一プロジェクトにする。
-      csprojまたはDirectory.Build.propsでの設定必須。
-    -->
-    <SingleProject>true</SingleProject>
-
     <!-- XAMLソースの生成を有効にする。 -->
     <MauiXamlInflator>SourceGen</MauiXamlInflator>
 
