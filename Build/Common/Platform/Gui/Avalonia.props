@@ -14,9 +14,6 @@
       https://docs.avaloniaui.net/docs/data-binding/compiled-bindings
     -->
     <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
-
-    <!-- x64の場合AVX2対応を必須にする。 -->
-    <IlcInstructionSet Condition="$(RuntimeIdentifier.EndsWith('x64'))">x86-x64-v3</IlcInstructionSet>
   </PropertyGroup>
 
   <Import Project="$(BuildCommonPublishDirectory)Publish.props" />
