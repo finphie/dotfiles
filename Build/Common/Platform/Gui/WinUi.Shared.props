@@ -10,9 +10,13 @@
     <WinUISDKReferences>false</WinUISDKReferences>
 
     <TargetPlatformMinVersion>10.0.19041.0</TargetPlatformMinVersion>
-  </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Packaged)' == 'true'">
+    <!--
+      パッケージ化する場合は必須。
+      非パッケージでも、有効にする必要あり。
+      無効の場合、単一ファイル作成が有効だとビルドエラーとなる。
+      また、NativeAOT有効時ではビルドエラーにはならずに、作成した実行ファイルの起動に失敗する。
+    -->
     <EnableMsixTooling>true</EnableMsixTooling>
   </PropertyGroup>
 
