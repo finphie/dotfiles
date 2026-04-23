@@ -13,25 +13,37 @@
 
     <!-- x64の場合AVX2対応を必須にする。 -->
     <IlcInstructionSet Condition="$(RuntimeIdentifier.EndsWith('x64'))">x86-x64-v3</IlcInstructionSet>
+  </PropertyGroup>
 
-    <!--
-      MSIX関連の設定。
-      csprojまたはDirectory.Build.propsでの設定必須。
-    -->
+  <PropertyGroup Condition="'$(Packaged)' == 'true'">
     <EnableMsixTooling>true</EnableMsixTooling>
+  </PropertyGroup>
 
-    <!--
-      パッケージタイプの設定。
-      csprojまたはDirectory.Build.propsでの設定必須。
-    -->
+  <PropertyGroup Condition="'$(Packaged)' != 'true'">
+    <!-- パッケージ化されていないアプリとする。 -->
     <WindowsPackageType>None</WindowsPackageType>
 
-    <!--
-      アプリにWindows App SDKの内容を含めない。
-      csprojまたはDirectory.Build.propsでの設定必須。
-    -->
+    <!-- アプリにWindows App SDKの内容を含めない。 -->
     <WindowsAppSDKSelfContained>false</WindowsAppSDKSelfContained>
   </PropertyGroup>
+
+  <!--
+    Defining the "HasPackageAndPublishMenuAddedByProject" property here allows the Solution
+    Explorer "Package and Publish" context menu entry to be enabled for this project even if
+    the Windows App SDK Nuget package has not yet been restored.
+  -->
+  <PropertyGroup Condition="'$(DisableHasPackageAndPublishMenuAddedByProject)'!='true' and '$(EnableMsixTooling)'=='true'">
+    <HasPackageAndPublishMenu>true</HasPackageAndPublishMenu>
+  </PropertyGroup>
+
+  <!--
+    Defining the "Msix" ProjectCapability here allows the Single-project MSIX Packaging
+    Tools extension to be activated for this project even if the Windows App SDK Nuget
+    package has not yet been restored.
+  -->
+  <ItemGroup Condition="'$(DisableMsixProjectCapabilityAddedByProject)'!='true' and '$(EnableMsixTooling)'=='true'">
+    <ProjectCapability Include="Msix" />
+  </ItemGroup>
 
   <Import Project="$(BuildCommonPublishDirectory)Publish.props" />
 
