@@ -13,6 +13,13 @@ dotnet_code_quality.CA1054.excluded_type_names_with_derived_types = UriExtension
 # https://github.com/dotnet/roslyn-analyzers/issues/6561
 dotnet_diagnostic.CA1812.severity = none
 
+## Microsoft.CodeAnalysis.Analyzer ##
+
+# コンパイラ拡張機能は、netstandard2.0 を対象とするアセンブリに実装する必要があります
+# https://github.com/dotnet/roslyn-analyzers/blob/main/docs/rules/RS1041.md
+# 理由: .NET Standard 2.0以外も対象としたいため。
+dotnet_diagnostic.RS1041.severity = none
+
 [*{Helpers,Extensions,Factory}.cs]
 
 ## Microsoft.CodeAnalysis.NetAnalyzers ##
