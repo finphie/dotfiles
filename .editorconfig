@@ -10,13 +10,12 @@ insert_final_newline = true
 trim_trailing_whitespace = true
 
 # C#関連ファイル
-[*.{cs,tt,xaml,axaml,razor,cshtml,sln}]
+[*.{cs,tt,xaml,axaml,razor,cshtml,resx,sln}]
 charset = utf-8-bom
 end_of_line = crlf
 
 # リソースファイル
 [*.resx]
-end_of_line = crlf
 indent_size = 2
 
 # Visual Studio ソリューションファイル
