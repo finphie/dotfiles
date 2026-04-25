@@ -7,6 +7,8 @@
   -->
 
   <PropertyGroup>
+    <EnablePreviewFeatures>true</EnablePreviewFeatures>
+
     <!-- 発行先ディレクトリにシンボルファイルをコピーしない。 -->
     <CopyOutputSymbolsToPublishDirectory>false</CopyOutputSymbolsToPublishDirectory>
   </PropertyGroup>
