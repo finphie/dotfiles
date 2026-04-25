@@ -23,7 +23,7 @@
     <ProjectReference Include="../$(_GeneratorInternalProjectName)/$(_GeneratorInternalProjectName).csproj" ReferenceOutputAssembly="false" />
 
     <!-- パッケージ内部にソースジェネレーターのdllを埋め込む。 -->
-    <None Include="../$(_GeneratorInternalProjectName)/bin/$(Configuration)/netstandard2.0/$(_GeneratorInternalProjectName).dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
+    <None Include="$(ArtifactsPath)/bin/$(_GeneratorInternalProjectName)/$(Configuration)/$(_GeneratorInternalProjectName).dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
 
     <!-- パッケージ内部にロジック本体のdllを埋め込む。 -->
     <None Condition="'$(ExistsSourceGeneratorMainLogic)' == 'true'" Include="$(MainLogicAssemblyPath)" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />

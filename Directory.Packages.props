@@ -28,10 +28,10 @@
   <!-- ソースジェネレーター -->
   <ItemGroup>
     <!--
-      バージョン4.14.0は、Visual Studio 2022 バージョン 17.14以降で動作する。
+      バージョン5.0.0は、Visual Studio 2026 バージョン 18.0以降で動作する。
       https://learn.microsoft.com/visualstudio/extensibility/roslyn-version-support
     -->
-    <PackageVersion Include="Microsoft.CodeAnalysis.CSharp" Version="4.14.0" />
+    <PackageVersion Include="Microsoft.CodeAnalysis.CSharp" Version="5.0.0" />
   </ItemGroup>
 
   <!-- テスト -->

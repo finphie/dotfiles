@@ -30,8 +30,8 @@
   <Target Name="_GetDependencyTargetPaths">
     <ItemGroup>
       <!--
-        ソースジェネレーターをプロジェクト参照するプロジェクトに影響する。
         ロジック本体プロジェクトへの依存関係を設定する。
+        ソースジェネレーターをプロジェクト参照するプロジェクトに影響する。
         この設定がない場合、ロジック本体アセンブリを読み込めずにFileNotFoundExceptionが発生する。
       -->
       <TargetPathWithTargetPlatformMoniker Condition="'$(ExistsSourceGeneratorMainLogic)' == 'true'" Include="$(MainLogicAssemblyPath)" IncludeRuntimeDependency="false" />
