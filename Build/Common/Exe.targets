@@ -21,9 +21,8 @@
     そこで、DebugTypeを使用せずにコピー対象のファイル一覧から削除する。
     これにより、リリース先ディレクトリ内にはシンボルファイルが生成されるが、発行先ディレクトリにはコピーされなくなる。
 
-    PrepareForPublishターゲットは、パッケージ作成と発行時に実行される。
     このファイル自体は、発行対象プロジェクトでのみインポートされる。
-    .NETツールではシンボルを含めたいため、発行時のみに限定する必要がある
+    .NETツールではシンボルを含めたいため、発行時のみに限定する必要がある。
     _IsPublishingは、発行時に発行対象プロジェクトでのみtrueとなるプロパティ。（参照されているプロジェクトでは、発行時でもtrueにならない。）
     本来は参照するべきではないプロパティだが、他に良い方法がないため妥協している。
     https://github.com/dotnet/sdk/issues/26324
@@ -32,6 +31,18 @@
     <ItemGroup>
       <FilesToExclude Condition="'%(ReferenceCopyLocalPaths.Extension)' == '.pdb'" Include="@(ReferenceCopyLocalPaths)" />
       <ReferenceCopyLocalPaths Remove="@(FilesToExclude)" />
+    </ItemGroup>
+  </Target>
+
+  <!--
+    発行時、依存パッケージのシンボルファイルをコピー対象ファイルリストから削除する。
+    これは、ReferenceCopyLocalPathsからシンボルファイルを除外するだけでは削除できないため。
+    そのため、ResolvedFileToPublishからも除外する処理が必要となる。
+  -->
+  <Target Name="_DeletePackageSymbolFiles" AfterTargets="ComputeResolvedFilesToPublishList" Condition="'$(_IsPublishing)' == 'true'">
+    <ItemGroup>
+      <FilesToExclude Condition="%('RelativePath'.EndsWith('.pdb')) == 'true'" Include="@(ResolvedFileToPublish)" />
+      <ResolvedFileToPublish Remove="@(FilesToExclude)" />
     </ItemGroup>
   </Target>
 
