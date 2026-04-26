@@ -11,6 +11,15 @@
     <ExistsSourceGeneratorMainLogic Condition="Exists('$(MainLogicProjectPath)')">true</ExistsSourceGeneratorMainLogic>
   </PropertyGroup>
 
+  <ItemGroup>
+    <!--
+      公開用と内部用ライブラリの両方から参照する。
+      公開用はdllのパス取得のために必要、内部用は実際の処理で必要。
+    -->
+    <PackageReference Condition="'$(_IsGeneratorInternal)' != 'true'" Include="FToolkit.AnalyzerUtilities" IncludeAssets="None" PrivateAssets="All" GeneratePathProperty="true" />
+    <PackageReference Condition="'$(_IsGeneratorInternal)' == 'true'" Include="FToolkit.AnalyzerUtilities" PrivateAssets="All" GeneratePathProperty="true" />
+  </ItemGroup>
+
   <Import Condition="'$(_IsGeneratorInternal)' != 'true'" Project="$(_BuildCommonPlatformLibraryDirectory)Generator.Package.targets" />
   <Import Condition="'$(_IsGeneratorInternal)' == 'true'" Project="$(_BuildCommonPlatformLibraryDirectory)Generator.Internal.targets" />
 

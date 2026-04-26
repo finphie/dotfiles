@@ -16,7 +16,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <!-- Roslynパッケージを参照する。 -->
     <PackageReference Include="Microsoft.CodeAnalysis.CSharp" PrivateAssets="All" />
   </ItemGroup>
 
@@ -27,13 +26,16 @@
 
   <Import Project="$(MSBuildThisFileDirectory)Internal.targets" />
 
+  <!--
+    ソースジェネレーターをプロジェクト参照するプロジェクトで、必要なdllを読み込む。
+    この設定がない場合、FileNotFoundExceptionが発生する。
+  -->
   <Target Name="_GetDependencyTargetPaths">
     <ItemGroup>
-      <!--
-        ロジック本体プロジェクトへの依存関係を設定する。
-        ソースジェネレーターをプロジェクト参照するプロジェクトに影響する。
-        この設定がない場合、ロジック本体アセンブリを読み込めずにFileNotFoundExceptionが発生する。
-      -->
+      <!-- FToolkit.AnalyzerUtilitiesへの依存関係を設定する。 -->
+      <TargetPathWithTargetPlatformMoniker Include="$(PkgFToolkit_AnalyzerUtilities)/lib/net10.0/*.dll" IncludeRuntimeDependency="false" />
+
+      <!-- ロジック本体プロジェクトへの依存関係を設定する。 -->
       <TargetPathWithTargetPlatformMoniker Condition="'$(ExistsSourceGeneratorMainLogic)' == 'true'" Include="$(MainLogicAssemblyPath)" IncludeRuntimeDependency="false" />
     </ItemGroup>
   </Target>

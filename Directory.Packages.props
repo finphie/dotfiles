@@ -27,6 +27,8 @@
 
   <!-- ソースジェネレーター -->
   <ItemGroup>
+    <PackageVersion Include="FToolkit.AnalyzerUtilities" Version="0.1.0.4" />
+
     <!--
       バージョン5.0.0は、Visual Studio 2026 バージョン 18.0以降で動作する。
       https://learn.microsoft.com/visualstudio/extensibility/roslyn-version-support

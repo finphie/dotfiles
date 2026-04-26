@@ -25,6 +25,9 @@
     <!-- パッケージ内部にソースジェネレーターのdllを埋め込む。 -->
     <None Include="$(ArtifactsPath)/bin/$(_GeneratorInternalProjectName)/$(Configuration)/$(_GeneratorInternalProjectName).dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
 
+    <!-- FToolkit.AnalyzerUtilitiesのdllを埋め込む。 -->
+    <None Include="$(PkgFToolkit_AnalyzerUtilities)/lib/net10.0/*.dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
+
     <!-- パッケージ内部にロジック本体のdllを埋め込む。 -->
     <None Condition="'$(ExistsSourceGeneratorMainLogic)' == 'true'" Include="$(MainLogicAssemblyPath)" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
   </ItemGroup>
