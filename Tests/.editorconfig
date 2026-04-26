@@ -13,6 +13,13 @@ dotnet_diagnostic.CA1062.severity = none
 # 理由: 暗号強度の低い擬似乱数ジェネレーターを使用しても問題ない。
 dotnet_diagnostic.CA5394.severity = none
 
+## StyleCop.Analyzers ##
+
+# A Code Analysis SuppressMessage attribute does not include a justification.
+# https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1404.md
+# 理由: 警告抑制理由の表記は必要ない。
+dotnet_diagnostic.SA1404.severity = none
+
 # C#テスト関連ファイルなど
 [{*Test,*TestData,*Constants}.cs]
 
@@ -70,13 +77,3 @@ dotnet_diagnostic.CA2007.severity = none
 # https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1402.md
 # 理由: 1ファイルに収めたい場合がある。
 dotnet_diagnostic.SA1402.severity = none
-
-# C#テストデータファイル
-[*TestData.cs]
-
-## StyleCop.Analyzers ##
-
-# A Code Analysis SuppressMessage attribute does not include a justification.
-# https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1404.md
-# 理由: 警告抑制理由の表記は必要ない。
-dotnet_diagnostic.SA1404.severity = none
