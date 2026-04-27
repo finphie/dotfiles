@@ -7,7 +7,7 @@
     <_MainLogicProjectName Condition="'$(_IsGeneratorInternal)' == 'true'">$(MSBuildProjectName.Substring(0, $(MSBuildProjectName.LastIndexOf('.Generator.Internal'))))</_MainLogicProjectName>
 
     <MainLogicProjectPath>$(SourceDirectory)$(_MainLogicProjectName)/$(_MainLogicProjectName).csproj</MainLogicProjectPath>
-    <MainLogicAssemblyPath>$(ArtifactsPath)/bin/$(_MainLogicProjectName)/$(Configuration)/$(_MainLogicProjectName).dll</MainLogicAssemblyPath>
+    <MainLogicAssemblyPath>$(ArtifactsPath)/bin/$(_MainLogicProjectName)/$(Configuration.ToLowerInvariant())/$(_MainLogicProjectName).dll</MainLogicAssemblyPath>
     <ExistsSourceGeneratorMainLogic Condition="Exists('$(MainLogicProjectPath)')">true</ExistsSourceGeneratorMainLogic>
   </PropertyGroup>
 
