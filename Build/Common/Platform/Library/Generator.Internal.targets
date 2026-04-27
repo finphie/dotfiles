@@ -21,7 +21,7 @@
 
   <ItemGroup>
     <!-- ロジック本体プロジェクトが存在する場合、プロジェクト参照を設定する。 -->
-    <ProjectReference Condition="'$(ExistsSourceGeneratorMainLogic)' == 'true'" Include="$(MainLogicProjectPath)" />
+    <ProjectReference Condition="Exists('$(MainLogicProjectPath)')" Include="$(MainLogicProjectPath)" />
   </ItemGroup>
 
   <Import Project="$(MSBuildThisFileDirectory)Internal.targets" />
@@ -34,9 +34,12 @@
     <ItemGroup>
       <!-- FToolkit.AnalyzerUtilitiesへの依存関係を設定する。 -->
       <TargetPathWithTargetPlatformMoniker Include="$(PkgFToolkit_AnalyzerUtilities)/lib/net10.0/*.dll" IncludeRuntimeDependency="false" />
+    </ItemGroup>
 
-      <!-- ロジック本体プロジェクトへの依存関係を設定する。 -->
-      <TargetPathWithTargetPlatformMoniker Condition="'$(ExistsSourceGeneratorMainLogic)' == 'true'" Include="$(MainLogicAssemblyPath)" IncludeRuntimeDependency="false" />
+    <!-- ロジック本体プロジェクトへの依存関係を設定する。 -->
+    <ItemGroup Condition="Exists('$(MainLogicProjectPath)')">
+      <TargetPathWithTargetPlatformMoniker Condition="Exists('$(MainLogicAssemblyPath)')" Include="$(MainLogicAssemblyPath)" IncludeRuntimeDependency="false" />
+      <TargetPathWithTargetPlatformMoniker Condition="!Exists('$(MainLogicAssemblyPath)')" Include="$(MainLogicAssemblyPathWithTargetFramework)" IncludeRuntimeDependency="false" />
     </ItemGroup>
   </Target>
 

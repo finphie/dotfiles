@@ -27,9 +27,12 @@
 
     <!-- FToolkit.AnalyzerUtilitiesのdllを埋め込む。 -->
     <None Include="$(PkgFToolkit_AnalyzerUtilities)/lib/net10.0/*.dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
+  </ItemGroup>
 
-    <!-- パッケージ内部にロジック本体のdllを埋め込む。 -->
-    <None Condition="'$(ExistsSourceGeneratorMainLogic)' == 'true'" Include="$(MainLogicAssemblyPath)" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
+  <!-- パッケージ内部にロジック本体のdllを埋め込む。 -->
+  <ItemGroup Condition="Exists('$(MainLogicProjectPath)')">
+    <None Condition="Exists('$(MainLogicAssemblyPath)')" Include="$(MainLogicAssemblyPath)" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
+    <None Condition="!Exists('$(MainLogicAssemblyPath)')" Include="$(MainLogicAssemblyPathWithTargetFramework)" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
   </ItemGroup>
 
   <Import Project="$(BuildCommonAnalyzersDirectory)Analyzers.Trimming.targets" />

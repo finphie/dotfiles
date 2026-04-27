@@ -5,10 +5,13 @@
     <_IsGeneratorInternal>$(MSBuildProjectName.EndsWith('.Generator.Internal'))</_IsGeneratorInternal>
     <_MainLogicProjectName Condition="'$(_IsGeneratorInternal)' != 'true'">$(MSBuildProjectName.Substring(0, $(MSBuildProjectName.LastIndexOf('.Generator'))))</_MainLogicProjectName>
     <_MainLogicProjectName Condition="'$(_IsGeneratorInternal)' == 'true'">$(MSBuildProjectName.Substring(0, $(MSBuildProjectName.LastIndexOf('.Generator.Internal'))))</_MainLogicProjectName>
+    <_MainLogicProjectAssemblyFileName>$(_MainLogicProjectName).dll</_MainLogicProjectAssemblyFileName>
 
     <MainLogicProjectPath>$(SourceDirectory)$(_MainLogicProjectName)/$(_MainLogicProjectName).csproj</MainLogicProjectPath>
-    <MainLogicAssemblyPath>$(ArtifactsPath)/bin/$(_MainLogicProjectName)/$(Configuration.ToLowerInvariant())/$(_MainLogicProjectName).dll</MainLogicAssemblyPath>
-    <ExistsSourceGeneratorMainLogic Condition="Exists('$(MainLogicProjectPath)')">true</ExistsSourceGeneratorMainLogic>
+
+    <_BaseMainLogicProjectPath>$(ArtifactsPath)/bin/$(_MainLogicProjectName)/$(Configuration.ToLowerInvariant())</_BaseMainLogicProjectPath>
+    <MainLogicAssemblyPath>$(_BaseMainLogicProjectPath)/$(_MainLogicProjectAssemblyFileName)</MainLogicAssemblyPath>
+    <MainLogicAssemblyPathWithTargetFramework>$(_BaseMainLogicProjectPath)_net10.0/$(_MainLogicProjectAssemblyFileName)</MainLogicAssemblyPathWithTargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
