@@ -25,4 +25,9 @@
     <PackageReference Include="xunit.v3.extensibility.core" />
   </ItemGroup>
 
+  <ItemGroup>
+    <!-- ソースジェネレーターのテストプロジェクトでは、FToolkit.AnalyzerUtilitiesを参照する。 -->
+    <PackageReference Condition="$(MSBuildProjectName.EndsWith('.Generator.Tests'))" Include="FToolkit.AnalyzerUtilities" PrivateAssets="All" />
+  </ItemGroup>
+
 </Project>
