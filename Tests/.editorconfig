@@ -1,6 +1,11 @@
 # C#ファイル（テストプロジェクト全体）
 [*.cs]
 
+# 公開されている型またはメンバー 'Type_or_Member' の XML コメントがありません
+# https://learn.microsoft.com/dotnet/csharp/language-reference/compiler-messages/cs1591
+# 理由: ドキュメンテーションコメントを使用しない。
+dotnet_diagnostic.CS1591.severity = none
+
 ## Microsoft.CodeAnalysis.NetAnalyzers ##
 
 # パブリック メソッドの引数の検証
@@ -19,16 +24,6 @@ dotnet_diagnostic.CA5394.severity = none
 # https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1404.md
 # 理由: 警告抑制理由の表記は必要ない。
 dotnet_diagnostic.SA1404.severity = none
-
-# C#テスト関連ファイルなど
-[{*Test,*TestData,*Constants}.cs]
-
-# 公開されている型またはメンバー 'Type_or_Member' の XML コメントがありません
-# https://learn.microsoft.com/dotnet/csharp/language-reference/compiler-messages/cs1591
-# 理由: ドキュメンテーションコメントを使用しない。
-dotnet_diagnostic.CS1591.severity = none
-
-## StyleCop.Analyzers ##
 
 # A C# code element is missing a documentation header.
 # https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1600.md
