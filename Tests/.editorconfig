@@ -48,6 +48,13 @@ dotnet_diagnostic.SA1602.severity = none
 # C#テストファイル
 [*Test.cs]
 
+### C# コーディング規則 ###
+
+# IDE0039: ローカル関数を使用します
+# https://learn.microsoft.com/dotnet/fundamentals/code-analysis/style-rules/ide0039
+# 理由: ラムダ式を使用したい場合がある。
+dotnet_diagnostic.IDE0039.severity = none
+
 ## 名前付けルール ##
 
 # 非同期メソッド名の末尾にAsync付与を強制しない。
