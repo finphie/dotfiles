@@ -16,13 +16,11 @@
   </PropertyGroup>
 
   <ItemGroup Condition="'$(_IsTest)' == 'true'">
-    <PackageReference Include="Shouldly" />
-    <PackageReference Include="Microsoft.Testing.Extensions.CodeCoverage" />
-    <PackageReference Include="xunit.v3.mtp-v2" />
+    <PackageReference Include="TUnit" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(_IsTest)' != 'true'">
-    <PackageReference Include="xunit.v3.extensibility.core" />
+    <PackageReference Include="TUnit.Assertions" />
   </ItemGroup>
 
   <ItemGroup>
