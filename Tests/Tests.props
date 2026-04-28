@@ -5,6 +5,11 @@
     <_IsTest>$(MSBuildProjectName.EndsWith('.Tests'))</_IsTest>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <!-- テストプロジェクトから参照されるプロジェクトでは、ルート名前空間をプロジェクト名末尾から「Core」を取り除いたものにする。 -->
+    <RootNamespace Condition="$(MSBuildProjectName.EndsWith('.Tests.Core'))">$(MSBuildProjectName.Substring(0, $(MSBuildProjectName.LastIndexOf('.'))))</RootNamespace>
+  </PropertyGroup>
+
   <PropertyGroup Condition="'$(_IsTest)' == 'true'">
     <!--
       [SA0001]
